@@ -37,86 +37,90 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Image(
             image: AssetImage("assets/images/Group 3361.png"),
-           // fit: BoxFit.fill,
-
           ),
           Padding(
             padding: const EdgeInsets.only(top: 60, left: 15),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "Location",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+            child: Container(
+              width: size.width,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Location",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "chennai",
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      "chennai",
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 3, left: 5),
+                        child: Image(
+                            image: AssetImage("assets/images/down-arrow.png")),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 5.w,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child:
-                      Image(image: AssetImage("assets/images/down-arrow.png")),
-                ),
-                SizedBox(
-                  width: 13.w,
-                ),
-                SizedBox(
-                  height: 35.h,
-                  width: 170.w,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      isDense: true,
-                      filled: true,
-                      fillColor: Color(0xffECF2F0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      hintText: "Search product",
-                      contentPadding: EdgeInsets.only(top: 5),
-                      prefixIcon: Icon(Icons.search),
-                      hintStyle: TextStyle(
-                        color: const Color(0xff517937),
-                        fontSize: 14.sp,
+                    ],
+                  ),
+                  SizedBox(
+                    height: 35.h,
+                    width: 170.w,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        isDense: true,
+                        filled: true,
+                        fillColor: Color(0xffECF2F0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Search product",
+                        contentPadding: EdgeInsets.only(top: 5),
+                        prefixIcon: Icon(Icons.search),
+                        hintStyle: TextStyle(
+                          color: const Color(0xff517937),
+                          fontSize: 14.sp,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 8.w,
-                ),
-                InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child:
-                          Image(image: AssetImage("assets/images/Layer 2.png")),
-                    )),
-                SizedBox(
-                  width: 5.w,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 1),
-                  child: SizedBox(
-                      height: 50.h,
-                      child: Image(
-                          image: AssetImage("assets/images/Group 3466.png"))),
-                ),
-              ],
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Image(
+                                image: AssetImage("assets/images/Layer 2.png")),
+                          )),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: SizedBox(
+                            height: 50.h,
+                            child: Image(
+                                image: AssetImage(
+                                    "assets/images/Group 3466.png"))),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
@@ -131,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         InkWell(
                           onTap: () {
                             homeController.home(1);
-            
+
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -194,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         InkWell(
                           onTap: () {
                             homeController.home(3);
-            
+
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -556,8 +560,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          height: 150.h,
-                          width: 110.w,
+                          height: 150,
+                          width: 110,
                           child: Column(
                             children: [
                               Padding(
@@ -589,7 +593,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -672,7 +677,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -750,7 +756,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -799,9 +806,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 20,
                   ),
-            
+
                   //second
-            
+
                   Padding(
                     padding: const EdgeInsets.only(left: 15),
                     child: Row(
@@ -817,7 +824,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 50),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 50),
                                       child: Container(
                                         height: 10,
                                         width: 40,
@@ -866,7 +874,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -919,7 +928,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 50),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 50),
                                       child: Container(
                                         height: 10,
                                         width: 40,
@@ -974,7 +984,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -1027,7 +1038,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 50),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 50),
                                       child: Container(
                                         height: 10,
                                         width: 40,
@@ -1076,7 +1088,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 5, left: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -1129,160 +1142,169 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: Obx(
-        () => 
-          Container(
-            height: 90,
-            child: Column(
-             
-              children: [
-                 
+        () => Container(
+          height: 90,
+          child: Column(
+            children: [
+              Container(
+                height: 100,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/Group 3362.png"),
+                        fit: BoxFit.fill)),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
                         Container(
-                          height: 100,
-                           decoration: BoxDecoration(
-                             
-                            image: DecorationImage(image: AssetImage("assets/images/Group 3362.png"))
-                           ),
-                           child:Center(
-                             child: Padding(
-                               padding: const EdgeInsets.only(top: 15),
-                               child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 40,
-                        child: InkWell(
-                          onTap: () {
-                                homeController.bottomIcon(1);
-                                Navigator.push(
-                                               context,
-                                               MaterialPageRoute(builder: (context) => const HomeScreen()),
-                                             );
-                          },
-                          child: Column(
-                                children: [
-                                  Image(
-                                     height: 20,
-                                fit: BoxFit.fitHeight,
-                                    image: AssetImage("assets/images/home.png"),
+                          height: 40,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(1);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image: AssetImage("assets/images/home.png"),
+                                  color: homeController.bottomIcon == 1
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Home",
+                                  style: TextStyle(
                                     color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-
-                                  Text("Home",style: TextStyle(
-                                     color: homeController.bottomIcon == 1
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                                ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      
-                      Container(
-                        height: 42,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(2);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const ViewCartScreen()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                 height: 20,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/shop.png"),
-                                color: homeController.bottomIcon == 2
+                        Container(
+                          height: 42,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(2);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ViewCartScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image: AssetImage("assets/images/shop.png"),
+                                  color: homeController.bottomIcon == 2
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Cart",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 2
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("Cart",style: TextStyle(
-                                       color: homeController.bottomIcon == 2
-                                          ? Colors.white
-                                          : Colors.black,
-                                      ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      
-                      Container(
-                        height: 40,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(3);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const OrderHistory()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                height: 20,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/Path 38.png"),
-
-                                color: homeController.bottomIcon == 3
+                        Container(
+                          height: 40,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(3);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const OrderHistory()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image:
+                                      AssetImage("assets/images/Path 38.png"),
+                                  color: homeController.bottomIcon == 3
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "History",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("History",style: TextStyle(
-                                     color: homeController.bottomIcon == 3
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                     
-                      Container(
-                        height: 50,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(4);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                 height: 25,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/profile.png"),
-                                color: homeController.bottomIcon == 4
+                        Container(
+                          height: 50,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(4);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ProfileScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 25,
+                                  fit: BoxFit.fitHeight,
+                                  image:
+                                      AssetImage("assets/images/profile.png"),
+                                  color: homeController.bottomIcon == 4
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Profile",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("Profile",style: TextStyle(
-                                     color: homeController.bottomIcon == 4
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                             ),
-                           ) ,
-
-                        ),
-             
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-      ),    );
+        ),
+      ),
+    );
   }
 }

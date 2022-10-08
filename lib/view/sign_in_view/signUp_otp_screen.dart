@@ -20,126 +20,132 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-              width: size.width,
-              // height: size.height * 0.35,
-              child: Image(
-                image: AssetImage("assets/images/Group 3471.png"),
-                fit: BoxFit.fill,
-              )
-              ),
-              Column(
-                children: [
-                  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Stack(
             children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 70),
-                    child: InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Image(image: AssetImage("assets/icons/img.png"))),
+              Container(
+                  width: double.infinity,
+                  height: 300,
+                  child: Image(
+                    image: AssetImage("assets/images/Group 3471.png"),
+                    fit: BoxFit.fill,
+                  )
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 50,right: 10),
-                    child: Image(image: AssetImage("assets/images/Group 3473.png")),
-                  ),
-                  Container(
-                    height: 1,
-                  ),
-            ],
-          ),
-          SizedBox(height: 15,),
-          Text("OTP",
-          style: TextStyle(color: Colors.white,fontSize: 18),
-          ),
-          SizedBox(height: 10,),
-          Text("Please enter the OTP sent to your mobile number",
-          style: TextStyle(color: Colors.white,fontSize: 14),
-          ),
+                  Column(
+                    children: [
+                      Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                      InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Image(image: AssetImage("assets/icons/img.png"))),
+                      Padding(
+                        padding: EdgeInsets.only(top: 35,right: 10),
+                        child: Image(image: AssetImage("assets/images/Group 3473.png"),
+                        height: 100,),
+                      ),
+                      Container(
+                        height: 1,
+                      ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 400,left: 10),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 50,
-                      child: OtpTextField(
-                        numberOfFields: 4,
-                        filled: true,
-                        fieldWidth: 50,
-                        margin: EdgeInsets.only(left: 10,right: 20),
-                        fillColor: Color(0xffE4E4E4),
-                        textStyle: TextStyle(color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        
-                        ),
-                        borderWidth: 0,
-                        showFieldAsBox: true, 
-                        onCodeChanged: (String code) {
-                        },
-                       onSubmit: (String verificationCode){
-                       
-                      }, 
-                      ),
-                    ),
-                    SizedBox(height: 50,),
-                    Text("Didn't receive an OTP?",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                    ),
-                    SizedBox(height: 15,),
-                    TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Resend OTP?",
+              SizedBox(height: 15,),
+              Text("OTP",
+              style: TextStyle(color: Colors.white,fontSize: 18),
+              ),
+              SizedBox(height: 10,),
+              Text("Please enter the OTP sent to your mobile number",
+              style: TextStyle(color: Colors.white60,fontSize: 13),
+              ),
+                    ],
+                  ),
+                 
 
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                decoration:TextDecoration.underline, 
-                                
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 100,),
-                InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SignUpSucessfully()),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20,right: 20),
-                          child: Container(
-                            height: 50,
-                            width: size.width,
-                            child: Center(
-                                child: Text(
-                              "Submit",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 20,
-                              ),
-                            )),
-                            decoration: BoxDecoration(
-                              color: const Color(0xff016942),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
+            ],
+          ),
+           Column(
+            children: [
+              Container(
+                height: 50,
+                child: OtpTextField(
+                  numberOfFields: 4,
+                  filled: true,
+                  fieldWidth: 50,
+                  margin: EdgeInsets.only(left: 10, right: 20),
+                  fillColor: Color(0xffE4E4E4),
+                  textStyle: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  borderWidth: 0,
+                  showFieldAsBox: true,
+                  onCodeChanged: (String code) {},
+                  onSubmit: (String verificationCode) {},
                 ),
               ),
-
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "Didn't receive an OTP?",
+                style: TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Resend OTP?",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              
+            
+            ],
+          ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignUpSucessfully()),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Container(
+                  height: 50,
+                  width: size.width,
+                  child: Center(
+                      child: Text(
+                    "Submit",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                  )),
+                  decoration: BoxDecoration(
+                    color: const Color(0xff016942),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+              ),
+          ),
+            ),
         ],
       ),
     );

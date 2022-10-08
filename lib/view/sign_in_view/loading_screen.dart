@@ -26,23 +26,31 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   Widget build(BuildContext context) {
+    var size  = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 300),
+      body: Container(
+   height: size.height,
+   width: size.width,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: LoadingAnimationWidget.beat(
-                color: Color(0xff517937),
-                size: 150,
+            Column(
+              children: [
+                Center(
+                  child: LoadingAnimationWidget.beat(
+                    color: Color(0xff517937),
+                    size: 150,
+                    ),
                 ),
+                SizedBox(height: 40,),
+                Text("Loading......",style: TextStyle(
+                  color: Color(0xff016942),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24),
+                  ),
+              ],
             ),
-            SizedBox(height: 40,),
-            Text("Loading......",style: TextStyle(
-              color: Color(0xff016942),
-              fontWeight: FontWeight.w500,
-              fontSize: 24),
-              ),
           ],
         ),
       ),

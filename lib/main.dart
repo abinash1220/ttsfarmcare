@@ -12,10 +12,7 @@ void main() {
   Get.put(SignUpControllers());
   Get.put(HomeControllers());
   runApp(
-   DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(), 
-  ),
+   MyApp()
 
   );
 }

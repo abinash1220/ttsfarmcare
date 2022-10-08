@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'loading_screen.dart';
 
@@ -17,25 +18,26 @@ class _SignUpSucessfullyState extends State<SignUpSucessfully> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 200),
+            padding:  EdgeInsets.only(top: 100.h),
             child: Center(
               child: Image(image: AssetImage("assets/images/Group 10.png")),
             ),
           ),
-          SizedBox(height: 60,),
+          SizedBox(height: 60.h,),
           Text("PHONE NUMBER REGISTERE",
           style: TextStyle(fontSize: 15),
           ),
-          SizedBox(height: 15,),
+          SizedBox(height: 15.h,),
           Text("SUCCESSFULLY !",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.w500,
             color: Color(0xff517937)),
           ),
-          SizedBox(height: 160,),
+          SizedBox(height: 130.h,),
                 InkWell(
                         onTap: () {
                           Navigator.push(
