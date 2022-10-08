@@ -1,22 +1,19 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:ttsfarmcare/controllers/sign_up_controllers.dart';
-import 'package:searchfield/searchfield.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_mobileNumber_screen.dart';
-import 'package:ttsfarmcare/view/sign_in_view/test_sign_up.dart';
-import '../landing_page/landing_screen.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+
+
+class SignUpTestView extends StatefulWidget {
+  const SignUpTestView({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUpTestView> createState() => _SignUpTestViewState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpTestViewState extends State<SignUpTestView> {
   final signUpController = Get.find<SignUpControllers>();
 
   bool _isHidden = true;
@@ -28,8 +25,12 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController districtcontroller = TextEditingController();
   TextEditingController companynamecontroller = TextEditingController();
   TextEditingController gstnumbercontroller = TextEditingController();
-
-   String _dropdownValue = "Dash";
+  void _togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
+  String _dropdownValue = "Dash";
   List<String> dropDownOptions = [
     "Dash",
     "Sparky",
@@ -44,160 +45,156 @@ class _SignUpPageState extends State<SignUpPage> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Obx(
-        () => ListView(
-        physics: NeverScrollableScrollPhysics(),
+      body:Obx(()=> Container(
+        child: Column(
           children: [
-            Stack(
-              children: [
-                Container(
-                    width: size.width,
-                    height: size.height * 0.37,
-                    child: Image(
-                      image: AssetImage("assets/images/3453.png"),
-                      fit: BoxFit.cover,
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            Expanded(
+              flex: 3,
+              child: Container(
+                child: Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 80, left: 20),
-                      child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUpTestView()),
-                            );
-                          },
-                          child: Image(
-                            image: AssetImage(
-                              "assets/icons/img.png",
-                            ),
-                          )),
+                    Container(
+                        width: size.width,
+                        height: size.height * 0.37,
+                        child: Image(
+                          image: AssetImage("assets/images/3453.png"),
+                          fit: BoxFit.cover,
+                        )),
+            
+                    Positioned(
+                      left: 10,
+                      top: 50,
+                      child: Image(
+                        image: AssetImage(
+                          "assets/icons/img.png",
+                        ),
+                      ),
                     ),
+            
                     Padding(
-                      padding: EdgeInsets.only(top: 90),
-                      child: Column(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: Center(
+                        child: Column(
+                              children: [
+                                Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 45,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Create Your New Account",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                      ),
+                    ),
+             Positioned(
+                      bottom: 5,
+                      left: 33,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Register",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 45,
+                          InkWell(
+                            onTap: () {
+                              signUpController.isCustomer(true);
+                              usernamecontroller.clear();
+                              emailcontroller.clear();
+                              passwordcontroller.clear();
+                              addresscontroller.clear();
+                              companynamecontroller.clear();
+                              districtcontroller.clear();
+                              gstnumbercontroller.clear();
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                              // );
+                            },
+                            child: Container(
+                              height: 40,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(30),
+                                color: signUpController.isCustomer.isTrue
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Customer",
+                                style: TextStyle(
+                                    color: signUpController.isCustomer.isTrue
+                                        ? Colors.white
+                                        : Colors.black),
+                              )),
                             ),
                           ),
                           SizedBox(
-                            height: 5,
+                            width: 30,
                           ),
-                          Text(
-                            "Create Your New Account",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
+                          InkWell(
+                            onTap: () {
+                              signUpController.isCustomer(false);
+                              usernamecontroller.clear();
+                              emailcontroller.clear();
+                              passwordcontroller.clear();
+                              addresscontroller.clear();
+                              companynamecontroller.clear();
+                              districtcontroller.clear();
+                              gstnumbercontroller.clear();
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                              // );
+                            },
+                            child: Container(
+                              height: 40,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(30),
+                                color: signUpController.isCustomer.isFalse
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Retail",
+                                style: TextStyle(
+                                    color: signUpController.isCustomer.isFalse
+                                        ? Colors.white
+                                        : Colors.black),
+                              )),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      height: 1,
-                    ),
+                    
                   ],
                 ),
-                Positioned(
-                  bottom: 5,
-                  left: 33,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          signUpController.isCustomer(true);
-                          usernamecontroller.clear();
-                          emailcontroller.clear();
-                          passwordcontroller.clear();
-                          addresscontroller.clear();
-                          companynamecontroller.clear();
-                          districtcontroller.clear();
-                          gstnumbercontroller.clear();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                          // );
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(30),
-                            color: signUpController.isCustomer.isTrue
-                                ? Colors.black
-                                : Colors.white,
-                          ),
-                          child: Center(
-                              child: Text(
-                            "Customer",
-                            style: TextStyle(
-                                color: signUpController.isCustomer.isTrue
-                                    ? Colors.white
-                                    : Colors.black),
-                          )),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          signUpController.isCustomer(false);
-                          usernamecontroller.clear();
-                          emailcontroller.clear();
-                          passwordcontroller.clear();
-                          addresscontroller.clear();
-                          companynamecontroller.clear();
-                          districtcontroller.clear();
-                          gstnumbercontroller.clear();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                          // );
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(30),
-                            color: signUpController.isCustomer.isFalse
-                                ? Colors.black
-                                : Colors.white,
-                          ),
-                          child: Center(
-                              child: Text(
-                            "Retail",
-                            style: TextStyle(
-                                color: signUpController.isCustomer.isFalse
-                                    ? Colors.white
-                                    : Colors.black),
-                          )),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
-            Container(
-              height: size.height * 0.6,
-              child: SingleChildScrollView(
+
+            Expanded(
+              flex: 5,
+              child: Container(
+                child: SingleChildScrollView(
                 child: Column(
                   children: [
                     SizedBox(
@@ -485,16 +482,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-            ),
+              ),
+            )
           ],
         ),
-      ),
+      )),
     );
-  }
-
-  void _togglePasswordView() {
-    setState(() {
-      _isHidden = !_isHidden;
-    });
   }
 }

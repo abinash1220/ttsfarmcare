@@ -12,10 +12,8 @@ void main() {
   Get.put(SignUpControllers());
   Get.put(HomeControllers());
   runApp(
-    DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(), 
-  ),
+    MyApp(), 
+
   );
 }
 
@@ -32,8 +30,6 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           useInheritedMediaQuery: true,
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
           title: 'TTS Farm Care',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
