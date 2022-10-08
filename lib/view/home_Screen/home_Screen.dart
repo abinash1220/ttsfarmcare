@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
 import 'package:ttsfarmcare/view/order_history_page/order_history_screen.dart';
+import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
 import '../../controllers/home_Controllers.dart';
 import '../../controllers/sign_up_controllers.dart';
@@ -1128,129 +1129,160 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: Obx(
-        () => (Stack(children: [
-          Image(image: AssetImage("assets/images/Group 3362.png")),
-          Padding(
-            padding: const EdgeInsets.only(top: 40, left: 50),
-            child: (Row(
+        () => 
+          Container(
+            height: 90,
+            child: Column(
+             
               children: [
-                InkWell(
-                  onTap: () {
-                    homeController.bottomIcon(1);
-                  },
-                  child: Image(
-                    image: AssetImage("assets/images/home.png"),
-                    color: homeController.bottomIcon == 1
-                        ? Colors.white
-                        : Colors.black,
+                 
+                        Container(
+                          height: 100,
+                           decoration: BoxDecoration(
+                             
+                            image: DecorationImage(image: AssetImage("assets/images/Group 3362.png"))
+                           ),
+                           child:Center(
+                             child: Padding(
+                               padding: const EdgeInsets.only(top: 15),
+                               child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 40,
+                        child: InkWell(
+                          onTap: () {
+                                homeController.bottomIcon(1);
+                                Navigator.push(
+                                               context,
+                                               MaterialPageRoute(builder: (context) => const HomeScreen()),
+                                             );
+                          },
+                          child: Column(
+                                children: [
+                                  Image(
+                                     height: 20,
+                                fit: BoxFit.fitHeight,
+                                    image: AssetImage("assets/images/home.png"),
+                                    color: homeController.bottomIcon == 1
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+
+                                  Text("Home",style: TextStyle(
+                                     color: homeController.bottomIcon == 1
+                                        ? Colors.white
+                                        : Colors.black,
+                                    ),)
+                                ],
+                          ),
+                        ),
+                      ),
+                      
+                      Container(
+                        height: 42,
+                        child: InkWell(
+                          onTap: () {
+                            homeController.bottomIcon(2);
+                            Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const ViewCartScreen()),
+                                       );
+                          },
+                          child: Column(
+                            children: [
+                              Image(
+                                 height: 20,
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage("assets/images/shop.png"),
+                                color: homeController.bottomIcon == 2
+                                        ? Colors.white
+                                        : Colors.black,
+                              ),
+
+                              Text("Cart",style: TextStyle(
+                                       color: homeController.bottomIcon == 2
+                                          ? Colors.white
+                                          : Colors.black,
+                                      ),)
+                            ],
+                          ),
+                        ),
+                      ),
+                      
+                      Container(
+                        height: 40,
+                        child: InkWell(
+                          onTap: () {
+                            homeController.bottomIcon(3);
+                            Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const OrderHistory()),
+                                       );
+                          },
+                          child: Column(
+                            children: [
+                              Image(
+                                height: 20,
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage("assets/images/Path 38.png"),
+
+                                color: homeController.bottomIcon == 3
+                                        ? Colors.white
+                                        : Colors.black,
+                              ),
+
+                              Text("History",style: TextStyle(
+                                     color: homeController.bottomIcon == 3
+                                        ? Colors.white
+                                        : Colors.black,
+                                    ),)
+                            ],
+                          ),
+                        ),
+                      ),
+                     
+                      Container(
+                        height: 50,
+                        child: InkWell(
+                          onTap: () {
+                            homeController.bottomIcon(4);
+                            Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                                       );
+                          },
+                          child: Column(
+                            children: [
+                              Image(
+                                 height: 25,
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage("assets/images/profile.png"),
+                                color: homeController.bottomIcon == 4
+                                        ? Colors.white
+                                        : Colors.black,
+                              ),
+
+                              Text("Profile",style: TextStyle(
+                                     color: homeController.bottomIcon == 4
+                                        ? Colors.white
+                                        : Colors.black,
+                                    ),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-                InkWell(
-                  onTap: () {
-                    homeController.bottomIcon(2);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ViewCartScreen()),
-                    );
-                  },
-                  child: Image(
-                    image: AssetImage("assets/images/shop.png"),
-                    color: homeController.bottomIcon == 2
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-                InkWell(
-                  onTap: () {
-                    homeController.bottomIcon(3);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OrderHistory()),
-                    );
-                  },
-                  child: Image(
-                    image: AssetImage("assets/images/Path 38.png"),
-                    color: homeController.bottomIcon == 3
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-                InkWell(
-                  onTap: () {
-                    homeController.bottomIcon(4);
-                  },
-                  child: Image(
-                    image: AssetImage("assets/images/profile.png"),
-                    color: homeController.bottomIcon == 4
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-              ],
-            )),
-          ),
-          Positioned(
-            bottom: 15,
-            left: 42,
-            child: Row(
-              children: [
-                Text(
-                  "Home",
-                  style: TextStyle(
-                    color: homeController.bottomIcon == 1
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                Text(
-                  "Cart",
-                  style: TextStyle(
-                    color: homeController.bottomIcon == 2
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                Text(
-                  "History",
-                  style: TextStyle(
-                    color: homeController.bottomIcon == 3
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                Text(
-                  "Profile",
-                  style: TextStyle(
-                    color: homeController.bottomIcon == 4
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
+                             ),
+                           ) ,
+
+                        ),
+             
               ],
             ),
           ),
-        ])),
-      ),
-    );
+      ),    );
   }
 }

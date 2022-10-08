@@ -77,7 +77,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                     ),
             
                     Padding(
-                      padding: const EdgeInsets.only(top: 30),
+                      padding: const EdgeInsets.only(top: 50),
                       child: Center(
                         child: Column(
                               children: [
@@ -105,9 +105,9 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                     ),
              Positioned(
                       bottom: 5,
-                      left: 33,
+                      left: 10,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           InkWell(
                             onTap: () {

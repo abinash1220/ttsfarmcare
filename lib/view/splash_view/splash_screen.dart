@@ -27,14 +27,21 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Image(image: AssetImage("assets/images/splash_backrnd.png") 
-          ),
-          Center(
-            child: Image(image: AssetImage("assets/images/TTS_logo.png")),
-          ),
-        ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/splash_backrnd.png"),
+            fit: BoxFit.cover,
+            )),
+        child: Stack(
+           children: [
+          //   Image(image: AssetImage("assets/images/splash_backrnd.png") 
+          //   ),
+            Center(
+              child: Image(image: AssetImage("assets/images/TTS_logo.png")),
+            ),
+          ],
+        ),
       ),
       
     );

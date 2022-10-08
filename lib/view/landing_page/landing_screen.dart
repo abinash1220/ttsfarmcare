@@ -6,6 +6,7 @@ import 'package:ttsfarmcare/view/landing_page/login_page.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_page.dart';
 
 import '../sign_in_view/sign_up_screen.dart';
+import '../sign_in_view/test_sign_up.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -57,7 +58,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SignUpPage()),
+                        MaterialPageRoute(builder: (context) => const SignUpTestView()),
                       );
                     },
                     child: Container(

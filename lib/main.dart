@@ -12,7 +12,10 @@ void main() {
   Get.put(SignUpControllers());
   Get.put(HomeControllers());
   runApp(
-    MyApp(), 
+   DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(), 
+  ),
 
   );
 }
@@ -29,7 +32,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-          useInheritedMediaQuery: true,
+           useInheritedMediaQuery: true,
+           locale: DevicePreview.locale(context),
+           builder: DevicePreview.appBuilder,
           title: 'TTS Farm Care',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(

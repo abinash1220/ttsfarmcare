@@ -99,8 +99,10 @@
 //             ],
 //           ),
 //           Padding(
-//             padding: const EdgeInsets.only(top: 280,left: 30),
+//             padding: const EdgeInsets.only(top: 230,),
 //             child: Obx( () =>  Column(
+//               crossAxisAlignment: CrossAxisAlignment.center,
+//               mainAxisAlignment: MainAxisAlignment.center,
 //                 children: [
 //                   Padding(
 //                     padding: const EdgeInsets.only(left: 15),
@@ -187,309 +189,291 @@
 //                     ),
 //                   ),
                   
-//                   Container(
-//                      height: size.height * 0.6,
-//                     child: ListView(
-//                       shrinkWrap: true,
-//                       children: [
-//                         Column(
-//                         children: [
-//                           Padding(
-//                             padding: const EdgeInsets.only(right: 20),
-//                             child: Container(
-//                               height: 50,
-//                               width: 335,
-//                               child: TextFormField(
-//                                 controller: companynamecontroller,
-//                                 decoration: InputDecoration(
-//                                   filled: true,
-//                                   fillColor: Color(0xffECF2F0),
-//                                   border: OutlineInputBorder(
-//                                     borderRadius: BorderRadius.circular(30),
-//                                   ),
-//                                   hintText: "Company name",
-//                                   hintStyle: TextStyle(
-//                                     color: const Color(0xff517937),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                           if (signUpController.isCustomer.isFalse)
+//                   ListView(
+//                     shrinkWrap: true,
+//                     children: [
 //                       Column(
-//                         children: [
-//                           SizedBox(
-//                             height: 20,
-//                           ),
-//                           Padding(
-//                             padding: const EdgeInsets.only(right: 20),
-//                             child: Container(
-//                               height: 50,
-//                               width: 335,
-//                               child: TextFormField(
-//                                 controller: companynamecontroller,
-//                                 decoration: InputDecoration(
-//                                   filled: true,
-//                                   fillColor: Color(0xffECF2F0),
-//                                   border: OutlineInputBorder(
-//                                     borderRadius: BorderRadius.circular(30),
-//                                   ),
-//                                   hintText: "Company name",
-//                                   hintStyle: TextStyle(
-//                                     color: const Color(0xff517937),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                           SizedBox(
-//                             height: 20,
-//                           ),
-//                           Padding(
-//                             padding: const EdgeInsets.only(right: 20),
-//                             child: Container(
-//                               height: 50,
-//                               width: 335,
-//                               child: TextFormField(
-//                                 controller: gstnumbercontroller,
-//                                 decoration: InputDecoration(
-//                                   filled: true,
-//                                   fillColor: Color(0xffECF2F0),
-//                                   border: OutlineInputBorder(
-//                                     borderRadius: BorderRadius.circular(30),
-//                                   ),
-//                                   hintText: "GST Number",
-//                                   hintStyle: TextStyle(
-//                                     color: const Color(0xff517937),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                       //next
-//                       SizedBox(
-//                       height: 20,
-//                     ),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 20),
-//                       child: Container(
-//                         height: 50,
-//                         width: 335,
-//                         child: TextFormField(
-//                           controller: emailcontroller,
-//                           decoration: InputDecoration(
-//                             filled: true,
-//                             fillColor: Color(0xffECF2F0),
-//                             border: OutlineInputBorder(
-//                               borderRadius: BorderRadius.circular(30),
-//                             ),
-//                             hintText: "Email Id",
-//                             hintStyle: TextStyle(
-//                               color: const Color(0xff517937),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       height: 20,
-//                     ),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 20),
-//                       child: Container(
-//                         height: 50,
-//                         width: 335,
-//                         child: TextFormField(
-//                           obscureText: _isHidden,
-//                           controller: passwordcontroller,
-//                           decoration: InputDecoration(
-//                             filled: true,
-//                             fillColor: Color(0xffECF2F0),
-//                             border: OutlineInputBorder(
-//                               borderRadius: BorderRadius.circular(30),
-//                             ),
-//                             hintText: "Password",
-//                             suffixIcon: InkWell(
-//                               onTap: _togglePasswordView,
-//                               child: Icon(
-//                                 _isHidden ? Icons.visibility_off : Icons.visibility,
-//                                 color: Color(0xff517937),
-//                               ),
-//                             ),
-//                             hintStyle: TextStyle(
-//                               color: const Color(0xff517937),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       height: 20,
-//                     ),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 20),
-//                       child: Container(
-//                         height: 50,
-//                         width: 335,
-//                         child: TextFormField(
-//                           controller: addresscontroller,
-//                           decoration: InputDecoration(
-//                             filled: true,
-//                             fillColor: Color(0xffECF2F0),
-//                             border: OutlineInputBorder(
-//                               borderRadius: BorderRadius.circular(30),
-//                             ),
-//                             hintText: "Address",
-//                             hintStyle: TextStyle(
-//                               color: const Color(0xff517937),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       height: 20,
-//                     ),
-             
-                   
-                    
-//                     Padding(
-//                       padding: const EdgeInsets.only( right: 20),
-//                       child: Container(
-//                         height: 56,
-//                         width:size.width,
-//                         child: Flexible(
-//                           child: DropdownSearch<String>(
-//                             popupProps: PopupProps.menu(
-//                               showSelectedItems: true,
-//                               showSearchBox: true,
-//                               searchFieldProps: TextFieldProps(
-//                                 decoration: InputDecoration(
-//                                   suffixIcon: Icon(Icons.search,)
-//                                 )
-//                               ),
-                             
-//                             ),
-//                             items: ["chennai","vellore","trichy","salem"],
-//                             dropdownDecoratorProps: DropDownDecoratorProps(
-//                               dropdownSearchDecoration: InputDecoration(
-//                                 filled: true,                       
-//                                 fillColor:  const Color(0xffECF2F0),
-//                                 iconColor: Color(0xff517937),
-                               
+//                       children: [
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 20),
+//                           child: Container(
+//                             height: 50,
+//                             width: 335,
+//                             child: TextFormField(
+//                               controller: companynamecontroller,
+//                               decoration: InputDecoration(
+//                                 filled: true,
+//                                 fillColor: Color(0xffECF2F0),
 //                                 border: OutlineInputBorder(
-//                                   borderRadius: BorderRadius.all(Radius.circular(30)),
-//                                   borderSide: BorderSide(color: const Color(0xff517937), )
-//                                   ),
-//                                //labelText: "district",
-                               
-//                                hintText: "District",
-//                                hintStyle: TextStyle(
-//                                 color: const Color(0xff517937),
-//                               ),
+//                                   borderRadius: BorderRadius.circular(30),
+//                                 ),
+//                                 hintText: "Company name",
+//                                 hintStyle: TextStyle(
+//                                   color: const Color(0xff517937),
+//                                 ),
 //                               ),
 //                             ),
-//                            // onChanged: print,
-//                             //selectedItem: "chennai",
+//                           ),
+//                         ),
+//                         if (signUpController.isCustomer.isFalse)
+//                     Column(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+                        
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 20),
+//                           child: Container(
+//                             height: 50,
+//                             width: 335,
+//                             child: TextFormField(
+//                               controller: companynamecontroller,
+//                               decoration: InputDecoration(
+//                                 filled: true,
+//                                 fillColor: Color(0xffECF2F0),
+//                                 border: OutlineInputBorder(
+//                                   borderRadius: BorderRadius.circular(30),
+//                                 ),
+//                                 hintText: "Company name",
+//                                 hintStyle: TextStyle(
+//                                   color: const Color(0xff517937),
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+                       
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 20),
+//                           child: Container(
+//                             height: 50,
+//                             width: 335,
+//                             child: TextFormField(
+//                               controller: gstnumbercontroller,
+//                               decoration: InputDecoration(
+//                                 filled: true,
+//                                 fillColor: Color(0xffECF2F0),
+//                                 border: OutlineInputBorder(
+//                                   borderRadius: BorderRadius.circular(30),
+//                                 ),
+//                                 hintText: "GST Number",
+//                                 hintStyle: TextStyle(
+//                                   color: const Color(0xff517937),
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                     //next
+                   
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: Container(
+//                       height: 50,
+//                       width: 335,
+//                       child: TextFormField(
+//                         controller: emailcontroller,
+//                         decoration: InputDecoration(
+//                           filled: true,
+//                           fillColor: Color(0xffECF2F0),
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(30),
+//                           ),
+//                           hintText: "Email Id",
+//                           hintStyle: TextStyle(
+//                             color: const Color(0xff517937),
 //                           ),
 //                         ),
 //                       ),
 //                     ),
-//                     SizedBox(
-//                       height: 10,
-//                     ),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 20),
-//                       child: RichText(
-//                         text: TextSpan(
-//                             text: "By signing your agree to our",
-//                             style: TextStyle(
-//                               color: const Color(0xff016942),
+//                   ),
+                  
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: Container(
+//                       height: 50,
+//                       width: 335,
+//                       child: TextFormField(
+//                         obscureText: _isHidden,
+//                         controller: passwordcontroller,
+//                         decoration: InputDecoration(
+//                           filled: true,
+//                           fillColor: Color(0xffECF2F0),
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(30),
+//                           ),
+//                           hintText: "Password",
+//                           suffixIcon: InkWell(
+//                             onTap: _togglePasswordView,
+//                             child: Icon(
+//                               _isHidden ? Icons.visibility_off : Icons.visibility,
+//                               color: Color(0xff517937),
 //                             ),
-//                             children: <TextSpan>[
-//                               TextSpan(
-//                                 text: " Terms of use",
-//                                 style: TextStyle(color: Colors.black),
-//                               ),
-//                             ]),
+//                           ),
+//                           hintStyle: TextStyle(
+//                             color: const Color(0xff517937),
+//                           ),
+//                         ),
 //                       ),
 //                     ),
-//                     RichText(
+//                   ),
+                  
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: Container(
+//                       height: 50,
+//                       width: 335,
+//                       child: TextFormField(
+//                         controller: addresscontroller,
+//                         decoration: InputDecoration(
+//                           filled: true,
+//                           fillColor: Color(0xffECF2F0),
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(30),
+//                           ),
+//                           hintText: "Address",
+//                           hintStyle: TextStyle(
+//                             color: const Color(0xff517937),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                   ),                                 
+//                   Padding(
+//                     padding: const EdgeInsets.only( right: 20),
+//                     child: Container(
+//                       height: 56,
+//                       width:size.width,
+//                       child: Flexible(
+//                         child: DropdownSearch<String>(
+//                           popupProps: PopupProps.menu(
+//                             showSelectedItems: true,
+//                             showSearchBox: true,
+//                             searchFieldProps: TextFieldProps(
+//                               decoration: InputDecoration(
+//                                 suffixIcon: Icon(Icons.search,)
+//                               )
+//                             ),
+                           
+//                           ),
+//                           items: ["chennai","vellore","trichy","salem"],
+//                           dropdownDecoratorProps: DropDownDecoratorProps(
+//                             dropdownSearchDecoration: InputDecoration(
+//                               filled: true,                       
+//                               fillColor:  const Color(0xffECF2F0),
+//                               iconColor: Color(0xff517937),
+                             
+//                               border: OutlineInputBorder(
+//                                 borderRadius: BorderRadius.all(Radius.circular(30)),
+//                                 borderSide: BorderSide(color: const Color(0xff517937), )
+//                                 ),
+//                              //labelText: "district",
+                             
+//                              hintText: "District",
+//                              hintStyle: TextStyle(
+//                               color: const Color(0xff517937),
+//                             ),
+//                             ),
+//                           ),
+//                          // onChanged: print,
+//                           //selectedItem: "chennai",
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     height: 10,
+//                   ),
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: RichText(
 //                       text: TextSpan(
-//                           text: "and ",
+//                           text: "By signing your agree to our",
 //                           style: TextStyle(
 //                             color: const Color(0xff016942),
 //                           ),
 //                           children: <TextSpan>[
 //                             TextSpan(
-//                               text: "privacy policy",
+//                               text: " Terms of use",
 //                               style: TextStyle(color: Colors.black),
 //                             ),
 //                           ]),
 //                     ),
-//                     SizedBox(
-//                       height: 10,
-//                     ),
-//                     InkWell(
-//                         onTap: () {
-//                           Navigator.push(
-//                             context,
-//                             MaterialPageRoute(builder: (context) => const SignUpMobNumber()),
-//                           );
-//                         },
-//                         child: Padding(
-//                           padding: const EdgeInsets.only(right: 20),
-//                           child: Container(
-//                             height: 50,
-//                             width: size.width,
-//                             child: Center(
-//                                 child: Text(
-//                               "Next",
-//                               style: TextStyle(
-//                                 color: Colors.white,
-//                                 fontWeight: FontWeight.bold,
-//                                 fontSize: 20,
-//                               ),
-//                             )),
-//                             decoration: BoxDecoration(
-//                               color: const Color(0xff016942),
-//                               borderRadius: BorderRadius.circular(25),
+//                   ),
+//                   RichText(
+//                     text: TextSpan(
+//                         text: "and ",
+//                         style: TextStyle(
+//                           color: const Color(0xff016942),
+//                         ),
+//                         children: <TextSpan>[
+//                           TextSpan(
+//                             text: "privacy policy",
+//                             style: TextStyle(color: Colors.black),
+//                           ),
+//                         ]),
+//                   ),
+//                   SizedBox(
+//                     height: 10,
+//                   ),
+//                   InkWell(
+//                       onTap: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(builder: (context) => const SignUpMobNumber()),
+//                         );
+//                       },
+//                       child: Padding(
+//                         padding: const EdgeInsets.only(right: 20),
+//                         child: Container(
+//                           height: 50,
+//                           width: size.width,
+//                           child: Center(
+//                               child: Text(
+//                             "Next",
+//                             style: TextStyle(
+//                               color: Colors.white,
+//                               fontWeight: FontWeight.bold,
+//                               fontSize: 20,
 //                             ),
+//                           )),
+//                           decoration: BoxDecoration(
+//                             color: const Color(0xff016942),
+//                             borderRadius: BorderRadius.circular(25),
 //                           ),
 //                         ),
 //                       ),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 20),
-//                       child: Row(
-//                         mainAxisAlignment: MainAxisAlignment.center,
-//                         children: [
-//                           Text(
-//                             "Already have an account?",
-//                             style: TextStyle(fontSize: 18),
-//                           ),
-//                           TextButton(
-//                             onPressed: () {},
-//                             child: Text(
-//                               "Login",
-//                               style: TextStyle(
-//                                 color: Color(0xff016942),
-//                                 fontSize: 18,
-//                                 fontWeight: FontWeight.bold
-//                               ),
+//                     ),
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Text(
+//                           "Already have an account?",
+//                           style: TextStyle(fontSize: 18),
+//                         ),
+//                         TextButton(
+//                           onPressed: () {},
+//                           child: Text(
+//                             "Login",
+//                             style: TextStyle(
+//                               color: Color(0xff016942),
+//                               fontSize: 18,
+//                               fontWeight: FontWeight.bold
 //                             ),
 //                           ),
-//                         ],
-//                       ),
-//                     ),
-
-//                         ],
 //                         ),
+//                       ],
+//                     ),
+//                   ),
 
 //                       ],
-//                        ),
-//                   ),
+//                       ),
+
+//                     ],
+//                      ),
 //                 ],
 //               ),
 //             ),
