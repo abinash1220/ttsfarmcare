@@ -43,33 +43,39 @@ class _AddressScreenState extends State<AddressScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 10),
+                      padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "Delivery Address",
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Delivery Address",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              
+                            ],
                           ),
                           Image(
-                              image:
-                                  AssetImage("assets/images/Group 3466.png")),
+                                  image:
+                                      AssetImage("assets/images/Group 3466.png")),
                         ],
                       ),
                     ),
@@ -221,7 +227,7 @@ class _AddressScreenState extends State<AddressScreen> {
                         padding: const EdgeInsets.only(right: 20),
                         child: Obx(
                           () => (Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               InkWell(
                                 onTap: () {
@@ -251,6 +257,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                       child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+
                                       Icon(Icons.home,
                                           color: homeController.home.value == 1
                                               ? darkGreenColor
@@ -268,9 +275,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                   )),
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
-                              ),
+                              
                               InkWell(
                                 onTap: () {
                                   homeController.home(2);
@@ -295,10 +300,12 @@ class _AddressScreenState extends State<AddressScreen> {
                                       child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.home,
-                                          color: homeController.home.value == 2
+                                      Image(image: AssetImage("assets/image/green suitcase.png"),
+                                      color: homeController.home.value == 2
                                               ? darkGreenColor
-                                              : Colors.grey),
+                                              : Colors.grey
+                                      ),
+                                     SizedBox(width: 2,),
                                       Text(
                                         "Work",
                                         style: TextStyle(
@@ -312,9 +319,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                   )),
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
-                              ),
+                              
                               InkWell(
                                 onTap: () {
                                   homeController.home(3);
@@ -340,10 +345,11 @@ class _AddressScreenState extends State<AddressScreen> {
                                       child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.home,
-                                          color: homeController.home.value == 3
+                                      Image(image: AssetImage("assets/image/orientation.png"),
+                                      color: homeController.home.value == 3
                                               ? darkGreenColor
-                                              : Colors.grey),
+                                              : Colors.grey
+                                      ),
                                       Text(
                                         "Other",
                                         style: TextStyle(

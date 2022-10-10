@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
+import 'package:ttsfarmcare/view/about_product/about_product_page.dart';
 import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
+import 'package:ttsfarmcare/view/notification_page/notification_screen.dart';
 import 'package:ttsfarmcare/view/order_history_page/order_history_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
@@ -100,7 +102,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const NotificationScreen()),
+                            );
+                          },
                           child: Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: Image(
@@ -559,82 +566,90 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Image(
-                                    image: AssetImage("assets/images/21.png")),
-                              ),
-                              Text(
-                                "JEEVAN",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
+                        InkWell(
+                          onTap: (){
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const AboutProductScreen()),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Image(
+                                      image: AssetImage("assets/images/21.png")),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "220 gm",
+                                Text(
+                                  "JEEVAN",
                                   style: TextStyle(
-                                    fontSize: 10.sp,
+                                    fontSize: 14.sp,
                                     color: Colors.black,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style: TextStyle(
-                                          fontSize: 10.sp,
-                                          color: darkGreenColor,
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "220 gm",
+                                    style: TextStyle(
+                                      fontSize: 10.sp,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
+                                        child: Text(
+                                          "Price:123",
+                                          style: TextStyle(
+                                            fontSize: 10.sp,
+                                            color: darkGreenColor,
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffECF2F0),
+                                          borderRadius: BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
                         Container(

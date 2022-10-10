@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/order_history_page/order_history_screen.dart';
+import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
 import '../../controllers/home_Controllers.dart';
 import 'address_screen.dart';
@@ -38,19 +39,19 @@ int _counter = 0;
                 fit: BoxFit.fill,
               )),
           Padding(
-            padding: const EdgeInsets.only(top: 50, left: 10),
+            padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     Get.back();
+                //   },
+                //   child: Icon(
+                //     Icons.arrow_back,
+                //     color: Colors.white,
+                //   ),
+                // ),
                 
                 Text(
                   "View Cart",
@@ -543,6 +544,10 @@ int _counter = 0;
                         child: InkWell(
                           onTap: () {
                             homeController.bottomIcon(4);
+                            Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                                       );
                           },
                           child: Column(
                             children: [

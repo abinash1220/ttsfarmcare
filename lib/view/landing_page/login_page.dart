@@ -4,9 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/view/home_Screen/home_Screen.dart';
 import 'package:ttsfarmcare/view/landing_page/landing_screen.dart';
 
 import '../forgot_password_page/forgot_password_screen.dart';
+import '../sign_in_view/test_sign_up.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,13 +51,9 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.only(bottom: 80),
                 child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LandingScreen()),
-                      );
-                    },
+                   onTap: () {
+                                Get.back();
+                              },
                     child: Image(image: AssetImage("assets/icons/img.png"))),
               ),
               Padding(
@@ -178,10 +176,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -212,7 +210,12 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 18),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignUpTestView()),
+                    );
+                      },
                       child: Text(
                         "Sign Up",
                         style: TextStyle(

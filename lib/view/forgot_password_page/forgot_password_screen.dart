@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/forgot_password_page/verication_code_page.dart';
+import 'package:ttsfarmcare/view/sign_in_view/test_sign_up.dart';
 
 import '../landing_page/landing_screen.dart';
 
@@ -147,10 +148,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               SizedBox(height: 25,),
               InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignUpTestView()),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 30,left: 30),

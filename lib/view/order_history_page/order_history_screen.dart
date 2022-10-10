@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
+import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
 import '../../controllers/home_Controllers.dart';
 import '../home_Screen/home_Screen.dart';
@@ -33,20 +34,20 @@ final homeController = Get.find<HomeControllers>();
                 fit: BoxFit.fill,
               )),
               Padding(
-            padding: const EdgeInsets.only(top: 50, left: 10),
+            padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(width: 5,),
+                // InkWell(
+                //   onTap: () {
+                //     Get.back();
+                //   },
+                //   child: Icon(
+                //     Icons.arrow_back,
+                //     color: Colors.white,
+                //   ),
+                // ),
+                //SizedBox(width: 5,),
                 Text(
                   "Order History",
                   style: TextStyle(
@@ -542,6 +543,10 @@ final homeController = Get.find<HomeControllers>();
                         child: InkWell(
                           onTap: () {
                             homeController.bottomIcon(4);
+                            Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                                       );
                           },
                           child: Column(
                             children: [
