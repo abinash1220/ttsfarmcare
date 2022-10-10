@@ -434,9 +434,10 @@ int _counter = 0;
 
                         Container(
                           height: 100,
+                          width: double.infinity,
                            decoration: BoxDecoration(
                              
-                            image: DecorationImage(image: AssetImage("assets/images/Group 3362.png"))
+                            image: DecorationImage(image: AssetImage("assets/images/Group 3362.png"),fit: BoxFit.fill)
                            ),
                            child:Center(
                              child: Padding(

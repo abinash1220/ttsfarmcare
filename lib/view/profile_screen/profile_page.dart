@@ -27,11 +27,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
-final homeController = Get.find<HomeControllers>();
+  final homeController = Get.find<HomeControllers>();
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: const Size(392, 803), minTextAdapt: true);
     return Scaffold(
       body: Column(
         children: [
@@ -39,7 +40,7 @@ final homeController = Get.find<HomeControllers>();
             children: [
               Image(image: AssetImage("assets/images/Group 3361.png")),
               Padding(
-                padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
+                padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -62,7 +63,6 @@ final homeController = Get.find<HomeControllers>();
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        
                       ],
                     ),
                     Image(image: AssetImage("assets/images/Group 3466.png")),
@@ -77,12 +77,12 @@ final homeController = Get.find<HomeControllers>();
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 110.h,
-                  width: 110.w,
-                  
-                  child: Image(image: AssetImage("assets/image/NoPath.png"),
-                  fit: BoxFit.fill,
-                  )),
+                    height: 110.h,
+                    width: 110.w,
+                    child: Image(
+                      image: AssetImage("assets/image/NoPath.png"),
+                      fit: BoxFit.fill,
+                    )),
                 SizedBox(
                   width: 10.w,
                 ),
@@ -108,17 +108,17 @@ final homeController = Get.find<HomeControllers>();
                       height: 5.h,
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const EditProfilePage()),
-                                       );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EditProfilePage()),
+                        );
                       },
                       child: Text(
                         "EDIT PROFILE",
                         style: TextStyle(
                           fontSize: 12.sp,
-
                           color: darkGreenColor,
                           fontWeight: FontWeight.bold,
                         ),
@@ -129,24 +129,27 @@ final homeController = Get.find<HomeControllers>();
               ],
             ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const AllMyOrders()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AllMyOrders()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/all order.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "All My Orders",
                         style: TextStyle(
@@ -160,46 +163,50 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const AllMyOrders()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AllMyOrders()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const FinishedMyOrders()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FinishedMyOrders()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/finished.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Finished Orders",
                         style: TextStyle(
@@ -213,46 +220,49 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const FinishedMyOrders()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FinishedMyOrders()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const InviteFriend()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const InviteFriend()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/invite.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Invite Friends",
                         style: TextStyle(
@@ -266,46 +276,50 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const InviteFriend()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const InviteFriend()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const CustomerSupport()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CustomerSupport()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/support.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Customer Support",
                         style: TextStyle(
@@ -319,46 +333,50 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const CustomerSupport()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CustomerSupport()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const PasswordChange()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PasswordChange()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/support.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Password Change",
                         style: TextStyle(
@@ -372,46 +390,49 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const PasswordChange()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PasswordChange()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const TotalPoint()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TotalPoint()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       Image(image: AssetImage("assets/icons/coin.png")),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Total Points",
                         style: TextStyle(
@@ -425,53 +446,60 @@ final homeController = Get.find<HomeControllers>();
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
-                      onTap: (){
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const TotalPoint()),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TotalPoint()),
                           );
-                      },
-                      child: Icon(Icons.navigate_next,
-                      color: Color(0xff515C6F),
-                      )
-                      ),
+                        },
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color(0xff515C6F),
+                        )),
                   ),
                 ],
               ),
             ),
-          
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(
-              //color: Color(0xff515C6F),
-            ),
+                //color: Color(0xff515C6F),
+                ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
-              onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const LandingScreen()),
-                          );
-                        },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const LandingScreen()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            
                 children: [
                   Row(
                     children: [
                       InkWell(
-                        onTap: (){
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => const LandingScreen()),
-                          );
-                        },
-                        child: Image(image: AssetImage("assets/icons/logout_black_24dp.png"))),
-                      SizedBox(width: 10.w,),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LandingScreen()),
+                            );
+                          },
+                          child: Image(
+                              image: AssetImage(
+                                  "assets/icons/logout_black_24dp.png"))),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Text(
                         "Log Out",
                         style: TextStyle(
@@ -482,172 +510,175 @@ final homeController = Get.find<HomeControllers>();
                       ),
                     ],
                   ),
-                  
                 ],
               ),
             ),
-          
           ),
-          
-          
         ],
       ),
       bottomNavigationBar: Obx(
-        () => 
-          Container(
-            height: 90.h,
-            child: Column(
-             
-              children: [
-                 
-
+        () => Container(
+          height: 90.h,
+          child: Column(
+            children: [
+              Container(
+                height: 100.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/Group 3362.png"),
+                        fit: BoxFit.fill)),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
                         Container(
-                          height: 100.h,
-                           decoration: BoxDecoration(
-                             
-                            image: DecorationImage(image: AssetImage("assets/images/Group 3362.png"))
-                           ),
-                           child:Center(
-                             child: Padding(
-                               padding: const EdgeInsets.only(top: 15),
-                               child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 40,
-                        child: InkWell(
-                          onTap: () {
-                                homeController.bottomIcon(1);
-                                Navigator.push(
-                                               context,
-                                               MaterialPageRoute(builder: (context) => const HomeScreen()),
-                                             );
-                          },
-                          child: Column(
-                                children: [
-                                  Image(
-                                     height: 20,
-                                fit: BoxFit.fitHeight,
-                                    image: AssetImage("assets/images/home.png"),
+                          height: 40,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(1);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image: AssetImage("assets/images/home.png"),
+                                  color: homeController.bottomIcon == 1
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Home",
+                                  style: TextStyle(
                                     color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-
-                                  Text("Home",style: TextStyle(
-                                     color: homeController.bottomIcon == 1
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                                ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      
-                      Container(
-                        height: 42,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(2);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const ViewCartScreen()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                 height: 20,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/shop.png"),
-                                color: homeController.bottomIcon == 2
+                        Container(
+                          height: 42,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(2);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ViewCartScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image: AssetImage("assets/images/shop.png"),
+                                  color: homeController.bottomIcon == 2
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Cart",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 2
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("Cart",style: TextStyle(
-                                       color: homeController.bottomIcon == 2
-                                          ? Colors.white
-                                          : Colors.black,
-                                      ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      
-                      Container(
-                        height: 40,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(3);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const OrderHistory()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                height: 20,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/Path 38.png"),
-
-                                color: homeController.bottomIcon == 3
+                        Container(
+                          height: 40,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(3);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const OrderHistory()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 20,
+                                  fit: BoxFit.fitHeight,
+                                  image:
+                                      AssetImage("assets/images/Path 38.png"),
+                                  color: homeController.bottomIcon == 3
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "History",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("History",style: TextStyle(
-                                     color: homeController.bottomIcon == 3
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                     
-                      Container(
-                        height: 50,
-                        child: InkWell(
-                          onTap: () {
-                            homeController.bottomIcon(4);
-                            Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                                       );
-                          },
-                          child: Column(
-                            children: [
-                              Image(
-                                 height: 25,
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage("assets/images/profile.png"),
-                                color: homeController.bottomIcon == 4
+                        Container(
+                          height: 50,
+                          child: InkWell(
+                            onTap: () {
+                              homeController.bottomIcon(4);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ProfileScreen()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image(
+                                  height: 25,
+                                  fit: BoxFit.fitHeight,
+                                  image:
+                                      AssetImage("assets/images/profile.png"),
+                                  color: homeController.bottomIcon == 4
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                                Text(
+                                  "Profile",
+                                  style: TextStyle(
+                                    color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,
-                              ),
-
-                              Text("Profile",style: TextStyle(
-                                     color: homeController.bottomIcon == 4
-                                        ? Colors.white
-                                        : Colors.black,
-                                    ),)
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                             ),
-                           ) ,
-
-                        ),
-             
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
+        ),
       ),
     );
   }

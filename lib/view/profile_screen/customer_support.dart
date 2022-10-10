@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../constants/app_colors.dart';
@@ -16,6 +17,8 @@ class _CustomerSupportState extends State<CustomerSupport> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+     ScreenUtil.init(context,
+        designSize: const Size(392, 803), minTextAdapt: true);
     return Scaffold(
       body: LayoutBuilder(
           builder: (BuildContext ctx, BoxConstraints constraints) {
@@ -78,18 +81,18 @@ class _CustomerSupportState extends State<CustomerSupport> {
                 ),
               ),
               Container(
-                height: 250,
-                width: 270,
+                height: 230.h,
+                width: 240.h,
                 child: Image(
                       image:
                         AssetImage("assets/image/invite (2).png"),
                         fit: BoxFit.fill,),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10.h,),
               Padding(
                         padding: const EdgeInsets.only(right: 25,left: 25),
                         child: Container(
-                          height: 50,
+                          height: 50.h,
                           width: size.width,
                           child: TextFormField(
                             // controller: usernamecontroller,
@@ -105,11 +108,11 @@ class _CustomerSupportState extends State<CustomerSupport> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 10.h,),
               Padding(
                         padding: const EdgeInsets.only(right: 25,left: 25),
                         child: Container(
-                          height: 50,
+                          height: 50.h,
                           width: size.width,
                           child: TextFormField(
                             // controller: usernamecontroller,
@@ -125,11 +128,11 @@ class _CustomerSupportState extends State<CustomerSupport> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 10.h,),
               Padding(
                         padding: const EdgeInsets.only(right: 25,left: 25),
                         child: Container(
-                          height: 100,
+                          height: 100.h,
                           width: size.width,
                           child: TextFormField(
                             maxLines: 500,
