@@ -88,6 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                //  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       "TTS Farm Care",
@@ -96,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    //SizedBox(height: 5.h,),
+                    SizedBox(height: 3.h,),
                     Text(
                       "ttsfarmcare@email.com",
                       style: TextStyle(
@@ -105,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 5.h,
+                      height: 10.h,
                     ),
                     InkWell(
                       onTap: () {
@@ -141,46 +142,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   MaterialPageRoute(builder: (context) => const AllMyOrders()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/all order.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "All My Orders",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20,left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/all order.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const AllMyOrders()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "All My Orders",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AllMyOrders()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -198,46 +202,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       builder: (context) => const FinishedMyOrders()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/finished.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "Finished Orders",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/finished.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const FinishedMyOrders()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "Finished Orders",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const FinishedMyOrders()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -254,46 +261,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   MaterialPageRoute(builder: (context) => const InviteFriend()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/invite.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "Invite Friends",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/invite.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const InviteFriend()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "Invite Friends",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const InviteFriend()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -311,46 +321,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       builder: (context) => const CustomerSupport()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/support.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "Customer Support",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/support.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const CustomerSupport()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "Customer Support",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const CustomerSupport()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -368,46 +381,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       builder: (context) => const PasswordChange()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/support.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "Password Change",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/support.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const PasswordChange()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "Password Change",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const PasswordChange()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -424,46 +440,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   MaterialPageRoute(builder: (context) => const TotalPoint()),
                 );
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image(image: AssetImage("assets/icons/coin.png")),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                        "Total Points",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Color(0xff515C6F),
-                          fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5,right: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image(image: AssetImage("assets/icons/coin.png")),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const TotalPoint()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: Color(0xff515C6F),
-                        )),
-                  ),
-                ],
+                        Text(
+                          "Total Points",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Color(0xff515C6F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const TotalPoint()),
+                            );
+                          },
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color(0xff515C6F),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Divider(
                 //color: Color(0xff515C6F),
                 ),
@@ -494,9 +513,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   builder: (context) => const LandingScreen()),
                             );
                           },
-                          child: Image(
-                              image: AssetImage(
-                                  "assets/icons/logout_black_24dp.png"))),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: Image(
+                                image: AssetImage(
+                                    "assets/icons/logout_black_24dp.png")),
+                          )),
                       SizedBox(
                         width: 10.w,
                       ),

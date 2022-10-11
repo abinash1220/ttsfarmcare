@@ -427,10 +427,7 @@ final homeController = Get.find<HomeControllers>();
           Container(
             height: 90,
             child: Column(
-             
               children: [
-                 
-
                         Container(
                           height: 100,
                           width: double.infinity,

@@ -200,54 +200,59 @@ int _counter = 0;
                                               ),
                                             ),
                                             SizedBox(width: 5.w,),
-                                            Text(
-                                              "25 Points",
-                                              style: TextStyle(
-                                                fontSize: 13.sp,
-                                                color: Color(0xffF9A20D),
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            SizedBox(width: 10.w,),
                                             Container(
-                                              height: 30,
-                                              width: 100,
+                                              width: size.width *0.55,
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  InkWell(
-                                                    onTap: (){},
-                                                    child: Icon(Icons.remove,
-                                                    size: 17,
-                                                    color: Color(0xff016942),
-                                                    )),
-                                                  Container(
-                                                    height: 30,
-                                                    width: 35,
-                                                    child: Center(child: Text("01")),
-                                                    decoration: BoxDecoration(
-                                                      border: Border.symmetric(
-                                                        vertical:BorderSide(color: Color(0xff016942))
-                                                        ),
+                                                  Text(
+                                                    "25 Points",
+                                                    style: TextStyle(
+                                                      fontSize: 13.sp,
+                                                      color: Color(0xffF9A20D),
+                                                      fontWeight: FontWeight.w500,
                                                     ),
                                                   ),
-                                                  InkWell(
-                                                    onTap: (){},
-                                                    child: Icon(Icons.add,
-                                                    size: 17,
-                                                    color: Color(0xff016942),
-                                                    )),
+                                                  Container(
+                                                height: 30,
+                                                width: 100,
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: (){},
+                                                      child: Icon(Icons.remove,
+                                                      size: 17,
+                                                      color: Color(0xff016942),
+                                                      )),
+                                                    Container(
+                                                      height: 30,
+                                                      width: 35,
+                                                      child: Center(child: Text("01")),
+                                                      decoration: BoxDecoration(
+                                                        border: Border.symmetric(
+                                                          vertical:BorderSide(color: Color(0xff016942))
+                                                          ),
+                                                      ),
+                                                    ),
+                                                    InkWell(
+                                                      onTap: (){},
+                                                      child: Icon(Icons.add,
+                                                      size: 17,
+                                                      color: Color(0xff016942),
+                                                      )),
+                                                  ],
+                                                ),
+                                                
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(color: Color(0xff016942)),
+                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Colors.white
+                                                ),
+                                              ),
                                                 ],
                                               ),
-                                              
-                                              decoration: BoxDecoration(
-                                                border: Border.all(color: Color(0xff016942)),
-                                                borderRadius: BorderRadius.circular(10),
-                                                color: Colors.white
-                                              ),
                                             ),
-
-
                                           ],
                                         ),
                                   ],
@@ -258,92 +263,14 @@ int _counter = 0;
                     decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Color(0xff707070)),
-                              color: Color(0xffE4E4E4),
+                              color: Color.fromARGB(255, 233, 231, 231),
                     ),
                   ),
                             ),
                           ],
                         ),
                       ),
-                     // SizedBox(height: 320,),
-                      // Row(
-                       
-                      //   children: [
-                      //     Text(
-                      //            "1 Iterms",
-                      //             style: TextStyle(
-                      //             fontSize: 15,
-                      //             color:Colors.black,
-                      //             fontWeight: FontWeight.w500,
-                      //                 ),
-                      //                 ),
-                      //         Row(
-                      //           children: [
-                      //             Icon(Icons.currency_rupee,color: Color(0xff016942),),
-                      //             Text(
-                      //            "450.00",
-                      //             style: TextStyle(
-                      //             fontSize: 18.sp,
-                      //             color:Color(0xff016942),
-                      //             fontWeight: FontWeight.bold,
-                      //                 ),
-                      //                 ),
-                      //           ],
-                      //         ),
-                      //         SizedBox(width: 5.w,),
-                      //         Container(
-                      //           height: 30,
-                      //           width: 100,
-                      //           child:
-                      //            Center(
-                      //              child: Text(
-                      //              "25 Points Saved",
-                      //               style: TextStyle(
-                      //               fontSize: 13.sp,
-                      //               color:Color(0xff016942),
-                      //               fontWeight: FontWeight.bold,
-                      //                   ),
-                      //                   ),
-                      //            ),
-                      //           decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(10),
-                      //             color: Color(0xffE4E4E4)
-                      //           ),
-                      //         ),
-                      //         SizedBox(width: 5.w,),
-                      //         InkWell(
-                      //           onTap: (){
-                      //              Navigator.push(
-                      //              context,
-                      //               MaterialPageRoute(builder: (context) => const AddressScreen()),
-                      //             );
-                      //           },
-                      //           child: Container(
-                      //             height: 38,
-                      //             width: 125,
-                      //             child:
-                      //              Center(
-                      //                child: Text(
-                      //                "Delivery Address",
-                      //                 style: TextStyle(
-                      //                 fontSize: 15.sp,
-                      //                 color:Colors.white,
-                      //                 fontWeight: FontWeight.bold,
-                      //                     ),
-                      //                     ),
-                      //              ),
-                      //             decoration: BoxDecoration(
-                      //               borderRadius: BorderRadius.circular(20),
-                      //               color: Color(0xff016942)
-                      //             ),
-                      //           ),
-                      //         ),
-                      //   ],
-                      // ),
-                      
-
-                   
-                
+                     
               ],
             ),
           ),
@@ -357,80 +284,83 @@ int _counter = 0;
             child: Column(
              
               children: [
-                 Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                                   "1 Iterms",
-                                    style: TextStyle(
-                                    fontSize: 15,
-                                    color:Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                        ),
-                                        ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.currency_rupee,color: Color(0xff016942),),
-                                    Text(
-                                   "450.00",
-                                    style: TextStyle(
-                                    fontSize: 18.sp,
-                                    color:Color(0xff016942),
-                                    fontWeight: FontWeight.bold,
-                                        ),
-                                        ),
-                                  ],
-                                ),
-                                SizedBox(width: 3.w,),
-                                Container(
-                                  height: 30,
-                                  width: 100.w,
-                                  child:
-                                   Center(
-                                     child: Text(
-                                     "25 Points Saved",
+                 Padding(
+                   padding: const EdgeInsets.only(left: 10,right: 10),
+                   child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                     "1 Iterms",
                                       style: TextStyle(
-                                      fontSize: 13.sp,
+                                      fontSize: 15,
+                                      color:Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                          ),
+                                          ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.currency_rupee,color: Color(0xff016942),),
+                                      Text(
+                                     "450.00",
+                                      style: TextStyle(
+                                      fontSize: 18.sp,
                                       color:Color(0xff016942),
                                       fontWeight: FontWeight.bold,
                                           ),
                                           ),
-                                   ),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Color(0xffE4E4E4)
+                                    ],
                                   ),
-                                ),
-                                SizedBox(width: 3.w,),
-                                InkWell(
-                                  onTap: (){
-                                     Navigator.push(
-                                     context,
-                                      MaterialPageRoute(builder: (context) => const AddressScreen()),
-                                    );
-                                  },
-                                  child: Container(
-                                    height: 38,
-                                    width: 115,
+                                  SizedBox(width: 3.w,),
+                                  Container(
+                                    height: 30,
+                                    width: 100.w,
                                     child:
                                      Center(
                                        child: Text(
-                                       "Delivery Address",
+                                       "25 Points Saved",
                                         style: TextStyle(
                                         fontSize: 13.sp,
-                                        color:Colors.white,
+                                        color:Color(0xff016942),
                                         fontWeight: FontWeight.bold,
                                             ),
                                             ),
                                      ),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Color(0xff016942)
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color(0xffE4E4E4)
                                     ),
                                   ),
-                                ),
-                          ],
-                        ),
+                                  SizedBox(width: 3.w,),
+                                  InkWell(
+                                    onTap: (){
+                                       Navigator.push(
+                                       context,
+                                        MaterialPageRoute(builder: (context) => const AddressScreen()),
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 38,
+                                      width: 115,
+                                      child:
+                                       Center(
+                                         child: Text(
+                                         "Delivery Address",
+                                          style: TextStyle(
+                                          fontSize: 13.sp,
+                                          color:Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                              ),
+                                              ),
+                                       ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Color(0xff016942)
+                                      ),
+                                    ),
+                                  ),
+                            ],
+                          ),
+                 ),
 
                         Container(
                           height: 100,

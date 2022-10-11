@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../constants/app_colors.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -59,10 +61,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             ),
                             Text(
                               "Notification",
-                              style: TextStyle(
+                              style:GoogleFonts.montserrat(
                                 fontSize: 25,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -87,6 +89,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             // ),
                             hintText: "SEARCH",
                             
+                            
 
                             contentPadding: EdgeInsets.only(top: 5),
                             prefixIcon: Icon(Icons.search,size: 20,),
@@ -94,16 +97,26 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             suffixIcon: Container(
                               height: 50,
                               width: 100,
-                              child: Row(
-                                children: [
-                                  Text("Today(2)"),
-                                  Icon(Icons.comment),
-                                ],
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Today(2)",
+                                    style: GoogleFonts.montserrat(
+                                fontSize: 12,
+                                color: Color(0xffB3B3B3),
+                             
+                            ),
+                                    ),
+                                    Image(image: AssetImage("assets/icons/NAV.png"))
+                                  ],
+                                ),
                               ),
                             ),
                             hintStyle: TextStyle(
                               
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                             ),
                           ),
                         ),
@@ -146,12 +159,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text("Mohan Kich",
-                                              style: TextStyle(fontSize: 13,
+                                              style:GoogleFonts.montserrat(fontSize: 13,
                                               fontWeight: FontWeight.bold
                                               ),
                                               ),
                                               Text("just now",
-                                              style: TextStyle(fontSize: 10,
+                                              style: GoogleFonts.montserrat(fontSize: 10,
                                               //fontWeight: FontWeight.normal,
                                               color: Color(0xffB3B3B3)
                                               ),
@@ -160,13 +173,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           ),
                                         ),
                                         Text("New Products Purchase Complete\nThankyou For Orders....",
-                                         style: TextStyle(fontSize: 11,
+                                         style:GoogleFonts.montserrat(fontSize: 11,
                                               fontWeight: FontWeight.normal,
                                               color: Color(0xff000000)
                                               ),
                                         ),
                                         Text("29/09/2022",
-                                        style: TextStyle(fontSize: 11,
+                                        style:GoogleFonts.montserrat(fontSize: 11,
                                               //fontWeight: FontWeight.normal,
                                               color: Color(0xffB3B3B3)
                                               ),
@@ -194,7 +207,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           },
                           backgroundColor: Color(0xFFFE4A49),
                           foregroundColor: Colors.white,
-                          icon: Icons.delete,
+                          icon:CupertinoIcons.delete,
                          
                         ),
                           ],
@@ -225,12 +238,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text("Mika Williams",
-                                              style: TextStyle(fontSize: 13,
+                                              style:GoogleFonts.montserrat(fontSize: 13,
                                               fontWeight: FontWeight.bold
                                               ),
                                               ),
                                               Text("09:19",
-                                              style: TextStyle(fontSize: 10,
+                                              style:GoogleFonts.montserrat(fontSize: 10,
                                               //fontWeight: FontWeight.normal,
                                               color: Color(0xffB3B3B3)
                                               ),
@@ -239,13 +252,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           ),
                                         ),
                                         Text("New Products Purchase Complete\nThankyou For Orders....",
-                                         style: TextStyle(fontSize: 11,
+                                         style:GoogleFonts.montserrat(fontSize: 11,
                                               fontWeight: FontWeight.normal,
                                               color: Color(0xff000000)
                                               ),
                                         ),
                                         Text("29/09/2022",
-                                        style: TextStyle(fontSize: 11,
+                                        style:GoogleFonts.montserrat(fontSize: 11,
                                               //fontWeight: FontWeight.normal,
                                               color: Color(0xffB3B3B3)
                                               ),
@@ -274,7 +287,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           },
                           backgroundColor: Color(0xFFFE4A49),
                           foregroundColor: Colors.white,
-                          icon: Icons.delete,
+                          icon:CupertinoIcons.delete,
                          
                         ),
                           ],
@@ -297,8 +310,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Yesterday"),
-                                  Icon(Icons.comment)
+                                  Text("Yesterday(3)",
+                                  style: GoogleFonts.montserrat(
+                              fontSize: 12,
+                              color: Color(0xffB3B3B3),
+                             
+                            ),
+                                  ),
+                                  Image(image: AssetImage("assets/icons/Group 3500.png"))
                                 ],
                               ),
                             ),
@@ -334,12 +353,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text("Mika Williams",
-                                                style: TextStyle(fontSize: 13,
+                                                style: GoogleFonts.montserrat(
+                                                  fontSize: 13,
                                                 fontWeight: FontWeight.bold
                                                 ),
                                                 ),
                                                 Text("09:19",
-                                                style: TextStyle(fontSize: 10,
+                                                style: GoogleFonts.montserrat(fontSize: 10,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -348,13 +368,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             ),
                                           ),
                                           Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style: TextStyle(fontSize: 11,
+                                           style:GoogleFonts.montserrat(fontSize: 11,
                                                 fontWeight: FontWeight.normal,
                                                 color: Color(0xff000000)
                                                 ),
                                           ),
                                           Text("29/09/2022",
-                                          style: TextStyle(fontSize: 11,
+                                          style:GoogleFonts.montserrat(fontSize: 11,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -383,8 +403,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             },
                             backgroundColor: Color(0xFFFE4A49),
                             foregroundColor: Colors.white,
-                            icon: Icons.delete,
-                           
+                            icon:CupertinoIcons.delete,
+                        
                           ),
                             ],
 
@@ -414,12 +434,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text("Nikky Rayes",
-                                                style: TextStyle(fontSize: 13,
+                                                style:GoogleFonts.montserrat(fontSize: 13,
                                                 fontWeight: FontWeight.bold
                                                 ),
                                                 ),
                                                 Text("11:15",
-                                                style: TextStyle(fontSize: 10,
+                                                style:GoogleFonts.montserrat(fontSize: 10,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -428,13 +448,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             ),
                                           ),
                                           Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style: TextStyle(fontSize: 11,
+                                           style:GoogleFonts.montserrat(fontSize: 11,
                                                 fontWeight: FontWeight.normal,
                                                 color: Color(0xff000000)
                                                 ),
                                           ),
                                           Text("19/09/2022",
-                                          style: TextStyle(fontSize: 11,
+                                          style:GoogleFonts.montserrat(fontSize: 11,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -463,7 +483,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             },
                             backgroundColor: Color(0xFFFE4A49),
                             foregroundColor: Colors.white,
-                            icon: Icons.delete,
+                            icon:CupertinoIcons.delete,
                            
                           ),
                             ],
@@ -494,12 +514,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text("Vila Mohas",
-                                                style: TextStyle(fontSize: 13,
+                                                style:GoogleFonts.montserrat(fontSize: 13,
                                                 fontWeight: FontWeight.bold
                                                 ),
                                                 ),
                                                 Text("10:19",
-                                                style: TextStyle(fontSize: 10,
+                                                style:GoogleFonts.montserrat(fontSize: 10,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -508,13 +528,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             ),
                                           ),
                                           Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style: TextStyle(fontSize: 11,
+                                           style:GoogleFonts.montserrat(fontSize: 11,
                                                 fontWeight: FontWeight.normal,
                                                 color: Color(0xff000000)
                                                 ),
                                           ),
                                           Text("28/09/2022",
-                                          style: TextStyle(fontSize: 11,
+                                          style:GoogleFonts.montserrat(fontSize: 11,
                                                 //fontWeight: FontWeight.normal,
                                                 color: Color(0xffB3B3B3)
                                                 ),
@@ -543,7 +563,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             },
                             backgroundColor: Color(0xFFFE4A49),
                             foregroundColor: Colors.white,
-                            icon: Icons.delete,
+                            icon:CupertinoIcons.delete,
                            
                           ),
                             ],

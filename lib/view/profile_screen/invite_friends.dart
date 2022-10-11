@@ -83,131 +83,135 @@ class _InviteFriendState extends State<InviteFriend> {
                         AssetImage("assets/image/invite-friend.png"),
                         fit: BoxFit.fill,),
               ),
+              
 
-                      SizedBox(height: 10,),
-                      Text(
-                                "Invite your friends and \n   "
-                                "get bonus points !",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Color(0xff3D3D3E),
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-                      Text(
-                                "Share your code with your friends and \n "" get exciting bonus points !",
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Color(0xff515C6F),
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-                              InkWell(
-                            onTap: (){
-                              // Navigator.push(
-                              //            context,
-                              //            MaterialPageRoute(builder: (context) => const PaymentSucessfully()),
-                              //          );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 40,right: 40),
-                              child: Container(
-                                height: 40,
-                                width:size.width,
-                                child: Center(
-                                  child: Text("Invite",
-                                  style: TextStyle(
-                                    color: Color(0xff016942),
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                  ),
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Color(0xff016942),),
-                                  borderRadius: BorderRadius.circular(25),
-                                  //color: darkGreenColor,
-                                ),
-                              ),
+                  SizedBox(height: 25,),
+                  Text(
+                            "Invite your friends and \n"
+                            "get bonus points !",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Color(0xff3D3D3E),
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(
-                                height: 15,
+                          SizedBox(height: 15,),
+                  Text(
+                            "Share your code with your friends and \n ""get exciting bonus points !",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Color(0xff515C6F),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          InkWell(
+                        onTap: (){
+                          // Navigator.push(
+                          //            context,
+                          //            MaterialPageRoute(builder: (context) => const PaymentSucessfully()),
+                          //          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40,right: 40),
+                          child: Container(
+                            height: 40,
+                            width:size.width,
+                            child: Center(
+                              child: Text("Invite",
+                              style: TextStyle(
+                                color: Color(0xff016942),
+                                fontSize: 25,
+                                fontWeight: FontWeight.w500
                               ),
-                              Text(
-                                "Or",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Color(0xff515C6F),
-                                  fontWeight: FontWeight.w500,
-                                ),
                               ),
-                              SizedBox(height: 20,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff016942),),
+                              borderRadius: BorderRadius.circular(25),
+                              //color: darkGreenColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "Or",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xff515C6F),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
                                 children: [
-                                  Column(
-                                    children: [
-                                      Image(image: AssetImage("assets/image/Group 3496.png")),
-                                      SizedBox(height: 5,),
-                                      Text(
-                                           "Whatsapp",
-                                          style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xff000000),
-                                          //fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Image(image: AssetImage("assets/image/Group 3497.png")),
-                                       SizedBox(height: 5,),
-                                      Text(
-                                           "Facebook",
-                                          style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xff000000),
-                                          //fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Image(image: AssetImage("assets/image/Group 3498.png")),
-                                       SizedBox(height: 5,),
-                                      Text(
-                                           "Email",
-                                          style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xff000000),
-                                          //fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Image(image: AssetImage("assets/image/Group 3499.png")),
-                                       SizedBox(height: 5,),
-                                      Text(
-                                           "Messenger",
-                                          style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xff000000),
-                                          //fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                                    ],
-                                  ),
+                                  Image(image: AssetImage("assets/image/Group 3496.png")),
+                                  SizedBox(height: 5,),
+                                  Text(
+                                       "Whatsapp",
+                                      style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(0xff000000),
+                                      //fontWeight: FontWeight.w500,
+                            ),
+                          ),
                                 ],
                               ),
-            ]),
+                              Column(
+                                children: [
+                                  Image(image: AssetImage("assets/image/Group 3497.png")),
+                                   SizedBox(height: 5,),
+                                  Text(
+                                       "Facebook",
+                                      style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(0xff000000),
+                                      //fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Image(image: AssetImage("assets/image/Group 3498.png")),
+                                   SizedBox(height: 5,),
+                                  Text(
+                                       "Email",
+                                      style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(0xff000000),
+                                      //fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Image(image: AssetImage("assets/image/Group 3499.png")),
+                                   SizedBox(height: 5,),
+                                  Text(
+                                       "Messenger",
+                                      style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(0xff000000),
+                                      //fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                                ],
+                              ),
+                            ],
+                          ),
 
+            ]
+          )
         );
       }),
     );
