@@ -27,7 +27,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             children: [
               Container(
               height: constraints.maxHeight > 600
-                  ? size.height * 0.21
+                  ? size.height * 0.22
                   : size.height * 0.3,
               child: Stack(
                 children: [
