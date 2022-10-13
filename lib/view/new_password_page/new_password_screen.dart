@@ -56,7 +56,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               children: [
                 Text(
                   "New Password",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1,
                       fontSize: 35),
@@ -92,7 +92,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         hintText: "Enter New Password",
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.poppins(
                           color: const Color(0xff292724),
                         ),
                       ),
@@ -103,8 +103,16 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   height: 5,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 200),
-                  child: Text("8 Symbls at least"),
+                  padding: const EdgeInsets.only(right: 35),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("8 Symbls at least",
+                      textAlign: TextAlign.end,
+                      style: GoogleFonts.poppins(),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -124,7 +132,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         hintText: "Confirm Password",
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.poppins(
                           color: const Color(0xff292724),
                         ),
                       ),
@@ -150,9 +158,9 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       child: Center(
                           child: Text(
                         "Submit",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
-                          
+                          fontWeight: FontWeight.w500,
                           fontSize: 18,
                         ),
                       )),

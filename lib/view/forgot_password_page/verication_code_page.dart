@@ -61,9 +61,9 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
               children: [
                 Text(
                       "Enter Verification code",
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
+                          
                           fontSize: 29),
                     ),
                     SizedBox(height: 10,),
@@ -79,14 +79,17 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                     SizedBox(height: 30,),
                     Container(
                       height: 50,
+                     
                       child: OtpTextField(
                         numberOfFields: 4,
+                        keyboardType: TextInputType.number,
                         filled: true,
                         fieldWidth: 50,
                         margin: EdgeInsets.only(left: 10,right: 20),
                         fillColor: darkGreenColor,
-                        textStyle: TextStyle(color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                        textStyle: GoogleFonts.poppins(color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600),
                         borderWidth: 0,
                         showFieldAsBox: true, 
                         onCodeChanged: (String code) {
@@ -97,21 +100,29 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                       ),
                     ),
                     SizedBox(height: 40,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70),
-                      child: Row(
+                    Row(
+                      
+                      mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                      Text("If you didn't receive a code! "),
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          "Resend",
-                          style: TextStyle(color:darkGreenColor),
+                    Text("If you didn't receive a code! ",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 15
+                    ),),
+                    InkWell(
+                      onTap: () {},
+                      child: Text(
+                        "Resend",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(color:darkGreenColor,
+                        fontSize: 15,
+                        decoration:TextDecoration.underline, 
                         ),
+                        
                       ),
+                    ),
                   ],
                 ),
-                    ),
                     SizedBox(height: 130,),
                     InkWell(
                   onTap: () {
@@ -128,10 +139,11 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                       child: Center(
                           child: Text(
                         "Verify",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
                          // fontWeight: FontWeight.bold,
                           fontSize: 18,
+                          fontWeight: FontWeight.w500
                         ),
                       )),
                       decoration: BoxDecoration(

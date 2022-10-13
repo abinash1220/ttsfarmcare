@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/payment_Screen.dart';
 
@@ -64,10 +65,10 @@ class _AddressScreenState extends State<AddressScreen> {
                               ),
                               Text(
                                 "Delivery Address",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               
@@ -80,9 +81,10 @@ class _AddressScreenState extends State<AddressScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 140, left: 20),
+                      padding: const EdgeInsets.only(top: 140, left: 20,right: 20),
                       child: Column(children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
                               height: 23,
@@ -97,10 +99,10 @@ class _AddressScreenState extends State<AddressScreen> {
                             ),
                             Text(
                               "Cart",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             SizedBox(
@@ -122,10 +124,10 @@ class _AddressScreenState extends State<AddressScreen> {
                             ),
                             Text(
                               "Address",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             SizedBox(
@@ -144,10 +146,10 @@ class _AddressScreenState extends State<AddressScreen> {
                             ),
                             Text(
                               "Payment",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -168,10 +170,10 @@ class _AddressScreenState extends State<AddressScreen> {
                     children: [
                       Text(
                         "Choose Delivery Area",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           fontSize: 17,
                           color: darkGreenColor,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
@@ -203,7 +205,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                       color: const Color(0xff517937),
                                     )),
                                 hintText: "Choose Location",
-                                hintStyle: TextStyle(),
+                                hintStyle: GoogleFonts.montserrat(),
                               ),
                             ),
                           ),
@@ -214,10 +216,10 @@ class _AddressScreenState extends State<AddressScreen> {
                       ),
                       Text(
                         "Address Type",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           fontSize: 17,
                           color: darkGreenColor,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
@@ -264,7 +266,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                               : Colors.grey),
                                       Text(
                                         "Home",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.bold,
                                             color:
                                                 homeController.home.value == 1
@@ -308,7 +310,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                      SizedBox(width: 2,),
                                       Text(
                                         "Work",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.bold,
                                             color:
                                                 homeController.home.value == 2
@@ -352,7 +354,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                       ),
                                       Text(
                                         "Other",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.bold,
                                             color:
                                                 homeController.home.value == 3
@@ -382,7 +384,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Flat, Building, Company, Apartment",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -404,7 +406,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Area, Colony, Street, Sector, Village",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -426,7 +428,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Landmark (Optional)",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -448,7 +450,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Add City",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -470,7 +472,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Add State",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -486,13 +488,14 @@ class _AddressScreenState extends State<AddressScreen> {
                           height: 50,
                           width: size.width,
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             // controller: usernamecontroller,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Add Pincode",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -503,7 +506,7 @@ class _AddressScreenState extends State<AddressScreen> {
                         height: 10,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //  mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Checkbox(
                               activeColor: Color(0xff517937),
@@ -513,33 +516,45 @@ class _AddressScreenState extends State<AddressScreen> {
                                   isCheked = !isCheked;
                                 });
                               }),
-                          Text("Default For Delivery"),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const PaymentScreen()),
-                              );
-                            },
-                            child: Container(
-                              height: 35,
-                              width: 130,
-                              child: Center(
-                                child: Text(
-                                  "Payments",
-                                  style: TextStyle(
-                                    color: Colors.white,
+                          Container(
+                            width: size.width*0.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Default For Delivery",
+                                style: GoogleFonts.montserrat(),
+                                ),
+                                InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentScreen()),
+                                );
+                              },
+                              child: Container(
+                                height: 35,
+                                width: 130,
+                                child: Center(
+                                  child: Text(
+                                    "Payments",
+                                    style: GoogleFonts.montserrat(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500
+                                    ),
                                   ),
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: darkGreenColor,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: darkGreenColor,
+                                ),
                               ),
                             ),
+                              ],
+                            ),
                           ),
+                          
                         ],
                       ),
                     ],

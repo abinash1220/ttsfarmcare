@@ -82,9 +82,9 @@ class _NewPasswordSucessfullyState extends State<NewPasswordSucessfully> {
                       child: Center(
                           child: Text(
                         "Login Page",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
-                          
+                          fontWeight: FontWeight.w500,
                           fontSize: 18,
                         ),
                       )),

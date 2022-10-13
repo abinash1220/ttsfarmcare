@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 
 class FinishedMyOrders extends StatefulWidget {
@@ -13,6 +14,8 @@ class FinishedMyOrders extends StatefulWidget {
 
 class _FinishedMyOrdersState extends State<FinishedMyOrders> {
   bool isCheked = true;
+
+  List image = ["assets/images/21.png","assets/images/21.png","assets/images/asset-3.png","assets/images/asset-3.png","assets/images/21.png"];
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +61,10 @@ class _FinishedMyOrdersState extends State<FinishedMyOrders> {
                             ),
                             Text(
                               "Finished Orders",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 25,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -80,116 +83,119 @@ class _FinishedMyOrdersState extends State<FinishedMyOrders> {
                     ? size.height * 0.8
                     : size.height * 0.7,
                 child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: ((context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10,bottom:  20),
-                    child: Container(
-                      height: 100,
-                      width: 350,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child:
-                                Image(image: AssetImage("assets/image/aa.png")),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Container(
-                            height: 100,
-                            width: 1,
-                            color: Color(0xff686868),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    itemCount: 5,
+                    itemBuilder: ((context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 20),
+                        child: Container(
+                          height: 110,
+                          width: 350,
+                          child: Row(
                             children: [
-                              Row(
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Image(
+                                    image: AssetImage(image[index])),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                height: 110,
+                                width: 1,
+                                color: Color(0xff686868),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Checkbox(
-                                      activeColor: Color(0xff517937),
-                                      value: isCheked,
-                                      onChanged: (value) {}),
-                                  Container(
-                                    width: size.width * 0.45,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                          activeColor: Color(0xff517937),
+                                          value: isCheked,
+                                          onChanged: (value) {}),
+                                      Container(
+                                        width: size.width * 0.45,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Micro Nutrition",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  color: Color(0xff1C1C1E)),
+                                            ),
+                                            Text(
+                                              "Rating",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 14,
+                                                  color: Color(0xff515C6F)),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/image/Group 3369.png")),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Micro Nutrition",
-                                          style: TextStyle(
-                                              fontSize: 12,
+                                          "VALOROUS:",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
                                               color: Color(0xff1C1C1E)),
                                         ),
                                         Text(
-                                          "Rating",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Color(0xff515C6F)),
+                                          "RS 256.98:",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 13,
+                                              color: Color(0xff0D8446)),
+                                        ),
+                                        Container(
+                                          width: size.width * 0.7,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Qty : 01",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 13,
+                                                    color: Color(0xff1C1C1E)),
+                                              ),
+                                              Text(
+                                                "Order Complete",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 13,
+                                                    color: Color(0xff0D8446)),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Image(
-                                      image: AssetImage(
-                                          "assets/image/Group 3369.png")),
                                 ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "VALOROUS:",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xff1C1C1E)),
-                                    ),
-                                    Text(
-                                      "RS 256.98:",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Color(0xff0D8446)),
-                                    ),
-                                    Container(
-                                      width: size.width * 0.7,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Qty : 01",
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                color: Color(0xff1C1C1E)),
-                                          ),
-                                          Text(
-                                            "Order Complete",
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                color: Color(0xff0D8446)),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color.fromARGB(255, 194, 194, 194)),
-                        color: Color.fromARGB(255, 247, 243, 243),
-                      ),
-                    ),
-                  );
-                }))),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromARGB(255, 194, 194, 194)),
+                            color: Color.fromARGB(255, 247, 243, 243),
+                          ),
+                        ),
+                      );
+                    }))),
           ]),
         );
       }),

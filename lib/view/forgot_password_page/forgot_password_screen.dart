@@ -60,9 +60,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               children: [
                 Text(
                     "Forgot Password",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 1,
+                        
                         fontSize: 35),
                   ),
                   SizedBox(height: 10,),
@@ -88,7 +88,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         hintText: "Enter Email / Phone Number",
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
                       ),
@@ -111,7 +111,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       child: Center(
                           child: Text(
                         "Send OTP",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -125,7 +125,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                Text("Or",style: TextStyle(color: Color(0xff016942),fontSize: 20),),
+                Text("Or",style: GoogleFonts.poppins(color: Color(0xff016942),fontSize: 20),),
                 SizedBox(height: 30,),
                 Padding(
                   padding: const EdgeInsets.only(left: 35,right: 35),
@@ -141,7 +141,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               SizedBox(
                 height: 15
               ),
-              Text("Don't have an account?",style: TextStyle(color:Color(0xffb0D8446),
+              Text("Don't have an account?",style: GoogleFonts.poppins(color:Color(0xffb0D8446),
               fontSize: 16,
               ),
               ),
@@ -161,7 +161,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       child: Center(
                           child: Text(
                         "Sign Up?",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: const Color(0xff016942),
                           fontSize: 19,
                         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../home_Screen/home_Screen.dart';
@@ -44,9 +45,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     ),
                 ),
                 SizedBox(height: 40,),
-                Text("Loading......",style: TextStyle(
+                Text("Loading......",style: GoogleFonts.montserrat(
                   color: Color(0xff016942),
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                   fontSize: 24),
                   ),
               ],

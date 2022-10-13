@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/sign_up_controllers.dart';
 import 'package:ttsfarmcare/view/landing_page/login_page.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_mobileNumber_screen.dart';
@@ -65,7 +66,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                           children: [
                             Container(
                                 width: size.width,
-                                height: size.height * 0.37,
+                                height: size.height * 0.40,
                                 child: Image(
                                   image: AssetImage("assets/images/3453.png"),
                                   fit: BoxFit.cover,
@@ -91,7 +92,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                   children: [
                                     Text(
                                       "Register",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 45,
@@ -102,7 +103,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                     ),
                                     Text(
                                       "Create Your New Account",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                         color: Colors.white,
                                         fontSize: 22,
                                       ),
@@ -113,7 +114,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                             ),
                             Positioned(
                               bottom: constraints.maxHeight > 600 ? 5 : 0,
-                              left: constraints.maxHeight > 600 ? 30 : 50,
+                              left: constraints.maxHeight > 600 ? 35 : 50,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
@@ -145,7 +146,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       child: Center(
                                           child: Text(
                                         "Customer",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             color:
                                                 signUpController.isCustomer.isTrue
                                                     ? Colors.white
@@ -186,7 +187,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       child: Center(
                                           child: Text(
                                         "Retail",
-                                        style: TextStyle(
+                                        style: GoogleFonts.montserrat(
                                             color: signUpController
                                                     .isCustomer.isFalse
                                                 ? Colors.white
@@ -211,8 +212,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 height: 10,
                               ),
                               Container(
-                                height: 50.h,
-                                width: 335.w,
+                                height: 45.h,
+                                width: 310.w,
                                 child: TextFormField(
                                   controller: usernamecontroller,
                                   decoration: InputDecoration(
@@ -222,7 +223,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     hintText: "User Name",
-                                    hintStyle: TextStyle(
+                                    hintStyle: GoogleFonts.montserrat(
                                       color: const Color(0xff517937),
                                     ),
                                   ),
@@ -235,8 +236,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       height: 20.h,
                                     ),
                                     Container(
-                                      height: 50.h,
-                                      width: 335.w,
+                                      height: 45.h,
+                                      width: 310.w,
                                       child: TextFormField(
                                         controller: companynamecontroller,
                                         decoration: InputDecoration(
@@ -247,7 +248,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                                 BorderRadius.circular(30),
                                           ),
                                           hintText: "Company name",
-                                          hintStyle: TextStyle(
+                                          hintStyle: GoogleFonts.montserrat(
                                             color: const Color(0xff517937),
                                           ),
                                         ),
@@ -257,8 +258,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       height: 20.h,
                                     ),
                                     Container(
-                                      height: 50.h,
-                                      width: 335.w,
+                                      height: 45.h,
+                                      width: 310.w,
                                       child: TextFormField(
                                         controller: gstnumbercontroller,
                                         decoration: InputDecoration(
@@ -269,7 +270,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                                 BorderRadius.circular(30),
                                           ),
                                           hintText: "GST Number",
-                                          hintStyle: TextStyle(
+                                          hintStyle: GoogleFonts.montserrat(
                                             color: const Color(0xff517937),
                                           ),
                                         ),
@@ -281,18 +282,19 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 height: 20.h,
                               ),
                               Container(
-                                height: 50.h,
-                                width: 335.w,
+                                height: 45.h,
+                                width: 310.w,
                                 child: TextFormField(
                                   controller: emailcontroller,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Color(0xffECF2F0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                    hintText: "Email Id",
-                                    hintStyle: TextStyle(
+                                    hintText: "Email ID",
+                                    hintStyle: GoogleFonts.montserrat(
                                       color: const Color(0xff517937),
                                     ),
                                   ),
@@ -302,8 +304,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 height: 20.h,
                               ),
                               Container(
-                                height: 50.h,
-                                width: 335.w,
+                                height: 45.h,
+                                width: 310.w,
                                 child: TextFormField(
                                   obscureText: _isHidden,
                                   controller: passwordcontroller,
@@ -323,7 +325,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                         color: Color(0xff517937),
                                       ),
                                     ),
-                                    hintStyle: TextStyle(
+                                    hintStyle: GoogleFonts.montserrat(
                                       color: const Color(0xff517937),
                                     ),
                                   ),
@@ -333,8 +335,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 height: 20.h,
                               ),
                               Container(
-                                height: 50.h,
-                                width: 335.w,
+                                height: 45.h,
+                                width: 310.w,
                                 child: TextFormField(
                                   controller: addresscontroller,
                                   decoration: InputDecoration(
@@ -344,7 +346,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     hintText: "Address",
-                                    hintStyle: TextStyle(
+                                    hintStyle: GoogleFonts.montserrat(
                                       color: const Color(0xff517937),
                                     ),
                                   ),
@@ -354,29 +356,9 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 height: 20.h,
                               ),
               
-                              // Container(
-                              //   height: 50,
-                              //   width: 335,
-                              //   child: TextFormField(
-                              //     controller: districtcontroller,
-                              //     decoration: InputDecoration(
-                              //       filled: true,
-                              //       fillColor: Color(0xffECF2F0),
-                              //       border: OutlineInputBorder(
-                              //         borderRadius: BorderRadius.circular(30),
-                              //       ),
-                              //       hintText: "District",
-                              //       suffixIcon: Icon(Icons.arrow_drop_down_sharp),
-                              //       hintStyle: TextStyle(
-                              //         color: const Color(0xff517937),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-              
                               Container(
-                                height: 56.h,
-                                width: 335.w,
+                                height: 50.h,
+                                width: 310.w,
                                 child: DropdownSearch<String>(
                                   popupProps: PopupProps.menu(
                                     showSelectedItems: true,
@@ -395,6 +377,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                   ],
                                   dropdownDecoratorProps:
                                       DropDownDecoratorProps(
+                                        textAlign: TextAlign.center,
+                                        
                                     dropdownSearchDecoration: InputDecoration(
                                       filled: true,
                                       fillColor: const Color(0xffECF2F0),
@@ -409,7 +393,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                       //labelText: "district",
               
                                       hintText: "District",
-                                      hintStyle: TextStyle(
+                                      hintStyle: GoogleFonts.montserrat(
                                         color: const Color(0xff517937),
                                       ),
                                     ),
@@ -424,26 +408,26 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                               RichText(
                                 text: TextSpan(
                                     text: "By signing your agree to our",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       color: const Color(0xff016942),
                                     ),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: " Terms of use",
-                                        style: TextStyle(color: Colors.black),
+                                        style: GoogleFonts.montserrat(color: Colors.black),
                                       ),
                                     ]),
                               ),
                               RichText(
                                 text: TextSpan(
                                     text: "and ",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       color: const Color(0xff016942),
                                     ),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: "privacy policy",
-                                        style: TextStyle(color: Colors.black),
+                                        style: GoogleFonts.montserrat(color: Colors.black),
                                       ),
                                     ]),
                               ),
@@ -467,8 +451,8 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                     width: size.width,
                                     child: Center(
                                         child: Text(
-                                      "Next",
-                                      style: TextStyle(
+                                      "Sign up",
+                                      style: GoogleFonts.montserrat(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
@@ -486,7 +470,7 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                 children: [
                                   Text(
                                     "Already have an account?",
-                                    style: TextStyle(fontSize: 18),
+                                    style: GoogleFonts.montserrat(fontSize: 18),
                                   ),
                                   TextButton(
                                     onPressed: () {
@@ -497,9 +481,11 @@ class _SignUpTestViewState extends State<SignUpTestView> {
                                     },
                                     child: Text(
                                       "Login",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                         color: Color(0xff016942),
                                         fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline
                                       ),
                                     ),
                                   ),

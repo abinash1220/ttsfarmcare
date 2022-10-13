@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'loading_screen.dart';
 
@@ -28,13 +29,13 @@ class _SignUpSucessfullyState extends State<SignUpSucessfully> {
           ),
           SizedBox(height: 60.h,),
           Text("PHONE NUMBER REGISTERE",
-          style: TextStyle(fontSize: 15),
+          style: GoogleFonts.montserrat(fontSize: 15),
           ),
           SizedBox(height: 15.h,),
           Text("SUCCESSFULLY !",
-          style: TextStyle(
+          style: GoogleFonts.montserrat(
             fontSize: 25,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: Color(0xff517937)),
           ),
           SizedBox(height: 130.h,),
@@ -53,9 +54,9 @@ class _SignUpSucessfullyState extends State<SignUpSucessfully> {
                             child: Center(
                                 child: Text(
                               "Done",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 20,
                               ),
                             )),

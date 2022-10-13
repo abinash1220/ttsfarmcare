@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 
 class AllMyOrders extends StatefulWidget {
@@ -58,10 +59,10 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                             ),
                             Text(
                               "All My Orders",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 25,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -89,7 +90,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                           color: darkGreenColor,
                           size: 20,
                         ),
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.poppins(
                           color: const Color(0xff517937),
                           fontSize: 14.sp,
                         ),
@@ -126,7 +127,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 999012",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -137,7 +138,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "20-Jun-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -148,7 +149,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 29 Sept",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: darkGreenColor,
                                         fontWeight: FontWeight.w400,
@@ -164,8 +165,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -173,27 +174,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -222,7 +223,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 574777",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -233,7 +234,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "12-Sept-2022, 2:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -244,7 +245,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 12 Nov",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: Color(0xffD34E4E),
                                         fontWeight: FontWeight.w400,
@@ -260,8 +261,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -269,27 +270,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -318,7 +319,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 896532",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -329,7 +330,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "10-Agu-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -340,7 +341,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 20 Nov",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: Color(0xffD34E4E),
                                         fontWeight: FontWeight.w400,
@@ -356,8 +357,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -365,27 +366,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -414,7 +415,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 987654",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -425,7 +426,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "20-Jun-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -436,7 +437,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 23 Nov",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: Color(0xffD34E4E),
                                         fontWeight: FontWeight.w400,
@@ -452,8 +453,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -461,27 +462,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -510,7 +511,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 999012",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -521,7 +522,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "20-Jun-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -532,7 +533,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 29 Sept",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: Color(0xffD34E4E),
                                         fontWeight: FontWeight.w400,
@@ -548,8 +549,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -557,27 +558,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -605,7 +606,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 999012",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -616,7 +617,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "20-Jun-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -627,7 +628,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 29 Sept",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: darkGreenColor,
                                         fontWeight: FontWeight.w400,
@@ -643,8 +644,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -652,27 +653,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),
@@ -700,7 +701,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   children: [
                                     Text(
                                       "Order#: 999012",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 16.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w500,
@@ -711,7 +712,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "20-Jun-2022, 3:00 PM",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: const Color(0xff515C6F),
                                         fontWeight: FontWeight.w400,
@@ -722,7 +723,7 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                     ),
                                     Text(
                                       "Estimated Delivery on 29 Sept",
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 12.sp,
                                         color: darkGreenColor,
                                         fontWeight: FontWeight.w400,
@@ -738,8 +739,8 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                 children: [
                                   Text(
                                     "Rating",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13.sp,
                                       color: const Color(0xff7D7979),
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -747,27 +748,27 @@ class _AllMyOrdersState extends State<AllMyOrders> {
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                   Icon(
                                     Icons.star_border,
                                     color: Color(0xffD7A221),
-                                    size: 15,
+                                    size: 13,
                                   ),
                                 ],
                               ),

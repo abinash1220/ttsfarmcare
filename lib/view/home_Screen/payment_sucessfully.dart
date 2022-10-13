@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_Screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -33,10 +34,10 @@ class _PaymentSucessfullyState extends State<PaymentSucessfully> {
                 SizedBox(width: 5,),
                 Text(
                   "Succesfull",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     fontSize: 25,
                     color: Colors.white,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(width: 180,),
@@ -53,7 +54,7 @@ class _PaymentSucessfullyState extends State<PaymentSucessfully> {
                   Image(image: AssetImage("assets/images/sucessfully.png")),
                   SizedBox(height: 40,),
                   Text("Your Order Succesfully Register!",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     fontSize: 21,
                     fontWeight: FontWeight.w400,
                     color: Color(0xff727C8E)
@@ -74,10 +75,10 @@ class _PaymentSucessfullyState extends State<PaymentSucessfully> {
                           width: 350,
                           child: Center(
                             child: Text("Done",
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
                               color: Colors.white,
                               fontSize: 21,
-                              fontWeight: FontWeight.w500
+                              fontWeight: FontWeight.w600
                             ),
                             ),
                           ),

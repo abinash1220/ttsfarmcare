@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_Screen.dart';
 import 'package:ttsfarmcare/view/landing_page/landing_screen.dart';
 
+
 import '../forgot_password_page/forgot_password_screen.dart';
 import '../sign_in_view/test_sign_up.dart';
 
@@ -72,14 +73,14 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text(
                   "Welcome back",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
+                      
                       fontSize: 40.sp),
                 ),
                 Text(
                   "Login to your account",
-                  style: GoogleFonts.montserrat(fontSize: 20),
+                  style:GoogleFonts.montserrat(fontSize: 20),
                 ),
                 SizedBox(
                   height: 40.h,
@@ -97,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         hintText: "Email / User Name",
-                        hintStyle: TextStyle(
+                        hintStyle:GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
                       ),
@@ -129,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: Color(0xff517937),
                           ),
                         ),
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
                       ),
@@ -149,7 +150,9 @@ class _LoginPageState extends State<LoginPage> {
                             });
                           }),
                     ),
-                    Text("Remeber Me"),
+                    Text("Remeber Me",
+                    style:GoogleFonts.montserrat(),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 80),
                       child: TextButton(
@@ -163,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           "Forgot Password",
-                          style: TextStyle(
+                          style: GoogleFonts.montserrat(
                             color: Color(0xff517937),
                           ),
                         ),
@@ -189,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                           child: Text(
                         "Login",
-                        style: TextStyle(
+                        style:GoogleFonts.montserrat(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -207,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       "did't have an account?",
-                      style: TextStyle(fontSize: 18),
+                      style:GoogleFonts.montserrat(fontSize: 18),
                     ),
                     TextButton(
                       onPressed: () {
@@ -218,9 +221,12 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(
+                        
+                        style:GoogleFonts.montserrat(
                           color: Color(0xff016942),
                           fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
                         ),
                       ),
                     ),

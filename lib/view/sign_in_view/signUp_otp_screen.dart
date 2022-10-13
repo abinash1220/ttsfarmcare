@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_sucessfully.dart';
 
 import '../../constants/app_colors.dart';
@@ -27,7 +28,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
             children: [
               Container(
                   width: double.infinity,
-                  height: 300,
+                  height: 400,
                   child: Image(
                     image: AssetImage("assets/images/Group 3471.png"),
                     fit: BoxFit.fill,
@@ -55,11 +56,11 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
               ),
               SizedBox(height: 15,),
               Text("OTP",
-              style: TextStyle(color: Colors.white,fontSize: 18),
+              style: GoogleFonts.montserrat(color: Colors.white,fontSize: 18),
               ),
               SizedBox(height: 10,),
               Text("Please enter the OTP sent to your mobile number",
-              style: TextStyle(color: Colors.white60,fontSize: 13),
+              style: GoogleFonts.montserrat(color: Colors.white60,fontSize: 13),
               ),
                     ],
                   ),
@@ -72,6 +73,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
               Container(
                 height: 50,
                 child: OtpTextField(
+                  keyboardType: TextInputType.number,
                   numberOfFields: 4,
                   filled: true,
                   fieldWidth: 50,
@@ -92,7 +94,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
               ),
               Text(
                 "Didn't receive an OTP?",
-                style: TextStyle(
+                style: GoogleFonts.montserrat(
                   fontSize: 14,
                 ),
               ),
@@ -103,8 +105,9 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
                 onPressed: () {},
                 child: Text(
                   "Resend OTP?",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     color: Colors.black,
+                    fontWeight: FontWeight.w600,
                     fontSize: 18,
                     decoration: TextDecoration.underline,
                   ),
@@ -115,7 +118,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
             ],
           ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.only(bottom: 100),
               child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -132,9 +135,9 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
                   child: Center(
                       child: Text(
                     "Submit",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: Colors.white,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       fontSize: 20,
                     ),
                   )),

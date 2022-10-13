@@ -3,18 +3,19 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/landing_page/landing_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/all_my_orders.dart';
 import 'package:ttsfarmcare/view/profile_screen/customer_support.dart';
-import 'package:ttsfarmcare/view/profile_screen/edit_profile.dart';
 import 'package:ttsfarmcare/view/profile_screen/finished_my_orders.dart';
 import 'package:ttsfarmcare/view/profile_screen/invite_friends.dart';
 import 'package:ttsfarmcare/view/profile_screen/password_change.dart';
 import 'package:ttsfarmcare/view/profile_screen/test_edit_profile.dart';
 import 'package:ttsfarmcare/view/profile_screen/total_points.dart';
-
+import 'dart:io' as fl;
 import '../../controllers/home_Controllers.dart';
+import '../../controllers/profile_controller.dart';
 import '../home_Screen/home_Screen.dart';
 import '../home_Screen/view_cart.screen.dart';
 import '../order_history_page/order_history_screen.dart';
@@ -28,6 +29,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final homeController = Get.find<HomeControllers>();
+
+   final ProfileController profile = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,21 +49,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Row(
                       children: [
-                        // InkWell(
-                        //   onTap: () {
-                        //     Get.back();
-                        //   },
-                        //   child: Icon(
-                        //     Icons.arrow_back,
-                        //     color: Colors.white,
-                        //   ),
-                        // ),
+                       
                         Text(
                           "Profile",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 25,
                             color: Colors.white,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
@@ -76,13 +71,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                    height: 110.h,
-                    width: 110.w,
-                    child: Image(
-                      image: AssetImage("assets/image/NoPath.png"),
-                      fit: BoxFit.fill,
-                    )),
+                Obx(() => profile.profileImage =="" ?
+                   Container(
+                      height: 110.h,
+                      width: 110.w,
+                      child: 
+                        Image(
+                          image: AssetImage("assets/image/NoPath.png"),
+                          fit: BoxFit.fill,
+                        )
+                      ) : Container(
+                        height: 110.h,
+                        width: 110.w,
+                        child: Image(image: FileImage(fl.File(profile.profileImage.value)),
+                        fit: BoxFit.fill,
+                        )),
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
@@ -92,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "TTS Farm Care",
-                      style: TextStyle(
+                      style:  GoogleFonts.montserrat(
                         fontSize: 30.sp,
                         fontWeight: FontWeight.bold,
                       ),
@@ -100,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 3.h,),
                     Text(
                       "ttsfarmcare@email.com",
-                      style: TextStyle(
+                      style:  GoogleFonts.montserrat(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -118,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       },
                       child: Text(
                         "EDIT PROFILE",
-                        style: TextStyle(
+                        style:  GoogleFonts.poppins(
                           fontSize: 12.sp,
                           color: darkGreenColor,
                           fontWeight: FontWeight.bold,
@@ -149,13 +153,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Row(
                       children: [
-                        Image(image: AssetImage("assets/icons/all order.png")),
+                        Image(image: AssetImage("assets/icons/all order.png",)),
                         SizedBox(
-                          width: 10.w,
+                          width: 13.w,
                         ),
                         Text(
                           "All My Orders",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -211,11 +215,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Image(image: AssetImage("assets/icons/finished.png")),
                         SizedBox(
-                          width: 10.w,
+                          width: 15.w,
                         ),
                         Text(
                           "Finished Orders",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -270,11 +274,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Image(image: AssetImage("assets/icons/invite.png")),
                         SizedBox(
-                          width: 10.w,
+                          width: 15.w,
                         ),
                         Text(
                           "Invite Friends",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -330,11 +334,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Image(image: AssetImage("assets/icons/support.png")),
                         SizedBox(
-                          width: 10.w,
+                          width: 15.w,
                         ),
                         Text(
                           "Customer Support",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -390,11 +394,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Image(image: AssetImage("assets/icons/support.png")),
                         SizedBox(
-                          width: 10.w,
+                          width: 15.w,
                         ),
                         Text(
                           "Password Change",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -449,11 +453,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Image(image: AssetImage("assets/icons/coin.png")),
                         SizedBox(
-                          width: 10.w,
+                          width: 15.w,
                         ),
                         Text(
                           "Total Points",
-                          style: TextStyle(
+                          style:  GoogleFonts.montserrat(
                             fontSize: 14.sp,
                             color: Color(0xff515C6F),
                             fontWeight: FontWeight.bold,
@@ -520,11 +524,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     "assets/icons/logout_black_24dp.png")),
                           )),
                       SizedBox(
-                        width: 10.w,
+                        width: 15.w,
                       ),
                       Text(
                         "Log Out",
-                        style: TextStyle(
+                        style:  GoogleFonts.montserrat(
                           fontSize: 14.sp,
                           color: Color(0xff515C6F),
                           fontWeight: FontWeight.bold,
@@ -552,7 +556,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fit: BoxFit.fill)),
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -580,7 +584,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Text(
                                   "Home",
-                                  style: TextStyle(
+                                  style:  GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
@@ -614,7 +619,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Text(
                                   "Cart",
-                                  style: TextStyle(
+                                  style:  GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 2
                                         ? Colors.white
                                         : Colors.black,
@@ -648,7 +654,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Text(
                                   "History",
-                                  style: TextStyle(
+                                  style:  GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
@@ -683,7 +690,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Text(
                                   "Profile",
-                                  style: TextStyle(
+                                  style:  GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,

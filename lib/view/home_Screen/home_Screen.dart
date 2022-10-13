@@ -27,6 +27,19 @@ class _HomeScreenState extends State<HomeScreen> {
   final homeController = Get.find<HomeControllers>();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setValue();
+  }
+
+  setValue() async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      homeController.bottomIcon(1);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
       context,
@@ -66,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             "chennai",
-                            style:GoogleFonts.roboto(
+                            style: GoogleFonts.roboto(
                               fontSize: 12.sp,
                               color: Colors.white,
                             ),
@@ -94,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         hintText: "Search product",
                         contentPadding: EdgeInsets.only(top: 5),
                         prefixIcon: Icon(Icons.search),
-                        hintStyle:GoogleFonts.montserrat(
+                        hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                           fontSize: 14.sp,
                         ),
@@ -106,9 +119,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       InkWell(
                           onTap: () {
-                             Navigator.push(
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const NotificationScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NotificationScreen()),
                             );
                           },
                           child: Padding(
@@ -164,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Center(
                                 child: Text(
                               "Product 01",
-                              style:GoogleFonts.montserrat(
+                              style: GoogleFonts.montserrat(
                                   color: homeController.home.value == 1
                                       ? Colors.white
                                       : darkGreenColor),
@@ -195,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Center(
                                 child: Text(
                               "Product 02",
-                              style:GoogleFonts.montserrat(
+                              style: GoogleFonts.montserrat(
                                   color: homeController.home.value == 2
                                       ? Colors.white
                                       : darkGreenColor),
@@ -227,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Center(
                                 child: Text(
                               "Product 03",
-                              style:GoogleFonts.montserrat(
+                              style: GoogleFonts.montserrat(
                                   color: homeController.home.value == 3
                                       ? Colors.white
                                       : darkGreenColor),
@@ -241,29 +256,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "What are you looking?",
-                          style:GoogleFonts.montserrat(
+                          style: GoogleFonts.montserrat(
                             fontSize: 20,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         InkWell(
-                           onTap: () {
-                                  Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const ListOfProducts()),
-                              );
-                                },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ListOfProducts()),
+                            );
+                          },
                           child: Row(
                             children: [
                               Text(
                                 "View All",
-                                style:GoogleFonts.montserrat(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -279,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Container(
                       height: 95,
                       child: ListView(
@@ -297,7 +313,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "assets/images/Group 3475.png")),
                                 Text(
                                   "JEEVAN",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 11,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -329,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "SEEDS",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -361,7 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "PAANDAV",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -393,7 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "UREA\nFERTILIZER",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 9,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -420,7 +436,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "assets/images/Group 3475.png")),
                                 Text(
                                   "JEEVAN",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 11,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -452,7 +468,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "SEEDS",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -484,7 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "PAANDAV",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -516,7 +532,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   "UREA\nFERTILIZER",
                                   textAlign: TextAlign.center,
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 9,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -537,29 +553,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 13,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Product Deals",
                           style: GoogleFonts.montserrat(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         InkWell(
-                           onTap: () {
-                                  Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const ProductViewAll()),
-                              );
-                                },
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ProductViewAll()),
+                            );
+                          },
                           child: Row(
                             children: [
                               Text(
                                 "View All",
-                                style:GoogleFonts.montserrat(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -575,18 +592,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/images/21.png",
-                                name: "Micro Nutrition",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/images/21.png",
+                                        
+                                        name: "Micro Nutrition Jeevan",
+                                      )),
                             );
                           },
                           child: Container(
@@ -597,14 +616,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: Image(
-                                      image: AssetImage("assets/images/21.png")),
+                                      image:
+                                          AssetImage("assets/images/21.png")),
                                 ),
                                 Text(
-                                  "JEEVAN",
-                                  style:GoogleFonts.montserrat(
+                                  "Jeevan",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14.sp,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -616,7 +636,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   child: Text(
                                     "220 gm",
-                                    style:GoogleFonts.montserrat(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10.sp,
                                       color: Colors.black,
                                     ),
@@ -635,14 +655,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style:GoogleFonts.montserrat(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10.sp,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -669,13 +690,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/aa.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/image/aa.png",
+                                        name: "Micro Nutrition Khatam",
+                                      )),
                             );
                           },
                           child: Container(
@@ -696,10 +718,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   "Khatma",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -711,7 +733,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style:GoogleFonts.montserrat(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -730,14 +752,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style:GoogleFonts.montserrat(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -764,13 +787,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/asset-4.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/image/asset-4.png",
+                                        name: "Micro Nutrition Khatam",
+                                      )),
                             );
                           },
                           child: Container(
@@ -781,15 +805,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: Image(
-                                      image:
-                                          AssetImage("assets/image/asset-4.png")),
+                                      image: AssetImage(
+                                          "assets/image/asset-4.png")),
                                 ),
                                 Text(
                                   "Growth",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -820,14 +844,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style:GoogleFonts.montserrat(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -863,326 +888,368 @@ class _HomeScreenState extends State<HomeScreen> {
                   //second
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
-                                        width: 40,
-                                        alignment: Alignment.centerLeft,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/images/asset-3.png",
+                                        name: "Micro Nutrition Valorous",
+                                      )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/images/asset-3.png")),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Valorous",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "220 gm",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
-                                          style:GoogleFonts.roboto(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                          "Price:123",
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Image(
-                                        image: AssetImage(
-                                            "assets/images/asset-3.png")),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Valorous",
-                                style:GoogleFonts.montserrat(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "220 gm",
-                                  style:GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style:GoogleFonts.montserrat(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/image/asset-3.png",
+                                        name: "Micro Nutrition Kratus",
+                                      )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 80,
                                         width: 40,
-                                        alignment: Alignment.centerLeft,
+                                        child: Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-3.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Kratus",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "120 gm",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
-                                          style:GoogleFonts.roboto(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                          "Price:123",
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 80,
-                                      width: 40,
-                                      child: Image(
-                                        image: AssetImage(
-                                            "assets/image/asset-3.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Kratus",
-                                style:GoogleFonts.montserrat(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "120 gm",
-                                  style:GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style:GoogleFonts.montserrat(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
-                                        width: 40,
-                                        alignment: Alignment.centerLeft,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProductScreen(
+                                        image: "assets/image/asset-5.png",
+                                        name: "Micro Nutrition Cardinal",
+                                      )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-5.png")),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Cardinal",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "120 gm",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
-                                          style:GoogleFonts.roboto(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                          "Price:123",
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Image(
-                                        image: AssetImage(
-                                            "assets/image/asset-5.png")),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Cardinal",
-                                style:GoogleFonts.montserrat(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "120 gm",
-                                  style:GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style:GoogleFonts.montserrat(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
                       ],
@@ -1237,7 +1304,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   "Home",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
@@ -1271,7 +1339,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   "Cart",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 2
                                         ? Colors.white
                                         : Colors.black,
@@ -1305,7 +1374,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   "History",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
@@ -1340,7 +1410,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   "Profile",
-                                  style:GoogleFonts.montserrat(
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
                                     color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,

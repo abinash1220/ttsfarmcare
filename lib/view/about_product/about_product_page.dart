@@ -1,31 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/about_product_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
+
+import '../../controllers/view_cart_controller.dart';
 
 class AboutProductScreen extends StatefulWidget {
   String image;
   String name;
-   AboutProductScreen({
-    required this.image,
-   required this.name
-   });
+  AboutProductScreen({required this.image, required this.name});
 
   @override
   State<AboutProductScreen> createState() => _AboutProductScreenState();
 }
 
 class _AboutProductScreenState extends State<AboutProductScreen> {
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
+  PageController _controller =
+      PageController(viewportFraction: 0.8, keepPage: true);
+
+  final AboutProductController c = Get.put(AboutProductController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setDefault();
+  }
+
+  setDefault() {
+    c.productcount(1);
+    c.prices(450.00);
+    
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
+    final pages = List.generate(
+      2,
+      (index) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.image),
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+    );
+
     return Scaffold(
       body: LayoutBuilder(
           builder: (BuildContext ctx, BoxConstraints constraints) {
@@ -41,7 +71,9 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                   Container(
                     width: double.infinity,
                     child: Image(
-                      image: AssetImage("assets/images/Group 3361.png",),
+                      image: AssetImage(
+                        "assets/images/Group 3361.png",
+                      ),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -68,10 +100,10 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                             ),
                             Text(
                               "About Product",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 fontSize: 25,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -86,7 +118,7 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
             ),
             Container(
               height: constraints.maxHeight > 600
-                  ? size.height * 0.67
+                  ? size.height * 0.68
                   : size.height * 0.7,
               child: ListView(
                 shrinkWrap: true,
@@ -96,22 +128,25 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                     children: [
                       Container(
                         height: 200,
-                        width: 100,
-                        child: Image(
-                          image: AssetImage(widget.image),
-                          fit: BoxFit.fill,
+                        width: 200,
+                        child: PageView.builder(
+                          controller: _controller,
+                          itemCount: pages.length,
+                          itemBuilder: (_, index) {
+                            return pages[index % pages.length];
+                          },
                         ),
-                      ),
+                      )
                     ],
                   ),
                   Center(
                     child: SmoothPageIndicator(
-                      controller: controller,
+                      controller: _controller,
                       count: 2,
                       effect: ScrollingDotsEffect(
                         activeDotColor: darkGreenColor,
-                        dotHeight: 9,
-                        dotWidth: 9,
+                        dotHeight: 7,
+                        dotWidth: 7,
                       ),
                       onDotClicked: ((index) {}),
                     ),
@@ -128,15 +163,15 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                             widget.name,
-                              style: TextStyle(
+                              widget.name,
+                              style: GoogleFonts.montserrat(
                                 fontSize: 17,
                                 color: Color(0xff000000),
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Container(
-                              width: size.width * 0.45,
+                              width: size.width * 0.40,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -180,27 +215,32 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                           ),
                         ),
                         Text(
-                          "₹ 569.00",
+                          "₹569.00",
                           style: GoogleFonts.roboto(
                             textStyle: TextStyle(
-                              color: Color(0xff000000),
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                            ),
+                                color: Color(0xff000000),
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                decoration: TextDecoration.lineThrough),
                           ),
                         ),
                         Row(
+                         // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "₹ 450.00",
-                              style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                  color: Color(0xff000000),
-                                  fontSize: 21,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                            Obx(() =>  Container(
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            "₹ ${c.prices.toStringAsFixed(2)}",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 18.sp,
+                                              color: Color(0xff016942),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),),
                             SizedBox(
                               width: 3,
                             ),
@@ -228,16 +268,30 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         InkWell(
-                                            onTap: () {},
-                                            child: Icon(
-                                              Icons.remove,
-                                              size: 17,
-                                              color: Color(0xff016942),
+                                            onTap: () {
+                                              c.decrement();
+                                            },
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: Icon(
+                                                Icons.remove,
+                                                size: 17,
+                                                color: Color(0xff016942),
+                                              ),
                                             )),
                                         Container(
                                           height: 30,
                                           width: 35,
-                                          child: Center(child: Text("01")),
+                                          child: Center(
+                                            child: Obx(() => Text(
+                                                  "0${c.productcount.toString()}",
+                                                  style: GoogleFonts.roboto(
+                                                    color: darkGreenColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 15,
+                                                  ),
+                                                )),
+                                          ),
                                           decoration: BoxDecoration(
                                             border: Border.symmetric(
                                                 vertical: BorderSide(
@@ -245,11 +299,16 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                                           ),
                                         ),
                                         InkWell(
-                                            onTap: () {},
-                                            child: Icon(
-                                              Icons.add,
-                                              size: 17,
-                                              color: Color(0xff016942),
+                                            onTap: () {
+                                              c.increment();
+                                            },
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: Icon(
+                                                Icons.add,
+                                                size: 17,
+                                                color: Color(0xff016942),
+                                              ),
                                             )),
                                       ],
                                     ),
@@ -330,92 +389,113 @@ class _AboutProductScreenState extends State<AboutProductScreen> {
                 ],
               ),
             ),
-            Stack(children: [
-              Image(image: AssetImage("assets/images/Group 3362.png")),
-              Padding(
-                padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "1 Iterms",
-                      style: GoogleFonts.roboto(
-                        textStyle: TextStyle(
-                          color: Color(0xffFFFFFF),
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
+          ]),
+        );
+      }),
+      bottomNavigationBar: Container(
+        height: 90,
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/Group 3362.png"),
+                      fit: BoxFit.fill)),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image(
+                        image: AssetImage("assets/images/shop.png"),
+                        color: Colors.white,
                       ),
-                    ),
-                    Text(
-                      "450.00",
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                          color: Color(0xffFFFFFF),
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 110,
-                      child: Center(
-                        child: Text(
-                          "25 Points Saved",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(
+                      Obx(
+                        () => Text(
+                          "${c.productcount.toString()} Iterms",
+                          style: GoogleFonts.roboto(
                             textStyle: TextStyle(
-                              color: Color(0xff289445),
-                              fontSize: 11,
+                              color: Color(0xffFFFFFF),
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const ViewCartScreen()),
-                            );
-                      },
-                      child: Container(
+                      Obx(() =>  Container(
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            "${c.prices.toStringAsFixed(2)}",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 18.sp,
+                                              color: Color(0xffFFFFFF),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),),
+                      Container(
                         height: 25,
-                        width: 100,
+                        width: 110,
                         child: Center(
                           child: Text(
-                            "View Cart",
+                            "25 Points Saved",
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                color: Color(0xffFFFFFF),
-                                fontSize: 11,
+                                color: Color(0xff289445),
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ),
                         decoration: BoxDecoration(
-                            color: Color(0xffF3A623),
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(5)),
                       ),
-                    ),
-                  ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ViewCartScreen()),
+                          );
+                        },
+                        child: Container(
+                          height: 25,
+                          width: 100,
+                          child: Center(
+                            child: Text(
+                              "View Cart",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.roboto(
+                                textStyle: GoogleFonts.roboto(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Color(0xffF3A623),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              )
-            ])
-          ]),
-        );
-      }),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

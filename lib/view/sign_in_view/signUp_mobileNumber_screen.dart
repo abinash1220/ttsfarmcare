@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_otp_screen.dart';
 
 class SignUpMobNumber extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
           Stack(
             children: [
               Container(
-                height: 300,
+                height: 400,
                 width: double.infinity,
                 child: Image(
                   image: AssetImage("assets/images/Group 3471.png"),
@@ -56,14 +57,14 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                   ),
                   Text(
                     "Mobile Number",
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    style: GoogleFonts.montserrat(color: Colors.white, fontSize: 17),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "We need to send OTP authenticate your number",
-                    style: TextStyle(color: Colors.white60, fontSize: 13),
+                    style: GoogleFonts.montserrat(color: Colors.white60, fontSize: 13),
                   ),
                 ],
               ),
@@ -80,6 +81,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                   height: 50,
                   width: size.width,
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffECF2F0),
@@ -87,7 +89,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       hintText: "India(+91)",
-                      hintStyle: TextStyle(
+                      hintStyle: GoogleFonts.montserrat(
                         color: const Color(0xff517937),
                       ),
                     ),
@@ -103,6 +105,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                   height: 50,
                   width: size.width,
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffECF2F0),
@@ -110,7 +113,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       hintText: "Mobile Number",
-                      hintStyle: TextStyle(
+                      hintStyle: GoogleFonts.montserrat(
                         color: const Color(0xff517937),
                       ),
                     ),
@@ -120,7 +123,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 30),
+            padding: const EdgeInsets.only(bottom: 70),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -137,7 +140,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
                   child: Center(
                       child: Text(
                     "Next",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,

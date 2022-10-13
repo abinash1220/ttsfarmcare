@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
@@ -50,10 +51,10 @@ final homeController = Get.find<HomeControllers>();
                 //SizedBox(width: 5,),
                 Text(
                   "Order History",
-                  style: TextStyle(
+                  style: GoogleFonts.montserrat(
                     fontSize: 25,
                     color: Colors.white,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 
@@ -86,25 +87,26 @@ final homeController = Get.find<HomeControllers>();
                 Padding(
                   padding: const EdgeInsets.only(top: 5,left: 10),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Text("Micro Nutrition Jeevan",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 22,
-                       fontWeight: FontWeight.w500,
+                       fontWeight: FontWeight.w600,
                      ),
                      ),
                      SizedBox(height: 5,),
                      Row(
                        children: [
                          Text("2 Items",
-                     style: TextStyle(
+                     style: GoogleFonts.roboto(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
                      ),
                      SizedBox(width: 90,),
                      Text("Yesterday",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
@@ -133,7 +135,149 @@ final homeController = Get.find<HomeControllers>();
              ),
              decoration: BoxDecoration(
                border: Border.all(color: Color(0xff686868)),
-               color: Color(0xffE4E4E4),
+               color: Color.fromARGB(255, 247, 244, 244),
+               ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+             height: 100,
+             width: 350,
+             child: Row(
+               children: [
+                 Padding(
+                   padding: const EdgeInsets.only(left: 10),
+                   child: Image(image: AssetImage("assets/image/asset-1.png")),
+                 ),
+                 SizedBox(width: 20,),
+                 Container(
+                   height: 100,
+                   width: 1,
+                   color: Color(0xff686868),
+                   
+                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5,left: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text("Micro Nutrition Jeevan",
+                     style: GoogleFonts.montserrat(
+                       fontSize: 22,
+                       fontWeight: FontWeight.w600,
+                     ),
+                     ),
+                     SizedBox(height: 5,),
+                     Row(
+                       children: [
+                         Text("2 Items",
+                     style: GoogleFonts.roboto(
+                       fontSize: 17,
+                       //fontWeight: FontWeight.w500,
+                     ),
+                     ),
+                     SizedBox(width: 90,),
+                     Text("Yesterday",
+                     style: GoogleFonts.montserrat(
+                       fontSize: 17,
+                       //fontWeight: FontWeight.w500,
+                     ),
+                     ),
+                       ],
+                     ),
+                     SizedBox(height: 5,),
+                     Padding(
+                       padding: const EdgeInsets.only(right: 100),
+                       child: Row(
+                         children: [
+                            Icon(Icons.star,color:Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xff808080),),
+                       Icon(Icons.star,color: Color(0xff808080),),
+
+                         ],
+                       ),
+                     ),
+                    
+                   ],
+                  ),
+                ),
+               ],
+             ),
+             decoration: BoxDecoration(
+               border: Border.all(color: Color(0xff686868)),
+               color: Color.fromARGB(255, 247, 244, 244),
+               ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+             height: 100,
+             width: 350,
+             child: Row(
+               children: [
+                 Padding(
+                   padding: const EdgeInsets.only(left: 10),
+                   child: Image(image: AssetImage("assets/image/asset-2.png")),
+                 ),
+                 SizedBox(width: 20,),
+                 Container(
+                   height: 100,
+                   width: 1,
+                   color: Color(0xff686868),
+                   
+                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5,left: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text("Micro Nutrition Jeevan",
+                     style: GoogleFonts.montserrat(
+                       fontSize: 22,
+                       fontWeight: FontWeight.w600,
+                     ),
+                     ),
+                     SizedBox(height: 5,),
+                     Row(
+                       children: [
+                         Text("2 Items",
+                     style: GoogleFonts.montserrat(
+                       fontSize: 17,
+                       //fontWeight: FontWeight.w500,
+                     ),
+                     ),
+                     SizedBox(width: 90,),
+                     Text("Yesterday",
+                     style: GoogleFonts.montserrat(
+                       fontSize: 17,
+                       //fontWeight: FontWeight.w500,
+                     ),
+                     ),
+                       ],
+                     ),
+                     SizedBox(height: 5,),
+                     Padding(
+                       padding: const EdgeInsets.only(right: 100),
+                       child: Row(
+                         children: [
+                            Icon(Icons.star,color:Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xffE4A819),),
+                       Icon(Icons.star,color: Color(0xff808080),),
+                       Icon(Icons.star,color: Color(0xff808080),),
+
+                         ],
+                       ),
+                     ),
+                    
+                   ],
+                  ),
+                ),
+               ],
+             ),
+             decoration: BoxDecoration(
+               border: Border.all(color: Color(0xff686868)),
+              color: Color.fromARGB(255, 247, 244, 244),
                ),
             ),
             SizedBox(height: 20,),
@@ -156,25 +300,26 @@ final homeController = Get.find<HomeControllers>();
                 Padding(
                   padding: const EdgeInsets.only(top: 5,left: 10),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Text("Micro Nutrition Jeevan",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 22,
-                       fontWeight: FontWeight.w500,
+                       fontWeight: FontWeight.w600,
                      ),
                      ),
                      SizedBox(height: 5,),
                      Row(
                        children: [
                          Text("2 Items",
-                     style: TextStyle(
+                     style: GoogleFonts.roboto(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
                      ),
                      SizedBox(width: 90,),
                      Text("Yesterday",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
@@ -203,7 +348,7 @@ final homeController = Get.find<HomeControllers>();
              ),
              decoration: BoxDecoration(
                border: Border.all(color: Color(0xff686868)),
-               color: Color(0xffE4E4E4),
+               color: Color.fromARGB(255, 247, 244, 244),
                ),
             ),
             SizedBox(height: 20,),
@@ -214,7 +359,7 @@ final homeController = Get.find<HomeControllers>();
                children: [
                  Padding(
                    padding: const EdgeInsets.only(left: 10),
-                   child: Image(image: AssetImage("assets/image/aa.png")),
+                   child: Image(image: AssetImage("assets/image/asset-4.png")),
                  ),
                  SizedBox(width: 20,),
                  Container(
@@ -226,25 +371,26 @@ final homeController = Get.find<HomeControllers>();
                 Padding(
                   padding: const EdgeInsets.only(top: 5,left: 10),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Text("Micro Nutrition Jeevan",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 22,
-                       fontWeight: FontWeight.w500,
+                       fontWeight: FontWeight.w600,
                      ),
                      ),
                      SizedBox(height: 5,),
                      Row(
                        children: [
                          Text("2 Items",
-                     style: TextStyle(
+                     style: GoogleFonts.roboto(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
                      ),
                      SizedBox(width: 90,),
                      Text("Yesterday",
-                     style: TextStyle(
+                     style: GoogleFonts.montserrat(
                        fontSize: 17,
                        //fontWeight: FontWeight.w500,
                      ),
@@ -252,18 +398,16 @@ final homeController = Get.find<HomeControllers>();
                        ],
                      ),
                      SizedBox(height: 5,),
-                     Padding(
-                       padding: const EdgeInsets.only(right: 100),
-                       child: Row(
-                         children: [
-                            Icon(Icons.star,color:Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xff808080),),
-                       Icon(Icons.star,color: Color(0xff808080),),
+                     Row(
+                    
+                       children: [
+                          Icon(Icons.star,color:Color(0xffE4A819),),
+                     Icon(Icons.star,color: Color(0xffE4A819),),
+                     Icon(Icons.star,color: Color(0xffE4A819),),
+                     Icon(Icons.star,color: Color(0xff808080),),
+                     Icon(Icons.star,color: Color(0xff808080),),
 
-                         ],
-                       ),
+                       ],
                      ),
                     
                    ],
@@ -273,147 +417,7 @@ final homeController = Get.find<HomeControllers>();
              ),
              decoration: BoxDecoration(
                border: Border.all(color: Color(0xff686868)),
-               color: Color(0xffE4E4E4),
-               ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-             height: 100,
-             width: 350,
-             child: Row(
-               children: [
-                 Padding(
-                   padding: const EdgeInsets.only(left: 10),
-                   child: Image(image: AssetImage("assets/image/aa.png")),
-                 ),
-                 SizedBox(width: 20,),
-                 Container(
-                   height: 100,
-                   width: 1,
-                   color: Color(0xff686868),
-                   
-                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5,left: 10),
-                  child: Column(
-                   children: [
-                     Text("Micro Nutrition Jeevan",
-                     style: TextStyle(
-                       fontSize: 22,
-                       fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                     SizedBox(height: 5,),
-                     Row(
-                       children: [
-                         Text("2 Items",
-                     style: TextStyle(
-                       fontSize: 17,
-                       //fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                     SizedBox(width: 90,),
-                     Text("Yesterday",
-                     style: TextStyle(
-                       fontSize: 17,
-                       //fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                       ],
-                     ),
-                     SizedBox(height: 5,),
-                     Padding(
-                       padding: const EdgeInsets.only(right: 100),
-                       child: Row(
-                         children: [
-                            Icon(Icons.star,color:Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xff808080),),
-                       Icon(Icons.star,color: Color(0xff808080),),
-
-                         ],
-                       ),
-                     ),
-                    
-                   ],
-                  ),
-                ),
-               ],
-             ),
-             decoration: BoxDecoration(
-               border: Border.all(color: Color(0xff686868)),
-               color: Color(0xffE4E4E4),
-               ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-             height: 100,
-             width: 350,
-             child: Row(
-               children: [
-                 Padding(
-                   padding: const EdgeInsets.only(left: 10),
-                   child: Image(image: AssetImage("assets/image/aa.png")),
-                 ),
-                 SizedBox(width: 20,),
-                 Container(
-                   height: 100,
-                   width: 1,
-                   color: Color(0xff686868),
-                   
-                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5,left: 10),
-                  child: Column(
-                   children: [
-                     Text("Micro Nutrition Jeevan",
-                     style: TextStyle(
-                       fontSize: 22,
-                       fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                     SizedBox(height: 5,),
-                     Row(
-                       children: [
-                         Text("2 Items",
-                     style: TextStyle(
-                       fontSize: 17,
-                       //fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                     SizedBox(width: 90,),
-                     Text("Yesterday",
-                     style: TextStyle(
-                       fontSize: 17,
-                       //fontWeight: FontWeight.w500,
-                     ),
-                     ),
-                       ],
-                     ),
-                     SizedBox(height: 5,),
-                     Padding(
-                       padding: const EdgeInsets.only(right: 100),
-                       child: Row(
-                         children: [
-                            Icon(Icons.star,color:Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xffE4A819),),
-                       Icon(Icons.star,color: Color(0xff808080),),
-                       Icon(Icons.star,color: Color(0xff808080),),
-
-                         ],
-                       ),
-                     ),
-                    
-                   ],
-                  ),
-                ),
-               ],
-             ),
-             decoration: BoxDecoration(
-               border: Border.all(color: Color(0xff686868)),
-               color: Color(0xffE4E4E4),
+              color: Color.fromARGB(255, 247, 244, 244),
                ),
             ),
              
@@ -439,7 +443,7 @@ final homeController = Get.find<HomeControllers>();
                            ),
                            child:Center(
                              child: Padding(
-                               padding: const EdgeInsets.only(top: 15),
+                               padding: const EdgeInsets.only(top: 20),
                                child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -465,7 +469,8 @@ final homeController = Get.find<HomeControllers>();
                                         : Colors.black,
                                   ),
 
-                                  Text("Home",style: TextStyle(
+                                  Text("Home",style: GoogleFonts.montserrat(
+                                    fontSize: 12,
                                      color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
@@ -496,7 +501,8 @@ final homeController = Get.find<HomeControllers>();
                                         : Colors.black,
                               ),
 
-                              Text("Cart",style: TextStyle(
+                              Text("Cart",style: GoogleFonts.montserrat(
+                                fontSize: 12,
                                        color: homeController.bottomIcon == 2
                                           ? Colors.white
                                           : Colors.black,
@@ -528,7 +534,8 @@ final homeController = Get.find<HomeControllers>();
                                         : Colors.black,
                               ),
 
-                              Text("History",style: TextStyle(
+                              Text("History",style: GoogleFonts.montserrat(
+                                fontSize: 12,
                                      color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
@@ -551,15 +558,16 @@ final homeController = Get.find<HomeControllers>();
                           child: Column(
                             children: [
                               Image(
-                                 height: 25,
+                                 height: 27,
                                 fit: BoxFit.fitHeight,
                                 image: AssetImage("assets/images/profile.png"),
                                 color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,
                               ),
-
-                              Text("Profile",style: TextStyle(
+                            
+                              Text("Profile",style: GoogleFonts.montserrat(
+                                fontSize: 12,
                                      color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,
@@ -582,3 +590,5 @@ final homeController = Get.find<HomeControllers>();
     );
   }
 }
+
+///

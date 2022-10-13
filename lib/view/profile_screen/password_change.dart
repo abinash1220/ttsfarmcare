@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/app_colors.dart';
 
@@ -68,10 +69,10 @@ class _PasswordChangeState extends State<PasswordChange> {
                               ),
                               Text(
                                 "Password Change",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               
@@ -92,7 +93,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 child: Text(
                   
                                   "Current password",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 23,
                                     color: Color(0xff515C6F),
                                     fontWeight: FontWeight.w500,
@@ -103,7 +104,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                              "(leave blank to leave unchanged)",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     color: Color(0xff515C6F),
                                   ),
@@ -129,7 +130,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                            color: Color(0xff000000),
                           ),
                         ),
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.poppins(
                         ),
                       ),
                     ),
@@ -141,7 +142,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 child: Text(
                   
                                   "New password",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 23,
                                     color: Color(0xff515C6F),
                                     fontWeight: FontWeight.w500,
@@ -152,7 +153,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                              "(leave blank to leave unchanged)",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     color: Color(0xff515C6F),
                                   ),
@@ -178,7 +179,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                            color: Color(0xff000000),
                           ),
                         ),
-                        hintStyle: TextStyle(
+                        hintStyle: GoogleFonts.poppins(
                         ),
                       ),
                     ),
@@ -190,7 +191,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 child: Text(
                   
                                   "Confirm new password",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 23,
                                     color: Color(0xff515C6F),
                                     fontWeight: FontWeight.w500,
@@ -239,7 +240,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                                 width: size.width,
                                 child: Center(
                                   child: Text("Save Changes",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.white,
                                     fontSize: 25,
                                     fontWeight: FontWeight.w400
@@ -268,7 +269,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                                 width: size.width,
                                 child: Center(
                                   child: Text("Cancel",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Color(0xff515C6F),
                                     fontSize: 25,
                                     fontWeight: FontWeight.w400

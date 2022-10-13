@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/payment_sucessfully.dart';
+
+import '../../controllers/payment_controller.dart';
+import '../../controllers/view_cart_controller.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -13,6 +18,20 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+
+ final PaymentController c = Get.put(PaymentController());
+
+ void initState() {
+    // TODO: implement initState
+    super.initState();
+    setDefault();
+  }
+
+  setDefault() {
+    c.products(1);
+    c.pricess(450.00);
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -50,22 +69,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                             ),
                             SizedBox(width: 5,),
-                            Text(
-                              "Payment",
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                            Container(
+                              width: size.width*0.85,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Payment",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                   Image(
+                                  image: AssetImage("assets/images/Group 3466.png")),
+                                ],
                               ),
                             ),
-                            SizedBox(width: 180,),
-                            Image(
-                                image: AssetImage("assets/images/Group 3466.png")),
+                           // SizedBox(width: 180,),
+                           
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 140,left: 0),
+                        padding: const EdgeInsets.only(top: 140,left: 10,right: 10),
                         child: Column(
                           children: [
                             Row(
@@ -83,10 +111,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 ),
                                 
                                 Text("Cart",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                                 ),
                                
@@ -101,10 +129,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 ),
                                
                                 Text("Address",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                                 ),
                                
@@ -120,10 +148,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 ),
                                
                                 Text("Payment",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                                 ),
                               ],
@@ -164,10 +192,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   Text(
                                     "Micro Nutrition Khatam",
                                     //textAlign: TextAlign.start,
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 18,
                                       color: Colors.black,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   SizedBox(
@@ -175,7 +203,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   ),
                                   Text(
                                     "120 gms",
-                                    style: TextStyle(
+                                    style: GoogleFonts.roboto(
                                       fontSize: 19,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500,
@@ -186,13 +214,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   ),
                                   Row(
                                     children: [
-                                      Icon(Icons.currency_rupee),
+                                     // Icon(Icons.currency_rupee),
                                       Text(
-                                        "569.00",
-                                        style: TextStyle(
+                                        "₹569.00",
+                                        style: GoogleFonts.roboto(
                                           fontSize: 19,
-                                          color: Colors.black,
+                                          color: Colors.grey,
                                           fontWeight: FontWeight.w500,
+                                          decoration: TextDecoration.lineThrough
                                         ),
                                       ),
                                     ],
@@ -203,20 +232,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   Row(
                                     children: [
                                       Icon(Icons.currency_rupee),
-                                      Text(
-                                        "450.00",
-                                        style: TextStyle(
-                                          fontSize: 19,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
+                                      Obx(() =>  Container(
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            "${c.pricess.toStringAsFixed(2)}",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 18.sp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ),),
                                       SizedBox(
                                         width: 5,
                                       ),
                                       Text(
                                         "25 Points",
-                                        style: TextStyle(
+                                        style: GoogleFonts.roboto(
                                           fontSize: 13,
                                           color: Color(0xffF9A20D),
                                           fontWeight: FontWeight.w500,
@@ -226,44 +261,67 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         width: 10,
                                       ),
                                       Container(
-                                        height: 30,
-                                        width: 100,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            InkWell(
-                                                onTap: () {},
-                                                child: Icon(
-                                                  Icons.remove,
-                                                  size: 17,
-                                                  color: Color(0xff016942),
-                                                )),
-                                            Container(
                                               height: 30,
-                                              width: 35,
-                                              child: Center(child: Text("01")),
-                                              decoration: BoxDecoration(
-                                                border: Border.symmetric(
-                                                    vertical: BorderSide(
-                                                        color: Color(0xff016942))),
+                                              width: 100,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  InkWell(
+                                                      onTap: () {
+                                                        c.decrement();
+                                                      },
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(5.0),
+                                                        child: Icon(
+                                                          Icons.remove,
+                                                          size: 17,
+                                                          color:
+                                                              Color(0xff016942),
+                                                        ),
+                                                      )),
+                                                  Container(
+                                                    height: 30,
+                                                    width: 35,
+                                                    child: Center(
+                                                      child: Obx(() => Text(
+                                                          "0${c.products.toString()}",
+                                                          style: GoogleFonts.roboto(
+                                                            color: darkGreenColor,
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize: 15,
+                                                          ),
+                                                          )),
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      border: Border.symmetric(
+                                                          vertical: BorderSide(
+                                                              color: Color(
+                                                                  0xff016942))),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                      onTap: () {
+                                                        c.increment();
+                                                      },
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(5.0),
+                                                        child: Icon(
+                                                          Icons.add,
+                                                          size: 17,
+                                                          color:
+                                                              Color(0xff016942),
+                                                        ),
+                                                      )),
+                                                ],
                                               ),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Color(0xff016942)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Colors.white),
                                             ),
-                                            InkWell(
-                                                onTap: () {},
-                                                child: Icon(
-                                                  Icons.add,
-                                                  size: 17,
-                                                  color: Color(0xff016942),
-                                                )),
-                                          ],
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Color(0xff016942)),
-                                            borderRadius: BorderRadius.circular(10),
-                                            color: Colors.white),
-                                      ),
                                     ],
                                   ),
                                 ],
@@ -291,7 +349,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             padding: const EdgeInsets.only(right: 230),
                             child: Text(
                               "Order Summary",
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -310,20 +368,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           children: [
                             Text(
                               "Total MRP",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18,
                               ),
                             ),
-                            Text(
-                              "Rs: 450.00",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
+                            Obx(() =>  Container(
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            "${c.pricess.toStringAsFixed(2)}",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 18.sp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),),
                           ],
                         ),
                       ),
@@ -337,7 +401,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           children: [
                             Text(
                               "Shipping charges",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18,
@@ -345,7 +409,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "Free",
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -371,20 +435,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           children: [
                             Text(
                               "Final payable",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18,
                               ),
                             ),
-                            Text(
-                              "450.00",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 21,
-                              ),
-                            ),
+                            Obx(() =>  Container(
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            "${c.pricess.toStringAsFixed(2)}",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 21.sp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),),
                           ],
                         ),
                       ),
@@ -400,7 +470,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             padding: const EdgeInsets.only(right: 230),
                             child: Text(
                               "Payment Using",
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -423,7 +493,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "Debit / Credit cards",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 17,
@@ -449,7 +519,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "Wallet",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 17,
@@ -477,7 +547,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "UPI / Payments",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 17,
@@ -503,7 +573,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "Net Banking",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 17,
@@ -531,7 +601,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             Text(
                               "Cash on delivery",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 17,
@@ -563,10 +633,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             child: Center(
                               child: Text(
                                 "Confirm Payments",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                     color: Colors.white,
                                     fontSize: 21,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                             decoration: BoxDecoration(

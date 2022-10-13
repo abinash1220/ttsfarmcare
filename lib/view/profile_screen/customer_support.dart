@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/app_colors.dart';
 
@@ -61,10 +62,10 @@ class _CustomerSupportState extends State<CustomerSupport> {
                               ),
                               Text(
                                 "Customer Support",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               
@@ -81,7 +82,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
                 ),
               ),
               Container(
-                height: 230.h,
+                height: 220.h,
                 width: 240.h,
                 child: Image(
                       image:
@@ -101,7 +102,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Enter name",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -121,7 +122,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Email ID",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -142,7 +143,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               hintText: "Message",
-                              hintStyle: TextStyle(
+                              hintStyle: GoogleFonts.montserrat(
                                   //color: const Color(0xff517937),
                                   ),
                             ),
@@ -158,16 +159,16 @@ class _CustomerSupportState extends State<CustomerSupport> {
                               //          );
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 15,right: 15),
+                              padding: const EdgeInsets.only(left: 25,right: 25),
                               child: Container(
                                 height: 50,
                                 width: size.width,
                                 child: Center(
                                   child: Text("Submit",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     color: Colors.white,
                                     fontSize: 21,
-                                    fontWeight: FontWeight.w400
+                                    fontWeight: FontWeight.w500
                                   ),
                                   ),
                                 ),

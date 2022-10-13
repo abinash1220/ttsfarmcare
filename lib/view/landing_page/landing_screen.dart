@@ -3,9 +3,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/landing_page/login_page.dart';
-import 'package:ttsfarmcare/view/sign_in_view/sign_up_page.dart';
-
-import '../sign_in_view/sign_up_screen.dart';
 import '../sign_in_view/test_sign_up.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -37,12 +34,12 @@ class _LandingScreenState extends State<LandingScreen> {
                   Text("The best \napp for \nyour plants",
                   style: GoogleFonts.montserrat(
                     textStyle: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xffFFFFFF),
                       letterSpacing: 3,
                       shadows: [
                         Shadow(
                         blurRadius: 5.0,
-                         color: Colors.black,
+                         color: Color(0xff707070),
                          offset: Offset(3.0, 3.0),
                           ),
                         ],
@@ -52,7 +49,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   ),           
                   ),
                   SizedBox(
-                    height: 170,
+                    height: 160,
                   ),
                   InkWell(
                     onTap: (){
@@ -66,7 +63,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       width:320,                
                       child: Center(
                         child: Text("Sign Up",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
@@ -95,7 +92,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       width: 320,                
                       child: Center(
                         child: Text("Log In",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 25,

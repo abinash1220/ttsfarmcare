@@ -143,7 +143,7 @@ final homeController = Get.find<HomeControllers>();
                               context,
                               MaterialPageRoute(builder: (context) =>  AboutProductScreen(
                                 image: "assets/images/21.png",
-                                name: "Micro Nutrition",
+                                name: "Micro Nutrition Jeevan",
                               )),
                             );
                           },
@@ -158,7 +158,7 @@ final homeController = Get.find<HomeControllers>();
                                       image: AssetImage("assets/images/21.png")),
                                 ),
                                 Text(
-                                  "JEEVAN",
+                                  "Jeevan",
                                   style: TextStyle(
                                     fontSize: 14.sp,
                                     color: Colors.black,
@@ -421,322 +421,355 @@ final homeController = Get.find<HomeControllers>();
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
-                                        width: 40,
-                                        alignment: Alignment.centerLeft,
+                        InkWell(
+                           onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
+                                image: "assets/images/asset-3.png",
+                                name: "Micro Nutrition Valorous",
+                              )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: TextStyle(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/images/asset-3.png")),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Valorous",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "220 gm",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
+                                          "Price:123",
                                           style: TextStyle(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Image(
-                                        image: AssetImage(
-                                            "assets/images/asset-3.png")),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Valorous",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "220 gm",
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius: BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
+                        InkWell(
+                           onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
+                                image: "assets/image/asset-3.png",
+                                name: "Micro Nutrition Kratus",
+                              )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: TextStyle(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 80,
                                         width: 40,
-                                        alignment: Alignment.centerLeft,
+                                        child: Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-3.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Kratus",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "120 gm",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
+                                          "Price:123",
                                           style: TextStyle(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 80,
-                                      width: 40,
-                                      child: Image(
-                                        image: AssetImage(
-                                            "assets/image/asset-3.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Kratus",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "120 gm",
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius: BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
-                        Container(
-                          height: 150,
-                          width: 110,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 50),
-                                      child: Container(
-                                        height: 10,
-                                        width: 40,
-                                        alignment: Alignment.centerLeft,
+                        InkWell(
+                           onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
+                                image: "assets/image/asset-5.png",
+                                name: "Micro Nutrition Cardinal",
+                              )),
+                            );
+                          },
+                          child: Container(
+                            height: 150,
+                            width: 110,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: TextStyle(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-5.png")),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Cardinal",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 60,
+                                  ),
+                                  child: Text(
+                                    "120 gm",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 17,
+                                        width: 52,
                                         child: Text(
-                                          "Out Of Sales",
+                                          "Price:123",
                                           style: TextStyle(
-                                            fontSize: 6,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
+                                            fontSize: 10,
+                                            color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffEAB252),
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(5))),
-                                      ),
-                                    ),
-                                    Image(
-                                        image: AssetImage(
-                                            "assets/image/asset-5.png")),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                "Cardinal",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 60,
-                                ),
-                                child: Text(
-                                  "120 gm",
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 17,
-                                      width: 52,
-                                      child: Text(
-                                        "Price:123",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: darkGreenColor,
+                                          color: Color(0xffECF2F0),
+                                          borderRadius: BorderRadius.circular(5),
                                         ),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffECF2F0),
-                                        borderRadius: BorderRadius.circular(5),
+                                      Container(
+                                        height: 25,
+                                        width: 25,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: darkGreenColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
                                       ),
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 25,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: darkGreenColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff517937)),
-                            borderRadius: BorderRadius.circular(10),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff517937)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
                       ],
@@ -755,7 +788,7 @@ final homeController = Get.find<HomeControllers>();
                               context,
                               MaterialPageRoute(builder: (context) =>  AboutProductScreen(
                                 image: "assets/images/21.png",
-                                name: "Micro Nutrition",
+                                name: "Micro Nutrition Jeevan",
                               )),
                             );
                           },
@@ -770,7 +803,7 @@ final homeController = Get.find<HomeControllers>();
                                       image: AssetImage("assets/images/21.png")),
                                 ),
                                 Text(
-                                  "JEEVAN",
+                                  "Jeevan",
                                   style: TextStyle(
                                     fontSize: 14.sp,
                                     color: Colors.black,

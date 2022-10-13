@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InviteFriend extends StatefulWidget {
   const InviteFriend({super.key});
@@ -56,10 +57,10 @@ class _InviteFriendState extends State<InviteFriend> {
                               ),
                               Text(
                                 "Invite Friends",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               
@@ -90,17 +91,17 @@ class _InviteFriendState extends State<InviteFriend> {
                             "Invite your friends and \n"
                             "get bonus points !",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
                               fontSize: 25,
                               color: Color(0xff3D3D3E),
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           SizedBox(height: 15,),
                   Text(
                             "Share your code with your friends and \n ""get exciting bonus points !",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
                               fontSize: 13,
                               color: Color(0xff515C6F),
                               fontWeight: FontWeight.w500,
@@ -121,10 +122,10 @@ class _InviteFriendState extends State<InviteFriend> {
                             width:size.width,
                             child: Center(
                               child: Text("Invite",
-                              style: TextStyle(
+                              style: GoogleFonts.montserrat(
                                 color: Color(0xff016942),
                                 fontSize: 25,
-                                fontWeight: FontWeight.w500
+                                fontWeight: FontWeight.w600
                               ),
                               ),
                             ),
@@ -141,7 +142,7 @@ class _InviteFriendState extends State<InviteFriend> {
                           ),
                           Text(
                             "Or",
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
                               fontSize: 15,
                               color: Color(0xff515C6F),
                               fontWeight: FontWeight.w500,
@@ -157,7 +158,7 @@ class _InviteFriendState extends State<InviteFriend> {
                                   SizedBox(height: 5,),
                                   Text(
                                        "Whatsapp",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Color(0xff000000),
                                       //fontWeight: FontWeight.w500,
@@ -171,7 +172,7 @@ class _InviteFriendState extends State<InviteFriend> {
                                    SizedBox(height: 5,),
                                   Text(
                                        "Facebook",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Color(0xff000000),
                                       //fontWeight: FontWeight.w500,
@@ -185,7 +186,7 @@ class _InviteFriendState extends State<InviteFriend> {
                                    SizedBox(height: 5,),
                                   Text(
                                        "Email",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Color(0xff000000),
                                       //fontWeight: FontWeight.w500,
@@ -199,7 +200,7 @@ class _InviteFriendState extends State<InviteFriend> {
                                    SizedBox(height: 5,),
                                   Text(
                                        "Messenger",
-                                      style: TextStyle(
+                                      style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Color(0xff000000),
                                       //fontWeight: FontWeight.w500,

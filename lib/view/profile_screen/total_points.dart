@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/app_colors.dart';
 
@@ -58,10 +59,10 @@ class _TotalPointState extends State<TotalPoint> {
                               ),
                               Text(
                                 "Total Points",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               
@@ -87,7 +88,7 @@ class _TotalPointState extends State<TotalPoint> {
                         SizedBox(height: 10,),
                          Text(
                                 "Points Earned",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 25,
                                   color: Color(0xff000000),
                                   fontWeight: FontWeight.bold,
@@ -98,13 +99,13 @@ class _TotalPointState extends State<TotalPoint> {
                                 "     TTS FARM CARE Points and Rewards allows you\n"
                                 "       to reward customers for purchases and other\n"
                                 "actions with points that can be redeemed for discounts.",
-                                style: TextStyle(
+                                style: GoogleFonts.montserrat(
                                   fontSize: 13,
                                   color: Color(0xff2D3130),
                                   
                                 ),
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(height: 15,),
                               Padding(
                                 padding: const EdgeInsets.only(left: 10,right: 10),
                                 child: Divider(
@@ -118,7 +119,7 @@ class _TotalPointState extends State<TotalPoint> {
                                   children: [
                                 Text(
                                   "Order Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 25,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
@@ -126,7 +127,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                                 Text(
                                   "25 Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Color(0xff016942),
                                     
@@ -148,7 +149,7 @@ class _TotalPointState extends State<TotalPoint> {
                                   children: [
                                 Text(
                                   "Refer Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 25,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
@@ -156,7 +157,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                                 Text(
                                   "50 Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Color(0xff016942),
                                     
@@ -178,7 +179,7 @@ class _TotalPointState extends State<TotalPoint> {
                                   children: [
                                 Text(
                                   "Total Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 25,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
@@ -186,7 +187,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                                 Text(
                                   "75 Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Color(0xff016942),
                                     
@@ -208,7 +209,7 @@ class _TotalPointState extends State<TotalPoint> {
                                   children: [
                                 Text(
                                   "100 Points",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 25,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
@@ -219,7 +220,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 // ),
                                 Text(
                                   "₹ 01 Rupee",
-                                  style: TextStyle(
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Color(0xff016942),
                                     
@@ -249,7 +250,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 width: size.width,
                                 child: Center(
                                   child: Text("Get Orders",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.white,
                                     fontSize: 25,
                                     fontWeight: FontWeight.w400
