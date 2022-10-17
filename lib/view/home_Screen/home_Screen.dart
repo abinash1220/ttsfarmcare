@@ -53,8 +53,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Image(
-            image: AssetImage("assets/images/Group 3361.png"),
+          Container(
+            width: double.infinity,
+            child: Image(
+              image: AssetImage("assets/images/Group 3361.png"),
+              
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 60, left: 15),
@@ -86,11 +90,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 3, left: 5),
-                        child: Image(
-                            image: AssetImage("assets/images/down-arrow.png")),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 3, left: 5),
+                      //   child: Image(
+                      //       image: AssetImage("assets/images/down-arrow.png")),
+                      // ),
                     ],
                   ),
                   SizedBox(
@@ -151,1112 +155,3261 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 150),
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Obx(
-                    () => (Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            homeController.home(1);
-
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                            // );
-                          },
-                          child: Container(
-                            height: 35,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: darkGreenColor),
-                              borderRadius: BorderRadius.circular(10),
-                              color: homeController.home.value == 1
-                                  ? darkGreenColor
-                                  : Colors.white,
-                            ),
-                            child: Center(
-                                child: Text(
-                              "Product 01",
-                              style: GoogleFonts.montserrat(
-                                  color: homeController.home.value == 1
-                                      ? Colors.white
-                                      : darkGreenColor),
-                            )),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            homeController.home(2);
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                            // );
-                          },
-                          child: Container(
-                            height: 35,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: darkGreenColor),
-                              borderRadius: BorderRadius.circular(10),
-                              color: homeController.home.value == 2
-                                  ? darkGreenColor
-                                  : Colors.white,
-                            ),
-                            child: Center(
-                                child: Text(
-                              "Product 02",
-                              style: GoogleFonts.montserrat(
-                                  color: homeController.home.value == 2
-                                      ? Colors.white
-                                      : darkGreenColor),
-                            )),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            homeController.home(3);
-
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                            // );
-                          },
-                          child: Container(
-                            height: 35,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: darkGreenColor),
-                              borderRadius: BorderRadius.circular(10),
-                              color: homeController.home.value == 3
-                                  ? darkGreenColor
-                                  : Colors.white,
-                            ),
-                            child: Center(
-                                child: Text(
-                              "Product 03",
-                              style: GoogleFonts.montserrat(
-                                  color: homeController.home.value == 3
-                                      ? Colors.white
-                                      : darkGreenColor),
-                            )),
-                          ),
-                        ),
-                      ],
-                    )),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "What are you looking?",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ListOfProducts()),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              Text(
-                                "View All",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Icon(Icons.navigate_next)
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      height: 95,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
+              child: Obx(() => (
+                 Column(
+                  children: [
+                        Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image(
-                                    image: AssetImage(
-                                        "assets/images/Group 3475.png")),
-                                Text(
-                                  "JEEVAN",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff3B438C),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3476.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "SEEDS",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff58D96A),
+                          InkWell(
+                            onTap: () {
+                              homeController.home(1);
+              
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                              // );
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: darkGreenColor),
+                                borderRadius: BorderRadius.circular(10),
+                                color: homeController.home.value == 1
+                                    ? darkGreenColor
+                                    : Colors.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Product 01",
+                                style: GoogleFonts.montserrat(
+                                    color: homeController.home.value == 1
+                                        ? Colors.white
+                                        : darkGreenColor),
+                              )),
                             ),
                           ),
                           SizedBox(
-                            width: 10,
+                            width: 15,
                           ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3477.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "PAANDAV",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xffF42700),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3478.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "UREA\nFERTILIZER",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 9,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff9EB52F),
+                          InkWell(
+                            onTap: () {
+                              homeController.home(2);
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                              // );
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: darkGreenColor),
+                                borderRadius: BorderRadius.circular(10),
+                                color: homeController.home.value == 2
+                                    ? darkGreenColor
+                                    : Colors.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Product 02",
+                                style: GoogleFonts.montserrat(
+                                    color: homeController.home.value == 2
+                                        ? Colors.white
+                                        : darkGreenColor),
+                              )),
                             ),
                           ),
                           SizedBox(
-                            width: 10,
+                            width: 15,
                           ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          InkWell(
+                            onTap: () {
+                              homeController.home(3);
+              
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                              // );
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: darkGreenColor),
+                                borderRadius: BorderRadius.circular(10),
+                                color: homeController.home.value == 3
+                                    ? darkGreenColor
+                                    : Colors.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Product 03",
+                                style: GoogleFonts.montserrat(
+                                    color: homeController.home.value == 3
+                                        ? Colors.white
+                                        : darkGreenColor),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    
+                    SizedBox(
+                      height: 20,
+                    ),
+                    
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "What are you looking?",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const ListOfProducts()),
+                              );
+                            },
+                            child: Row(
                               children: [
-                                Image(
-                                    image: AssetImage(
-                                        "assets/images/Group 3475.png")),
                                 Text(
-                                  "JEEVAN",
+                                  "View All",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
+                                Icon(Icons.navigate_next)
                               ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff3B438C),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3476.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "SEEDS",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff58D96A),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3477.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "PAANDAV",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xffF42700),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 95,
-                            width: 85,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 60,
-                                    child: Image.asset(
-                                      "assets/images/Group 3478.png",
-                                      height: 60,
-                                      fit: BoxFit.fitHeight,
-                                    )),
-                                Text(
-                                  "UREA\nFERTILIZER",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 9,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xff9EB52F),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 13,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Product Deals",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ProductViewAll()),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              Text(
-                                "View All",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Icon(Icons.navigate_next)
-                            ],
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/images/21.png",
-                                        
-                                        name: "Micro Nutrition Jeevan",
-                                      )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
-                                      image:
-                                          AssetImage("assets/images/21.png")),
-                                ),
-                                Text(
-                                  "Jeevan",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "220 gm",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize: 10.sp,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10.sp,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/image/aa.png",
-                                        name: "Micro Nutrition Khatam",
-                                      )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 80,
-                                    width: 30,
-                                    child: Image(
-                                      image: AssetImage("assets/image/aa.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "Khatma",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "120 gm",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize: 10,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/image/asset-4.png",
-                                        name: "Micro Nutrition Khatam",
-                                      )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
+                    if(homeController.home.value==1)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        height: 95,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
                                       image: AssetImage(
-                                          "assets/image/asset-4.png")),
-                                ),
-                                Text(
-                                  "Growth",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "120 gm",
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 10,
-                                      color: Colors.black,
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff3B438C),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff58D96A),
+                              ),
                             ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xffF42700),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff9EB52F),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff3B438C),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff58D96A),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xffF42700),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff9EB52F),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  //second
-
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/images/asset-3.png",
-                                        name: "Micro Nutrition Valorous",
+                    //product2
+                    if(homeController.home.value==2)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        height: 95,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
                                       )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: GoogleFonts.roboto(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight:
-                                                      Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Image(
-                                          image: AssetImage(
-                                              "assets/images/asset-3.png")),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  "Valorous",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "220 gm",
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 10,
-                                      color: Colors.black,
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 70, 174, 243),
+                              ),
                             ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/image/asset-3.png",
-                                        name: "Micro Nutrition Kratus",
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
                                       )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: GoogleFonts.roboto(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight:
-                                                      Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 80,
-                                        width: 40,
-                                        child: Image(
-                                          image: AssetImage(
-                                              "assets/image/asset-3.png"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  "Kratus",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "120 gm",
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10,
-                                      color: Colors.black,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 240, 118, 18),
+                              ),
                             ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutProductScreen(
-                                        image: "assets/image/asset-5.png",
-                                        name: "Micro Nutrition Cardinal",
+                            SizedBox(width: 10,),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
                                       )),
-                            );
-                          },
-                          child: Container(
-                            height: 150,
-                            width: 110,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: GoogleFonts.roboto(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight:
-                                                      Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Image(
-                                          image: AssetImage(
-                                              "assets/image/asset-5.png")),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  "Cardinal",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 60,
-                                  ),
-                                  child: Text(
-                                    "120 gm",
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10,
-                                      color: Colors.black,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        height: 17,
-                                        width: 52,
-                                        child: Text(
-                                          "Price:123",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 10,
-                                            color: darkGreenColor,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffECF2F0),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 25,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color: darkGreenColor,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                      ),
-                                    ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff58D96A),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 250, 49, 206),
+                              ),
                             ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff517937)),
-                              borderRadius: BorderRadius.circular(10),
+                            
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
+                             Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 70, 174, 243),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 240, 118, 18),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff58D96A),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 250, 49, 206),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  //end
-                ],
+                    //product3
+                    if(homeController.home.value==3)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        height: 95,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 57, 63, 6),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 238, 64, 72),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 148, 132, 236),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 124, 228, 155),
+                              ),
+                            ),
+                            
+                            SizedBox(
+                              width: 10,
+                            ),
+                             Container(
+                        height: 95,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3478.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "UREA\nFERTILIZER",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 57, 63, 6),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3477.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "PAANDAV",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 238, 64, 72),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      child: Image.asset(
+                                        "assets/images/Group 3476.png",
+                                        height: 60,
+                                        fit: BoxFit.fitHeight,
+                                      )),
+                                  Text(
+                                    "SEEDS",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 148, 132, 236),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 95,
+                              width: 85,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          "assets/images/Group 3475.png")),
+                                  Text(
+                                    "JEEVAN",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 124, 228, 155),
+                              ),
+                            ),
+                          ]
+                        )
+                             )
+                          ],
+                        ),
+                      ),
+                    ),
+                    //next
+                    SizedBox(
+                      height: 13,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Product Deals",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const ProductViewAll()),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  "View All",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Icon(Icons.navigate_next)
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    if(homeController.home.value==1)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/21.png",
+                                          
+                                          name: "Micro Nutrition Jeevan",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image:
+                                            AssetImage("assets/images/21.png")),
+                                  ),
+                                  Text(
+                                    "Jeevan",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10.sp,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10.sp,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/aa.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Container(
+                                      height: 80,
+                                      width: 30,
+                                      child: Image(
+                                        image: AssetImage("assets/image/aa.png"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Khatma",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-4.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image: AssetImage(
+                                            "assets/image/asset-4.png")),
+                                  ),
+                                  Text(
+                                    "Growth",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+              
+                    //second
+                   if(homeController.home.value==1)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/asset-3.png",
+                                          name: "Micro Nutrition Valorous",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/images/asset-3.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Valorous",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-3.png",
+                                          name: "Micro Nutrition Kratus",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 80,
+                                          width: 40,
+                                          child: Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-3.png"),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Kratus",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-5.png",
+                                          name: "Micro Nutrition Cardinal",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-5.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Cardinal",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    //third
+                    SizedBox(height: 20,),
+                    if(homeController.home.value==1)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/21.png",
+                                          
+                                          name: "Micro Nutrition Jeevan",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image:
+                                            AssetImage("assets/images/21.png")),
+                                  ),
+                                  Text(
+                                    "Jeevan",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10.sp,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10.sp,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/aa.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Container(
+                                      height: 80,
+                                      width: 30,
+                                      child: Image(
+                                        image: AssetImage("assets/image/aa.png"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Khatma",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-4.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image: AssetImage(
+                                            "assets/image/asset-4.png")),
+                                  ),
+                                  Text(
+                                    "Growth",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    //end
+                    //product2
+                    //first
+                    if(homeController.home.value==2)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/asset-3.png",
+                                          name: "Micro Nutrition Valorous",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/images/asset-3.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Valorous",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-3.png",
+                                          name: "Micro Nutrition Kratus",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 80,
+                                          width: 40,
+                                          child: Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-3.png"),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Kratus",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-5.png",
+                                          name: "Micro Nutrition Cardinal",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-5.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Cardinal",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    //second
+                    if(homeController.home.value==2)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/21.png",
+                                          
+                                          name: "Micro Nutrition Jeevan",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image:
+                                            AssetImage("assets/images/21.png")),
+                                  ),
+                                  Text(
+                                    "Jeevan",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10.sp,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10.sp,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/aa.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Container(
+                                      height: 80,
+                                      width: 30,
+                                      child: Image(
+                                        image: AssetImage("assets/image/aa.png"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Khatma",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-4.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image: AssetImage(
+                                            "assets/image/asset-4.png")),
+                                  ),
+                                  Text(
+                                    "Growth",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    //third
+                   
+                    //product3
+                     //first
+                     if(homeController.home.value==3)
+                     Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-4.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image: AssetImage(
+                                            "assets/image/asset-4.png")),
+                                  ),
+                                  Text(
+                                    "Growth",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/21.png",
+                                          
+                                          name: "Micro Nutrition Jeevan",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Image(
+                                        image:
+                                            AssetImage("assets/images/21.png")),
+                                  ),
+                                  Text(
+                                    "Jeevan",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10.sp,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10.sp,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/aa.png",
+                                          name: "Micro Nutrition Khatam",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Container(
+                                      height: 80,
+                                      width: 30,
+                                      child: Image(
+                                        image: AssetImage("assets/image/aa.png"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Khatma",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                     //second
+                     if(homeController.home.value==3)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/images/asset-3.png",
+                                          name: "Micro Nutrition Valorous",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/images/asset-3.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Valorous",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "220 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-3.png",
+                                          name: "Micro Nutrition Kratus",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 80,
+                                          width: 40,
+                                          child: Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-3.png"),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Kratus",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AboutProductScreen(
+                                          image: "assets/image/asset-5.png",
+                                          name: "Micro Nutrition Cardinal",
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 110,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 50),
+                                          child: Container(
+                                            height: 10,
+                                            width: 40,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "Out Of Sales",
+                                              style: GoogleFonts.roboto(
+                                                fontSize: 6,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffEAB252),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(5))),
+                                          ),
+                                        ),
+                                        Image(
+                                            image: AssetImage(
+                                                "assets/image/asset-5.png")),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Cardinal",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 60,
+                                    ),
+                                    child: Text(
+                                      "120 gm",
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 10,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(right: 5, left: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 17,
+                                          width: 52,
+                                          child: Text(
+                                            "Price:123",
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 10,
+                                              color: darkGreenColor,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffECF2F0),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: darkGreenColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff517937)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     //third
+
+                  ],
+                 )
+                ),
               ),
             ),
           ),

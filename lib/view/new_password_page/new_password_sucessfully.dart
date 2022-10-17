@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/landing_page/login_page.dart';
+import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 
 class NewPasswordSucessfully extends StatefulWidget {
   const NewPasswordSucessfully({super.key});
@@ -71,7 +72,7 @@ class _NewPasswordSucessfullyState extends State<NewPasswordSucessfully> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                          builder: (context) => const LoginScreen()),
                     );
                   },
                   child: Padding(

@@ -70,7 +70,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
               ),
             ],
           ),
-
+      
            Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,6 +78,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
               Padding(
                 padding: const EdgeInsets.only(right: 20, left: 20),
                 child: Container(
+                  
                   height: 50,
                   width: size.width,
                   child: TextFormField(
@@ -154,6 +155,7 @@ class _SignUpMobNumberState extends State<SignUpMobNumber> {
               ),
             ),
           ),
+           
         ],
       ),
       

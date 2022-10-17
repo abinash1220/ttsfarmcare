@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
+import 'package:ttsfarmcare/view/home_Screen/payment_Screen.dart';
 import 'package:ttsfarmcare/view/order_history_page/order_history_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_page.dart';
 
@@ -44,7 +45,7 @@ class _ViewCartScreenState extends State<ViewCartScreen> {
       body: Stack(
         children: [
           Container(
-              width: size.width,
+              width:double.infinity,
               // height: size.height * 0.35,
               child: Image(
                 image: AssetImage("assets/images/Group 3361.png"),
@@ -103,13 +104,22 @@ class _ViewCartScreenState extends State<ViewCartScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Container(
-                      height: 23,
-                      width: 23,
-                      decoration: BoxDecoration(
-                          // color: darkGreenColor,
-                          border: Border.all(color: Color(0xff707070)),
-                          borderRadius: BorderRadius.circular(15)),
+                    InkWell(
+                      onTap: (){
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddressScreen()),
+                        );
+                      },
+                      child: Container(
+                        height: 23,
+                        width: 23,
+                        decoration: BoxDecoration(
+                            // color: darkGreenColor,
+                            border: Border.all(color: Color(0xff707070)),
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
                     ),
                     Text(
                       "Address",
@@ -119,13 +129,22 @@ class _ViewCartScreenState extends State<ViewCartScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Container(
-                      height: 23,
-                      width: 23,
-                      decoration: BoxDecoration(
-                          //color: darkGreenColor,
-                          border: Border.all(color: Color(0xff707070)),
-                          borderRadius: BorderRadius.circular(15)),
+                    InkWell(
+                      onTap: (){
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PaymentScreen()),
+                        );
+                      },
+                      child: Container(
+                        height: 23,
+                        width: 23,
+                        decoration: BoxDecoration(
+                            //color: darkGreenColor,
+                            border: Border.all(color: Color(0xff707070)),
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
                     ),
                     Text(
                       "Payment",

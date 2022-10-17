@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/forgot_password_page/verication_code_page.dart';
+import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/test_sign_up.dart';
 
 import '../landing_page/landing_screen.dart';
@@ -81,6 +82,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     height: 50,
                     width: size.width,
                     child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                          filled: true,
                           fillColor: Color(0xffECF2F0),
@@ -150,7 +152,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SignUpTestView()),
+                      MaterialPageRoute(builder: (context) => const ExamsView()),
                     );
                   },
                   child: Padding(

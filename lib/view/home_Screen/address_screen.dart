@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/payment_Screen.dart';
+import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
 
 import '../../controllers/home_Controllers.dart';
 
@@ -86,13 +87,22 @@ class _AddressScreenState extends State<AddressScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              height: 23,
-                              width: 23,
-                              decoration: BoxDecoration(
-                                  // color: darkGreenColor,
-                                  border: Border.all(color: Color(0xff707070)),
-                                  borderRadius: BorderRadius.circular(15)),
+                            InkWell(
+                              onTap: (){
+                                 Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ViewCartScreen()),
+                        );
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                decoration: BoxDecoration(
+                                    // color: darkGreenColor,
+                                    border: Border.all(color: Color(0xff707070)),
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
                             ),
                             SizedBox(
                               width: 10,
@@ -133,13 +143,22 @@ class _AddressScreenState extends State<AddressScreen> {
                             SizedBox(
                               width: 10,
                             ),
-                            Container(
-                              height: 23,
-                              width: 23,
-                              decoration: BoxDecoration(
-                                  //color: darkGreenColor,
-                                  border: Border.all(color: Color(0xff707070)),
-                                  borderRadius: BorderRadius.circular(15)),
+                            InkWell(
+                              onTap: (){
+                                 Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PaymentScreen()),
+                        );
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                decoration: BoxDecoration(
+                                    //color: darkGreenColor,
+                                    border: Border.all(color: Color(0xff707070)),
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
                             ),
                             SizedBox(
                               width: 10,

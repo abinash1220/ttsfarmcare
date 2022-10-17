@@ -41,7 +41,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Stack(
             children: [
-              Image(image: AssetImage("assets/images/Group 3361.png")),
+              Container(
+                width: double.infinity,
+                child: Image(image: AssetImage("assets/images/Group 3361.png"))),
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
                 child: Row(

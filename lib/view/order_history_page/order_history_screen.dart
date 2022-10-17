@@ -28,7 +28,7 @@ final homeController = Get.find<HomeControllers>();
       body: Stack(
         children: [
           Container(
-              width: size.width,
+              width:double.infinity,
               // height: size.height * 0.35,
               child: Image(
                 image: AssetImage("assets/images/Group 3361.png"),

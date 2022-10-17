@@ -6,9 +6,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/payment_sucessfully.dart';
+import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
 
 import '../../controllers/payment_controller.dart';
 import '../../controllers/view_cart_controller.dart';
+import 'address_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -99,14 +101,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Container(
-                                  height: 23,
-                                  width: 23,
-                                  
-                                  decoration: BoxDecoration(
-                                   // color: darkGreenColor,
-                                    border: Border.all(color: Color(0xff707070)),
-                                    borderRadius: BorderRadius.circular(15)
+                                InkWell(
+                                  onTap: (){
+                                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ViewCartScreen()),
+                        );
+                                  },
+                                  child: Container(
+                                    height: 23,
+                                    width: 23,
+                                    decoration: BoxDecoration(
+                                     // color: darkGreenColor,
+                                      border: Border.all(color: Color(0xff707070)),
+                                      borderRadius: BorderRadius.circular(15)
+                                    ),
                                   ),
                                 ),
                                 
@@ -118,13 +128,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                                 ),
                                
-                                Container(
-                                  height: 23,
-                                  width: 23,
-                                  decoration: BoxDecoration(
-                                   // color: darkGreenColor,
-                                    border: Border.all(color: Color(0xff707070)),
-                                    borderRadius: BorderRadius.circular(15)
+                                InkWell(
+                                  onTap: (){
+                                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddressScreen()),
+                        );
+                                  },
+                                  child: Container(
+                                    height: 23,
+                                    width: 23,
+                                    decoration: BoxDecoration(
+                                     // color: darkGreenColor,
+                                      border: Border.all(color: Color(0xff707070)),
+                                      borderRadius: BorderRadius.circular(15)
+                                    ),
                                   ),
                                 ),
                                

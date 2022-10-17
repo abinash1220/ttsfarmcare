@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 
 import '../landing_page/landing_screen.dart';
+import '../new_password_page/new_password.dart';
 import '../new_password_page/new_password_screen.dart';
 
 class VerificationCodeScreen extends StatefulWidget {
@@ -128,7 +129,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const NewPasswordScreen()),
+                      MaterialPageRoute(builder: (context) => const NewPasswordPage()),
                     );
                   },
                   child: Padding(
