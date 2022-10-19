@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/app_colors.dart';
-import 'new_password_sucessfully.dart';
+import 'new_password_successfully_screen.dart';
 
 class NewPasswordPage extends StatefulWidget {
   const NewPasswordPage({super.key});
@@ -22,7 +22,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
     return Scaffold(
        appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.only(bottom: 60),
+          padding: const EdgeInsets.only(bottom: 120),
           child: InkWell(
             onTap: () {
             Get.back();
@@ -35,14 +35,11 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
           ),
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Column(
-            children: [
-               Image(
-                height: 200,
-                image: AssetImage("assets/images/zxc.png",),),
-           
-            ],
+          padding: const EdgeInsets.only(right: 35),
+          child: Center(
+            child: Image(
+             height: 200,
+             image: AssetImage("assets/images/zxc.png",),),
           ),
         ),
           toolbarHeight: 200,
@@ -57,7 +54,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       image: AssetImage("assets/images/top img.png"),
                       fit: BoxFit.fill),
                   borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(50))),
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
             ),
           )),
           body: Container(
@@ -71,7 +68,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 return Container(
                   decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(50))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
                   child: Center(
                     child: ListView(
                      shrinkWrap: true,
@@ -109,15 +106,18 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     width: size.width,
                     child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
+                    cursorColor: darkGreenColor,
                     decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: darkGreenColor)),
-                      //filled: true,
-                      // fillColor: Color(0xffECF2F0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
+                     focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Color(0xff016942),width:0.7)
+                        ), 
                       hintText: "Enter New Password",
+                      isDense: true,
                       hintStyle: GoogleFonts.poppins(
                         color: const Color(0xff292724),
                       ),
@@ -150,15 +150,18 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     width: size.width,
                     child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
+                    cursorColor: darkGreenColor,
                     decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: darkGreenColor)),
-                      //filled: true,
-                      // fillColor: Color(0xffECF2F0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Color(0xff016942),width:0.7)
+                        ), 
                       hintText: "Confirm Password",
+                      isDense: true,
                       hintStyle: GoogleFonts.poppins(
                         color: const Color(0xff292724),
                       ),
@@ -174,7 +177,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const NewPasswordSucessfully()),
+                        builder: (context) => const PasswordSuccessfullyScreen()),
                     );
                   },
                   child: Padding(

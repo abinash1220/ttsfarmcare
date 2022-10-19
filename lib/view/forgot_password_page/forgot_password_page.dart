@@ -1,66 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/constants/app_colors.dart';
-import 'package:ttsfarmcare/view/forgot_password_page/verication_code_page.dart';
-import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
-import 'package:ttsfarmcare/view/sign_in_view/test_sign_up.dart';
+import 'package:ttsfarmcare/view/forgot_password_page/verification_code_screen.dart';
 
-import '../landing_page/landing_screen.dart';
+import '../../constants/app_colors.dart';
+import '../home_Screen/test_screen.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
-     var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-          children: [
-            Container(
-              width: size.width,
-              // height: size.height * 0.35,
-              child: Image(
-                image: AssetImage("assets/images/3453.png"),
-                fit: BoxFit.fill,
-              )
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 120),
+          child: InkWell(
+            onTap: () {
+            Get.back();
+          },
+            child: Image(
+              image: AssetImage(
+                "assets/icons/img.png",
               ),
-              Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 80),
-                child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LandingScreen()),
-                    );
-                  },
-                  child: Image(image: AssetImage("assets/icons/img.png"))),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 40),
-                child: Image(image: AssetImage("assets/images/zxc.png")),
-              ),
-              Container(
-                height: 1,
-              ),
-            ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 310,left: 10),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 35),
+          child: Center(
+            child: Image(
+             height: 200,
+             image: AssetImage("assets/images/zxc.png",),),
+          ),
+        ),
+          toolbarHeight: 200,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/top img.png"),
+                      fit: BoxFit.fill),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
+            ),
+          )),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/bottom img.png"),
+              fit: BoxFit.fill),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+               
+                children: [
+                  Padding(
+            padding: const EdgeInsets.only(left: 10),
             child: Column(
               children: [
                 Text(
                     "Forgot Password",
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
                         
@@ -83,12 +100,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     width: size.width,
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
+                      cursorColor: darkGreenColor,
                       decoration: InputDecoration(
                          filled: true,
                           fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
+                          isDense: true,
+                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
                         ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                         hintText: "Enter Email / Phone Number",
                         hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
@@ -102,7 +126,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const VerificationCodeScreen()),
+                      MaterialPageRoute(builder: (context) => const VerificationCode()),
                     );
                   },
                   child: Padding(
@@ -127,7 +151,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                Text("Or",style: GoogleFonts.poppins(color: Color(0xff016942),fontSize: 20),),
+                Text("Or",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  color: Color(0xff016942),
+                  fontSize: 20),),
                 SizedBox(height: 30,),
                 Padding(
                   padding: const EdgeInsets.only(left: 35,right: 35),
@@ -143,7 +171,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               SizedBox(
                 height: 15
               ),
-              Text("Don't have an account?",style: GoogleFonts.poppins(color:Color(0xffb0D8446),
+              Text("Don't have an account?",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(color:Color(0xffb0D8446),
               fontSize: 16,
               ),
               ),
@@ -178,7 +208,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ],
             ),
           ),
-          ],
+              ]),
+        ),
       ),
     );
   }

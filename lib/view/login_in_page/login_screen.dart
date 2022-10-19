@@ -7,10 +7,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
-
-import '../forgot_password_page/forgot_password_screen.dart';
-import '../home_Screen/home_Screen.dart';
-import '../sign_in_view/test_sign_up.dart';
+import '../forgot_password_page/forgot_password_page.dart';
+import '../home_Screen/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
        appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.only(bottom: 60),
+          padding: const EdgeInsets.only(bottom: 120),
           child: InkWell(
             onTap: () {
             Get.back();
@@ -52,14 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Column(
-            children: [
-               Image(
-                height: 200,
-                image: AssetImage("assets/images/zxc.png",),),
-           
-            ],
+          padding: const EdgeInsets.only(right: 35),
+          child: Center(
+            child: Image(
+             height: 200,
+             image: AssetImage("assets/images/zxc.png",),),
           ),
         ),
           toolbarHeight: 200,
@@ -74,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       image: AssetImage("assets/images/top img.png"),
                       fit: BoxFit.fill),
                   borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(50))),
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
             ),
           )),
           body: Container(
@@ -88,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 return Container(
                   decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(50))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
                   child: Center(
                     child: Padding(
                       padding:  EdgeInsets.only(top:isKeyboardVisible? 10 : 50,bottom: isKeyboardVisible? 100 : 0),
@@ -119,12 +114,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: darkGreenColor,
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                         filled: true,
                         isDense: true,
                         fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        
                         hintText: "Email / User Name",
                         hintStyle:GoogleFonts.montserrat(
                           color: const Color(0xff517937),
@@ -143,16 +144,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: size.width,
                     child: TextFormField(
                       keyboardType: TextInputType.visiblePassword,
-                      cursorColor:darkGreenColor,                    
+                      cursorColor:darkGreenColor, 
+                                         
                       obscureText: _isHidden,
                       // controller: passwordcontroller,
                       decoration: InputDecoration(
+                         focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7),
+                        ), 
                         filled: true,
                         isDense: true,
                         fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                       
                         hintText: "Password",
                         suffixIcon: InkWell(
                           onTap: _togglePasswordView,
@@ -192,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const ForgotPasswordPage()),
+                                    const ForgotPasswordScreen()),
                           );
                         },
                         child: Text(
@@ -212,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   },
                   child: Padding(

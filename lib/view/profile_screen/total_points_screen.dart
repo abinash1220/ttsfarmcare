@@ -3,84 +3,68 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 
 import '../../constants/app_colors.dart';
 
-class TotalPoint extends StatefulWidget {
-  const TotalPoint({super.key});
+class TotalPointsScreen extends StatefulWidget {
+  const TotalPointsScreen({super.key});
 
   @override
-  State<TotalPoint> createState() => _TotalPointState();
+  State<TotalPointsScreen> createState() => _TotalPointsScreenState();
 }
 
-class _TotalPointState extends State<TotalPoint> {
+class _TotalPointsScreenState extends State<TotalPointsScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return Container(
-          child: Column(
-            children: [
-              Container(
-                height: constraints.maxHeight > 600
-                    ? size.height * 0.2
-                    : size.height * 0.3,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                       
-                      child: Image(
-                        image: AssetImage("assets/images/Group 3361.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Total Points",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              
-                            ],
-                          ),
-                          Image(
-                                  image:
-                                      AssetImage("assets/images/Group 3466.png")),
-
-                             
-                        ],
-                      ),
-                    ),
-                    
-                  ],
-                ),
-              ),
-               Image(
+       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+          Get.back();
+        },
+          child: Icon(Icons.arrow_back,)
+        ),
+        title: Text("Total Points",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            titleSpacing: -10,
+            actions: [
+               Padding(
+                 padding: const EdgeInsets.only(right: 20),
+                 child: Image(
+                  height: 45,width: 45,
+                  image: AssetImage("assets/images/Group 3470.png")),
+               ),
+            ],
+          toolbarHeight: 92,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Color(0xff289445),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(40))),
+            ),
+          )),
+          body: Container(
+               decoration: BoxDecoration(
+              color: Color(0xff289445),
+        ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10,),
+                      Image(
                        image:
                         AssetImage("assets/image/Group 3464.png"),
                         fit: BoxFit.fill,
@@ -89,7 +73,7 @@ class _TotalPointState extends State<TotalPoint> {
                          Text(
                                 "Points Earned",
                                 style: GoogleFonts.montserrat(
-                                  fontSize: 25,
+                                  fontSize: 23,
                                   color: Color(0xff000000),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -100,27 +84,27 @@ class _TotalPointState extends State<TotalPoint> {
                                 "       to reward customers for purchases and other\n"
                                 "actions with points that can be redeemed for discounts.",
                                 style: GoogleFonts.montserrat(
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xff2D3130),
                                   
                                 ),
                               ),
                               SizedBox(height: 15,),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 14,right: 14),
                                 child: Divider(
                                   thickness: 1,
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 15,right: 15),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                 Text(
                                   "Order Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 25,
+                                    fontSize: 22,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -128,7 +112,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 Text(
                                   "25 Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Color(0xff016942),
                                     
                                   ),
@@ -137,20 +121,20 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 14,right: 14),
                                 child: Divider(
                                   thickness: 1,
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 15,right: 15),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                 Text(
                                   "Refer Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 25,
+                                    fontSize: 22,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -158,7 +142,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 Text(
                                   "50 Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Color(0xff016942),
                                     
                                   ),
@@ -167,20 +151,20 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 14,right: 14),
                                 child: Divider(
                                   thickness: 1,
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 15,right: 15),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                 Text(
                                   "Total Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 25,
+                                    fontSize: 22,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -188,7 +172,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 Text(
                                   "75 Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Color(0xff016942),
                                     
                                   ),
@@ -197,20 +181,20 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 14,right: 14),
                                 child: Divider(
                                   thickness: 1,
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 15,right: 15),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                 Text(
                                   "100 Points",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 25,
+                                    fontSize: 22,
                                     color: Color(0xff000000),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -221,7 +205,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 Text(
                                   "₹ 01 Rupee",
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Color(0xff016942),
                                     
                                   ),
@@ -230,7 +214,7 @@ class _TotalPointState extends State<TotalPoint> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                padding: const EdgeInsets.only(left: 14,right: 14),
                                 child: Divider(
                                   thickness: 1,
                                 ),
@@ -238,10 +222,10 @@ class _TotalPointState extends State<TotalPoint> {
                               SizedBox(height: 30,),
                               InkWell(
                             onTap: (){
-                              // Navigator.push(
-                              //            context,
-                              //            MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                              //          );
+                              Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => const ProfilePage()),
+                                       );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 35,right: 35),
@@ -252,7 +236,7 @@ class _TotalPointState extends State<TotalPoint> {
                                   child: Text("Get Orders",
                                   style: GoogleFonts.poppins(
                                     color: Colors.white,
-                                    fontSize: 25,
+                                    fontSize: 23,
                                     fontWeight: FontWeight.w400
                                   ),
                                   ),
@@ -264,11 +248,10 @@ class _TotalPointState extends State<TotalPoint> {
                               ),
                             ),
                           ),
-
-            ]),
-
-        );
-      }),
+                    ]
+                    ),
+            ),
+            ),
     );
   }
 }

@@ -4,79 +4,63 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class InviteFriend extends StatefulWidget {
-  const InviteFriend({super.key});
+class InviteFriendsScreen extends StatefulWidget {
+  const InviteFriendsScreen({super.key});
 
   @override
-  State<InviteFriend> createState() => _InviteFriendState();
+  State<InviteFriendsScreen> createState() => _InviteFriendsScreenState();
 }
 
-class _InviteFriendState extends State<InviteFriend> {
+class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return Container(
-          child: Column(
-            children: [
-              Container(
-                height: constraints.maxHeight > 600
-                    ? size.height * 0.2
-                    : size.height * 0.3,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                       
-                      child: Image(
-                        image: AssetImage("assets/images/Group 3361.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Invite Friends",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              
-                            ],
-                          ),
-                          Image(
-                                  image:
-                                      AssetImage("assets/images/Group 3466.png")),
-                        ],
-                      ),
-                    ),
-                    
-                  ],
-                ),
-              ),
-              Container(
+       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+          Get.back();
+        },
+          child: Icon(Icons.arrow_back,)
+        ),
+       title: Text("Invite Friends",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            titleSpacing: -10,
+            actions: [
+               Padding(
+                 padding: const EdgeInsets.only(right: 20),
+                 child: Image(
+                  height: 45,width: 45,
+                  image: AssetImage("assets/images/Group 3470.png")),
+               ),
+            ],
+          toolbarHeight: 92,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Color(0xff289445),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(40))),
+            ),
+          )),
+          body: Container(
+               decoration: BoxDecoration(
+              color: Color(0xff289445),
+        ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  child: Column(
+                    children: [
+                      Container(
                 height: 250,
                 width: 250,
                 child: Image(
@@ -211,10 +195,10 @@ class _InviteFriendState extends State<InviteFriend> {
                             ],
                           ),
 
-            ]
-          )
-        );
-      }),
+                    ]
+                    ),
+            ),
+            ),
     );
   }
 }

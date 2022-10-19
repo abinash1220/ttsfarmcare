@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/view/sign_in_view/signUp_otp_screen.dart';
+import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
+
+import '../../constants/app_colors.dart';
 
 class MobileNumber extends StatefulWidget {
   const MobileNumber({super.key});
@@ -14,42 +17,54 @@ class MobileNumber extends StatefulWidget {
 }
 
 class _MobileNumberState extends State<MobileNumber> {
+
+  final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}*$');
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
      appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-          Get.back();
-        },
-          child: Image(
-            image: AssetImage(
-              "assets/icons/img.png",
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 120),
+          child: InkWell(
+            onTap: () {
+            Get.back();
+          },
+            child: Image(
+              image: AssetImage(
+                "assets/icons/img.png",
+              ),
             ),
           ),
         ),
         title: Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: Column(
-            children: [
-               Image(
-                              image: AssetImage("assets/images/Group 3472.png"),height: 100,),
-            SizedBox(height: 10,),
-              Text(
-                      "Mobile Number",
-                      style: GoogleFonts.montserrat(color: Colors.white, fontSize: 17),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "We need to send OTP authenticate your number",
-                      style: GoogleFonts.montserrat(color: Colors.white60, fontSize: 13),
-                    ),
-            ],
+          padding: const EdgeInsets.only(right: 30),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 Image(
+                                image: AssetImage("assets/images/Group 3472.png"),height: 100,),
+              SizedBox(height: 10,),
+                Text(
+                        "Mobile Number",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(color: Colors.white, fontSize: 17),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "We need to send OTP authenticate your number",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(color: Colors.white60, fontSize: 13),
+                      ),
+              ],
+            ),
           ),
         ),
+        
           toolbarHeight: 250,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -93,13 +108,20 @@ class _MobileNumberState extends State<MobileNumber> {
                   width: size.width,
                   child: TextFormField(
                       keyboardType: TextInputType.number,
+                      cursorColor: darkGreenColor,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
                         ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7),
+                        ), 
                         hintText: "India(+91)",
+                        isDense: true,
                         hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
@@ -113,19 +135,38 @@ class _MobileNumberState extends State<MobileNumber> {
                     child: Container(
                   height: 50,
                   width: size.width,
+                  
                   child: TextFormField(
                       keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(10),
+                        
+                      ],
+                      cursorColor: darkGreenColor,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
+                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
                         ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7),
+                        ), 
                         hintText: "Mobile Number",
+                        
+                        isDense: true,
                         hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
                       ),
+                      validator: (value) {
+                      if (!phoneRegex.hasMatch(value!)) {
+                        return 'Please enter valid phone number';
+                      }
+                      return null;
+                    },
                   ),
                     ),
                   ),
@@ -135,7 +176,7 @@ class _MobileNumberState extends State<MobileNumber> {
                    Navigator.push(
                      context,
                      MaterialPageRoute(
-                           builder: (context) => const SignUpOtpScreen()),
+                           builder: (context) => const SignUpOtp()),
                    );
                      },
                      child: Padding(

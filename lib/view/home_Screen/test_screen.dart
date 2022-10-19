@@ -7,10 +7,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 
+import '../../constants/app_colors.dart';
 import '../../controllers/sign_up_controllers.dart';
-import '../landing_page/login_page.dart';
 import '../sign_in_view/mobile_number.dart';
-import '../sign_in_view/signUp_mobileNumber_screen.dart';
 
 class ExamsView extends StatefulWidget {
   const ExamsView({super.key});
@@ -46,51 +45,59 @@ class _ExamsViewState extends State<ExamsView> {
     
     return Scaffold(
       appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-          Get.back();
-        },
-          child: Image(
-            image: AssetImage(
-              "assets/icons/img.png",
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 50),
+          child: InkWell(
+            onTap: () {
+            Get.back();
+          },
+            child: Image(
+              image: AssetImage(
+                "assets/icons/img.png",
+              ),
             ),
           ),
         ),
-        title: Column(
-          children: [
-            Text(
-                 "Register",
-                  style: GoogleFonts.montserrat(
-                   color: Colors.white,
-                   fontWeight: FontWeight.bold,
-                   fontSize: 45,
-                    shadows: [
-                        Shadow(
-                        blurRadius: 6.0,
-                         color: Color(0xff707070),
-                         offset: Offset(3.0, 3.0),
-                          ),
-                        ],
-                   ),
-                 ),
-           SizedBox(
-               height: 5,
+        title: Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Center(
+            child: Column(
+              children: [
+                Text(
+                     "Register",
+                      style: GoogleFonts.montserrat(
+                       color: Colors.white,
+                       fontWeight: FontWeight.bold,
+                       fontSize: 45,
+                        shadows: [
+                            Shadow(
+                            blurRadius: 6.0,
+                             color: Color(0xff707070),
+                             offset: Offset(3.0, 3.0),
+                              ),
+                            ],
+                       ),
+                     ),
+               SizedBox(
+                   height: 5,
+                      ),
+                 Text(
+                    "Create Your New Account",
+                     style: GoogleFonts.montserrat(
+                     color: Colors.white,
+                     fontSize: 22,
+                      shadows: [
+                            Shadow(
+                            blurRadius: 8.0,
+                             color: Color(0xff707070),
+                             offset: Offset(3.0, 3.0),
+                              ),
+                            ],
                   ),
-             Text(
-                "Create Your New Account",
-                 style: GoogleFonts.montserrat(
-                 color: Colors.white,
-                 fontSize: 22,
-                  shadows: [
-                        Shadow(
-                        blurRadius: 8.0,
-                         color: Color(0xff707070),
-                         offset: Offset(3.0, 3.0),
-                          ),
-                        ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
           toolbarHeight: 150,
           backgroundColor: Colors.transparent,
@@ -232,12 +239,19 @@ class _ExamsViewState extends State<ExamsView> {
                                       RegExp("[a-z A-Z]"))
                                 ],
                                 controller: usernamecontroller,
+                                cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                   filled: true,
                                   fillColor: Color(0xffECF2F0),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
+                                  isDense: true,
                                   hintText: "User Name",
                                   hintStyle: GoogleFonts.montserrat(
                                     color: const Color(0xff517937),
@@ -260,12 +274,19 @@ class _ExamsViewState extends State<ExamsView> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.name,
                                       controller: companynamecontroller,
+                                      cursorColor: darkGreenColor,
                                       decoration: InputDecoration(
+                                         focusedBorder: OutlineInputBorder(
+                                         borderRadius: BorderRadius.circular(30),
+                                         borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                                           ),
+                                          enabledBorder:OutlineInputBorder(
+                                         borderRadius: BorderRadius.circular(30),
+                                         borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                                        ), 
                                         filled: true,
                                         fillColor: Color(0xffECF2F0),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
+                                        isDense: true,
                                         hintText: "Company name",
                                         hintStyle: GoogleFonts.montserrat(
                                           color: const Color(0xff517937),
@@ -284,12 +305,20 @@ class _ExamsViewState extends State<ExamsView> {
                                     width: size.width,
                                     child: TextFormField(
                                       controller: gstnumbercontroller,
+                                      cursorColor: darkGreenColor,
                                       decoration: InputDecoration(
+                                         focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                         filled: true,
                                         fillColor: Color(0xffECF2F0),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
+                                        isDense: true,
+                                        
                                         hintText: "GST Number",
                                         hintStyle: GoogleFonts.montserrat(
                                           color: const Color(0xff517937),
@@ -311,12 +340,19 @@ class _ExamsViewState extends State<ExamsView> {
                               child: TextFormField(
                                 controller: emailcontroller,
                                 keyboardType: TextInputType.emailAddress,
+                                cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                   filled: true,
                                   fillColor: Color(0xffECF2F0),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
+                                  isDense: true,
                                   hintText: "Email ID",
                                   hintStyle: GoogleFonts.montserrat(
                                     color: const Color(0xff517937),
@@ -337,12 +373,19 @@ class _ExamsViewState extends State<ExamsView> {
                                 keyboardType: TextInputType.visiblePassword,
                                 obscureText: _isHidden,
                                 controller: passwordcontroller,
+                                cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                   filled: true,
                                   fillColor: Color(0xffECF2F0),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
+                                  isDense: true,
                                   hintText: "Password",
                                   suffixIcon: InkWell(
                                     onTap: _togglePasswordView,
@@ -370,14 +413,20 @@ class _ExamsViewState extends State<ExamsView> {
                               width: size.width,
                               child: TextFormField(
                                 keyboardType: TextInputType.streetAddress,
+                                cursorColor: darkGreenColor,
                                 controller: addresscontroller,
                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                   filled: true,
                                   isDense: true,
                                   fillColor: Color(0xffECF2F0),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
                                   hintText: "Address",
                                   hintStyle: GoogleFonts.montserrat(
                                     color: const Color(0xff517937),
@@ -392,7 +441,7 @@ class _ExamsViewState extends State<ExamsView> {
                           Padding(
                             padding: const EdgeInsets.only(left: 25,right: 25),
                             child: Container(
-                              height: 55.h,
+                              height: 58.h,
                               width: size.width,
                               child: DropdownSearch<String>(
                                 popupProps: PopupProps.menu(
@@ -408,16 +457,19 @@ class _ExamsViewState extends State<ExamsView> {
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                   textAlign: TextAlign.start,
                                   dropdownSearchDecoration: InputDecoration(
+                                     focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                        ),
+                        enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
+                        ), 
                                     filled: true,
                                     fillColor: const Color(0xffECF2F0),
                                     iconColor: Color(0xff517937),
-
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(30)),
-                                        borderSide: BorderSide(
-                                          color: const Color(0xff517937),
-                                        )),
+                                    isDense: true,
+                                   
                                     //labelText: "district",
 
                                     hintText: "District",

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/view/landing_page/login_page.dart';
 import '../home_Screen/test_screen.dart';
 import '../login_in_page/login_screen.dart';
-import '../sign_in_view/test_sign_up.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});

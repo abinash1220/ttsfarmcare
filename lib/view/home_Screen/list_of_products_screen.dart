@@ -4,85 +4,70 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
 
 import '../../controllers/home_Controllers.dart';
-import '../order_history_page/order_history_screen.dart';
-import '../profile_screen/profile_page.dart';
-import 'home_Screen.dart';
+import '../order_history_page/order_history.dart';
+import '../profile_screen/profile_screen.dart';
+import '../view_cart_pages/view_cart_screen.dart';
+import 'home_page.dart';
 
-class ListOfProducts extends StatefulWidget {
-  const ListOfProducts({super.key});
+class ListOfProductScreen extends StatefulWidget {
+  const ListOfProductScreen({super.key});
 
   @override
-  State<ListOfProducts> createState() => _ListOfProductsState();
+  State<ListOfProductScreen> createState() => _ListOfProductScreenState();
 }
 
-class _ListOfProductsState extends State<ListOfProducts> {
+class _ListOfProductScreenState extends State<ListOfProductScreen> {
 
-final homeController = Get.find<HomeControllers>();
+  final homeController = Get.find<HomeControllers>();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return Container(
-          child: Column(
-            children: [
-              Container(
-              height: constraints.maxHeight > 600
-                  ? size.height * 0.22
-                  : size.height * 0.3,
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: Image(
-                      image: AssetImage("assets/images/Group 3361.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+          Get.back();
+        },
+          child: Icon(Icons.arrow_back,)
+        ),
+        title: Text("What are you looking?",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            titleSpacing: -10,
+            actions: [
+               Image(image: AssetImage("assets/images/Group 3466.png")),
+            ],
+          toolbarHeight: 92,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Color(0xff289445),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(40))),
+            ),
+          )),
+          body: Container(
+               decoration: BoxDecoration(
+              color: Color(0xff289445),
+        ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(40),bottomRight:Radius.circular(40) )),
+                  child: Column(
+                    children: [
+                      Padding(
                     padding:
-                        const EdgeInsets.only(top: 50, left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "Product View All",
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Image(
-                            image: AssetImage("assets/images/Group 3466.png")),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 140, left: 15, right: 15),
+                        const EdgeInsets.only(top:20,left: 15, right: 15),
                     child: TextFormField(
                       decoration: InputDecoration(
                         isDense: true,
@@ -105,13 +90,9 @@ final homeController = Get.find<HomeControllers>();
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              height: constraints.maxHeight > 600
-                  ? size.height * 0.66
-                  : size.height * 0.7,
+                  SizedBox(height: 20,),
+                  Container(
+              height: size.height*0.65,
               alignment: Alignment.topCenter,
               child: ListView(
                 shrinkWrap: true,
@@ -644,177 +625,180 @@ final homeController = Get.find<HomeControllers>();
                           ],
                         ),
                       ),
+                      //last
+                      
                     ],
                   ),
                 ]),
             ),
-            ]),
-        );
-      }),
-      bottomNavigationBar: Obx(
-        () => Container(
-          height: 90,
-          child: Column(
-            children: [
-              Container(
-                height: 100,
-                width: double.infinity,
+
+                    ]),
+            ),
+            ),
+            bottomNavigationBar: Obx(() => (
+               Container(
+              color: Colors.white,
+              child: Container(
+                height: 60,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/Group 3362.png"),
-                        fit: BoxFit.fill)),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 40,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(1);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image: AssetImage("assets/images/home.png"),
-                                  color: homeController.bottomIcon == 1
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Home",
-                                  style: TextStyle(
+                  color: Color(0xff289445),
+                    borderRadius:
+                        BorderRadius.only(topLeft: Radius.circular(35))),
+                        child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 40,
+                            child: InkWell(
+                              onTap: () {
+                                homeController.bottomIcon(1);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Image(
+                                    height: 20,
+                                    fit: BoxFit.fitHeight,
+                                    image: AssetImage("assets/images/home.png"),
                                     color: homeController.bottomIcon == 1
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "Home",
+                                    style:  GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: homeController.bottomIcon == 1
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: 42,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(2);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ViewCartScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image: AssetImage("assets/images/shop.png"),
-                                  color: homeController.bottomIcon == 2
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Cart",
-                                  style: TextStyle(
+                          Container(
+                            height: 42,
+                            child: InkWell(
+                              onTap: () {
+                                homeController.bottomIcon(2);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ViewCartPage()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Image(
+                                    height: 20,
+                                    fit: BoxFit.fitHeight,
+                                    image: AssetImage("assets/images/shop.png"),
                                     color: homeController.bottomIcon == 2
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "Cart",
+                                    style:  GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: homeController.bottomIcon == 2
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: 40,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(3);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const OrderHistory()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image:
-                                      AssetImage("assets/images/Path 38.png"),
-                                  color: homeController.bottomIcon == 3
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "History",
-                                  style: TextStyle(
+                          Container(
+                            height: 40,
+                            child: InkWell(
+                              onTap: () {
+                                homeController.bottomIcon(3);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const OrderHistoryScreen()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Image(
+                                    height: 20,
+                                    fit: BoxFit.fitHeight,
+                                    image:
+                                        AssetImage("assets/images/Path 38.png"),
                                     color: homeController.bottomIcon == 3
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "History",
+                                    style:  GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: homeController.bottomIcon == 3
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: 50,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(4);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ProfileScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 25,
-                                  fit: BoxFit.fitHeight,
-                                  image:
-                                      AssetImage("assets/images/profile.png"),
-                                  color: homeController.bottomIcon == 4
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Profile",
-                                  style: TextStyle(
+                          Container(
+                            height: 50,
+                            child: InkWell(
+                              onTap: () {
+                                homeController.bottomIcon(4);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ProfilePage()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Image(
+                                    height: 25,
+                                    fit: BoxFit.fitHeight,
+                                    image:
+                                        AssetImage("assets/images/profile.png"),
                                     color: homeController.bottomIcon == 4
                                         ? Colors.white
                                         : Colors.black,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "Profile",
+                                    style:  GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: homeController.bottomIcon == 4
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
               ),
-            ],
-          ),
-        ),
-      ),
+               )
+                      ),
+            ),
     );
   }
 }

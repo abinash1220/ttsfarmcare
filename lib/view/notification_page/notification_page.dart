@@ -3,97 +3,80 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../constants/app_colors.dart';
 
-class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({super.key});
+class NotificationPage extends StatefulWidget {
+  const NotificationPage({super.key});
 
   @override
-  State<NotificationScreen> createState() => _NotificationScreenState();
+  State<NotificationPage> createState() => _NotificationPageState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen> {
+class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return Container(
-          child: Column(
-            children: [
-              Container(
-              height: constraints.maxHeight > 600
-                  ? size.height * 0.22
-                  : size.height * 0.3,
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: Image(
-                      image: AssetImage("assets/images/Group 3361.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 50, left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "Notification",
-                              style:GoogleFonts.montserrat(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Image(
-                            image: AssetImage("assets/images/Group 3466.png")),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(top: 140,left: 15,right: 15),
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+          Get.back();
+        },
+          child: Icon(Icons.arrow_back,)
+        ),
+        title: Text("Notifications",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            titleSpacing: -10,
+            actions: [
+               Padding(
+                 padding: const EdgeInsets.only(right: 20),
+                 child: Image(
+                  height: 45,width: 45,
+                  image: AssetImage("assets/images/Group 3470.png")),
+               ),
+            ],
+          toolbarHeight: 92,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Color(0xff289445),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(40))),
+            ),
+          )),
+          body: Container(
+               decoration: BoxDecoration(
+              color: Color(0xff289445),
+        ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  child: Column(
+                    children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20,left: 15,right: 15),
                       child: Container(
                         height: 35,
                         child: TextFormField(
+                          
                           decoration: InputDecoration(
-                            isDense: true,
+                            isCollapsed: true,
                             filled: true,
+                            isDense: true,
                            fillColor: const Color(0xffF2F2F2),
-                            // border: OutlineInputBorder(
-                            //   borderSide: BorderSide(color:Colors.white),
-                            //   borderRadius: BorderRadius.circular(10),
-                            // ),
                             hintText: "SEARCH",
-                            
-                            
-
-                            contentPadding: EdgeInsets.only(top: 5),
+                            contentPadding: EdgeInsets.only(top: 7),
                             prefixIcon: Icon(Icons.search,size: 20,),
-                          //  suffixText: "Today(2)",
                             suffixIcon: Container(
                               height: 50,
                               width: 100,
@@ -106,7 +89,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                     style: GoogleFonts.montserrat(
                                 fontSize: 12,
                                 color: Color(0xffB3B3B3),
-                             
                             ),
                                     ),
                                     Image(image: AssetImage("assets/icons/NAV.png"))
@@ -115,20 +97,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               ),
                             ),
                             hintStyle: TextStyle(
-                              
+                              color: Color(0xffB3B3B3),
                               fontSize: 12.sp,
                             ),
                           ),
                         ),
                       ),
                     ),
-                ],
-              ),
-            ),
-            Container(
-              height: constraints.maxHeight > 600
-                  ? size.height * 0.75
-                  : size.height * 0.7,
+                    SizedBox(height: 20,),
+                    Container(
+                    height: size.height*0.74,
               child: ListView(
                 shrinkWrap: true,
                 children: [
@@ -279,10 +257,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           ),
                           endActionPane: ActionPane(
                             extentRatio: 0.15,
-
+                           
                           motion: const ScrollMotion(),
                           children: [
                              SlidableAction(
+                              
                           onPressed: (val){
                           },
                           backgroundColor: Color(0xFFFE4A49),
@@ -310,12 +289,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Yesterday(3)",
-                                  style: GoogleFonts.montserrat(
+                                  Row(
+                                    children: [
+                                      Text("Yesterday(3)",
+                                      style: GoogleFonts.montserrat(
                               fontSize: 12,
                               color: Color(0xffB3B3B3),
-                             
                             ),
+                                      ),
+                                      SizedBox(width: 50,),
+                                       Image(image: AssetImage("assets/images/down-arrow.png"),
+                                       color: Color(0xffB3B3B3),),
+                                    ],
                                   ),
                                   Image(image: AssetImage("assets/icons/Group 3500.png"))
                                 ],
@@ -576,9 +561,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ],
               ),
             ),
-            ]),
-        );
-      }),
+                  ]),
+            ),
+            ),
     );
   }
 }

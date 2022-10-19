@@ -6,72 +6,90 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_sucessfully.dart';
 
-import '../../constants/app_colors.dart';
-
-class SignUpOtpScreen extends StatefulWidget {
-  const SignUpOtpScreen({super.key});
+class SignUpOtp extends StatefulWidget {
+  const SignUpOtp({super.key});
 
   @override
-  State<SignUpOtpScreen> createState() => _SignUpOtpScreenState();
+  State<SignUpOtp> createState() => _SignUpOtpState();
 }
 
-class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
+class _SignUpOtpState extends State<SignUpOtp> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Stack(
-            children: [
-              Container(
-                  width: double.infinity,
-                  height: 400,
-                  child: Image(
-                    image: AssetImage("assets/images/Group 3471.png"),
-                    fit: BoxFit.fill,
-                  )
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                      InkWell(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: Image(image: AssetImage("assets/icons/img.png"))),
-                      Padding(
-                        padding: EdgeInsets.only(top: 35,right: 10),
-                        child: Image(image: AssetImage("assets/images/Group 3473.png"),
-                        height: 100,),
-                      ),
-                      Container(
-                        height: 1,
-                      ),
-                ],
+         appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 120),
+          child: InkWell(
+            onTap: () {
+            Get.back();
+          },
+            child: Image(
+              image: AssetImage(
+                "assets/icons/img.png",
               ),
-              SizedBox(height: 15,),
-              Text("OTP",
-              style: GoogleFonts.montserrat(color: Colors.white,fontSize: 18),
-              ),
-              SizedBox(height: 10,),
-              Text("Please enter the OTP sent to your mobile number",
-              style: GoogleFonts.montserrat(color: Colors.white60,fontSize: 13),
-              ),
-                    ],
-                  ),
-                 
-
-            ],
+            ),
           ),
-           Column(
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 30),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 Image(
+                                image: AssetImage("assets/images/Group 3473.png"),height: 100,),
+              SizedBox(height: 10,),
+                Text(
+                        "OTP",
+                        style: GoogleFonts.montserrat(color: Colors.white, fontSize: 18),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Please enter the OTP sent to your mobile number",
+                        style: GoogleFonts.montserrat(color: Colors.white60, fontSize: 13),
+                      ),
+              ],
+            ),
+          ),
+        ),
+          toolbarHeight: 250,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/top img.png"),
+                      fit: BoxFit.fill),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
+            ),
+          )),
+          body: Container(
+            decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/bottom img.png"),
+              fit: BoxFit.fill),
+        ),
+            child: Container(
+                  decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                       Padding(
+                         padding: const EdgeInsets.only(top: 20),
+                         child: Column(
             children: [
               Container(
-                height: 50,
+                height: 55,
                 child: OtpTextField(
                   keyboardType: TextInputType.number,
                   numberOfFields: 4,
@@ -117,6 +135,7 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
             
             ],
           ),
+                       ),
             Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: InkWell(
@@ -149,8 +168,9 @@ class _SignUpOtpScreenState extends State<SignUpOtpScreen> {
               ),
           ),
             ),
-        ],
-      ),
+                  ]),
+            ),
+          ),
     );
   }
 }

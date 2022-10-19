@@ -1,150 +1,39 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
 
 import '../../constants/app_colors.dart';
-import '../../controllers/home_Controllers.dart';
-import '../about_product/about_product_page.dart';
-import '../order_history_page/order_history_screen.dart';
-import '../profile_screen/profile_page.dart';
-import 'home_Screen.dart';
+import '../about_product/about_product.dart';
 
-class ProductViewAll extends StatefulWidget {
-  const ProductViewAll({super.key});
+class ProductTwo extends StatefulWidget {
+  const ProductTwo({super.key});
 
   @override
-  State<ProductViewAll> createState() => _ProductViewAllState();
+  State<ProductTwo> createState() => _ProductTwoState();
 }
 
-class _ProductViewAllState extends State<ProductViewAll> {
-
-final homeController = Get.find<HomeControllers>();
-
+class _ProductTwoState extends State<ProductTwo> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-        return Container(
-          child: Column(
-            children: [
-              Container(
-              height: constraints.maxHeight > 600
-                  ? size.height * 0.22
-                  : size.height * 0.3,
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: Image(
-                      image: AssetImage("assets/images/Group 3361.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 50, left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "Product View All",
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Image(
-                            image: AssetImage("assets/images/Group 3466.png")),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 140, left: 15, right: 15),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        isDense: true,
-                        // filled: true,
-                        // fillColor: Color(0xffECF2F0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        hintText: "Search product",
-                        contentPadding: EdgeInsets.only(top: 5),
-                        prefixIcon: Icon(
-                          Icons.search,
-                         // color: darkGreenColor,
-                          size: 20,
-                        ),
-                        hintStyle: TextStyle(
-                          //color: const Color(0xff517937),
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-               height: constraints.maxHeight > 600
-                  ? size.height * 0.63
-                  : size.height * 0.7,
-              alignment: Alignment.topCenter,
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text(
-                            "Product Deals",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                      ),
-                      SizedBox(height: 10,),
-                      Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+    return Column(
+      children: [
+         Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/images/21.png",
-                                name: "Micro Nutrition Jeevan",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/images/asset-3.png",
+                                        name: "Micro Nutrition Valorous",
+                                      )),
                             );
                           },
                           child: Container(
@@ -154,15 +43,42 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
-                                      image: AssetImage("assets/images/21.png")),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/images/asset-3.png")),
+                                    ],
+                                  ),
                                 ),
                                 Text(
-                                  "Jeevan",
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
+                                  "Valorous",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -174,8 +90,8 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "220 gm",
-                                    style: TextStyle(
-                                      fontSize: 10.sp,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -193,14 +109,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
-                                            fontSize: 10.sp,
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -227,13 +144,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/aa.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/asset-3.png",
+                                        name: "Micro Nutrition Kratus",
+                                      )),
                             );
                           },
                           child: Container(
@@ -243,21 +161,48 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 80,
-                                    width: 30,
-                                    child: Image(
-                                      image: AssetImage("assets/image/aa.png"),
-                                      fit: BoxFit.fill,
-                                    ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 80,
+                                        width: 40,
+                                        child: Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-3.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Text(
-                                  "Khatma",
-                                  style: TextStyle(
+                                  "Kratus",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -269,7 +214,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -288,14 +233,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -322,13 +268,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/asset-4.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/asset-5.png",
+                                        name: "Micro Nutrition Cardinal",
+                                      )),
                             );
                           },
                           child: Container(
@@ -338,20 +285,46 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
-                                      image:
-                                          AssetImage("assets/image/asset-4.png")),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-5.png")),
+                                    ],
+                                  ),
                                 ),
                                 Text(
-                                  "Growth",
-                                  style: TextStyle(
+                                  "Cardinal",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -359,7 +332,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -378,14 +351,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -416,19 +390,22 @@ final homeController = Get.find<HomeControllers>();
                   ),
                   SizedBox(height: 20,),
                   //second
+                  //if(homeController.home.value==2)
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                           onTap: (){
+                          onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/images/asset-3.png",
-                                name: "Micro Nutrition Valorous",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/images/21.png",
+                                        
+                                        name: "Micro Nutrition Jeevan",
+                                      )),
                             );
                           },
                           child: Container(
@@ -438,41 +415,16 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: TextStyle(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Image(
-                                          image: AssetImage(
-                                              "assets/images/asset-3.png")),
-                                    ],
-                                  ),
+                                  child: Image(
+                                      image:
+                                          AssetImage("assets/images/21.png")),
                                 ),
                                 Text(
-                                  "Valorous",
-                                  style: TextStyle(
-                                    fontSize: 14,
+                                  "Jeevan",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14.sp,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -484,8 +436,8 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "220 gm",
-                                    style: TextStyle(
-                                      fontSize: 10,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10.sp,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -503,14 +455,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
-                                            fontSize: 10,
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10.sp,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -537,13 +490,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                           onTap: (){
+                          onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/asset-3.png",
-                                name: "Micro Nutrition Kratus",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/aa.png",
+                                        name: "Micro Nutrition Khatam",
+                                      )),
                             );
                           },
                           child: Container(
@@ -553,47 +507,21 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: TextStyle(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 80,
-                                        width: 40,
-                                        child: Image(
-                                          image: AssetImage(
-                                              "assets/image/asset-3.png"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ],
+                                  child: Container(
+                                    height: 80,
+                                    width: 30,
+                                    child: Image(
+                                      image: AssetImage("assets/image/aa.png"),
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                                 Text(
-                                  "Kratus",
-                                  style: TextStyle(
+                                  "Khatma",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -605,7 +533,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -624,14 +552,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -658,13 +587,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                           onTap: (){
+                          onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/asset-5.png",
-                                name: "Micro Nutrition Cardinal",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/asset-4.png",
+                                        name: "Micro Nutrition Khatam",
+                                      )),
                             );
                           },
                           child: Container(
@@ -674,45 +604,20 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 50),
-                                        child: Container(
-                                          height: 10,
-                                          width: 40,
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Out Of Sales",
-                                            style: TextStyle(
-                                              fontSize: 6,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffEAB252),
-                                              borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(5))),
-                                        ),
-                                      ),
-                                      Image(
-                                          image: AssetImage(
-                                              "assets/image/asset-5.png")),
-                                    ],
-                                  ),
+                                  child: Image(
+                                      image: AssetImage(
+                                          "assets/image/asset-4.png")),
                                 ),
                                 Text(
-                                  "Cardinal",
-                                  style: TextStyle(
+                                  "Growth",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 10,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -720,7 +625,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -739,14 +644,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -777,19 +683,21 @@ final homeController = Get.find<HomeControllers>();
                   ),
                   SizedBox(height: 20,),
                   //third
-                   Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                // if(homeController.home.value==2)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/images/21.png",
-                                name: "Micro Nutrition Jeevan",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/images/asset-3.png",
+                                        name: "Micro Nutrition Valorous",
+                                      )),
                             );
                           },
                           child: Container(
@@ -799,15 +707,42 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
-                                      image: AssetImage("assets/images/21.png")),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/images/asset-3.png")),
+                                    ],
+                                  ),
                                 ),
                                 Text(
-                                  "Jeevan",
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
+                                  "Valorous",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -819,8 +754,8 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "220 gm",
-                                    style: TextStyle(
-                                      fontSize: 10.sp,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 10,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -838,14 +773,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
-                                            fontSize: 10.sp,
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -872,13 +808,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/aa.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/asset-3.png",
+                                        name: "Micro Nutrition Kratus",
+                                      )),
                             );
                           },
                           child: Container(
@@ -888,21 +825,48 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Container(
-                                    height: 80,
-                                    width: 30,
-                                    child: Image(
-                                      image: AssetImage("assets/image/aa.png"),
-                                      fit: BoxFit.fill,
-                                    ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 80,
+                                        width: 40,
+                                        child: Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-3.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Text(
-                                  "Khatma",
-                                  style: TextStyle(
+                                  "Kratus",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
@@ -914,7 +878,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -933,14 +897,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -967,13 +932,14 @@ final homeController = Get.find<HomeControllers>();
                           ),
                         ),
                         InkWell(
-                          onTap: (){
-                             Navigator.push(
+                          onTap: () {
+                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  AboutProductScreen(
-                                image: "assets/image/asset-4.png",
-                                name: "Micro Nutrition Khatam",
-                              )),
+                              MaterialPageRoute(
+                                  builder: (context) => AboutProduct(
+                                        image: "assets/image/asset-5.png",
+                                        name: "Micro Nutrition Cardinal",
+                                      )),
                             );
                           },
                           child: Container(
@@ -983,20 +949,46 @@ final homeController = Get.find<HomeControllers>();
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Image(
-                                      image:
-                                          AssetImage("assets/image/asset-4.png")),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
+                                        child: Container(
+                                          height: 10,
+                                          width: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Out Of Sales",
+                                            style: GoogleFonts.roboto(
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffEAB252),
+                                              borderRadius: BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(5))),
+                                        ),
+                                      ),
+                                      Image(
+                                          image: AssetImage(
+                                              "assets/image/asset-5.png")),
+                                    ],
+                                  ),
                                 ),
                                 Text(
-                                  "Growth",
-                                  style: TextStyle(
+                                  "Cardinal",
+                                  style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -1004,7 +996,7 @@ final homeController = Get.find<HomeControllers>();
                                   ),
                                   child: Text(
                                     "120 gm",
-                                    style: TextStyle(
+                                    style: GoogleFonts.montserrat(
                                       fontSize: 10,
                                       color: Colors.black,
                                     ),
@@ -1023,14 +1015,15 @@ final homeController = Get.find<HomeControllers>();
                                         width: 52,
                                         child: Text(
                                           "Price:123",
-                                          style: TextStyle(
+                                          style: GoogleFonts.montserrat(
                                             fontSize: 10,
                                             color: darkGreenColor,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
                                           color: Color(0xffECF2F0),
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                       ),
                                       Container(
@@ -1059,179 +1052,8 @@ final homeController = Get.find<HomeControllers>();
                       ],
                     ),
                   ),
-
-                    ],
-                  ),
-                ]),
-            ),
-            
-            ]),
-        );
-      }),
-      bottomNavigationBar: Obx(
-        () => Container(
-          height: 90,
-          child: Column(
-            children: [
-              Container(
-                height: 100,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/Group 3362.png"),
-                        fit: BoxFit.fill)),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 40,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(1);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image: AssetImage("assets/images/home.png"),
-                                  color: homeController.bottomIcon == 1
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Home",
-                                  style: TextStyle(
-                                    color: homeController.bottomIcon == 1
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 42,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(2);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ViewCartScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image: AssetImage("assets/images/shop.png"),
-                                  color: homeController.bottomIcon == 2
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Cart",
-                                  style: TextStyle(
-                                    color: homeController.bottomIcon == 2
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(3);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const OrderHistory()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 20,
-                                  fit: BoxFit.fitHeight,
-                                  image:
-                                      AssetImage("assets/images/Path 38.png"),
-                                  color: homeController.bottomIcon == 3
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "History",
-                                  style: TextStyle(
-                                    color: homeController.bottomIcon == 3
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 50,
-                          child: InkWell(
-                            onTap: () {
-                              homeController.bottomIcon(4);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ProfileScreen()),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Image(
-                                  height: 25,
-                                  fit: BoxFit.fitHeight,
-                                  image:
-                                      AssetImage("assets/images/profile.png"),
-                                  color: homeController.bottomIcon == 4
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                Text(
-                                  "Profile",
-                                  style: TextStyle(
-                                    color: homeController.bottomIcon == 4
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+                   SizedBox(height: 10,),
+      ],
     );
   }
 }

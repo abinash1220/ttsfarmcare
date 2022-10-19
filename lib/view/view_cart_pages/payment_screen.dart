@@ -4,24 +4,23 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/constants/app_colors.dart';
-import 'package:ttsfarmcare/view/home_Screen/payment_sucessfully.dart';
-import 'package:ttsfarmcare/view/home_Screen/view_cart.screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/payment_successfully_screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/view_cart_screen.dart';
 
+import '../../constants/app_colors.dart';
 import '../../controllers/payment_controller.dart';
-import '../../controllers/view_cart_controller.dart';
 import 'address_screen.dart';
 
-class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+class CartPaymentScreen extends StatefulWidget {
+  const CartPaymentScreen({super.key});
 
   @override
-  State<PaymentScreen> createState() => _PaymentScreenState();
+  State<CartPaymentScreen> createState() => _CartPaymentScreenState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
+class _CartPaymentScreenState extends State<CartPaymentScreen> {
 
- final PaymentController c = Get.put(PaymentController());
+  final PaymentController c = Get.put(PaymentController());
 
  void initState() {
     // TODO: implement initState
@@ -38,154 +37,149 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-          return Container(
-            height: size.height,
-            child: Column(
-              children: [
-                Container(
-                  height: constraints.maxHeight > 600
-                      ? size.height * 0.2
-                      : size.height * 0.3,
-                  child: Stack(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+          Get.back();
+        },
+          child: Icon(Icons.arrow_back,)
+        ),
+       title: Text("Payment",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+            titleSpacing: -10,
+            actions: [
+               Padding(
+                 padding: const EdgeInsets.only(right: 20),
+                 child: Image(
+                  height: 45,width: 45,
+                  image: AssetImage("assets/images/Group 3470.png")),
+               ),
+            ],
+          toolbarHeight: 92,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Color(0xff289445),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(40))),
+            ),
+          )),
+          body: Container(
+               decoration: BoxDecoration(
+              color: Color(0xff289445),
+        ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  child: Column(
                     children: [
-                      Container(
-                          width: size.width,
-                          // height: size.height * 0.35,
-                          child: Image(
-                            image: AssetImage("assets/images/Group 3361.png"),
-                            fit: BoxFit.fill,
-                          )),
-                          Padding(
-                        padding: const EdgeInsets.only(top: 50, left: 10),
-                        child: Row(
+                       Padding(
+                      padding: const EdgeInsets.only(top: 20, left: 20,right: 20),
+                      child: Column(children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             InkWell(
-                              onTap: () {
-                                Get.back();
+                              onTap: (){
+                                 Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ViewCartPage()),
+                        );
                               },
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(width: 5,),
-                            Container(
-                              width: size.width*0.85,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Payment",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize: 25,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                   Image(
-                                  image: AssetImage("assets/images/Group 3466.png")),
-                                ],
-                              ),
-                            ),
-                           // SizedBox(width: 180,),
-                           
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 140,left: 10,right: 10),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                InkWell(
-                                  onTap: (){
-                                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ViewCartScreen()),
-                        );
-                                  },
-                                  child: Container(
-                                    height: 23,
-                                    width: 23,
-                                    decoration: BoxDecoration(
-                                     // color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
-                                      borderRadius: BorderRadius.circular(15)
-                                    ),
-                                  ),
-                                ),
-                                
-                                Text("Cart",
-                                style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                              ),
-                                ),
-                               
-                                InkWell(
-                                  onTap: (){
-                                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AddressScreen()),
-                        );
-                                  },
-                                  child: Container(
-                                    height: 23,
-                                    width: 23,
-                                    decoration: BoxDecoration(
-                                     // color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
-                                      borderRadius: BorderRadius.circular(15)
-                                    ),
-                                  ),
-                                ),
-                               
-                                Text("Address",
-                                style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                              ),
-                                ),
-                               
-                                Container(
-                                  height: 23,
-                                  width: 23,
-                                  child: Image(image: AssetImage("assets/images/sucessfully.png")),
-                                  decoration: BoxDecoration(
-                                    //color: darkGreenColor,
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                decoration: BoxDecoration(
+                                    // color: darkGreenColor,
                                     border: Border.all(color: Color(0xff707070)),
-                                    borderRadius: BorderRadius.circular(15)
-                                  ),
-                                ),
-                               
-                                Text("Payment",
-                                style: GoogleFonts.montserrat(
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Cart",
+                              style: GoogleFonts.montserrat(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                               ),
-                                ),
-                              ],
                             ),
-                             
+                            SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              onTap: (){
+                                 Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CartAddresScreen()),
+                        );
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                
+                                decoration: BoxDecoration(
+                                    // color: darkGreenColor,
+                                    border: Border.all(color: Color(0xff707070)),
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Address",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 23,
+                              width: 23,
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/images/sucessfully.png")),
+                              decoration: BoxDecoration(
+                                  //color: darkGreenColor,
+                                  border: Border.all(color: Color(0xff707070)),
+                                  borderRadius: BorderRadius.circular(15)),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Payment",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                    ]),
-                ),
+                      ]),
+                    ),
+                    SizedBox(height: 10,),
 
-                   Container(
-                  height: constraints.maxHeight > 600
-                    ? size.height * 0.8
-                    : size.height * 0.7,
+                    Container(
+                  height: size.height*0.76,
                   child: ListView(
                     shrinkWrap: true,
                     children: [
@@ -641,7 +635,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const PaymentSucessfully()),
+                                builder: (context) => const PaymentSuccessfullScreen()),
                           );
                         },
                         child: Padding(
@@ -668,12 +662,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ],
                   ),
                 ),
-                           
-              ],
+
+                  ]),
             ),
-          );
-        }
-      ),
+            ),
     );
   }
 }

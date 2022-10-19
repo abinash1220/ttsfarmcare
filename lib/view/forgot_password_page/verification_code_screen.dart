@@ -2,66 +2,81 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/constants/app_colors.dart';
 
-import '../landing_page/landing_screen.dart';
+import '../../constants/app_colors.dart';
 import '../new_password_page/new_password.dart';
-import '../new_password_page/new_password_screen.dart';
 
-class VerificationCodeScreen extends StatefulWidget {
-  const VerificationCodeScreen({super.key});
+class VerificationCode extends StatefulWidget {
+  const VerificationCode({super.key});
 
   @override
-  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
+  State<VerificationCode> createState() => _VerificationCodeState();
 }
 
-class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
+class _VerificationCodeState extends State<VerificationCode> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Container(
-              width: size.width,
-              // height: size.height * 0.35,
-              child: Image(
-                image: AssetImage("assets/images/3453.png"),
-                fit: BoxFit.fill,
-              )
+         appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 120),
+          child: InkWell(
+            onTap: () {
+            Get.back();
+          },
+            child: Image(
+              image: AssetImage(
+                "assets/icons/img.png",
               ),
-            Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 80),
-                child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LandingScreen()),
-                    );
-                  },
-                  child: Image(image: AssetImage("assets/icons/img.png"))),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 40),
-                child: Image(image: AssetImage("assets/images/zxc.png")),
-              ),
-              Container(
-                height: 1,
-              ),
-
-            ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 310,left: 15),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 35),
+          child: Center(
+            child: Image(
+             height: 200,
+             image: AssetImage("assets/images/zxc.png",),),
+          ),
+        ),
+          toolbarHeight: 200,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            color: Colors.white,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/top img.png"),
+                      fit: BoxFit.fill),
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
+            ),
+          )),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/bottom img.png"),
+              fit: BoxFit.fill),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+            padding: const EdgeInsets.only(left: 15),
             child: Column(
               children: [
                 Text(
                       "Enter Verification code",
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           
@@ -79,8 +94,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                     ),
                     SizedBox(height: 30,),
                     Container(
-                      height: 50,
-                     
+                      height: 55,
                       child: OtpTextField(
                         numberOfFields: 4,
                         keyboardType: TextInputType.number,
@@ -124,8 +138,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                     ),
                   ],
                 ),
-                    SizedBox(height: 130,),
-                    InkWell(
+              ],
+            ),
+          ),
+          InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
@@ -154,12 +170,9 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-        ],
+              ]),
+        ),
       ),
-
     );
   }
 }
