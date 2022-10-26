@@ -5,6 +5,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
+import 'package:ttsfarmcare/controllers/registration_api_controller.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -31,6 +33,9 @@ class _ExamsViewState extends State<ExamsView> {
   bool isKeyBoardVisile = false;
   bool _isHidden = true;
 
+  RegistrationController registrationController =
+      Get.put(RegistrationController());
+
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
@@ -42,63 +47,63 @@ class _ExamsViewState extends State<ExamsView> {
     var size = MediaQuery.of(context).size;
     print("KeyBoard appeared>>>>>");
     print(MediaQuery.of(context).viewInsets.bottom);
-    
+
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(bottom: 50),
-          child: InkWell(
-            onTap: () {
-            Get.back();
-          },
-            child: Image(
-              image: AssetImage(
-                "assets/icons/img.png",
+          leading: Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Image(
+                image: AssetImage(
+                  "assets/icons/img.png",
+                ),
               ),
             ),
           ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: Center(
-            child: Column(
-              children: [
-                Text(
-                     "Register",
-                      style: GoogleFonts.montserrat(
-                       color: Colors.white,
-                       fontWeight: FontWeight.bold,
-                       fontSize: 45,
-                        shadows: [
-                            Shadow(
-                            blurRadius: 6.0,
-                             color: Color(0xff707070),
-                             offset: Offset(3.0, 3.0),
-                              ),
-                            ],
-                       ),
-                     ),
-               SizedBox(
-                   height: 5,
-                      ),
-                 Text(
-                    "Create Your New Account",
-                     style: GoogleFonts.montserrat(
-                     color: Colors.white,
-                     fontSize: 22,
+          title: Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Center(
+              child: Column(
+                children: [
+                  Text(
+                    "Register",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 45,
                       shadows: [
-                            Shadow(
-                            blurRadius: 8.0,
-                             color: Color(0xff707070),
-                             offset: Offset(3.0, 3.0),
-                              ),
-                            ],
+                        Shadow(
+                          blurRadius: 6.0,
+                          color: Color(0xff707070),
+                          offset: Offset(3.0, 3.0),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "Create Your New Account",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 22,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 8.0,
+                          color: Color(0xff707070),
+                          offset: Offset(3.0, 3.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
           toolbarHeight: 150,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -215,376 +220,412 @@ class _ExamsViewState extends State<ExamsView> {
                 SizedBox(
                   height: 30,
                 ),
-               KeyboardVisibilityBuilder(
-      builder: (context, isKeyboardVisible) {
-                    return Container(
-                      height: size.height * 0.7,
-                      width: size.width,
-                      
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
-                            child: Container(
-                              height: 50.h,
-                              width: size.width,
-                              child: TextFormField(
-                                keyboardType: TextInputType.name,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp("[a-z A-Z]"))
-                                ],
-                                controller: usernamecontroller,
-                                cursorColor: darkGreenColor,
-                                decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                KeyboardVisibilityBuilder(
+                    builder: (context, isKeyboardVisible) {
+                  return Container(
+                    height: size.height * 0.7,
+                    width: size.width,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        SizedBox(
+                          height: 10,
                         ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                  filled: true,
-                                  fillColor: Color(0xffECF2F0),
-                                  isDense: true,
-                                  hintText: "User Name",
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: const Color(0xff517937),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          if (signUpController.isCustomer.isFalse)
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 25,right: 25),
-                                  child: Container(
-                                    height: 50.h,
-                                    width: size.width,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.name,
-                                      controller: companynamecontroller,
-                                      cursorColor: darkGreenColor,
-                                      decoration: InputDecoration(
-                                         focusedBorder: OutlineInputBorder(
-                                         borderRadius: BorderRadius.circular(30),
-                                         borderSide: BorderSide(color: darkGreenColor,width: 1.5)
-                                           ),
-                                          enabledBorder:OutlineInputBorder(
-                                         borderRadius: BorderRadius.circular(30),
-                                         borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                                        ), 
-                                        filled: true,
-                                        fillColor: Color(0xffECF2F0),
-                                        isDense: true,
-                                        hintText: "Company name",
-                                        hintStyle: GoogleFonts.montserrat(
-                                          color: const Color(0xff517937),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 25,right: 25),
-                                  child: Container(
-                                    height: 50.h,
-                                    width: size.width,
-                                    child: TextFormField(
-                                      controller: gstnumbercontroller,
-                                      cursorColor: darkGreenColor,
-                                      decoration: InputDecoration(
-                                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
-                        ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                        filled: true,
-                                        fillColor: Color(0xffECF2F0),
-                                        isDense: true,
-                                        
-                                        hintText: "GST Number",
-                                        hintStyle: GoogleFonts.montserrat(
-                                          color: const Color(0xff517937),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Container(
+                            height: 50.h,
+                            width: size.width,
+                            child: TextFormField(
+                              keyboardType: TextInputType.name,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[a-z A-Z]"))
                               ],
+                              controller:
+                                  registrationController.usernamecontroller,
+                              cursorColor: darkGreenColor,
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: darkGreenColor, width: 1.5)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Color(0xff517937), width: 0.7)),
+                                filled: true,
+                                fillColor: Color(0xffECF2F0),
+                                isDense: true,
+                                hintText: "User Name",
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: const Color(0xff517937),
+                                ),
+                              ),
                             ),
-                          SizedBox(
-                            height: 20.h,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
-                            child: Container(
-                              height: 50.h,
-                              width:size.width,
-                              child: TextFormField(
-                                controller: emailcontroller,
-                                keyboardType: TextInputType.emailAddress,
-                                cursorColor: darkGreenColor,
-                                decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
                         ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                  filled: true,
-                                  fillColor: Color(0xffECF2F0),
-                                  isDense: true,
-                                  hintText: "Email ID",
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: const Color(0xff517937),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
-                            child: Container(
-                              height: 50.h,
-                              width: size.width,
-                              child: TextFormField(
-                                keyboardType: TextInputType.visiblePassword,
-                                obscureText: _isHidden,
-                                controller: passwordcontroller,
-                                cursorColor: darkGreenColor,
-                                decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
-                        ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                  filled: true,
-                                  fillColor: Color(0xffECF2F0),
-                                  isDense: true,
-                                  hintText: "Password",
-                                  suffixIcon: InkWell(
-                                    onTap: _togglePasswordView,
-                                    child: Icon(
-                                      _isHidden
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      color: Color(0xff517937),
-                                    ),
-                                  ),
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: const Color(0xff517937),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
-                            child: Container(
-                              height: 50.h,
-                              width: size.width,
-                              child: TextFormField(
-                                keyboardType: TextInputType.streetAddress,
-                                cursorColor: darkGreenColor,
-                                controller: addresscontroller,
-                                decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
-                        ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                  filled: true,
-                                  isDense: true,
-                                  fillColor: Color(0xffECF2F0),
-                                  hintText: "Address",
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: const Color(0xff517937),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
-                            child: Container(
-                              height: 58.h,
-                              width: size.width,
-                              child: DropdownSearch<String>(
-                                popupProps: PopupProps.menu(
-                                  showSelectedItems: true,
-                                  showSearchBox: true,
-                                  searchFieldProps: TextFieldProps(
-                                      decoration: InputDecoration(
-                                          suffixIcon: Icon(
-                                    Icons.search,
-                                  ))),
-                                ),
-                                items: ["chennai", "vellore", "trichy", "salem"],
-                                dropdownDecoratorProps: DropDownDecoratorProps(
-                                  textAlign: TextAlign.start,
-                                  dropdownSearchDecoration: InputDecoration(
-                                     focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: darkGreenColor,width: 1.5)
-                        ),
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Color(0xff517937),width:0.7)
-                        ), 
-                                    filled: true,
-                                    fillColor: const Color(0xffECF2F0),
-                                    iconColor: Color(0xff517937),
-                                    isDense: true,
-                                   
-                                    //labelText: "district",
-
-                                    hintText: "District",
-                                    hintStyle: GoogleFonts.montserrat(
-                                      color: const Color(0xff517937),
-                                    ),
-                                  ),
-                                ),
-                                // onChanged: print,
-                                //selectedItem: "chennai",
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "By signing your agree to our",
-                                  style: GoogleFonts.montserrat(
-                                    color: const Color(0xff016942),
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: " Terms of use",
-                                      style:
-                                          GoogleFonts.montserrat(color: Colors.black),
-                                    ),
-                                  ]),
-                            ),
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "and ",
-                                  style: GoogleFonts.montserrat(
-                                    color: const Color(0xff016942),
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: "privacy policy",
-                                      style:
-                                          GoogleFonts.montserrat(color: Colors.black),
-                                    ),
-                                  ]),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MobileNumber()),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 30, right: 30),
-                              child: Container(
-                                height: 50,
-                                width: size.width,
-                                child: Center(
-                                    child: Text(
-                                  "Sign up",
-                                  style: GoogleFonts.montserrat(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                )),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff016942),
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        if (signUpController.isCustomer.isFalse)
+                          Column(
                             children: [
-                              Text(
-                                "Already have an account?",
-                                style: GoogleFonts.montserrat(fontSize: 18),
+                              SizedBox(
+                                height: 20.h,
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const LoginScreen()),
-                                  );
-                                },
-                                child: Text(
-                                  "Login",
-                                  style: GoogleFonts.montserrat(
-                                      color: Color(0xff016942),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 25, right: 25),
+                                child: Container(
+                                  height: 50.h,
+                                  width: size.width,
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.name,
+                                    controller: registrationController
+                                        .companynamecontroller,
+                                    cursorColor: darkGreenColor,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: darkGreenColor,
+                                              width: 1.5)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: Color(0xff517937),
+                                              width: 0.7)),
+                                      filled: true,
+                                      fillColor: Color(0xffECF2F0),
+                                      isDense: true,
+                                      hintText: "Company name",
+                                      hintStyle: GoogleFonts.montserrat(
+                                        color: const Color(0xff517937),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 25, right: 25),
+                                child: Container(
+                                  height: 50.h,
+                                  width: size.width,
+                                  child: TextFormField(
+                                    controller: registrationController
+                                        .gstnumbercontroller,
+                                    cursorColor: darkGreenColor,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: darkGreenColor,
+                                              width: 1.5)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: Color(0xff517937),
+                                              width: 0.7)),
+                                      filled: true,
+                                      fillColor: Color(0xffECF2F0),
+                                      isDense: true,
+                                      hintText: "GST Number",
+                                      hintStyle: GoogleFonts.montserrat(
+                                        color: const Color(0xff517937),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 50,),
-                        if(isKeyboardVisible)  Container(
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Container(
+                            height: 50.h,
+                            width: size.width,
+                            child: TextFormField(
+                              controller:
+                                  registrationController.emailcontroller,
+                              keyboardType: TextInputType.emailAddress,
+                              cursorColor: darkGreenColor,
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: darkGreenColor, width: 1.5)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Color(0xff517937), width: 0.7)),
+                                filled: true,
+                                fillColor: Color(0xffECF2F0),
+                                isDense: true,
+                                hintText: "Email ID",
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: const Color(0xff517937),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Container(
+                            height: 50.h,
+                            width: size.width,
+                            child: TextFormField(
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: _isHidden,
+                              controller:
+                                  registrationController.passwordcontroller,
+                              cursorColor: darkGreenColor,
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: darkGreenColor, width: 1.5)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Color(0xff517937), width: 0.7)),
+                                filled: true,
+                                fillColor: Color(0xffECF2F0),
+                                isDense: true,
+                                hintText: "Password",
+                                suffixIcon: InkWell(
+                                  onTap: _togglePasswordView,
+                                  child: Icon(
+                                    _isHidden
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                    color: Color(0xff517937),
+                                  ),
+                                ),
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: const Color(0xff517937),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Container(
+                            height: 50.h,
+                            width: size.width,
+                            child: TextFormField(
+                              keyboardType: TextInputType.streetAddress,
+                              cursorColor: darkGreenColor,
+                              controller:
+                                  registrationController.addresscontroller,
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: darkGreenColor, width: 1.5)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Color(0xff517937), width: 0.7)),
+                                filled: true,
+                                isDense: true,
+                                fillColor: Color(0xffECF2F0),
+                                hintText: "Address",
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: const Color(0xff517937),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Container(
+                            height: 58.h,
+                            width: size.width,
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps.menu(
+                                showSelectedItems: true,
+                                showSearchBox: true,
+                                searchFieldProps: TextFieldProps(
+                                    decoration: InputDecoration(
+                                        suffixIcon: Icon(
+                                  Icons.search,
+                                ))),
+                              ),
+
+                              items: ["chennai", "vellore", "trichy", "salem"],
+                              onChanged: ((value) {
+                                setState(() {
+                                  registrationController.districtcontroller
+                                      .text = value.toString();
+                                });
+                              }),
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                textAlign: TextAlign.start,
+                                dropdownSearchDecoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide(
+                                          color: darkGreenColor, width: 1.5)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide(
+                                          color: Color(0xff517937),
+                                          width: 0.7)),
+                                  filled: true,
+                                  fillColor: const Color(0xffECF2F0),
+                                  iconColor: Color(0xff517937),
+                                  isDense: true,
+
+                                  //labelText: "district",
+
+                                  hintText: "District",
+                                  hintStyle: GoogleFonts.montserrat(
+                                    color: const Color(0xff517937),
+                                  ),
+                                ),
+                              ),
+                              // onChanged: print,
+                              //selectedItem: "chennai",
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Center(
+                          child: RichText(
+                            text: TextSpan(
+                                text: "By signing your agree to our",
+                                style: GoogleFonts.montserrat(
+                                  color: const Color(0xff016942),
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: " Terms of use",
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.black),
+                                  ),
+                                ]),
+                          ),
+                        ),
+                        Center(
+                          child: RichText(
+                            text: TextSpan(
+                                text: "and ",
+                                style: GoogleFonts.montserrat(
+                                  color: const Color(0xff016942),
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: "privacy policy",
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.black),
+                                  ),
+                                ]),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            print("::::::::::::::buton click::::::::::");
+                            if (registrationController.usernamecontroller.text.isNotEmpty &&
+                                registrationController
+                                    .emailcontroller.text.isNotEmpty &&
+                                registrationController
+                                    .companynamecontroller.text.isNotEmpty &&
+                                registrationController
+                                    .passwordcontroller.text.isNotEmpty &&
+                                registrationController
+                                    .gstnumbercontroller.text.isNotEmpty &&
+                                registrationController
+                                    .addresscontroller.text.isNotEmpty) {
+                              registrationController.register();
+                            } else {
+                              Get.snackbar("Please fill all the fields", "");
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 30, right: 30),
+                            child: Container(
+                              height: 50,
+                              width: size.width,
+                              child: Center(
+                                  child: Text(
+                                "Sign up",
+                                style: GoogleFonts.montserrat(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              )),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff016942),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account?",
+                              style: GoogleFonts.montserrat(fontSize: 18),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LoginScreen()),
+                                );
+                              },
+                              child: Text(
+                                "Login",
+                                style: GoogleFonts.montserrat(
+                                    color: Color(0xff016942),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        if (isKeyboardVisible)
+                          Container(
                             height: 200,
                           ),
-                        ],
-                      ),
-                    );
-                  }
-                ),
+                      ],
+                    ),
+                  );
+                }),
               ],
             )),
           ),
