@@ -48,6 +48,11 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   image_picker: ^0.8.6
   flutter_keyboard_visibility: ^5.4.0
+  animated_bottom_navigation_bar: ^1.1.0
+  flutter_svg: ^1.1.5
+  geolocator: ^9.0.2
+  geocoding: ^2.0.5
+  
 
 dev_dependencies:
   flutter_test:

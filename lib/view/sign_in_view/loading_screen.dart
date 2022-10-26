@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_page.dart';
 
 
@@ -23,7 +24,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
   redirectToNext() async {
     await Future.delayed(Duration(seconds: 2));
-    Get.offAll(HomePage());
+    Get.offAll(HomeNavigationBar());
   }
 
   Widget build(BuildContext context) {

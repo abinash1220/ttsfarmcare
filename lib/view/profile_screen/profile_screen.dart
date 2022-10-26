@@ -10,6 +10,7 @@ import 'dart:io' as fl;
 import '../../constants/app_colors.dart';
 import '../../controllers/home_Controllers.dart';
 import '../../controllers/profile_controller.dart';
+import '../home_Screen/home_navigationbar.dart';
 import '../home_Screen/home_page.dart';
 import '../login_in_page/login_screen.dart';
 import '../order_history_page/order_history.dart';
@@ -42,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 homeController.bottomIcon(1);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomeNavigationBar()),
                 );
               },
               child: Icon(
@@ -583,167 +584,6 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
 
-      //bottom navigotion bar....
-      bottomNavigationBar: Obx(
-        () => (Container(
-          color: Colors.white,
-          child: Container(
-            height: 60,
-            decoration: BoxDecoration(
-                color: Color(0xff289445),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(35))),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 40,
-                      child: InkWell(
-                        onTap: () {
-                          homeController.bottomIcon(1);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image(
-                              height: 20,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage("assets/images/home.png"),
-                              color: homeController.bottomIcon == 1
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Home",
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: homeController.bottomIcon == 1
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 42,
-                      child: InkWell(
-                        onTap: () {
-                          homeController.bottomIcon(2);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ViewCartPage()),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image(
-                              height: 20,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage("assets/images/shop.png"),
-                              color: homeController.bottomIcon == 2
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Cart",
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: homeController.bottomIcon == 2
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 40,
-                      child: InkWell(
-                        onTap: () {
-                          homeController.bottomIcon(3);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const OrderHistoryScreen()),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image(
-                              height: 20,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage("assets/images/Path 38.png"),
-                              color: homeController.bottomIcon == 3
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "History",
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: homeController.bottomIcon == 3
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      child: InkWell(
-                        onTap: () {
-                          homeController.bottomIcon(4);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProfilePage()),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image(
-                              height: 25,
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage("assets/images/profile.png"),
-                              color: homeController.bottomIcon == 4
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Profile",
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: homeController.bottomIcon == 4
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        )),
-      ),
-      //bottom navigation bar end....
-    );
+         );
   }
 }

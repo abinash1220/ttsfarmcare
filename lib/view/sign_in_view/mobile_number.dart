@@ -41,7 +41,7 @@ class _MobileNumberState extends State<MobileNumber> {
   }
 
   String _countryName = "India";
-  String _countryNum = "(+91)";
+  String _countryNum = "91";
 
   Future<void> _changeCountry() async {
     filteredCountries = _countryList;
@@ -130,7 +130,7 @@ class _MobileNumberState extends State<MobileNumber> {
                       image: AssetImage("assets/images/top img.png"),
                       fit: BoxFit.fill),
                   borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(50))),
+                      BorderRadius.only(bottomLeft: Radius.circular(70))),
             ),
           )),
       body: Container(
@@ -143,7 +143,7 @@ class _MobileNumberState extends State<MobileNumber> {
           return Container(
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(50))),
+                borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
             child: Center(
               child: Padding(
                 padding: EdgeInsets.only(top: isKeyboardVisible ? 5 : 50),

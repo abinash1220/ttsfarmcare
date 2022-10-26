@@ -9,6 +9,7 @@ import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
 import '../forgot_password_page/forgot_password_page.dart';
 import '../home_Screen/home_page.dart';
+import '../sign_in_view/loading_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -220,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(builder: (context) => const LoadingScreen()),
                     );
                   },
                   child: Padding(

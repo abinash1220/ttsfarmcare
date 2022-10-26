@@ -68,11 +68,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               color: Colors.white,
               borderRadius: BorderRadius.only(topRight: Radius.circular(60))),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-               
+               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10,top: 0),
             child: Column(
               children: [
                 Text(
@@ -92,7 +91,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                              textAlign:TextAlign.center,
                              ),
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 35,),
                   Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: Container(
@@ -121,7 +120,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 25,),
+                SizedBox(height: 20,),
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -150,26 +149,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
-                Text("Or",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  color: Color(0xff016942),
-                  fontSize: 20),),
-                SizedBox(height: 30,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 35,right: 35),
-                  child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset("assets/images/google.png"),
-                    Image.asset("assets/images/facebook.png"),
-                    Image.asset("assets/images/twitter.png"),
-                  ],
-              ),
-                ),
+                //SizedBox(height: 60,),
+              //   Text("Or",
+              //   textAlign: TextAlign.center,
+              //   style: GoogleFonts.poppins(
+              //     color: Color(0xff016942),
+              //     fontSize: 20),),
+              //   SizedBox(height: 30,),
+              //   Padding(
+              //     padding: const EdgeInsets.only(left: 35,right: 35),
+              //     child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       Image.asset("assets/images/google.png"),
+              //       Image.asset("assets/images/facebook.png"),
+              //       Image.asset("assets/images/twitter.png"),
+              //     ],
+              // ),
+              //   ),
               SizedBox(
-                height: 15
+                height: 25
               ),
               Text("Don't have an account?",
               textAlign: TextAlign.center,
@@ -177,7 +176,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               fontSize: 16,
               ),
               ),
-              SizedBox(height: 25,),
+              SizedBox(
+                height: 25
+              ),
               InkWell(
                   onTap: () {
                     Navigator.push(
@@ -208,6 +209,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ],
             ),
           ),
+          
               ]),
         ),
       ),
