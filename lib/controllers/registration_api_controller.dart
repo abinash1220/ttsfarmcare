@@ -36,6 +36,7 @@ class RegistrationController extends GetxController {
           await http.post(url, body: jsonEncode(body), headers: header);
 
       print("_______________print here.;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+      print(response.statusCode);
       print(response.body);
 
       if (response.statusCode == 200) {
@@ -52,7 +53,7 @@ class RegistrationController extends GetxController {
           addresscontroller.clear();
           gstnumbercontroller.clear();
           districtcontroller.clear();
-          Get.to(() => MobileNumber());
+          // Get.to(() => MobileNumber());
         } else {
           throw jsonDecode(response.body)['message'] ?? "unknown error occured";
         }

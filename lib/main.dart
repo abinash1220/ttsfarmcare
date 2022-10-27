@@ -6,6 +6,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ttsfarmcare/controllers/about_product_controller.dart';
 import 'package:ttsfarmcare/controllers/home_Controllers.dart';
 import 'package:ttsfarmcare/controllers/profile_controller.dart';
+import 'package:ttsfarmcare/controllers/register_controller.dart';
 import 'package:ttsfarmcare/view/splash_view/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'controllers/sign_up_controllers.dart';
@@ -17,6 +18,7 @@ void main() {
   Get.put(ViewCartController());
   Get.put(AboutProductController());
   Get.put(ProfileController());
+  Get.put(RegisterController());
   runApp(
     MyApp(),
     //  DevicePreview(

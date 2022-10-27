@@ -555,16 +555,38 @@ class _ExamsViewState extends State<ExamsView> {
                                 registrationController
                                     .emailcontroller.text.isNotEmpty &&
                                 registrationController
-                                    .companynamecontroller.text.isNotEmpty &&
-                                registrationController
                                     .passwordcontroller.text.isNotEmpty &&
                                 registrationController
-                                    .gstnumbercontroller.text.isNotEmpty &&
-                                registrationController
                                     .addresscontroller.text.isNotEmpty) {
-                              registrationController.register();
+                              if (registrationController
+                                  .emailcontroller.text.isEmail) {
+                                Get.to(() => MobileNumber(
+                                      address: registrationController
+                                          .addresscontroller.text,
+                                      district: registrationController
+                                          .districtcontroller.text,
+                                      email: registrationController
+                                          .emailcontroller.text,
+                                      name: registrationController
+                                          .usernamecontroller.text,
+                                      password: registrationController
+                                          .passwordcontroller.text,
+                                          companyName: registrationController
+                                          .companynamecontroller.text,
+                                          gst_number: registrationController
+                                          .gstnumbercontroller.text,
+                                    ));
+                              } else {
+                                Get.snackbar("Enter a  Valid Email ID", "",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    colorText: Colors.white,
+                                    backgroundColor: Colors.red);
+                              }
                             } else {
-                              Get.snackbar("Please fill all the fields", "");
+                              Get.snackbar("Please fill all the fields", "",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.red);
                             }
                           },
                           child: Padding(

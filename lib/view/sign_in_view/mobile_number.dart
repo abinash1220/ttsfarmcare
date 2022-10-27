@@ -10,9 +10,26 @@ import 'package:ttsfarmcare/view/custom_phone_field/country_picker.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import '../../constants/app_colors.dart';
+import '../../controllers/register_controller.dart';
 
 class MobileNumber extends StatefulWidget {
-  const MobileNumber({super.key});
+  String name;
+  dynamic companyName;
+  String email;
+  String password;
+  String address;
+  dynamic gst_number;
+  String district;
+
+  MobileNumber({
+    required this.address,
+    this.companyName,
+    required this.district,
+    required this.email,
+    required this.name,
+    required this.password,
+    this.gst_number,
+  });
 
   @override
   State<MobileNumber> createState() => _MobileNumberState();
@@ -20,6 +37,10 @@ class MobileNumber extends StatefulWidget {
 
 class _MobileNumberState extends State<MobileNumber> {
   final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}');
+
+  final registerController = Get.find<RegisterController>();
+
+  var mobileNumberController = TextEditingController();
 
   late List<Country> _countryList;
   late Country _selectedCountry;
@@ -176,7 +197,7 @@ class _MobileNumberState extends State<MobileNumber> {
                                 borderSide: BorderSide(
                                     color: Color(0xff517937), width: 0.7),
                               ),
-                              hintText: _countryName+"(+$_countryNum)",
+                              hintText: _countryName + "(+$_countryNum)",
                               isDense: true,
                               suffixIcon: InkWell(
                                 onTap: () {
@@ -207,6 +228,7 @@ class _MobileNumberState extends State<MobileNumber> {
                         height: 50,
                         width: size.width,
                         child: TextFormField(
+                          controller: mobileNumberController,
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
@@ -244,11 +266,26 @@ class _MobileNumberState extends State<MobileNumber> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpOtp()),
-                        );
+                        if (mobileNumberController.text.isNotEmpty) {
+                          registerController.registerUser(
+                              name: widget.name,
+                              email: widget.email,
+                              mobile_number: mobileNumberController.text,
+                              password: widget.password,
+                              address: widget.address,
+                              district: widget.district);
+                        } else {
+                          Get.snackbar("Please fill all the fields", "",
+                              snackPosition: SnackPosition.BOTTOM,
+                              colorText: Colors.white,
+                              backgroundColor: Colors.red);
+                        }
+
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => const SignUpOtp()),
+                        // );
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),

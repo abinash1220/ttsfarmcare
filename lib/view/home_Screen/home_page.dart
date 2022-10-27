@@ -36,17 +36,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final homeController = Get.find<HomeControllers>();
 
- String location ='Null, Press Button';
+  String location = 'Null, Press Button';
   String Address = 'search';
 
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-  
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-     
       await Geolocator.openLocationSettings();
       return Future.error('Location services are disabled.');
     }
@@ -55,7 +53,6 @@ class _HomePageState extends State<HomePage> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-      
         return Future.error('Location permissions are denied');
       }
     }
@@ -65,18 +62,25 @@ class _HomePageState extends State<HomePage> {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-   
-    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
 
-  Future<void> GetAddressFromLatLong(Position position)async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+  Future<void> GetAddressFromLatLong(Position position) async {
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     print(placemarks);
     Placemark place = placemarks[0];
-    Address =  '${place.subLocality}';
-    setState(()  {
-    });
+    Address = '${place.subLocality}';
+    setState(() {});
   }
+
+  @override
+  void initState() {
+    super.initState();
+    homeController.getAllCategorys();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -112,9 +116,11 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.only(left: 10),
                             child: InkWell(
                               onTap: () async {
-                                Position position = await _getGeoLocationPosition();
-                                location ='Lat: ${position.latitude} , Long: ${position.longitude}';
-                               GetAddressFromLatLong(position);
+                                Position position =
+                                    await _getGeoLocationPosition();
+                                location =
+                                    'Lat: ${position.latitude} , Long: ${position.longitude}';
+                                GetAddressFromLatLong(position);
                               },
                               child: Icon(
                                 Icons.location_on,
@@ -210,243 +216,64 @@ class _HomePageState extends State<HomePage> {
           child: ListView(children: [
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Obx(
-                () => (Column(
+              child: GetBuilder<HomeControllers>(
+                builder: (_) => (Column(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
                       child: Container(
                         height: 40,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(1);
+                        child: homeController.categoryList.isEmpty
+                            ? Container(
+                                height: 5,
+                              )
+                            : ListView.builder(
+                                itemCount: homeController.categoryList.length,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 15),
+                                    child: InkWell(
+                                      onTap: () {
+                                        print(index);
+                                        homeController.home(index);
+                                         homeController.update();
 
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 1
-                                          ? darkGreenColor
-                                          : Colors.white,
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                                        // );
+                                      },
+                                      child: Container(
+                                        height: 35,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: darkGreenColor),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color:
+                                              homeController.home.value == index
+                                                  ? darkGreenColor
+                                                  : Colors.white,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                          homeController
+                                              .categoryList[index].name,
+                                          style: GoogleFonts.montserrat(
+                                              color:
+                                                  homeController.home.value ==
+                                                          index
+                                                      ? Colors.white
+                                                      : darkGreenColor),
+                                        )),
+                                      ),
                                     ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 01",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 1
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(2);
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 2
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 02",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 2
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(3);
-
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 3
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 03",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 3
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(4);
-
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 4
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 04",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 4
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(5);
-
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 5
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 05",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 5
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(6);
-
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 6
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 06",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 6
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    homeController.home(7);
-
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                    // );
-                                  },
-                                  child: Container(
-                                    height: 35,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: darkGreenColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: homeController.home.value == 7
-                                          ? darkGreenColor
-                                          : Colors.white,
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      "Product 07",
-                                      style: GoogleFonts.montserrat(
-                                          color: homeController.home.value == 7
-                                              ? Colors.white
-                                              : darkGreenColor),
-                                    )),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                                  );
+                                },
+                              ),
                       ),
                     ),
 

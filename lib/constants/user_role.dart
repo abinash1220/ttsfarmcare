@@ -1,0 +1,4 @@
+enum userRole {
+  Customer,
+  Retailer,
+}
