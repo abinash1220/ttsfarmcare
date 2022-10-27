@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:ttsfarmcare/controllers/registration_api_controller.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
-
 import '../../constants/app_colors.dart';
 import '../../controllers/sign_up_controllers.dart';
 import '../sign_in_view/mobile_number.dart';
@@ -33,8 +32,8 @@ class _ExamsViewState extends State<ExamsView> {
   bool isKeyBoardVisile = false;
   bool _isHidden = true;
 
-  RegistrationController registrationController =
-      Get.put(RegistrationController());
+  // RegistrationController registrationController =
+  //     Get.put(RegistrationController());
 
   void _togglePasswordView() {
     setState(() {
@@ -242,8 +241,7 @@ class _ExamsViewState extends State<ExamsView> {
                                 FilteringTextInputFormatter.allow(
                                     RegExp("[a-z A-Z]"))
                               ],
-                              controller:
-                                  registrationController.usernamecontroller,
+                              controller:usernamecontroller,
                               cursorColor: darkGreenColor,
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
@@ -279,8 +277,7 @@ class _ExamsViewState extends State<ExamsView> {
                                   width: size.width,
                                   child: TextFormField(
                                     keyboardType: TextInputType.name,
-                                    controller: registrationController
-                                        .companynamecontroller,
+                                    controller:companynamecontroller,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -316,8 +313,7 @@ class _ExamsViewState extends State<ExamsView> {
                                   height: 50.h,
                                   width: size.width,
                                   child: TextFormField(
-                                    controller: registrationController
-                                        .gstnumbercontroller,
+                                    controller:gstnumbercontroller,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -354,8 +350,7 @@ class _ExamsViewState extends State<ExamsView> {
                             height: 50.h,
                             width: size.width,
                             child: TextFormField(
-                              controller:
-                                  registrationController.emailcontroller,
+                              controller:emailcontroller,
                               keyboardType: TextInputType.emailAddress,
                               cursorColor: darkGreenColor,
                               decoration: InputDecoration(
@@ -389,8 +384,7 @@ class _ExamsViewState extends State<ExamsView> {
                             child: TextFormField(
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _isHidden,
-                              controller:
-                                  registrationController.passwordcontroller,
+                              controller:passwordcontroller,
                               cursorColor: darkGreenColor,
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
@@ -432,8 +426,7 @@ class _ExamsViewState extends State<ExamsView> {
                             child: TextFormField(
                               keyboardType: TextInputType.streetAddress,
                               cursorColor: darkGreenColor,
-                              controller:
-                                  registrationController.addresscontroller,
+                              controller:addresscontroller,
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(30),
@@ -476,7 +469,7 @@ class _ExamsViewState extends State<ExamsView> {
                               items: ["chennai", "vellore", "trichy", "salem"],
                               onChanged: ((value) {
                                 setState(() {
-                                  registrationController.districtcontroller
+                                  districtcontroller
                                       .text = value.toString();
                                 });
                               }),
@@ -551,30 +544,19 @@ class _ExamsViewState extends State<ExamsView> {
                         InkWell(
                           onTap: () {
                             print("::::::::::::::buton click::::::::::");
-                            if (registrationController.usernamecontroller.text.isNotEmpty &&
-                                registrationController
-                                    .emailcontroller.text.isNotEmpty &&
-                                registrationController
-                                    .passwordcontroller.text.isNotEmpty &&
-                                registrationController
-                                    .addresscontroller.text.isNotEmpty) {
-                              if (registrationController
-                                  .emailcontroller.text.isEmail) {
+                            if (usernamecontroller.text.isNotEmpty &&
+                               emailcontroller.text.isNotEmpty &&
+                                passwordcontroller.text.isNotEmpty &&
+                               addresscontroller.text.isNotEmpty) {
+                              if (emailcontroller.text.isEmail) {
                                 Get.to(() => MobileNumber(
-                                      address: registrationController
-                                          .addresscontroller.text,
-                                      district: registrationController
-                                          .districtcontroller.text,
-                                      email: registrationController
-                                          .emailcontroller.text,
-                                      name: registrationController
-                                          .usernamecontroller.text,
-                                      password: registrationController
-                                          .passwordcontroller.text,
-                                          companyName: registrationController
-                                          .companynamecontroller.text,
-                                          gst_number: registrationController
-                                          .gstnumbercontroller.text,
+                                      address:addresscontroller.text,
+                                      district:districtcontroller.text,
+                                      email:emailcontroller.text,
+                                      name:usernamecontroller.text,
+                                      password:passwordcontroller.text,
+                                          companyName:companynamecontroller.text,
+                                          gst_number:gstnumbercontroller.text,
                                     ));
                               } else {
                                 Get.snackbar("Enter a  Valid Email ID", "",

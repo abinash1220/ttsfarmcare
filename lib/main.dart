@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ttsfarmcare/controllers/about_product_controller.dart';
 import 'package:ttsfarmcare/controllers/home_Controllers.dart';
+import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
 import 'package:ttsfarmcare/controllers/profile_controller.dart';
 import 'package:ttsfarmcare/controllers/register_controller.dart';
 import 'package:ttsfarmcare/view/splash_view/splash_screen.dart';
@@ -19,6 +20,7 @@ void main() {
   Get.put(AboutProductController());
   Get.put(ProfileController());
   Get.put(RegisterController());
+  Get.put(LoginController());
   runApp(
     MyApp(),
     //  DevicePreview(

@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ttsfarmcare/view/landing_page/landing_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/password_change_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/total_points_screen.dart';
 import 'dart:io' as fl;
@@ -33,6 +35,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final ProfileController profile = Get.put(ProfileController());
 
+  logOutUser() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString("auth_token", "null");
+
+    Get.offAll(() => LandingScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -43,7 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 homeController.bottomIcon(1);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeNavigationBar()),
+                  MaterialPageRoute(
+                      builder: (context) => const HomeNavigationBar()),
                 );
               },
               child: Icon(
@@ -538,11 +549,7 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.only(left: 10),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
-                  );
+                  logOutUser();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -551,11 +558,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()),
-                              );
+                              logOutUser();
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => const LoginScreen()),
+                              // );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 5),
@@ -583,7 +591,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ]),
         ),
       ),
-
-         );
+    );
   }
 }

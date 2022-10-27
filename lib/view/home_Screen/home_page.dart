@@ -86,59 +86,70 @@ class _HomePageState extends State<HomePage> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-          leadingWidth: 100,
+          leadingWidth: 110,
           leading: Padding(
             padding: const EdgeInsets.only(top: 30, left: 10),
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Location",
-                            style: GoogleFonts.roboto(
-                              fontSize: 16.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          // Image(
-                          //   image: AssetImage("assets/images/down-arrow.png"),
-                          //   color: Colors.white,
-                          // )
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: InkWell(
-                              onTap: () async {
-                                Position position =
-                                    await _getGeoLocationPosition();
-                                location =
-                                    'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                GetAddressFromLatLong(position);
-                              },
-                              child: Icon(
-                                Icons.location_on,
-                                size: 20,
+                  InkWell(
+                    onTap: () async {
+                                  Position position =
+                                      await _getGeoLocationPosition();
+                                  location =
+                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
+                                  GetAddressFromLatLong(position);
+                                },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Location",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16.sp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                      Text(
-                        "${Address}",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.roboto(
-                          fontSize: 12.sp,
-                          color: Colors.white,
+                            SizedBox(
+                              width: 5,
+                            ),
+                            // Image(
+                            //   image: AssetImage("assets/images/down-arrow.png"),
+                            //   color: Colors.white,
+                            // )
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: InkWell(
+                                onTap: () async {
+                                  Position position =
+                                      await _getGeoLocationPosition();
+                                  location =
+                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
+                                  GetAddressFromLatLong(position);
+                                },
+                                child: Icon(
+                                  Icons.location_on,
+                                  size: 20,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                    ],
+                        Text(
+                          "${Address}",
+                          textAlign: TextAlign.start,
+                          style: GoogleFonts.roboto(
+                            fontSize: 12.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -147,6 +158,7 @@ class _HomePageState extends State<HomePage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              
               SizedBox(
                 height: 35.h,
                 width: 170.w,
