@@ -11,6 +11,7 @@ import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import '../../constants/app_colors.dart';
 import '../../controllers/register_controller.dart';
+import '../../controllers/sent_otp_api_controllers/sent_otp_api_controller.dart';
 
 class MobileNumber extends StatefulWidget {
   String name;
@@ -39,6 +40,8 @@ class _MobileNumberState extends State<MobileNumber> {
   final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}');
 
   final registerController = Get.find<RegisterController>();
+
+   final sentOtpController = Get.find<SentOtpController>();
 
   var mobileNumberController = TextEditingController();
 
@@ -274,6 +277,7 @@ class _MobileNumberState extends State<MobileNumber> {
                               password: widget.password,
                               address: widget.address,
                               district: widget.district);
+                              sentOtpController.sentOtpUser(mobile_number: mobileNumberController.text);
                         } else {
                           Get.snackbar("Please fill all the fields", "",
                               snackPosition: SnackPosition.BOTTOM,

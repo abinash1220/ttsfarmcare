@@ -12,5 +12,10 @@ abstract class BaseApiService {
   final String categoryUrl =
       "https://sunphe.in/tts_farm/tts/public/api/category";
 
-  //login api url
+  //sent-otp api url
+  final String sentOtpUrl ="https://sunphe.in/tts_farm/tts/public/api/sent-otp";
+
+
+  //verify-otp api url
+  final String verifyOtpUrl = "";
 }

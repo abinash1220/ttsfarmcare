@@ -333,7 +333,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 10,
                     ),
-                    if (homeController.home.value == 1)
+                    if (homeController.home.value == 0)
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Container(
@@ -590,7 +590,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     //product2
-                    if (homeController.home.value == 2)
+                    if (homeController.home.value == 1)
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Container(
@@ -1166,14 +1166,14 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 10,
                     ),
-                    if (homeController.home.value == 1) ProductOne(),
+                    if (homeController.home.value == 0) ProductOne(),
                     //end
                     //product2
                     //first
-                    if (homeController.home.value == 2) ProductTwo(),
+                    if (homeController.home.value == 1) ProductTwo(),
                     //product3
                     //first
-                    if (homeController.home.value == 3) ProductThree(),
+                    if (homeController.home.value == 2) ProductThree(),
                     //third
                   ],
                 )),
