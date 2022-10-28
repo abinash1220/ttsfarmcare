@@ -41,7 +41,7 @@ class _MobileNumberState extends State<MobileNumber> {
 
   final registerController = Get.find<RegisterController>();
 
-   final sentOtpController = Get.find<SentOtpController>();
+  final sentOtpController = Get.find<SentOtpController>();
 
   var mobileNumberController = TextEditingController();
 

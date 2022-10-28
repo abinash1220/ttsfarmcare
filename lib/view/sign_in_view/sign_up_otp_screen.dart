@@ -6,14 +6,25 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_sucessfully.dart';
 
-class SignUpOtp extends StatefulWidget {
-  const SignUpOtp({super.key});
+import '../../controllers/verify_otp_api_controllers/verify_otp_api_controller.dart';
 
+class SignUpOtp extends StatefulWidget {
+  String mobile_number;
+
+  SignUpOtp({
+    required this.mobile_number,
+  });
+ 
   @override
   State<SignUpOtp> createState() => _SignUpOtpState();
 }
 
 class _SignUpOtpState extends State<SignUpOtp> {
+
+ final verifyOtpController = Get.find<VerifyOtpController>();
+
+ late String otp;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -103,8 +114,16 @@ class _SignUpOtpState extends State<SignUpOtp> {
                   ),
                   borderWidth: 0,
                   showFieldAsBox: true,
-                  onCodeChanged: (String code) {},
-                  onSubmit: (String verificationCode) {},
+                  onCodeChanged: (String code) {
+                    setState(() {
+                      otp = code;
+                    });
+                  },
+                  onSubmit: (String verificationCode) {
+                    setState(() {
+                      otp = verificationCode;
+                    });
+                  },
                 ),
               ),
               SizedBox(
@@ -140,11 +159,7 @@ class _SignUpOtpState extends State<SignUpOtp> {
               padding: const EdgeInsets.only(bottom: 100),
               child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignUpSucessfully()),
-                );
+               verifyOtpController.verifyOtpUser(mobile_number:widget.mobile_number, otp: otp);
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
