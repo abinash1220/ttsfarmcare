@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/sent_otp_api_controler.dart';
 import 'package:ttsfarmcare/view/custom_phone_field/countries.dart';
 import 'package:ttsfarmcare/view/custom_phone_field/country_picker.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
@@ -39,6 +40,8 @@ class _MobileNumberState extends State<MobileNumber> {
   final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}');
 
   final registerController = Get.find<RegisterController>();
+
+  final sentOtpController = Get.find<SentOtpController>();
 
   var mobileNumberController = TextEditingController();
 
@@ -266,6 +269,7 @@ class _MobileNumberState extends State<MobileNumber> {
                     ),
                     InkWell(
                       onTap: () {
+                        
                         if (mobileNumberController.text.isNotEmpty) {
                           registerController.registerUser(
                               name: widget.name,
@@ -274,6 +278,7 @@ class _MobileNumberState extends State<MobileNumber> {
                               password: widget.password,
                               address: widget.address,
                               district: widget.district);
+                              sentOtpController.sentOtpUser(mobile_number: mobileNumberController.text);
                         } else {
                           Get.snackbar("Please fill all the fields", "",
                               snackPosition: SnackPosition.BOTTOM,

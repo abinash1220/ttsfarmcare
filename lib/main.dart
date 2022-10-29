@@ -8,6 +8,8 @@ import 'package:ttsfarmcare/controllers/home_Controllers.dart';
 import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
 import 'package:ttsfarmcare/controllers/profile_controller.dart';
 import 'package:ttsfarmcare/controllers/register_controller.dart';
+import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/sent_otp_api_controler.dart';
+import 'package:ttsfarmcare/services/sent_otp_api_services/sent_otp_api_service.dart';
 import 'package:ttsfarmcare/view/splash_view/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'controllers/sign_up_controllers.dart';
@@ -21,6 +23,7 @@ void main() {
   Get.put(ProfileController());
   Get.put(RegisterController());
   Get.put(LoginController());
+  Get.put(SentOtpController());
   runApp(
     MyApp(),
     //  DevicePreview(

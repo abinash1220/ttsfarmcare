@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 import 'package:ttsfarmcare/controllers/registration_api_controller.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 import '../../constants/app_colors.dart';
@@ -40,6 +43,7 @@ class _ExamsViewState extends State<ExamsView> {
       _isHidden = !_isHidden;
     });
   }
+  int inm = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -543,7 +547,10 @@ class _ExamsViewState extends State<ExamsView> {
                         ),
                         InkWell(
                           onTap: () {
-                            print("::::::::::::::buton click::::::::::");
+                            // inm++;
+                            // Logger().d("logger is working");
+                            // Logger().i("line ------$inm-------------");
+                            print("::::::::::::::::::click:::::::::::::::::");
                             if (usernamecontroller.text.isNotEmpty &&
                                emailcontroller.text.isNotEmpty &&
                                 passwordcontroller.text.isNotEmpty &&
@@ -565,6 +572,7 @@ class _ExamsViewState extends State<ExamsView> {
                                     backgroundColor: Colors.red);
                               }
                             } else {
+                              Get.closeAllSnackbars();
                               Get.snackbar("Please fill all the fields", "",
                                   snackPosition: SnackPosition.BOTTOM,
                                   colorText: Colors.white,
