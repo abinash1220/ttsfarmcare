@@ -5,7 +5,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/sent_otp_api_controler.dart';
 import 'package:ttsfarmcare/view/custom_phone_field/countries.dart';
 import 'package:ttsfarmcare/view/custom_phone_field/country_picker.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
