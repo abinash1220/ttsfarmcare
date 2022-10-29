@@ -13,9 +13,9 @@ abstract class BaseApiService {
       "https://sunphe.in/tts_farm/tts/public/api/category";
 
   //sent-otp api url
-  final String sentOtpUrl ="https://sunphe.in/tts_farm/tts/public/api/sent-otp";
+  final String sentOtpUrl ="https://sunphe.in/tts_farm/tts/public/api/send-otp";
 
 
   //verify-otp api url
-  final String verifyOtpUrl = "";
+  final String verifyOtpUrl = "https://sunphe.in/tts_farm/tts/public/api/verify-otp";
 }

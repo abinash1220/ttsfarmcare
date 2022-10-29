@@ -34,7 +34,7 @@ class RegisterController extends GetxController {
 
       await prefs.setString("auth_token", response.data["token"]);
 
-      Get.to(() => SignUpOtp());
+      Get.to(() => SignUpOtp(mobile_number: mobile_number,));
     } else {
       print(response.statusCode);
       print(response.data);
