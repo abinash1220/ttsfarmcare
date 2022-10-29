@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 
 import '../../constants/app_colors.dart';
 import '../../controllers/home_Controllers.dart';
@@ -88,7 +89,7 @@ class _PaymentSuccessfullScreenState extends State<PaymentSuccessfullScreen> {
                     homeController.bottomIcon(1);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(builder: (context) => const HomeNavigationBar()),
                     );
                   },
                   child: Padding(

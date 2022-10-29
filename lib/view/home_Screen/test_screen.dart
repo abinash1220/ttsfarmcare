@@ -46,6 +46,12 @@ class _ExamsViewState extends State<ExamsView> {
   int inm = 0;
 
   @override
+  void initState() {
+    super.initState();
+    signUpController.isCustomer(true);
+  }
+
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     print("KeyBoard appeared>>>>>");
@@ -470,7 +476,46 @@ class _ExamsViewState extends State<ExamsView> {
                                 ))),
                               ),
 
-                              items: ["chennai", "vellore", "trichy", "salem"],
+                              items: [
+                                "Ariyalur",
+                                "Chengalpattu", 
+                                "Chennai",
+                                "Coimbatore",
+                                "Cuddalore",
+                                "Dharmapuri",
+                                "Dindigul",
+                                "Erode",
+                                "Kallakurichi",
+                                "Kancheepuram",
+                                "Karur",
+                                "Krishnagiri",
+                                "Madurai",
+                                "Mayiladuthurai",
+                                "Nagapattinam",
+                                "Kanyakumari",
+                                "Namakkal",
+                                "Perambalur",
+                                "Pudukottai",
+                                "Ramanathapuram",
+                                "Ranipet",
+                                "Salem",
+                                "Sivagangai",
+                                "Tenkasi",
+                                "Thanjavur",
+                                "Theni",
+                                "Thiruvallur",
+                                "Thiruvarur",
+                                "Tuticorin",
+                                "Trichirappalli",
+                                "Thirunelveli",
+                                "Tirupathur",
+                                "Tiruppur",
+                                "Tiruvannamalai",
+                                "Nilgiris",
+                                "Vellore",
+                                "Viluppuram",
+                                "Virudhunagar",
+                                ],
                               onChanged: ((value) {
                                 setState(() {
                                   districtcontroller
