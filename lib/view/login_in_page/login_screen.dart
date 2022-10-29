@@ -184,24 +184,30 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Checkbox(
-                              activeColor: Color(0xff517937),
-                              value: isCheked,
-                              onChanged: (value) {
-                                setState(() {
-                                  isCheked = !isCheked;
-                                });
-                              }),
-                        ),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                  activeColor: Color(0xff517937),
+                                  value: isCheked,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCheked = !isCheked;
+                                    });
+                                  }),
                         Text(
                           "Remeber Me",
                           style: GoogleFonts.montserrat(),
                         ),
+                            ],
+                          ),
+                        ),
+                       
                         Padding(
-                          padding: const EdgeInsets.only(left: 80),
+                          padding: const EdgeInsets.only(right: 20),
                           child: TextButton(
                             onPressed: () {
                               Navigator.push(

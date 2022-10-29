@@ -63,7 +63,7 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
                   child:  KeyboardVisibilityBuilder(
       builder: (context, isKeyboardVisible) {
                       return Container(

@@ -31,7 +31,7 @@ class SentOtpController extends GetxController {
 
       //await prefs.setString("auth_token", response.data["token"]);
 
-      Get.to(() => SignUpSucessfully());
+     // Get.to(() => SignUpSucessfully());
     } else {
       print(response.statusCode);
       print(response.data);

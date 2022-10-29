@@ -62,7 +62,7 @@ class _ListOfProductScreenState extends State<ListOfProductScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(40),bottomRight:Radius.circular(40) )),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(25),bottomRight:Radius.circular(25) )),
                   child: Column(
                     children: [
                       Padding(

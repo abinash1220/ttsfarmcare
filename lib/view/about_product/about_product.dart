@@ -97,7 +97,7 @@ class _AboutProductState extends State<AboutProduct> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(40),bottomRight:Radius.circular(40))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(30),bottomRight:Radius.circular(30))),
                   child: Column(
                     children: [
                       Container(

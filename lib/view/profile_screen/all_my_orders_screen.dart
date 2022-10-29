@@ -60,7 +60,7 @@ class _AllMyOrdersScreenState extends State<AllMyOrdersScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
                   child: Column(
                     children: [
                        Padding(

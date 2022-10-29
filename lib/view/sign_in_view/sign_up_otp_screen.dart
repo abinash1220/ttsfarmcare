@@ -61,13 +61,13 @@ class _SignUpOtpState extends State<SignUpOtp> {
                       ),
                       Text(
                         "Please enter the OTP sent to your mobile number",
-                        style: GoogleFonts.montserrat(color: Colors.white60, fontSize: 13),
+                        style: GoogleFonts.montserrat(color: Colors.white, fontSize: 13),
                       ),
               ],
             ),
           ),
         ),
-          toolbarHeight: 250,
+          toolbarHeight: 248,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           flexibleSpace: Container(

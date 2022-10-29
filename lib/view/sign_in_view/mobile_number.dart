@@ -136,13 +136,13 @@ class _MobileNumberState extends State<MobileNumber> {
                     "We need to send OTP authenticate your number",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
-                        color: Colors.white60, fontSize: 13),
+                        color: Colors.white, fontSize: 13),
                   ),
                 ],
               ),
             ),
           ),
-          toolbarHeight: 250,
+          toolbarHeight: 248,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           flexibleSpace: Container(
