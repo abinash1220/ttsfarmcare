@@ -53,517 +53,522 @@ class _NotificationPageState extends State<NotificationPage> {
                       BorderRadius.only(bottomLeft: Radius.circular(40))),
             ),
           )),
-          body: Container(
-               decoration: BoxDecoration(
-              color: Color(0xff289445),
+          body:LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          print(constraints.maxHeight);
+              return Container(
+                   decoration: BoxDecoration(
+                  color: Color(0xff289445),
         ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
-                  child: Column(
-                    children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20,left: 15,right: 15),
-                      child: Container(
-                        height: 35,
-                        child: TextFormField(
-                          
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            filled: true,
-                            isDense: true,
-                           fillColor: const Color(0xffF2F2F2),
-                            hintText: "SEARCH",
-                            contentPadding: EdgeInsets.only(top: 7),
-                            prefixIcon: Icon(Icons.search,size: 20,),
-                            suffixIcon: Container(
-                              height: 50,
-                              width: 100,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Today(2)",
-                                    style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: Color(0xffB3B3B3),
-                            ),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
+                      child: Column(
+                        children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20,left: 15,right: 15),
+                          child: Container(
+                            height: 35,
+                            child: TextFormField(
+                              
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                filled: true,
+                                isDense: true,
+                               fillColor: const Color(0xffF2F2F2),
+                                hintText: "SEARCH",
+                                contentPadding: EdgeInsets.only(top: 7),
+                                prefixIcon: Icon(Icons.search,size: 20,),
+                                suffixIcon: Container(
+                                  height: 50,
+                                  width: 100,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10,right: 10),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Today(2)",
+                                        style: GoogleFonts.montserrat(
+                                    fontSize: 12,
+                                    color: Color(0xffB3B3B3),
+                                ),
+                                        ),
+                                        Image(image: AssetImage("assets/icons/NAV.png"))
+                                      ],
                                     ),
-                                    Image(image: AssetImage("assets/icons/NAV.png"))
-                                  ],
+                                  ),
+                                ),
+                                hintStyle: TextStyle(
+                                  color: Color(0xffB3B3B3),
+                                  fontSize: 12.sp,
                                 ),
                               ),
                             ),
-                            hintStyle: TextStyle(
-                              color: Color(0xffB3B3B3),
-                              fontSize: 12.sp,
-                            ),
                           ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                        height:constraints.maxHeight>570 ? size.height*0.74 : size.height*0.71,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25,right: 25),
+                        child: Column(
+                          children: [
+                            Slidable(
+                              child: Container(
+                                height: 90,
+                                width:size.width,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Row(
+                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Image(image: AssetImage("assets/image/Clip.png")),
+                                      
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10,),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Container(
+                                              width: size.width*0.65,
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text("Mohan Kich",
+                                                  style:GoogleFonts.montserrat(fontSize: 13,
+                                                  fontWeight: FontWeight.bold
+                                                  ),
+                                                  ),
+                                                  Text("just now",
+                                                  style: GoogleFonts.montserrat(fontSize: 10,
+                                                  //fontWeight: FontWeight.normal,
+                                                  color: Color(0xffB3B3B3)
+                                                  ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Text("New Products Purchase Complete\nThankyou For Orders....",
+                                             style:GoogleFonts.montserrat(fontSize: 11,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000)
+                                                  ),
+                                            ),
+                                            Text("29/09/2022",
+                                            style:GoogleFonts.montserrat(fontSize: 11,
+                                                  //fontWeight: FontWeight.normal,
+                                                  color: Color(0xffB3B3B3)
+                                                  ),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
+                                      
+                                    ]
+                                    ),
+                                    
+                                ),
+                                decoration: BoxDecoration(
+                                  color:Colors.white,
+                                  border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
+                                  ),
+                              ),
+                              endActionPane: ActionPane(
+                                extentRatio: 0.15,
+                              motion: const ScrollMotion(),
+                              children: [
+                                 SlidableAction(
+                              onPressed: (val){
+                              },
+                              backgroundColor: Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon:CupertinoIcons.delete,
+                             
+                            ),
+                              ],
+
+                             )
+                            ),
+                            SizedBox(height: 10,),
+                            Slidable(
+                              child: Container(
+                                height: 90,
+                                width:size.width,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Row(
+                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Image(image: AssetImage("assets/image/IMG.png")),
+                                      
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10,),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Container(
+                                              width: size.width*0.65,
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text("Mika Williams",
+                                                  style:GoogleFonts.montserrat(fontSize: 13,
+                                                  fontWeight: FontWeight.bold
+                                                  ),
+                                                  ),
+                                                  Text("09:19",
+                                                  style:GoogleFonts.montserrat(fontSize: 10,
+                                                  //fontWeight: FontWeight.normal,
+                                                  color: Color(0xffB3B3B3)
+                                                  ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Text("New Products Purchase Complete\nThankyou For Orders....",
+                                             style:GoogleFonts.montserrat(fontSize: 11,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Color(0xff000000)
+                                                  ),
+                                            ),
+                                            Text("29/09/2022",
+                                            style:GoogleFonts.montserrat(fontSize: 11,
+                                                  //fontWeight: FontWeight.normal,
+                                                  color: Color(0xffB3B3B3)
+                                                  ),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
+                                      
+                                    ]
+                                    ),
+                                    
+                                ),
+                                decoration: BoxDecoration(
+                                  color:Colors.white,
+                                  border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
+                                  ),
+                              ),
+                              endActionPane: ActionPane(
+                                extentRatio: 0.15,
+                               
+                              motion: const ScrollMotion(),
+                              children: [
+                                 SlidableAction(
+                                  
+                              onPressed: (val){
+                              },
+                              backgroundColor: Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon:CupertinoIcons.delete,
+                             
+                            ),
+                              ],
+
+                             )
+                            ),
+                            
+                          ],
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20,),
-                    Container(
-                    height: size.height*0.74,
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25,right: 25),
-                    child: Column(
-                      children: [
-                        Slidable(
-                          child: Container(
-                            height: 90,
-                            width:size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Row(
-                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image(image: AssetImage("assets/image/Clip.png")),
-                                  
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10,),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          width: size.width*0.65,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text("Mohan Kich",
-                                              style:GoogleFonts.montserrat(fontSize: 13,
-                                              fontWeight: FontWeight.bold
-                                              ),
-                                              ),
-                                              Text("just now",
-                                              style: GoogleFonts.montserrat(fontSize: 10,
-                                              //fontWeight: FontWeight.normal,
-                                              color: Color(0xffB3B3B3)
-                                              ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Text("New Products Purchase Complete\nThankyou For Orders....",
-                                         style:GoogleFonts.montserrat(fontSize: 11,
-                                              fontWeight: FontWeight.normal,
-                                              color: Color(0xff000000)
-                                              ),
-                                        ),
-                                        Text("29/09/2022",
-                                        style:GoogleFonts.montserrat(fontSize: 11,
-                                              //fontWeight: FontWeight.normal,
-                                              color: Color(0xffB3B3B3)
-                                              ),
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                  
-                                ]
-                                ),
-                                
-                            ),
-                            decoration: BoxDecoration(
-                              color:Colors.white,
-                              border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
-                              ),
-                          ),
-                          endActionPane: ActionPane(
-                            extentRatio: 0.15,
-                          motion: const ScrollMotion(),
-                          children: [
-                             SlidableAction(
-                          onPressed: (val){
-                          },
-                          backgroundColor: Color(0xFFFE4A49),
-                          foregroundColor: Colors.white,
-                          icon:CupertinoIcons.delete,
-                         
-                        ),
-                          ],
-
-                         )
-                        ),
-                        SizedBox(height: 10,),
-                        Slidable(
-                          child: Container(
-                            height: 90,
-                            width:size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Row(
-                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image(image: AssetImage("assets/image/IMG.png")),
-                                  
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10,),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          width: size.width*0.65,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text("Mika Williams",
-                                              style:GoogleFonts.montserrat(fontSize: 13,
-                                              fontWeight: FontWeight.bold
-                                              ),
-                                              ),
-                                              Text("09:19",
-                                              style:GoogleFonts.montserrat(fontSize: 10,
-                                              //fontWeight: FontWeight.normal,
-                                              color: Color(0xffB3B3B3)
-                                              ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Text("New Products Purchase Complete\nThankyou For Orders....",
-                                         style:GoogleFonts.montserrat(fontSize: 11,
-                                              fontWeight: FontWeight.normal,
-                                              color: Color(0xff000000)
-                                              ),
-                                        ),
-                                        Text("29/09/2022",
-                                        style:GoogleFonts.montserrat(fontSize: 11,
-                                              //fontWeight: FontWeight.normal,
-                                              color: Color(0xffB3B3B3)
-                                              ),
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                  
-                                ]
-                                ),
-                                
-                            ),
-                            decoration: BoxDecoration(
-                              color:Colors.white,
-                              border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
-                              ),
-                          ),
-                          endActionPane: ActionPane(
-                            extentRatio: 0.15,
-                           
-                          motion: const ScrollMotion(),
-                          children: [
-                             SlidableAction(
-                              
-                          onPressed: (val){
-                          },
-                          backgroundColor: Color(0xFFFE4A49),
-                          foregroundColor: Colors.white,
-                          icon:CupertinoIcons.delete,
-                         
-                        ),
-                          ],
-
-                         )
-                        ),
-                        
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15),
-                          child: Container(
-                            height: 30,
-                            width: size.width,
-                            color: Color(0xffF2F2F2),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10,right: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
+                      SizedBox(height: 20,),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15,right: 15),
+                              child: Container(
+                                height: 30,
+                                width: size.width,
+                                color: Color(0xffF2F2F2),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10,right: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("Yesterday(3)",
-                                      style: GoogleFonts.montserrat(
-                              fontSize: 12,
-                              color: Color(0xffB3B3B3),
-                            ),
+                                      Row(
+                                        children: [
+                                          Text("Yesterday(3)",
+                                          style: GoogleFonts.montserrat(
+                                  fontSize: 12,
+                                  color: Color(0xffB3B3B3),
+                                ),
+                                          ),
+                                          SizedBox(width: 50,),
+                                           Image(image: AssetImage("assets/images/down-arrow.png"),
+                                           color: Color(0xffB3B3B3),),
+                                        ],
                                       ),
-                                      SizedBox(width: 50,),
-                                       Image(image: AssetImage("assets/images/down-arrow.png"),
-                                       color: Color(0xffB3B3B3),),
+                                      Image(image: AssetImage("assets/icons/Group 3500.png"))
                                     ],
                                   ),
-                                  Image(image: AssetImage("assets/icons/Group 3500.png"))
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 25,right: 25),
+                              child: Column(
+                                children:[
+                              Slidable(
+                                child: Container(
+                                  height: 90,
+                                  width:size.width,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image(image: AssetImage("assets/image/Clip-1.png")),
+                                        
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 10,),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Container(
+                                                width: size.width*0.65,
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Text("Mika Williams",
+                                                    style: GoogleFonts.montserrat(
+                                                      fontSize: 13,
+                                                    fontWeight: FontWeight.bold
+                                                    ),
+                                                    ),
+                                                    Text("09:19",
+                                                    style: GoogleFonts.montserrat(fontSize: 10,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Text("New Products Purchase Complete\nThankyou For Orders....",
+                                               style:GoogleFonts.montserrat(fontSize: 11,
+                                                    fontWeight: FontWeight.normal,
+                                                    color: Color(0xff000000)
+                                                    ),
+                                              ),
+                                              Text("29/09/2022",
+                                              style:GoogleFonts.montserrat(fontSize: 11,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+                                        
+                                      ]
+                                      ),
+                                      
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color:Colors.white,
+                                    border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
+                                    ),
+                                ),
+                                endActionPane: ActionPane(
+                                  extentRatio: 0.15,
+
+                                motion: const ScrollMotion(),
+                                children: [
+                                   SlidableAction(
+                                onPressed: (val){
+                                },
+                                backgroundColor: Color(0xFFFE4A49),
+                                foregroundColor: Colors.white,
+                                icon:CupertinoIcons.delete,
+                            
+                              ),
                                 ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25,right: 25),
-                          child: Column(
-                            children:[
-                          Slidable(
-                            child: Container(
-                              height: 90,
-                              width:size.width,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image(image: AssetImage("assets/image/Clip-1.png")),
-                                    
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10,),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: size.width*0.65,
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text("Mika Williams",
-                                                style: GoogleFonts.montserrat(
-                                                  fontSize: 13,
-                                                fontWeight: FontWeight.bold
-                                                ),
-                                                ),
-                                                Text("09:19",
-                                                style: GoogleFonts.montserrat(fontSize: 10,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style:GoogleFonts.montserrat(fontSize: 11,
-                                                fontWeight: FontWeight.normal,
-                                                color: Color(0xff000000)
-                                                ),
-                                          ),
-                                          Text("29/09/2022",
-                                          style:GoogleFonts.montserrat(fontSize: 11,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                          ),
 
-                                        ],
+                               )
+                              ),
+                              SizedBox(height: 10,),
+                              Slidable(
+                                child: Container(
+                                  height: 90,
+                                  width:size.width,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image(image: AssetImage("assets/image/Clip-2.png")),
+                                        
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 10,),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Container(
+                                                width: size.width*0.65,
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Text("Nikky Rayes",
+                                                    style:GoogleFonts.montserrat(fontSize: 13,
+                                                    fontWeight: FontWeight.bold
+                                                    ),
+                                                    ),
+                                                    Text("11:15",
+                                                    style:GoogleFonts.montserrat(fontSize: 10,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Text("New Products Purchase Complete\nThankyou For Orders....",
+                                               style:GoogleFonts.montserrat(fontSize: 11,
+                                                    fontWeight: FontWeight.normal,
+                                                    color: Color(0xff000000)
+                                                    ),
+                                              ),
+                                              Text("19/09/2022",
+                                              style:GoogleFonts.montserrat(fontSize: 11,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+                                        
+                                      ]
                                       ),
-                                    ),
-                                    
-                                  ]
+                                      
                                   ),
-                                  
-                              ),
-                              decoration: BoxDecoration(
-                                color:Colors.white,
-                                border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
+                                  decoration: BoxDecoration(
+                                    color:Colors.white,
+                                    border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
+                                    ),
                                 ),
-                            ),
-                            endActionPane: ActionPane(
-                              extentRatio: 0.15,
+                                endActionPane: ActionPane(
+                                  extentRatio: 0.15,
 
-                            motion: const ScrollMotion(),
-                            children: [
-                               SlidableAction(
-                            onPressed: (val){
-                            },
-                            backgroundColor: Color(0xFFFE4A49),
-                            foregroundColor: Colors.white,
-                            icon:CupertinoIcons.delete,
-                        
-                          ),
-                            ],
+                                motion: const ScrollMotion(),
+                                children: [
+                                   SlidableAction(
+                                onPressed: (val){
+                                },
+                                backgroundColor: Color(0xFFFE4A49),
+                                foregroundColor: Colors.white,
+                                icon:CupertinoIcons.delete,
+                               
+                              ),
+                                ],
 
-                           )
-                          ),
-                          SizedBox(height: 10,),
-                          Slidable(
-                            child: Container(
-                              height: 90,
-                              width:size.width,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image(image: AssetImage("assets/image/Clip-2.png")),
-                                    
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10,),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: size.width*0.65,
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text("Nikky Rayes",
-                                                style:GoogleFonts.montserrat(fontSize: 13,
-                                                fontWeight: FontWeight.bold
+                               )
+                              ),
+                              SizedBox(height: 10,),
+                              Slidable(
+                                child: Container(
+                                  height: 90,
+                                  width:size.width,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image(image: AssetImage("assets/image/Clip-3.png")),
+                                        
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 10,),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Container(
+                                                width: size.width*0.65,
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Text("Vila Mohas",
+                                                    style:GoogleFonts.montserrat(fontSize: 13,
+                                                    fontWeight: FontWeight.bold
+                                                    ),
+                                                    ),
+                                                    Text("10:19",
+                                                    style:GoogleFonts.montserrat(fontSize: 10,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                ),
-                                                Text("11:15",
-                                                style:GoogleFonts.montserrat(fontSize: 10,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style:GoogleFonts.montserrat(fontSize: 11,
-                                                fontWeight: FontWeight.normal,
-                                                color: Color(0xff000000)
-                                                ),
-                                          ),
-                                          Text("19/09/2022",
-                                          style:GoogleFonts.montserrat(fontSize: 11,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                          ),
+                                              ),
+                                              Text("New Products Purchase Complete\nThankyou For Orders....",
+                                               style:GoogleFonts.montserrat(fontSize: 11,
+                                                    fontWeight: FontWeight.normal,
+                                                    color: Color(0xff000000)
+                                                    ),
+                                              ),
+                                              Text("28/09/2022",
+                                              style:GoogleFonts.montserrat(fontSize: 11,
+                                                    //fontWeight: FontWeight.normal,
+                                                    color: Color(0xffB3B3B3)
+                                                    ),
+                                              ),
 
-                                        ],
+                                            ],
+                                          ),
+                                        ),
+                                        
+                                      ]
                                       ),
-                                    ),
-                                    
-                                  ]
+                                      
                                   ),
-                                  
-                              ),
-                              decoration: BoxDecoration(
-                                color:Colors.white,
-                                border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
-                                ),
-                            ),
-                            endActionPane: ActionPane(
-                              extentRatio: 0.15,
-
-                            motion: const ScrollMotion(),
-                            children: [
-                               SlidableAction(
-                            onPressed: (val){
-                            },
-                            backgroundColor: Color(0xFFFE4A49),
-                            foregroundColor: Colors.white,
-                            icon:CupertinoIcons.delete,
-                           
-                          ),
-                            ],
-
-                           )
-                          ),
-                          SizedBox(height: 10,),
-                          Slidable(
-                            child: Container(
-                              height: 90,
-                              width:size.width,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image(image: AssetImage("assets/image/Clip-3.png")),
-                                    
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10,),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: size.width*0.65,
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text("Vila Mohas",
-                                                style:GoogleFonts.montserrat(fontSize: 13,
-                                                fontWeight: FontWeight.bold
-                                                ),
-                                                ),
-                                                Text("10:19",
-                                                style:GoogleFonts.montserrat(fontSize: 10,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Text("New Products Purchase Complete\nThankyou For Orders....",
-                                           style:GoogleFonts.montserrat(fontSize: 11,
-                                                fontWeight: FontWeight.normal,
-                                                color: Color(0xff000000)
-                                                ),
-                                          ),
-                                          Text("28/09/2022",
-                                          style:GoogleFonts.montserrat(fontSize: 11,
-                                                //fontWeight: FontWeight.normal,
-                                                color: Color(0xffB3B3B3)
-                                                ),
-                                          ),
-
-                                        ],
-                                      ),
+                                  decoration: BoxDecoration(
+                                    color:Colors.white,
+                                    border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
                                     ),
-                                    
-                                  ]
-                                  ),
-                                  
-                              ),
-                              decoration: BoxDecoration(
-                                color:Colors.white,
-                                border: Border.all(color: Color.fromARGB(255, 231, 230, 230))
                                 ),
+                                endActionPane: ActionPane(
+                                  extentRatio: 0.15,
+
+                                motion: const ScrollMotion(),
+                                children: [
+                                   SlidableAction(
+                                onPressed: (val){
+                                },
+                                backgroundColor: Color(0xFFFE4A49),
+                                foregroundColor: Colors.white,
+                                icon:CupertinoIcons.delete,
+                               
+                              ),
+                                ],
+
+                               )
+                              ),
+                                ]
+                              ),
                             ),
-                            endActionPane: ActionPane(
-                              extentRatio: 0.15,
-
-                            motion: const ScrollMotion(),
-                            children: [
-                               SlidableAction(
-                            onPressed: (val){
-                            },
-                            backgroundColor: Color(0xFFFE4A49),
-                            foregroundColor: Colors.white,
-                            icon:CupertinoIcons.delete,
-                           
-                          ),
-                            ],
-
-                           )
-                          ),
-                            ]
-                          ),
-                        ),
-                ],
-              ),
-            ),
-                  ]),
-            ),
-            ),
+                    ],
+                  ),
+                ),
+                      ]),
+                ),
+                );
+            }
+          ),
     );
   }
 }

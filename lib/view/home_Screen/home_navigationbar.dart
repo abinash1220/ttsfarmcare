@@ -12,7 +12,8 @@ import 'package:ttsfarmcare/view/view_cart_pages/view_cart_screen.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 
 class HomeNavigationBar extends StatefulWidget {
-  const HomeNavigationBar({super.key});
+  int index;
+ HomeNavigationBar({super.key, this.index=0});
 
   @override
   State<HomeNavigationBar> createState() => _HomeNavigationBarState();
@@ -36,6 +37,13 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
   List bottomtext = ['home', 'cart', 'history', 'profile'];
 
   int _bottomNavIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _bottomNavIndex = widget.index;
+  }
 
   @override
   Widget build(BuildContext context) {
