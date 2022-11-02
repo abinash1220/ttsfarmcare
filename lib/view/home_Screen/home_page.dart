@@ -7,9 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/all_product_api_controllers/all_product_api_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_one.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_three.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_two.dart';
+import 'package:ttsfarmcare/view/home_Screen/product_gridView.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_one.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_three.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_two.dart';
@@ -38,6 +40,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = Get.find<HomeControllers>();
+
+  final allProductController = Get.find<AllProductController>();
 
   String location = 'Null, Press Button';
   String Address = 'search';
@@ -82,6 +86,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     homeController.getAllCategorys();
+    allProductController.allProducts(1);
     homeController.home(0);
   }
 
@@ -254,6 +259,8 @@ class _HomePageState extends State<HomePage> {
                                       onTap: () {
                                         print(index);
                                         homeController.home(index);
+                                        allProductController.allProducts(homeController
+                                                .categoryList[index].id);
                                          homeController.update();
 
                                         // Navigator.push(
@@ -263,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                                       },
                                       child: Container(
                                         height: 35,
-                                        width: 100,
+                                       // width: 100,
                                         decoration: BoxDecoration(
                                           border:
                                               Border.all(color: darkGreenColor),
@@ -275,16 +282,19 @@ class _HomePageState extends State<HomePage> {
                                                   : Colors.white,
                                         ),
                                         child: Center(
-                                            child: Text(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 10,right: 10),
+                                              child: Text(
                                           homeController
-                                              .categoryList[index].name,
+                                                .categoryList[index].name,
                                           style: GoogleFonts.montserrat(
-                                              color:
-                                                  homeController.home.value ==
-                                                          index
-                                                      ? Colors.white
-                                                      : darkGreenColor),
-                                        )),
+                                                color:
+                                                    homeController.home.value ==
+                                                            index
+                                                        ? Colors.white
+                                                        : darkGreenColor),
+                                        ),
+                                            )),
                                       ),
                                     ),
                                   );
@@ -396,19 +406,23 @@ class _HomePageState extends State<HomePage> {
                       height: 10,
                     ),
                     //first
-                    if (homeController.home.value == 0) ProductOne(),
+                    GetBuilder<AllProductController>(
+                      builder: (_) {
+                        return ProductGridView(productList:allProductController.productList,);
+                      }
+                    ),
                     //second
-                    if (homeController.home.value == 1) ProductTwo(),
-                    //third
-                    if (homeController.home.value == 2) ProductThree(),
-                    //fourth
-                    if (homeController.home.value == 3) ProductOne(),
-                    //five
-                    if (homeController.home.value == 4) ProductTwo(),
-                    //six
-                    if (homeController.home.value == 5) ProductThree(),
-                    //seven
-                    if (homeController.home.value == 6) ProductOne(),
+                    // if (homeController.home.value == 1) ProductTwo(),
+                    // //third
+                    // if (homeController.home.value == 2) ProductThree(),
+                    // //fourth
+                    // if (homeController.home.value == 3) ProductOne(),
+                    // //five
+                    // if (homeController.home.value == 4) ProductTwo(),
+                    // //six
+                    // if (homeController.home.value == 5) ProductThree(),
+                    // //seven
+                    // if (homeController.home.value == 6) ProductOne(),
                   ],
                 )),
               ),

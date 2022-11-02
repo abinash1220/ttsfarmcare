@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:ttsfarmcare/models/all_product_model.dart';
 
 import '../../constants/app_colors.dart';
 import '../../controllers/about_product_controller.dart';
@@ -14,8 +15,8 @@ import '../view_cart_pages/view_cart_screen.dart';
 
 class AboutProduct extends StatefulWidget {
   String image;
-  String name;
-  AboutProduct({required this.image, required this.name});
+  ProductData productData;
+  AboutProduct({required this.image, required this.productData});
 
   @override
   State<AboutProduct> createState() => _AboutProductState();
@@ -33,13 +34,16 @@ class _AboutProductState extends State<AboutProduct> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    setDefault();
+   
     //homeController.bottomIcon(2);
+     WidgetsBinding.instance
+        .addPostFrameCallback((_) => setDefault());
   }
 
   setDefault() {
-    c.productcount(1);
-    c.prices(450.00);
+
+    c.productcount(0);
+    c.prices(00.00);
     
   }
   @override
@@ -151,55 +155,53 @@ class _AboutProductState extends State<AboutProduct> {
                               padding: const EdgeInsets.only(left: 15, right: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        widget.name,
+                                        widget.productData.name,
                                         style: GoogleFonts.montserrat(
                                           fontSize: 17,
                                           color: Color(0xff000000),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      Container(
-                                        width: size.width * 0.40,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color: Color(0xffE4A819),
-                                              size: 15,
-                                            ),
-                                            Icon(
-                                              Icons.star,
-                                              color: Color(0xffE4A819),
-                                              size: 15,
-                                            ),
-                                            Icon(
-                                              Icons.star,
-                                              color: Color(0xffE4A819),
-                                              size: 15,
-                                            ),
-                                            Icon(
-                                              Icons.star_border,
-                                              color: Color(0xffE4A819),
-                                              size: 15,
-                                            ),
-                                            Icon(
-                                              Icons.star_border,
-                                              color: Color(0xffE4A819),
-                                              size: 15,
-                                            ),
-                                          ],
-                                        ),
+                                      Row(
+                                        ///mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color: Color(0xffE4A819),
+                                            size: 15,
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            color: Color(0xffE4A819),
+                                            size: 15,
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            color: Color(0xffE4A819),
+                                            size: 15,
+                                          ),
+                                          Icon(
+                                            Icons.star_border,
+                                            color: Color(0xffE4A819),
+                                            size: 15,
+                                          ),
+                                          Icon(
+                                            Icons.star_border,
+                                            color: Color(0xffE4A819),
+                                            size: 15,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
                                   Text(
-                                    "120 gms",
+                                    widget.productData.quantity,
                                     style: GoogleFonts.roboto(
                                       textStyle: TextStyle(
                                           color: Color(0xff289445),
@@ -218,22 +220,21 @@ class _AboutProductState extends State<AboutProduct> {
                                     ),
                                   ),
                                   Row(
-                                   // crossAxisAlignment: CrossAxisAlignment.start,
+                                  //  crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Obx(() =>  Container(
-                                                  width: 70,
-                                                  child: FittedBox(
-                                                    fit: BoxFit.scaleDown,
-                                                    child: Text(
-                                                      "₹ ${c.prices.toStringAsFixed(2)}",
+                                     
+                                                    Text(
+                                                      
+                                                      "₹ ${widget.productData.price}",
+                                                      textAlign: TextAlign.start,
                                                       style: GoogleFonts.roboto(
                                                         fontSize: 18.sp,
                                                         color: Color(0xff016942),
                                                         fontWeight: FontWeight.bold,
                                                       ),
                                                     ),
-                                                  ),
-                                                ),),
+                                                  
+                                                
                                       SizedBox(
                                         width: 3,
                                       ),

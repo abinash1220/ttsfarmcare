@@ -22,13 +22,17 @@ class LoginController extends GetxController {
             email: email,
             password: password,
            );
-
     if (response.statusCode == 200) {
       print(response.data["token"]);
 
       await prefs.setString("auth_token", response.data["token"]);
 
       Get.to(() => LoadingPage());
+    }else if(response.statusCode ==400){
+      Get.snackbar("Invalid Login", "",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     } else {
       print(response.statusCode);
       print(response.data);

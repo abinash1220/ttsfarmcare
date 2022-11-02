@@ -49,7 +49,7 @@ class _ProductViewBottomBarState extends State<ProductViewBottomBar> {
               : _bottomNavIndex == 3
                   ? const ProfilePage()
                   : _bottomNavIndex == 0
-                      ? ProductViewScreen()
+                      ? HomePage()
                       : const HomePage(),
                       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         itemCount: iconlist.length & bottomtext.length,

@@ -18,4 +18,7 @@ abstract class BaseApiService {
 
   //verify-otp api url
   final String verifyOtpUrl = "https://sunphe.in/tts_farm/tts/public/api/verify-otp";
+
+  //all product apin url
+  final String AllProductUrl = "https://sunphe.in/tts_farm/tts/public/api/allproduct";
 }

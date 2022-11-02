@@ -22,7 +22,7 @@ class VerifyOtpController extends GetxController {
             otp: otp,
         );
            
-           print("status code:::::::::::"); 
+           print(":::::::::verify otp status code:::::::::::"); 
       print(response.statusCode);
       print(response.data);
     if (response.statusCode == 200) {

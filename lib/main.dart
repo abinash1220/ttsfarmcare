@@ -12,6 +12,7 @@ import 'package:ttsfarmcare/services/sent_otp_api_services/sent_otp_api_service.
 import 'package:ttsfarmcare/controllers/verify_otp_api_controllers/verify_otp_api_controller.dart';
 import 'package:ttsfarmcare/view/splash_view/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
+import 'controllers/all_product_api_controllers/all_product_api_controller.dart';
 import 'controllers/sent_otp_api_controllers/sent_otp_api_controller.dart';
 import 'controllers/sign_up_controllers.dart';
 import 'controllers/view_cart_controller.dart';
@@ -26,6 +27,7 @@ void main() {
   Get.put(LoginController());
   Get.put(SentOtpController());
   Get.put(VerifyOtpController());
+  Get.put(AllProductController());
   runApp(
     MyApp(),
     //  DevicePreview(
