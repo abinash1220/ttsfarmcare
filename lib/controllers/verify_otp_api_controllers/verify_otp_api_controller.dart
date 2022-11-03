@@ -31,6 +31,11 @@ class VerifyOtpController extends GetxController {
       //await prefs.setString("auth_token", response.data["token"]);
 
       Get.to(() => SignUpSucessfully());
+    }else if(response.statusCode == 400){
+      Get.snackbar("Please enter correct otp","",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     } else {
       print(response.statusCode);
       print(response.data);
