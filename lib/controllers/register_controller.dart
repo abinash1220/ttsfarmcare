@@ -6,6 +6,8 @@ import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import 'package:dio/dio.dart' as dio;
 
+import 'sent_otp_api_controllers/sent_otp_api_controller.dart';
+
 class RegisterController extends GetxController {
   RegisterApiService registerApiServices = RegisterApiService();
 
@@ -34,7 +36,8 @@ class RegisterController extends GetxController {
 
       await prefs.setString("auth_token", response.data["token"]);
 
-      Get.to(() => SignUpOtp(mobile_number: mobile_number,));
+        Get.find<SentOtpController>().sentOtpUser(mobile_number: mobile_number);
+
     } else {
       print(response.statusCode);
       print(response.data);

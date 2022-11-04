@@ -26,7 +26,7 @@ class _ProductGridViewState extends State<ProductGridView> {
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.76,
           mainAxisSpacing: 10
         ),
         itemCount:widget.productList.length,

@@ -271,14 +271,14 @@ class _MobileNumberState extends State<MobileNumber> {
                       onTap: () async {
                         
                         if (mobileNumberController.text.isNotEmpty) {
-                         await  registerController.registerUser(
+                           registerController.registerUser(
                               name: widget.name,
                               email: widget.email,
                               mobile_number: mobileNumberController.text,
                               password: widget.password,
                               address: widget.address,
                               district: widget.district);
-                              sentOtpController.sentOtpUser(mobile_number: mobileNumberController.text);
+                            
                         } else {
                           Get.snackbar("Please fill all the fields", "",
                               snackPosition: SnackPosition.BOTTOM,

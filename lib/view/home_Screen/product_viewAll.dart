@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/view/home_Screen/product_gridView.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_view_screen.dart';
 
+import '../../controllers/all_product_api_controllers/all_product_api_controller.dart';
 import '../order_history_page/order_history.dart';
 import '../profile_screen/profile_screen.dart';
 import '../view_cart_pages/view_cart_screen.dart';
@@ -39,6 +42,8 @@ class _ProductViewBottomBarState extends State<ProductViewBottomBar> {
 
  int _bottomNavIndex = 0;
 
+ final allProductController = Get.find<AllProductController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +54,8 @@ class _ProductViewBottomBarState extends State<ProductViewBottomBar> {
               : _bottomNavIndex == 3
                   ? const ProfilePage()
                   : _bottomNavIndex == 0
-                      ? HomePage()
-                      : const HomePage(),
+                      ? ProductListView()
+                      :  const HomePage(),
                       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         itemCount: iconlist.length & bottomtext.length,
         tabBuilder: (int index, bool isActive) {

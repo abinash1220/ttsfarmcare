@@ -79,7 +79,7 @@ class ProductData {
         required this.categoryId,
         required this.createdAt,
         required this.updatedAt,
-        required this.rating,
+         this.rating,
     });
 
     int id;
@@ -92,7 +92,7 @@ class ProductData {
     String shortDescription;
     String detailDescription;
     String disclaimer;
-    int categoryId;
+    String categoryId;
     String createdAt;
     String updatedAt;
     dynamic rating;

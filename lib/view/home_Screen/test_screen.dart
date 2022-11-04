@@ -54,8 +54,7 @@ class _ExamsViewState extends State<ExamsView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    print("KeyBoard appeared>>>>>");
-    print(MediaQuery.of(context).viewInsets.bottom);
+   
 
     return Scaffold(
       appBar: AppBar(

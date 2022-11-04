@@ -17,7 +17,7 @@ import 'controllers/sent_otp_api_controllers/sent_otp_api_controller.dart';
 import 'controllers/sign_up_controllers.dart';
 import 'controllers/view_cart_controller.dart';
 
-void main() {
+void main() async{
   Get.put(SignUpControllers());
   Get.put(HomeControllers());
   Get.put(ViewCartController());
@@ -28,13 +28,7 @@ void main() {
   Get.put(SentOtpController());
   Get.put(VerifyOtpController());
   Get.put(AllProductController());
-  runApp(
-    MyApp(),
-    //  DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => MyApp(),
-    // ),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
