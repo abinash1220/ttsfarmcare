@@ -1,18 +1,23 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 import 'package:ttsfarmcare/view/view_cart_pages/payment_screen.dart';
 import 'package:ttsfarmcare/view/view_cart_pages/view_cart_screen.dart';
 
 import '../../constants/app_colors.dart';
+import '../../controllers/add_address_api_controllers/add_address_api_controller.dart';
 import '../../controllers/home_Controllers.dart';
+import '../../models/get_address_model.dart';
 
 class CartAddresScreen extends StatefulWidget {
+  
   const CartAddresScreen({super.key});
 
   @override
@@ -21,8 +26,54 @@ class CartAddresScreen extends StatefulWidget {
 
 class _CartAddresScreenState extends State<CartAddresScreen> {
 
+  final addAddressController = Get.find<AddAddressController>();
+
+  final getAddressControllers = Get.find<GetAddressControllers>();
+
   final homeController = Get.find<HomeControllers>();
   bool isCheked = false;
+ 
+ TextEditingController  homeaController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
+  TextEditingController areaController = TextEditingController();
+  TextEditingController landmarkController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController stateController = TextEditingController( );
+  TextEditingController pincodeController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAddressDetails();
+  }
+  
+ 
+
+  getAddressDetails()async{
+   Address address = await getAddressControllers.getAllAddress();
+  // Address address = addressList.last;
+   streetController.text = address.street;
+   areaController.text = address.area;
+   landmarkController.text = address.landmark;
+   cityController.text = address.city;
+   stateController.text = address.state;
+   pincodeController.text = address.pincode;
+   print(address.city);
+   if(address.type == "home" ){
+    homeController.home.value=1;
+   }else if(address.type == "work"){
+    homeController.home.value=2;
+   }else if(address.type == "other"){
+    homeController.home.value=3;
+   }
+  
+   setState(() {
+     
+   });
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -352,6 +403,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                             borderRadius: BorderRadius.circular(10),
                                             color: Color(0xffF3F3F3),
                                           ),
+                                          
                                           child: Center(
                                               child: Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -435,7 +487,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   height: 50,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller: streetController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                      focusedBorder: OutlineInputBorder(
@@ -464,7 +516,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   height: 50,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller: areaController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -493,7 +545,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   height: 50,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller: landmarkController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -522,7 +574,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   height: 50,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller: cityController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                      focusedBorder: OutlineInputBorder(
@@ -551,7 +603,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   height: 50,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                    controller: stateController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -581,7 +633,10 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   width: size.width,
                                   child: TextFormField(
                                     keyboardType: TextInputType.number,
-                                    // controller: usernamecontroller,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(6),
+                          ],
+                                    controller: pincodeController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                      focusedBorder: OutlineInputBorder(
@@ -625,12 +680,36 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                         ),
                                         InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CartPaymentScreen()),
+                                       if(streetController.text.isNotEmpty && 
+                                           areaController.text.isNotEmpty &&
+                                           landmarkController.text.isNotEmpty &&
+                                           cityController.text.isNotEmpty &&
+                                           stateController.text.isNotEmpty &&
+                                           pincodeController.text.isNotEmpty 
+                                             )
+                                           {
+                                            //homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "others" : "home",
+                                         addAddressController.addAddressUser(
+                                          type: homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "others" : "home",
+                                          street: streetController.text,
+                                          area: areaController.text,
+                                          landmark: landmarkController.text,
+                                          city: cityController.text,
+                                          state: stateController.text,
+                                          pincode: pincodeController.text
                                         );
+                                       }else{
+                                         Get.snackbar("Please fill all the fields", "",
+                                         snackPosition: SnackPosition.BOTTOM,
+                                         colorText: Colors.white,
+                                         backgroundColor: Colors.red);
+                                       }
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           const CartPaymentScreen()),
+                                        // );
                                       },
                                       child: Container(
                                         height: 35,
@@ -638,6 +717,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                         child: Center(
                                           child: Text(
                                             "Payments",
+                                            textAlign: TextAlign.center,
                                             style: GoogleFonts.montserrat(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500

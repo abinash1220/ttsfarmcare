@@ -20,6 +20,8 @@ class PaymentSuccessfullScreen extends StatefulWidget {
 class _PaymentSuccessfullScreenState extends State<PaymentSuccessfullScreen> {
   final homeController = Get.find<HomeControllers>();
   @override
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

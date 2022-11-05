@@ -45,6 +45,8 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
     _bottomNavIndex = widget.index;
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

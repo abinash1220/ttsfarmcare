@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ttsfarmcare/controllers/about_product_controller.dart';
+import 'package:ttsfarmcare/controllers/add_address_api_controllers/add_address_api_controller.dart';
+import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
 import 'package:ttsfarmcare/controllers/home_Controllers.dart';
 import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
 import 'package:ttsfarmcare/controllers/profile_controller.dart';
@@ -28,6 +30,8 @@ void main() async{
   Get.put(SentOtpController());
   Get.put(VerifyOtpController());
   Get.put(AllProductController());
+  Get.put(AddAddressController());
+  Get.put(GetAddressControllers());
   runApp(MyApp());
 }
 

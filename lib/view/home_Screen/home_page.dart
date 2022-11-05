@@ -85,10 +85,20 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    homeController.getAllCategorys();
-    allProductController.allProducts(1);
-    homeController.home(0);
+    // homeController.getAllCategorys();
+    // allProductController.allProducts(1);
+    // homeController.home(0);
+     WidgetsBinding.instance
+        .addPostFrameCallback((_) => getdata());
   }
+
+  getdata(){
+   homeController.getAllCategorys();
+   allProductController.allProducts(1);
+   homeController.home(0);
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
