@@ -690,7 +690,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                            {
                                             //homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "others" : "home",
                                          addAddressController.addAddressUser(
-                                          type: homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "others" : "home",
+                                          type: homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "other" : "home",
                                           street: streetController.text,
                                           area: areaController.text,
                                           landmark: landmarkController.text,

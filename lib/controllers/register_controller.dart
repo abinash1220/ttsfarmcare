@@ -38,6 +38,12 @@ class RegisterController extends GetxController {
 
         Get.find<SentOtpController>().sentOtpUser(mobile_number: mobile_number);
 
+    }else if(response.statusCode ==400){
+      Get.back();
+      Get.snackbar("User Already Register", "",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     } else {
       print(response.statusCode);
       print(response.data);

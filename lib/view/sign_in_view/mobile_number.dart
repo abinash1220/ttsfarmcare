@@ -269,7 +269,6 @@ class _MobileNumberState extends State<MobileNumber> {
                     ),
                     InkWell(
                       onTap: () async {
-                        
                         if (mobileNumberController.text.isNotEmpty) {
                            registerController.registerUser(
                               name: widget.name,

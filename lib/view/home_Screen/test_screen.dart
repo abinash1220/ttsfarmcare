@@ -12,6 +12,7 @@ import 'package:logger/logger.dart';
 import 'package:ttsfarmcare/controllers/registration_api_controller.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 import '../../constants/app_colors.dart';
+import '../../controllers/register_controller.dart';
 import '../../controllers/sign_up_controllers.dart';
 import '../sign_in_view/mobile_number.dart';
 
@@ -35,8 +36,8 @@ class _ExamsViewState extends State<ExamsView> {
   bool isKeyBoardVisile = false;
   bool _isHidden = true;
 
-  // RegistrationController registrationController =
-  //     Get.put(RegistrationController());
+   RegisterController registerController =
+       Get.put(RegisterController());
 
   void _togglePasswordView() {
     setState(() {
@@ -595,6 +596,7 @@ class _ExamsViewState extends State<ExamsView> {
                             // Logger().d("logger is working");
                             // Logger().i("line ------$inm-------------");
                             print("::::::::::::::::::click:::::::::::::::::");
+                           
                             if (usernamecontroller.text.isNotEmpty &&
                                emailcontroller.text.isNotEmpty &&
                                 passwordcontroller.text.isNotEmpty &&
@@ -608,6 +610,7 @@ class _ExamsViewState extends State<ExamsView> {
                                       password:passwordcontroller.text,
                                           companyName:companynamecontroller.text,
                                           gst_number:gstnumbercontroller.text,
+                                          
                                     ));
                               } else {
                                 Get.snackbar("Enter a  Valid Email ID", "",
