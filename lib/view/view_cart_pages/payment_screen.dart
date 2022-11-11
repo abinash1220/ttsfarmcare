@@ -107,9 +107,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
                                   "Cart",
                                   style: GoogleFonts.montserrat(
@@ -139,9 +137,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
                                   "Address",
                                   style: GoogleFonts.montserrat(
@@ -164,11 +160,9 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                       border: Border.all(color: Color(0xff707070)),
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
-                                  "Payment",
+                                  "Order",
                                   style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -246,6 +240,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                         height: 5,
                                       ),
                                       Row(
+                                       // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                         children: [
                                           Icon(Icons.currency_rupee),
                                           Obx(() =>  Container(
@@ -262,17 +257,15 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                               ),
                                             ),
                                           ),),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            "25 Points",
-                                            style: GoogleFonts.roboto(
-                                              fontSize: 13,
-                                              color: Color(0xffF9A20D),
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
+                                         
+                                          // Text(
+                                          //   "25 Points",
+                                          //   style: GoogleFonts.roboto(
+                                          //     fontSize: 13,
+                                          //     color: Color(0xffF9A20D),
+                                          //     fontWeight: FontWeight.w500,
+                                          //   ),
+                                          // ),
                                           SizedBox(
                                             width: 10,
                                           ),
@@ -498,110 +491,110 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                           SizedBox(
                             height: 10,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              children: [
-                                Image(
-                                    image: AssetImage("assets/image/credit-card.png")),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Debit / Credit cards",
-                                  style: GoogleFonts.montserrat(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xff707070),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              children: [
-                                Image(image: AssetImage("assets/image/wallet.png")),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Wallet",
-                                  style: GoogleFonts.montserrat(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xff707070),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              children: [
-                                Image(
-                                    image: AssetImage(
-                                        "assets/image/cashless-payment.png")),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "UPI / Payments",
-                                  style: GoogleFonts.montserrat(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xff707070),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              children: [
-                                Image(image: AssetImage("assets/image/provider.png")),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Net Banking",
-                                  style: GoogleFonts.montserrat(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: Color(0xff707070),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 15),
+                          //   child: Row(
+                          //     children: [
+                          //       Image(
+                          //           image: AssetImage("assets/image/credit-card.png")),
+                          //       SizedBox(
+                          //         width: 10,
+                          //       ),
+                          //       Text(
+                          //         "Debit / Credit cards",
+                          //         style: GoogleFonts.montserrat(
+                          //           color: Colors.black,
+                          //           fontWeight: FontWeight.w400,
+                          //           fontSize: 17,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Divider(
+                          //   thickness: 1,
+                          //   color: Color(0xff707070),
+                          // ),
+                          // SizedBox(
+                          //   height: 10,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 15),
+                          //   child: Row(
+                          //     children: [
+                          //       Image(image: AssetImage("assets/image/wallet.png")),
+                          //       SizedBox(
+                          //         width: 10,
+                          //       ),
+                          //       Text(
+                          //         "Wallet",
+                          //         style: GoogleFonts.montserrat(
+                          //           color: Colors.black,
+                          //           fontWeight: FontWeight.w400,
+                          //           fontSize: 17,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Divider(
+                          //   thickness: 1,
+                          //   color: Color(0xff707070),
+                          // ),
+                          // SizedBox(
+                          //   height: 10,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 15),
+                          //   child: Row(
+                          //     children: [
+                          //       Image(
+                          //           image: AssetImage(
+                          //               "assets/image/cashless-payment.png")),
+                          //       SizedBox(
+                          //         width: 10,
+                          //       ),
+                          //       Text(
+                          //         "UPI / Payments",
+                          //         style: GoogleFonts.montserrat(
+                          //           color: Colors.black,
+                          //           fontWeight: FontWeight.w400,
+                          //           fontSize: 17,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Divider(
+                          //   thickness: 1,
+                          //   color: Color(0xff707070),
+                          // ),
+                          // SizedBox(
+                          //   height: 10,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 15),
+                          //   child: Row(
+                          //     children: [
+                          //       Image(image: AssetImage("assets/image/provider.png")),
+                          //       SizedBox(
+                          //         width: 10,
+                          //       ),
+                          //       Text(
+                          //         "Net Banking",
+                          //         style: GoogleFonts.montserrat(
+                          //           color: Colors.black,
+                          //           fontWeight: FontWeight.w400,
+                          //           fontSize: 17,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Divider(
+                          //   thickness: 1,
+                          //   color: Color(0xff707070),
+                          // ),
                           SizedBox(
                             height: 10,
                           ),
@@ -631,7 +624,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                             color: Color(0xff707070),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 35,
                           ),
                           InkWell(
                             onTap: () {
@@ -648,7 +641,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                 width: 130,
                                 child: Center(
                                   child: Text(
-                                    "Confirm Payments",
+                                    "Conform Order",
                                     style: GoogleFonts.montserrat(
                                         color: Colors.white,
                                         fontSize: 21,

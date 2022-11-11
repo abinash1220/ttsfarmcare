@@ -24,4 +24,19 @@ abstract class BaseApiService {
 
   //get address api url
   final String getAddressUrl = "https://batechnology.in/tts_farm/public/api/get-address";
+
+  //forgot password change api url
+  final String pwdChangeUrl = "https://batechnology.in/tts_farm/public/api/password_update";
+
+  //profile user details api url
+  final String profileUserUrl = "https://batechnology.in/tts_farm/public/api/user";
+
+  //edit profile api url
+  final String editProfileUrl = "https://batechnology.in/tts_farm/public/api/edit-profile";
+
+  //reset password api url
+  final String resetPasswordUrl = "https://batechnology.in/tts_farm/public/api/reset_password";
+
+  //cusstomer support api url
+  final String customerSptUrl = "https://batechnology.in/tts_farm/public/api/support";
 }

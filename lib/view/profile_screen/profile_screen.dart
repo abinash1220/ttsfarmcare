@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:ttsfarmcare/view/landing_page/landing_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/password_change_screen.dart';
 import 'package:ttsfarmcare/view/profile_screen/total_points_screen.dart';
@@ -35,12 +36,21 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final ProfileController profile = Get.put(ProfileController());
 
+  final  getProfileuser = Get.find<GetProfileControllers>();
+
   logOutUser() async {
     final prefs = await SharedPreferences.getInstance();
 
     await prefs.setString("auth_token", "null");
 
     Get.offAll(() => LandingScreen());
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfileuser.getProfiledetails();
   }
 
   @override
@@ -99,498 +109,498 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
                   bottomRight: Radius.circular(25))),
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10, top: 20),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Obx(
-                    () => profile.profileImage == ""
-                        ? Container(
-                            height: 110.h,
-                            width: 110.w,
-                            child: Image(
-                              image: AssetImage("assets/image/NoPath.png"),
-                              fit: BoxFit.fill,
-                            ))
-                        : Container(
-                            height: 110.h,
-                            width: 110.w,
-                            child: Image(
-                              image: FileImage(
-                                  fl.File(profile.profileImage.value)),
-                              fit: BoxFit.fill,
-                            )),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: GetBuilder<GetProfileControllers>(
+                builder: (_) => Column(children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 20),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        "TTS Farm Care",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 30.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Obx(
+                        () => profile.profileImage == ""
+                            ? Container(
+                                height: 110.h,
+                                width: 110.w,
+                                child: Image(
+                                  image: AssetImage("assets/image/NoPath.png"),
+                                  fit: BoxFit.fill,
+                                ))
+                            : Container(
+                                height: 110.h,
+                                width: 110.w,
+                                child: Image(
+                                  image: FileImage(
+                                      fl.File(profile.profileImage.value)),
+                                  fit: BoxFit.fill,
+                                )),
                       ),
                       SizedBox(
-                        height: 3.h,
+                        width: 10.w,
                       ),
-                      Text(
-                        "ttsfarmcare@email.com",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const EditProfileScreen()),
-                          );
-                        },
-                        child: Text(
-                          "EDIT PROFILE",
-                          style: GoogleFonts.poppins(
-                            fontSize: 12.sp,
-                            color: darkGreenColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AllMyOrdersScreen()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        //  mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Image(
-                              image: AssetImage(
-                            "assets/icons/all order.png",
-                          )),
-                          SizedBox(
-                            width: 13.w,
-                          ),
                           Text(
-                            "All My Orders",
+                            getProfileuser.profileDetails.name,
                             style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
+                          SizedBox(
+                            height: 3.h,
+                          ),
+                          Text(
+                            getProfileuser.profileDetails.email,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          InkWell(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const AllMyOrdersScreen()),
+                                        const EditProfileScreen()),
                               );
                             },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FinishedOrders()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image(image: AssetImage("assets/icons/finished.png")),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          Text(
-                            "Finished Orders",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
-                              fontWeight: FontWeight.bold,
+                            child: Text(
+                              "EDIT PROFILE",
+                              style: GoogleFonts.poppins(
+                                fontSize: 12.sp,
+                                color: darkGreenColor,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const FinishedOrders()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
                     ],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const InviteFriendsScreen()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AllMyOrdersScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image(image: AssetImage("assets/icons/invite.png")),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          Text(
-                            "Invite Friends",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const InviteFriendsScreen()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CustomerSupportScreen()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image(image: AssetImage("assets/icons/support.png")),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          Text(
-                            "Customer Support",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const CustomerSupportScreen()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PasswordChangeScreen()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image(image: AssetImage("assets/icons/support.png")),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          Text(
-                            "Password Change",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const PasswordChangeScreen()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const TotalPointsScreen()),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image(image: AssetImage("assets/icons/coin.png")),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          Text(
-                            "Total Points",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14.sp,
-                              color: Color(0xff515C6F),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const TotalPointsScreen()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.navigate_next,
-                              color: Color(0xff515C6F),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Divider(
-                  //color: Color(0xff515C6F),
-                  ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: InkWell(
-                onTap: () {
-                  logOutUser();
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              logOutUser();
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => const LoginScreen()),
-                              // );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Image(
+                          Row(
+                            children: [
+                              Image(
                                   image: AssetImage(
-                                      "assets/icons/logout_black_24dp.png")),
-                            )),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        Text(
-                          "Log Out",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 14.sp,
-                            color: Color(0xff515C6F),
-                            fontWeight: FontWeight.bold,
+                                "assets/icons/all order.png",
+                              )),
+                              SizedBox(
+                                width: 13.w,
+                              ),
+                              Text(
+                                "All My Orders",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
+                                  color: Color(0xff515C6F),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AllMyOrdersScreen()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: Color(0xff515C6F),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Divider(
+                      //color: Color(0xff515C6F),
+                      ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FinishedOrders()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image(image: AssetImage("assets/icons/finished.png")),
+                              SizedBox(
+                                width: 15.w,
+                              ),
+                              Text(
+                                "Finished Orders",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
+                                  color: Color(0xff515C6F),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const FinishedOrders()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: Color(0xff515C6F),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Divider(
+                      //color: Color(0xff515C6F),
+                      ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 10),
+                //   child: InkWell(
+                //     onTap: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => const InviteFriendsScreen()),
+                //       );
+                //     },
+                //     child: Padding(
+                //       padding: const EdgeInsets.only(left: 5, right: 5),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Row(
+                //             children: [
+                //               Image(image: AssetImage("assets/icons/invite.png")),
+                //               SizedBox(
+                //                 width: 15.w,
+                //               ),
+                //               Text(
+                //                 "Invite Friends",
+                //                 style: GoogleFonts.montserrat(
+                //                   fontSize: 14.sp,
+                //                   color: Color(0xff515C6F),
+                //                   fontWeight: FontWeight.bold,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //           Padding(
+                //             padding: const EdgeInsets.only(right: 10),
+                //             child: InkWell(
+                //                 onTap: () {
+                //                   Navigator.push(
+                //                     context,
+                //                     MaterialPageRoute(
+                //                         builder: (context) =>
+                //                             const InviteFriendsScreen()),
+                //                   );
+                //                 },
+                //                 child: Icon(
+                //                   Icons.navigate_next,
+                //                   color: Color(0xff515C6F),
+                //                 )),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 15, right: 15),
+                //   child: Divider(
+                //       //color: Color(0xff515C6F),
+                //       ),
+                // ),
+                // SizedBox(
+                //   height: 10.h,
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerSupportScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image(image: AssetImage("assets/icons/support.png")),
+                              SizedBox(
+                                width: 15.w,
+                              ),
+                              Text(
+                                "Customer Support",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
+                                  color: Color(0xff515C6F),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CustomerSupportScreen()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: Color(0xff515C6F),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Divider(
+                      //color: Color(0xff515C6F),
+                      ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PasswordChangeScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image(image: AssetImage("assets/icons/support.png")),
+                              SizedBox(
+                                width: 15.w,
+                              ),
+                              Text(
+                                "Password Change",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
+                                  color: Color(0xff515C6F),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const PasswordChangeScreen()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: Color(0xff515C6F),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Divider(
+                      //color: Color(0xff515C6F),
+                      ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 10),
+                //   child: InkWell(
+                //     onTap: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => const TotalPointsScreen()),
+                //       );
+                //     },
+                //     child: Padding(
+                //       padding: const EdgeInsets.only(left: 5, right: 5),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Row(
+                //             children: [
+                //               Image(image: AssetImage("assets/icons/coin.png")),
+                //               SizedBox(
+                //                 width: 15.w,
+                //               ),
+                //               Text(
+                //                 "Total Points",
+                //                 style: GoogleFonts.montserrat(
+                //                   fontSize: 14.sp,
+                //                   color: Color(0xff515C6F),
+                //                   fontWeight: FontWeight.bold,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //           Padding(
+                //             padding: const EdgeInsets.only(right: 10),
+                //             child: InkWell(
+                //                 onTap: () {
+                //                   Navigator.push(
+                //                     context,
+                //                     MaterialPageRoute(
+                //                         builder: (context) =>
+                //                             const TotalPointsScreen()),
+                //                   );
+                //                 },
+                //                 child: Icon(
+                //                   Icons.navigate_next,
+                //                   color: Color(0xff515C6F),
+                //                 )),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 15, right: 15),
+                //   child: Divider(
+                //       //color: Color(0xff515C6F),
+                //       ),
+                // ),
+                // SizedBox(
+                //   height: 10.h,
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: InkWell(
+                    onTap: () {
+                      logOutUser();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  logOutUser();
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //       builder: (context) => const LoginScreen()),
+                                  // );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Image(
+                                      image: AssetImage(
+                                          "assets/icons/logout_black_24dp.png")),
+                                )),
+                            SizedBox(
+                              width: 15.w,
+                            ),
+                            Text(
+                              "Log Out",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 14.sp,
+                                color: Color(0xff515C6F),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ]),
-        ),
-      ),
-    );
+              ])))));
+            }
+         
   }
-}
+

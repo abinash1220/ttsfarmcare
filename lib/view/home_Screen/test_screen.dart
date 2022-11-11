@@ -610,7 +610,7 @@ class _ExamsViewState extends State<ExamsView> {
                                       password:passwordcontroller.text,
                                           companyName:companynamecontroller.text,
                                           gst_number:gstnumbercontroller.text,
-                                          
+                                          role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
                                     ));
                               } else {
                                 Get.snackbar("Enter a  Valid Email ID", "",

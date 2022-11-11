@@ -3,17 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ttsfarmcare/constants/user_role.dart';
 import 'package:ttsfarmcare/services/base_api_url_services/base_urls.dart';
 
-class RegisterApiService extends BaseApiService {
-  registerApiServices({
-    required String name,
-    dynamic companyName,
-    required String email,
+class ForgotOtpVerifyApiService extends BaseApiService {
+  forgotOtpVerifyApiServices({
     required String mobile_number,
-    required String password,
-    required String address,
-    dynamic gst_number,
-    required String district,
-    required String role
+    required String otp,
   }) async {
     //api result will store in this variable
     dynamic responseJson;
@@ -25,7 +18,7 @@ class RegisterApiService extends BaseApiService {
       // final prefs = await SharedPreferences.getInstance();
       // String? authtoken = prefs.getString("auth_token");
 
-      var response = await dio.post(registerURL,
+      var response = await dio.post(verifyOtpUrl,
           options: Options(
               headers: {
                 'Accept': 'application/json',
@@ -35,15 +28,10 @@ class RegisterApiService extends BaseApiService {
                 return status! <= 500;
               }),
           data: {
-            "name": name,
-            "company_name": companyName,
-            "email": email,
+          
             "mobile_number": mobile_number,
-            "password": password,
-            "address": address,
-            "gst_number": gst_number,
-            "district": district,
-            "role": role
+            "otp": otp,
+           
           });
       print("::::::::::::::::status code::::::::::::::");
       print(response.statusCode);

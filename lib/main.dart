@@ -6,10 +6,17 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ttsfarmcare/controllers/about_product_controller.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/add_address_api_controller.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
+import 'package:ttsfarmcare/controllers/change_password_api_controllers/forgot_pwd_change_api_controller.dart';
+import 'package:ttsfarmcare/controllers/change_password_api_controllers/reset_password_api_controller.dart';
+import 'package:ttsfarmcare/controllers/customer_support_api_controllers/customer_support_api_%20controller.dart';
+import 'package:ttsfarmcare/controllers/edit_profile_api_controllers/edit_profile_api_controller.dart';
 import 'package:ttsfarmcare/controllers/home_Controllers.dart';
 import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
 import 'package:ttsfarmcare/controllers/profile_controller.dart';
+import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:ttsfarmcare/controllers/register_controller.dart';
+import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/forgot_password_otp_api_controller.dart';
+import 'package:ttsfarmcare/controllers/verify_otp_api_controllers/forgot_otp_verify_api_controller.dart';
 import 'package:ttsfarmcare/services/sent_otp_api_services/sent_otp_api_service.dart';
 import 'package:ttsfarmcare/controllers/verify_otp_api_controllers/verify_otp_api_controller.dart';
 import 'package:ttsfarmcare/view/splash_view/splash_screen.dart';
@@ -32,6 +39,13 @@ void main() async{
   Get.put(AllProductController());
   Get.put(AddAddressController());
   Get.put(GetAddressControllers());
+  Get.put(ForgotOtpController());
+  Get.put(ForgotOtpVerifyController());
+  Get.put(ForgotPwdchangeApiController());
+  Get.put(GetProfileControllers());
+  Get.put(EditProfileController());
+  Get.put(ResetPasswordApiController());
+  Get.put(CustomerSupportApiController());
   runApp(MyApp());
 }
 

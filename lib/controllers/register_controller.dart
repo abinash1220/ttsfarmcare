@@ -20,6 +20,7 @@ class RegisterController extends GetxController {
     required String address,
     dynamic gst_number,
     required String district,
+    required String role
   }) async {
     final prefs = await SharedPreferences.getInstance();
     dio.Response<dynamic> response =
@@ -29,7 +30,9 @@ class RegisterController extends GetxController {
             mobile_number: mobile_number,
             password: password,
             address: address,
-            district: district);
+            district: district,
+            role: role,
+            );
 
     if (response.statusCode == 200) {
       print(response.data["token"]);
@@ -40,7 +43,7 @@ class RegisterController extends GetxController {
 
     }else if(response.statusCode ==400){
       Get.back();
-      Get.snackbar("User Already Register", "",
+      Get.snackbar(response.data["message"].first, "",
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);

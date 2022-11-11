@@ -2,28 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ttsfarmcare/services/register_api_services/register_api_service.dart';
+import 'package:ttsfarmcare/view/forgot_password_page/verification_code_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import 'package:dio/dio.dart' as dio;
 
+import '../../services/sent_otp_api_services/forgot_password_otp_api_service.dart';
 import '../../services/sent_otp_api_services/sent_otp_api_service.dart';
 import '../../view/sign_in_view/signUp_sucessfully.dart';
 
-class SentOtpController extends GetxController {
- SentOtpApiService sentOtpApiServices = SentOtpApiService();
+class ForgotOtpController extends GetxController {
+ ForgotOtpApiService forgotOtpApiServices = ForgotOtpApiService();
 
-  sentOtpUser({
+  forgotOtpUser({
    
     required String mobile_number,
     
   }) async {
    // final prefs = await SharedPreferences.getInstance();
     dio.Response<dynamic> response =
-        await sentOtpApiServices.sentOtpApiServices(
+        await forgotOtpApiServices.forgotOtpApiServices(
             mobile_number: mobile_number,
         );
            
-           print(":::::::::Otp send status code:::::::::::"); 
+           print(":::::::::forgot Otp send status code:::::::::::"); 
       print(response.statusCode);
       print(response.data);
     if (response.statusCode == 200) {
@@ -32,7 +34,7 @@ class SentOtpController extends GetxController {
       //await prefs.setString("auth_token", response.data["token"]);
 
      // Get.to(() => SignUpSucessfully());
-      Get.to(() => SignUpOtp(mobile_number: mobile_number,));
+      Get.to(() => VerificationCode(mobile_number: mobile_number,));
 
     } else {
       print(response.statusCode);

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/forgot_password_otp_api_controller.dart';
 import 'package:ttsfarmcare/view/forgot_password_page/verification_code_screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -16,6 +17,12 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+
+  final forgotOtpController = Get.find<ForgotOtpController>();
+   
+   TextEditingController phoneNumberController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -100,6 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: darkGreenColor,
+                      controller: phoneNumberController,
                       decoration: InputDecoration(
                          filled: true,
                           fillColor: Color(0xffECF2F0),
@@ -112,7 +120,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide(color: Color(0xff517937),width:0.7)
                         ), 
-                        hintText: "Enter Email / Phone Number",
+                        hintText: "Phone Number",
                         hintStyle: GoogleFonts.montserrat(
                           color: const Color(0xff517937),
                         ),
@@ -123,10 +131,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 SizedBox(height: 20,),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const VerificationCode()),
-                    );
+                    if(phoneNumberController.text.isNotEmpty){
+                      forgotOtpController.forgotOtpUser(mobile_number: phoneNumberController.text);
+                    }
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const VerificationCode()),
+                    // );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20,left: 20),

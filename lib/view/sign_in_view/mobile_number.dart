@@ -21,6 +21,7 @@ class MobileNumber extends StatefulWidget {
   String address;
   dynamic gst_number;
   String district;
+  String role;
 
   MobileNumber({
     required this.address,
@@ -30,6 +31,7 @@ class MobileNumber extends StatefulWidget {
     required this.name,
     required this.password,
     this.gst_number,
+    required this.role
   });
 
   @override
@@ -276,7 +278,8 @@ class _MobileNumberState extends State<MobileNumber> {
                               mobile_number: mobileNumberController.text,
                               password: widget.password,
                               address: widget.address,
-                              district: widget.district);
+                              district: widget.district,
+                              role: widget.role);
                             
                         } else {
                           Get.snackbar("Please fill all the fields", "",

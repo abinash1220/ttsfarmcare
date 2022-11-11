@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 filled: true,
                                 isDense: true,
                                 fillColor: Color(0xffECF2F0),
-                                hintText: "Email / User Name",
+                                hintText: "Email / Phone Number",
                                 hintStyle: GoogleFonts.montserrat(
                                   color: const Color(0xff517937),
                                 ),

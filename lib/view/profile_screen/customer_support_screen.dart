@@ -6,6 +6,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/customer_support_api_controllers/customer_support_api_%20controller.dart';
+import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -18,6 +20,14 @@ class CustomerSupportScreen extends StatefulWidget {
 }
 
 class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
+
+  final customerSupportApiController = Get.find<CustomerSupportApiController>();
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -92,7 +102,7 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
                                   height: 50.h,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller:nameController,
                                     cursorColor: darkGreenColor,
                                      keyboardType: TextInputType.name,
                                         inputFormatters: [
@@ -124,7 +134,7 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
                                   height: 50.h,
                                   width: size.width,
                                   child: TextFormField(
-                                    // controller: usernamecontroller,
+                                     controller: emailController,
                                     cursorColor: darkGreenColor,
                                     keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
@@ -153,7 +163,7 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
                                   width: size.width,
                                   child: TextFormField(
                                     maxLines: 500,
-                                    // controller: usernamecontroller,
+                                     controller: messageController,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                      focusedBorder: OutlineInputBorder(
@@ -176,10 +186,17 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
                               SizedBox(height: 50,),
                               InkWell(
                                     onTap: (){
-                                      Navigator.push(
-                                                 context,
-                                                 MaterialPageRoute(builder: (context) => const ProfilePage()),
-                                               );
+                                     if(
+                                      nameController.text.isNotEmpty &&
+                                      emailController.text.isNotEmpty &&
+                                      messageController.text.isNotEmpty
+                                     ){
+                                      customerSupportApiController.CustomerSupport(
+                                        name: nameController.text, 
+                                        email: emailController.text, 
+                                        message: messageController.text
+                                        );
+                                     }
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 25,right: 25),

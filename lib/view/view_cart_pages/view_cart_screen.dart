@@ -97,14 +97,14 @@ class _ViewCartPageState extends State<ViewCartPage> {
                       topRight: Radius.circular(25),
                       bottomRight: Radius.circular(25))),
               child: Padding(
-                padding: const EdgeInsets.only(top: 20, left: 10),
+                padding: const EdgeInsets.only(top: 20, left: 10,),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(right: 10,),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -172,7 +172,7 @@ class _ViewCartPageState extends State<ViewCartPage> {
                                 ),
                               ),
                               Text(
-                                "Payment",
+                                "Order",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 20,
                                   color: Colors.black,
@@ -280,14 +280,14 @@ class _ViewCartPageState extends State<ViewCartPage> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    Text(
-                                                      "25 Points",
-                                                      style: GoogleFonts.roboto(
-                                                        fontSize: 13.sp,
-                                                        color: Color(0xffF9A20D),
-                                                        fontWeight: FontWeight.w500,
-                                                      ),
-                                                    ),
+                                                    // Text(
+                                                    //   "25 Points",
+                                                    //   style: GoogleFonts.roboto(
+                                                    //     fontSize: 13.sp,
+                                                    //     color: Color(0xffF9A20D),
+                                                    //     fontWeight: FontWeight.w500,
+                                                    //   ),
+                                                    // ),
                                                     Container(
                                                       height: 30,
                                                       width: 100,
@@ -428,26 +428,24 @@ class _ViewCartPageState extends State<ViewCartPage> {
                           SizedBox(
                             width: 3.w,
                           ),
-                          Container(
-                            height: 30,
-                            width: 100.w,
-                            child: Center(
-                              child: Text(
-                                "25 Points Saved",
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.sp,
-                                  color: Color(0xff016942),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffE4E4E4)),
-                          ),
-                          SizedBox(
-                            width: 3.w,
-                          ),
+                          // Container(
+                          //   height: 30,
+                          //   width: 100.w,
+                          //   child: Center(
+                          //     child: Text(
+                          //       "25 Points Saved",
+                          //       style: GoogleFonts.roboto(
+                          //         fontSize: 12.sp,
+                          //         color: Color(0xff016942),
+                          //         fontWeight: FontWeight.bold,
+                          //       ),
+                          //     ),
+                          //   ),
+                          //   decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //       color: Color(0xffE4E4E4)),
+                          // ),
+                          
                           InkWell(
                             onTap: () {
                               Navigator.push(
@@ -458,12 +456,12 @@ class _ViewCartPageState extends State<ViewCartPage> {
                             },
                             child: Container(
                               height: 35,
-                              width: 110,
+                              width: 140,
                               child: Center(
                                 child: Text(
                                   "Delivery Address",
                                   style: GoogleFonts.roboto(
-                                    fontSize: 12.sp,
+                                    fontSize: 14.sp,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

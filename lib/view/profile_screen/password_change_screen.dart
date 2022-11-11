@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/change_password_api_controllers/reset_password_api_controller.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -24,6 +25,12 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
       _isHidden = !_isHidden;
     });
   }
+
+  final resetPasswordApiController = Get.find<ResetPasswordApiController>();
+
+  TextEditingController currentPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +117,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           width: size.width,
                           child: TextFormField(
                             obscureText: _isHidden,
-                            // controller: passwordcontroller,
+                             controller: currentPasswordController,
                             cursorColor: darkGreenColor,
                             decoration: InputDecoration(
                                focusedBorder: OutlineInputBorder(
@@ -166,7 +173,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           width: size.width,
                           child: TextFormField(
                             obscureText: _isHidden,
-                            // controller: passwordcontroller,
+                            controller: newPasswordController,
                             cursorColor: darkGreenColor,
                             decoration: InputDecoration(
                              focusedBorder: OutlineInputBorder(
@@ -213,7 +220,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           width: size.width,
                           child: TextFormField(
                             obscureText: _isHidden,
-                            // controller: passwordcontroller,
+                            controller: confirmPasswordController,
                             cursorColor: darkGreenColor,
                             decoration: InputDecoration(
                              focusedBorder: OutlineInputBorder(
@@ -241,10 +248,16 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                  SizedBox(height: 90,),
                             InkWell(
                                   onTap: (){
-                                    Navigator.push(
-                                               context,
-                                               MaterialPageRoute(builder: (context) => const ProfilePage()),
-                                             );
+                                   if(
+                                    currentPasswordController.text.isNotEmpty &&
+                                    newPasswordController.text.isNotEmpty &&
+                                    confirmPasswordController.text.isNotEmpty
+                                   ){
+                                    resetPasswordApiController.resetpassword(
+                                      original_password: currentPasswordController.text, 
+                                      new_password: newPasswordController.text, 
+                                      confirm_password: confirmPasswordController.text);
+                                   }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 35,right: 35),

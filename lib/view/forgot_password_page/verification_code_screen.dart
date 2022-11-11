@@ -4,18 +4,26 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/verify_otp_api_controllers/forgot_otp_verify_api_controller.dart';
 
 import '../../constants/app_colors.dart';
 import '../new_password_page/new_password.dart';
 
 class VerificationCode extends StatefulWidget {
-  const VerificationCode({super.key});
+   String mobile_number;
+   
+   VerificationCode({super.key,required this.mobile_number});
 
   @override
   State<VerificationCode> createState() => _VerificationCodeState();
 }
 
 class _VerificationCodeState extends State<VerificationCode> {
+
+final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
+
+ late String otp;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -108,10 +116,15 @@ class _VerificationCodeState extends State<VerificationCode> {
                         borderWidth: 0,
                         showFieldAsBox: true, 
                         onCodeChanged: (String code) {
-                        },
+                        setState(() {
+                            otp = code;
+                        });
+                     },
                        onSubmit: (String verificationCode){
-                       
-        }, 
+                         setState(() {
+                          otp = verificationCode;
+                    });
+                   }, 
                       ),
                     ),
                     SizedBox(height: 40,),
@@ -143,10 +156,11 @@ class _VerificationCodeState extends State<VerificationCode> {
           ),
           InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const NewPasswordPage()),
-                    );
+                    forgotOtpVerifyController.forgotOtpVerifyUser(mobile_number:widget.mobile_number, otp: otp);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const NewPasswordPage()),
+                    // );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 40,left: 40),

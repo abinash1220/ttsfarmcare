@@ -38,7 +38,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
   TextEditingController areaController = TextEditingController();
   TextEditingController landmarkController = TextEditingController();
   TextEditingController cityController = TextEditingController();
-  TextEditingController stateController = TextEditingController( );
+  TextEditingController stateController = TextEditingController();
   TextEditingController pincodeController = TextEditingController();
 
   @override
@@ -149,9 +149,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
                                   "Cart",
                                   style: GoogleFonts.montserrat(
@@ -174,9 +172,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                       border: Border.all(color: Color(0xff707070)),
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
                                   "Address",
                                   style: GoogleFonts.montserrat(
@@ -205,11 +201,9 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                               
                                 Text(
-                                  "Payment",
+                                  "Order",
                                   style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -716,7 +710,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                         width: 130,
                                         child: Center(
                                           child: Text(
-                                            "Payments",
+                                            "Order",
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.montserrat(
                                               color: Colors.white,

@@ -9,7 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 import 'dart:io' as fl;
 import '../../constants/app_colors.dart';
+import '../../controllers/edit_profile_api_controllers/edit_profile_api_controller.dart';
 import '../../controllers/profile_controller.dart';
+import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -21,6 +23,40 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
 
   final ProfileController profile = Get.put(ProfileController());
+
+   final  getProfileuser = Get.find<GetProfileControllers>();
+
+   final editProfileController = Get.find<EditProfileController>();
+
+   TextEditingController nameController = TextEditingController();
+   TextEditingController emailController = TextEditingController();
+   TextEditingController phonenumberController = TextEditingController();
+   TextEditingController companynameController = TextEditingController();
+   TextEditingController gstController = TextEditingController();
+   TextEditingController addressController = TextEditingController();
+   TextEditingController districtController = TextEditingController();
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   profileAsign();
+  }
+
+
+
+  profileAsign(){
+    nameController.text = getProfileuser.profileDetails.name;
+    emailController.text = getProfileuser.profileDetails.email;
+    phonenumberController.text = getProfileuser.profileDetails.mobileNumber;
+    companynameController.text = getProfileuser.profileDetails.companyName ?? "TTS FORM CARE";
+    gstController.text = getProfileuser.profileDetails.gstNumber ?? "FHD57SA35X8HD";
+    addressController.text = getProfileuser.profileDetails.address;
+    districtController.text = getProfileuser.profileDetails.district;
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +192,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                 controller: nameController,
                                 cursorColor: darkGreenColor,
                                  keyboardType: TextInputType.name,
                                     inputFormatters: [
@@ -210,7 +246,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                 controller: emailController,
                                 cursorColor: darkGreenColor,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
@@ -260,7 +296,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                 controller: phonenumberController,
                                  keyboardType: TextInputType.number,
                                     // inputFormatters: [
                                     //   FilteringTextInputFormatter.allow(
@@ -310,7 +346,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                 controller: companynameController,
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                    focusedBorder: OutlineInputBorder(
@@ -355,7 +391,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                controller: gstController,
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                    focusedBorder: OutlineInputBorder(
@@ -400,7 +436,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                 controller: addressController,
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -449,7 +485,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               height: 50.h,
                               width: size.width.w,
                               child: TextField(
-                                // controller: usernamecontroller,
+                                controller: districtController,
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -480,11 +516,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProfilePage()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => const ProfilePage()),
+                          // );
+                          if(nameController.text.isNotEmpty &&
+                             emailController.text.isNotEmpty &&
+                             phonenumberController.text.isNotEmpty &&
+                             companynameController.text.isNotEmpty &&
+                             gstController.text.isNotEmpty &&
+                             addressController.text.isNotEmpty &&
+                             districtController.text.isNotEmpty){
+                              editProfileController.editUser(
+                                name: nameController.text, 
+                                email: emailController.text, 
+                                mobile_number: phonenumberController.text, 
+                                company_name: companynameController.text, 
+                                gst_no: gstController.text, 
+                                address: addressController.text, 
+                                district: districtController.text);
+                             }
                     },
                     child: Padding(
                           padding: const EdgeInsets.only(left: 15, right: 15),
@@ -514,7 +566,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     onTap: () {
                           // Navigator.push(
                           //            context,
-                          //            MaterialPageRoute(builder: (context) => const PaymentSucessfully()),
+                          //            MaterialPageRoute(builder: (context) =>  PaymentSucessfully()),
                           //          );
                     },
                     child: Padding(

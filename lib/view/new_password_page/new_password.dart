@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/change_password_api_controllers/forgot_pwd_change_api_controller.dart';
 
 import '../../constants/app_colors.dart';
 import 'new_password_successfully_screen.dart';
@@ -16,6 +17,12 @@ class NewPasswordPage extends StatefulWidget {
 }
 
 class _NewPasswordPageState extends State<NewPasswordPage> {
+  
+  final forgotPwdchangeApiController = Get.find<ForgotPwdchangeApiController>();
+ 
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -107,6 +114,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                     cursorColor: darkGreenColor,
+                    controller: newPasswordController,
                     decoration: InputDecoration(
                      focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -151,6 +159,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                     cursorColor: darkGreenColor,
+                    controller: confirmPasswordController,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -174,11 +183,17 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PasswordSuccessfullyScreen()),
-                    );
+                   if(newPasswordController.text.isNotEmpty &&
+                      confirmPasswordController.text.isNotEmpty){
+                        forgotPwdchangeApiController.forgotPwdApiUser(
+                          password: newPasswordController.text,
+                         new_password: confirmPasswordController.text);
+                      } else {
+                              Get.snackbar("Please fill all the fields", "",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.red);
+                            }
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 40, left: 40),
