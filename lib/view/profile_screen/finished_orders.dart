@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/oreder_history_api_controllers/complete_order_api_controller.dart';
+import 'package:ttsfarmcare/view/profile_screen/finished_order_gridview.dart';
 
 class FinishedOrders extends StatefulWidget {
   const FinishedOrders({super.key});
@@ -17,6 +19,21 @@ class _FinishedOrdersState extends State<FinishedOrders> {
 
   List image = ["assets/images/21.png","assets/images/21.png","assets/images/asset-3.png","assets/images/asset-3.png","assets/images/21.png","assets/images/21.png"];
 
+  final completeOrderController = Get.find<CompleteOrderControllers>();
+   
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     WidgetsBinding.instance
+        .addPostFrameCallback((_) => getCompleteOrder());
+  }
+
+  getCompleteOrder(){
+    completeOrderController.getCompleteOrder();
+  }
+ 
+  
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -55,138 +72,26 @@ class _FinishedOrdersState extends State<FinishedOrders> {
                       BorderRadius.only(bottomLeft: Radius.circular(40))),
             ),
           )),
-          body: Container(
-               decoration: BoxDecoration(
-              color: Color(0xff289445),
-        ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
-                  
-                  child: Column(
-                    children: [
-                     SizedBox(height: 10,),
-                      Container(
-                        height: size.height*0.81,
-                         child: ListView.builder(
-                        itemCount: 6,
-                        itemBuilder: ((context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, top: 20),
-                            child: Container(
-                              height: 110,
-                              width: 350,
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Image(
-                                        image: AssetImage(image[index])),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    height: 110,
-                                    width: 1,
-                                    color: Color(0xff686868),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Checkbox(
-                                              activeColor: Color(0xff517937),
-                                              value: isCheked,
-                                              onChanged: (value) {}),
-                                          Container(
-                                            width: size.width * 0.45,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  "Micro Nutrition",
-                                                  style: GoogleFonts.poppins(
-                                                      fontSize: 12,
-                                                      color: Color(0xff1C1C1E)),
-                                                ),
-                                                Text(
-                                                  "Rating",
-                                                  style: GoogleFonts.poppins(
-                                                      fontSize: 14,
-                                                      color: Color(0xff515C6F)),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Image(
-                                              image: AssetImage(
-                                                  "assets/image/Group 3369.png")),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "VALOROUS:",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Color(0xff1C1C1E)),
-                                            ),
-                                            Text(
-                                              "RS 256.98:",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 13,
-                                                  color: Color(0xff0D8446)),
-                                            ),
-                                            Container(
-                                              width: size.width * 0.7,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Qty : 01",
-                                                    style: GoogleFonts.poppins(
-                                                        fontSize: 13,
-                                                        color: Color(0xff1C1C1E)),
-                                                  ),
-                                                  Text(
-                                                    "Order Complete",
-                                                    style: GoogleFonts.poppins(
-                                                        fontSize: 13,
-                                                        color: Color(0xff0D8446)),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color.fromARGB(255, 194, 194, 194)),
-                                color: Color.fromARGB(255, 247, 243, 243),
-                              ),
-                            ),
-                          );
-                        }))),
-                    ],
-                  ),
-                  ),
-            ),
+          body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+              return Padding(
+                             padding: const EdgeInsets.only(
+                                 left: 15, right: 15, top: 20),
+                             child: Container(
+                               height:constraints.maxHeight>570 ? size.height * 0.73 : size.height* 0.71,
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                          GetBuilder<CompleteOrderControllers>(
+                          builder: (_) {
+                            return CompleOrderGritview(completeorder:completeOrderController.completeorder);
+                          }
+                        ),
+                        ]),
+                           ),
+                           );
+            }
+          ),
     );
   }
 }

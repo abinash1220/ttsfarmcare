@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
-import 'package:ttsfarmcare/view/view_cart_pages/payment_screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 import 'package:ttsfarmcare/view/view_cart_pages/view_cart_screen.dart';
 
 import '../../constants/app_colors.dart';
@@ -40,6 +40,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
   TextEditingController cityController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   TextEditingController pincodeController = TextEditingController();
+  TextEditingController loctionController = TextEditingController();
 
   @override
   void initState() {
@@ -59,6 +60,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
    cityController.text = address.city;
    stateController.text = address.state;
    pincodeController.text = address.pincode;
+   loctionController.text = address.state;
    print(address.city);
    if(address.type == "home" ){
     homeController.home.value=1;
@@ -291,6 +293,12 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                     "Viluppuram",
                                     "Virudhunagar",
                                     ],
+                                    onChanged: ((value) {
+                                setState(() {
+                                  loctionController
+                                      .text = value.toString();
+                                });
+                              }),
                                     dropdownDecoratorProps: DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
                                         iconColor: Color(0xff517937),
@@ -303,6 +311,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                             )),
                                         hintText: "Choose Location",
                                         hintStyle: GoogleFonts.montserrat(),
+                                        
                                       ),
                                     ),
                                   ),
@@ -690,7 +699,8 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                           landmark: landmarkController.text,
                                           city: cityController.text,
                                           state: stateController.text,
-                                          pincode: pincodeController.text
+                                          pincode: pincodeController.text,
+                                          location: loctionController.text
                                         );
                                        }else{
                                          Get.snackbar("Please fill all the fields", "",

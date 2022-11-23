@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -7,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
-import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
+import 'package:ttsfarmcare/view/home_Screen/signUp_screen.dart';
 import '../forgot_password_page/forgot_password_page.dart';
 import '../home_Screen/home_page.dart';
 import '../sign_in_view/loading_screen.dart';
@@ -34,6 +35,27 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
+  
+ bool isPwd = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    passwordcontroller.addListener(validatePwd);
+  }
+
+  validatePwd(){
+   if(passwordcontroller.text.length > 7){
+         setState(() {
+           isPwd = true;
+         });
+   }else{
+     setState(() {
+       isPwd = false;
+     });
+   }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,20 +118,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: isKeyboardVisible ? 10 : 50,
-                        bottom: isKeyboardVisible ? 100 : 0),
-                    child: Column(
+                        // top: isKeyboardVisible ? 10 : 50,
+                        // bottom: isKeyboardVisible ? 100 : 0),
+                       ),
+                    child: ListView(
+                      shrinkWrap: true,
                       // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                     // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        
                         Text(
                           "Welcome back",
+                          textAlign: TextAlign.center,
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold, fontSize: 40.sp),
                         ),
                         Text(
                           "Login to your account",
-                          style: GoogleFonts.montserrat(fontSize: 20),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(fontSize: 20.sp),
                         ),
                         SizedBox(
                           height: 40.h,
@@ -153,6 +180,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: size.width,
                             child: TextFormField(
                               keyboardType: TextInputType.visiblePassword,
+                              // inputFormatters: [
+                              //   LengthLimitingTextInputFormatter(8),
+                              // ],
                               cursorColor: darkGreenColor,
                               obscureText: _isHidden,
                               controller: passwordcontroller,
@@ -186,6 +216,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                        if (isPwd == false)Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Text("password must be 8 characters",
+                        style: TextStyle(color: Colors.red),
+                  ),
+                ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -234,7 +270,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             if (emailcontroller.text.isNotEmpty &&
                                 passwordcontroller.text.isNotEmpty) {
-                              loginController.loginUser(email: emailcontroller.text,password: passwordcontroller.text);
+                              if (isPwd) {
+                           loginController.loginUser(
+                           email: emailcontroller.text,
+                         password: passwordcontroller.text);
+                          }
                             } else {
                               Get.snackbar("Please fill all the fields", "",
                                   snackPosition: SnackPosition.BOTTOM,
@@ -253,7 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: GoogleFonts.montserrat(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                 ),
                               )),
                               decoration: BoxDecoration(
@@ -268,7 +308,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               "did't have an account?",
-                              style: GoogleFonts.montserrat(fontSize: 18),
+                              style: GoogleFonts.montserrat(fontSize: 18.sp),
                             ),
                             TextButton(
                               onPressed: () {
@@ -282,13 +322,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Sign Up",
                                 style: GoogleFonts.montserrat(
                                   color: Color(0xff016942),
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,
                                 ),
                               ),
                             ),
                           ],
+                        ),
+                        if(isKeyboardVisible)  Container(
+                          height: 200,
                         ),
                       ],
                     ),

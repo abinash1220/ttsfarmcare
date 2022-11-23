@@ -6,7 +6,7 @@ import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:ttsfarmcare/view/view_cart_pages/payment_screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 
 import '../../services/add_address_api_services/add_address_api_service.dart';
 
@@ -22,6 +22,7 @@ class AddAddressController extends GetxController {
     required String city,
     required String state,
     required String pincode,
+    required String location
   }) async {
     final prefs = await SharedPreferences.getInstance();
     dio.Response<dynamic> response =
@@ -32,10 +33,11 @@ class AddAddressController extends GetxController {
           landmark: landmark,
           city: city,
           state: state,
-          pincode: pincode
+          pincode: pincode,
+          location: location
             );
     
-   print("::::::::::::::::edit profile statuscode:::::::::::::::::::::");
+   print("::::::::::::::::add address statuscode:::::::::::::::::::::");
    print(response.statusCode);
 
     if (response.statusCode == 200) {

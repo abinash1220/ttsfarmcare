@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/verify_otp_api_controllers/forgot_otp_verify_api_controller.dart';
 
 import '../../constants/app_colors.dart';
+import '../../controllers/sent_otp_api_controllers/forgot_password_otp_api_controller.dart';
 import '../new_password_page/new_password.dart';
 
 class VerificationCode extends StatefulWidget {
@@ -21,6 +23,8 @@ class VerificationCode extends StatefulWidget {
 class _VerificationCodeState extends State<VerificationCode> {
 
 final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
+
+final forgotOtpController = Get.find<ForgotOtpController>();
 
  late String otp;
 
@@ -87,8 +91,7 @@ final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
                       textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          
-                          fontSize: 29),
+                          fontSize: 29.sp),
                     ),
                     SizedBox(height: 10,),
                     Padding(
@@ -96,22 +99,22 @@ final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
                       child: Text("OTP Verification verifies Email Address/Mobile\n"
                                     "Number of users by sending OTP verification code\n"
                                     "during registration",
-                               style: GoogleFonts.montserrat(fontSize: 13),
+                               style: GoogleFonts.montserrat(fontSize: 13.sp),
                                textAlign:TextAlign.center,
                                ),
                     ),
                     SizedBox(height: 30,),
                     Container(
-                      height: 55,
+                      height: 55.h,
                       child: OtpTextField(
                         numberOfFields: 4,
                         keyboardType: TextInputType.number,
                         filled: true,
-                        fieldWidth: 50,
+                        fieldWidth: 50.w,
                         margin: EdgeInsets.only(left: 10,right: 20),
                         fillColor: darkGreenColor,
                         textStyle: GoogleFonts.poppins(color: Colors.white,
-                        fontSize: 25,
+                        fontSize: 25.sp,
                         fontWeight: FontWeight.w600),
                         borderWidth: 0,
                         showFieldAsBox: true, 
@@ -135,15 +138,17 @@ final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
                     Text("If you didn't receive a code! ",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 15
+                      fontSize: 15.sp
                     ),),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                       forgotOtpController.forgotOtpUser(mobile_number: widget.mobile_number);
+                      },
                       child: Text(
                         "Resend",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(color:darkGreenColor,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         decoration:TextDecoration.underline, 
                         ),
                         
@@ -165,7 +170,7 @@ final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
                   child: Padding(
                     padding: const EdgeInsets.only(right: 40,left: 40),
                     child: Container(
-                      height: 50,
+                      height: 50.h,
                       width:size.width,
                       child: Center(
                           child: Text(
@@ -173,7 +178,7 @@ final forgotOtpVerifyController = Get.find<ForgotOtpVerifyController>();
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                          // fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w500
                         ),
                       )),

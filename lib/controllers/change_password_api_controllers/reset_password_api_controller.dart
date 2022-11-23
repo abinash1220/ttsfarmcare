@@ -8,7 +8,7 @@ import 'package:ttsfarmcare/view/profile_screen/profile_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:ttsfarmcare/view/view_cart_pages/payment_screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 
 import '../../constants/app_colors.dart';
 import '../../services/add_address_api_services/add_address_api_service.dart';

@@ -11,6 +11,7 @@ class ViewCartController extends GetxController {
 
     double temp = price.value + 450;
     price(temp);
+    
   }
 
   decrement() {

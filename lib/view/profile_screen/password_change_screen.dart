@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/change_password_api_controllers/reset_password_api_controller.dart';
@@ -31,6 +32,55 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
   TextEditingController currentPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  
+  bool iscurrentPwd = true;
+  bool isnewPwd = true;
+  bool isconfirmPwd = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentPasswordController.addListener(validateCurrentPwd);
+    newPasswordController.addListener(validateNewPwd);
+    confirmPasswordController.addListener(validateConfirmPwd);
+  }
+
+  validateCurrentPwd (){
+     if(currentPasswordController.text.length > 7){
+         setState(() {
+           iscurrentPwd = true;
+         });
+     }else{
+         setState(() {
+           iscurrentPwd = false;
+         });
+     }
+  }
+
+  validateNewPwd (){
+    if(newPasswordController.text.length > 7){
+         setState(() {
+           isnewPwd = true;
+         });
+     }else{
+         setState(() {
+           isnewPwd = false;
+         });
+     }
+  }
+
+  validateConfirmPwd (){
+    if(confirmPasswordController.text.length > 7){
+         setState(() {
+           isconfirmPwd = true;
+         });
+     }else{
+         setState(() {
+           isconfirmPwd = false;
+         });
+     }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,6 +192,12 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           ),
                         ),
                 ),
+               if (iscurrentPwd == false)Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text("password must be 8 characters",
+                  style: TextStyle(color: Colors.red),
+                  ),
+                ),
                 SizedBox(height: 20,),
                  Padding(
                 padding: const EdgeInsets.only(left: 20),
@@ -169,7 +225,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
               Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Container(
-                          height: 50,
+                          height: 50.h,
                           width: size.width,
                           child: TextFormField(
                             obscureText: _isHidden,
@@ -198,6 +254,12 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           ),
                         ),
                 ),
+                if (isnewPwd == false)Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text("password must be 8 characters",
+                  style: TextStyle(color: Colors.red),
+                  ),
+                ),
                 SizedBox(height: 20,),
                 Padding(
                 padding: const EdgeInsets.only(left: 20),
@@ -205,7 +267,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                         
                                         "Confirm new password",
                                         style: GoogleFonts.poppins(
-                                          fontSize: 23,
+                                          fontSize: 23.sp,
                                           color: Color(0xff515C6F),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -216,11 +278,17 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
               Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Container(
-                          height: 50,
+                          height: 50.h,
                           width: size.width,
                           child: TextFormField(
                             obscureText: _isHidden,
                             controller: confirmPasswordController,
+                            validator: ((value) {
+                              if(value!.length < 8){
+                                return "must 8 characters";
+
+                              }
+                            }),
                             cursorColor: darkGreenColor,
                             decoration: InputDecoration(
                              focusedBorder: OutlineInputBorder(
@@ -245,7 +313,13 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           ),
                         ),
                 ),
-                 SizedBox(height: 90,),
+                if (isconfirmPwd == false)Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text("password must be 8 characters",
+                  style: TextStyle(color: Colors.red),
+                  ),
+                ),
+                 SizedBox(height: 90.h,),
                             InkWell(
                                   onTap: (){
                                    if(
@@ -253,10 +327,12 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                                     newPasswordController.text.isNotEmpty &&
                                     confirmPasswordController.text.isNotEmpty
                                    ){
-                                    resetPasswordApiController.resetpassword(
-                                      original_password: currentPasswordController.text, 
-                                      new_password: newPasswordController.text, 
-                                      confirm_password: confirmPasswordController.text);
+                                    if (isconfirmPwd && iscurrentPwd && isnewPwd) {
+                                     resetPasswordApiController.resetpassword(
+                                     original_password: currentPasswordController.text, 
+                                    new_password: newPasswordController.text, 
+                                    confirm_password: confirmPasswordController.text);
+}
                                    }
                                   },
                                   child: Padding(

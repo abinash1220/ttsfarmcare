@@ -26,7 +26,7 @@ class _PaymentSuccessfullScreenState extends State<PaymentSuccessfullScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            "Succesfull",
+            "Succesfully",
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.bold,
             ),

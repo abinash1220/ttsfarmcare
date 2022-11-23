@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,7 @@ import 'package:ttsfarmcare/controllers/sent_otp_api_controllers/forgot_password
 import 'package:ttsfarmcare/view/forgot_password_page/verification_code_screen.dart';
 
 import '../../constants/app_colors.dart';
-import '../home_Screen/test_screen.dart';
+import '../home_Screen/signUp_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -105,7 +106,36 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     height: 50,
                     width: size.width,
                     child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
+                       inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]'),
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^0+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^1+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^2+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^3+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^4+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^5+'), //users can't type 0 at 1st position
+                                ),
+                              ],
                       cursorColor: darkGreenColor,
                       controller: phoneNumberController,
                       decoration: InputDecoration(

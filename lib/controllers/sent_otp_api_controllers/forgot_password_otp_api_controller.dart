@@ -36,7 +36,8 @@ class ForgotOtpController extends GetxController {
      // Get.to(() => SignUpSucessfully());
       Get.to(() => VerificationCode(mobile_number: mobile_number,));
 
-    } else {
+    }
+    else {
       print(response.statusCode);
       print(response.data);
       Get.snackbar("Something went worng", response.data,

@@ -17,7 +17,8 @@ import 'package:ttsfarmcare/view/home_Screen/product_three.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_two.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_viewAll.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_view_screen.dart';
-import 'package:ttsfarmcare/view/home_Screen/test_screen.dart';
+import 'package:ttsfarmcare/view/home_Screen/search_screen.dart';
+import 'package:ttsfarmcare/view/home_Screen/signUp_screen.dart';
 import '../../constants/app_colors.dart';
 import '../../controllers/home_Controllers.dart';
 import '../about_product/about_product.dart';
@@ -92,10 +93,15 @@ class _HomePageState extends State<HomePage> {
         .addPostFrameCallback((_) => getdata());
   }
 
-  getdata(){
+  getdata() async{
    homeController.getAllCategorys();
    allProductController.allProducts(1);
    homeController.home(0);
+    Position position =
+              await _getGeoLocationPosition();
+                location =
+                'Lat: ${position.latitude} , Long: ${position.longitude}';
+                                  GetAddressFromLatLong(position);
   }
 
   
@@ -115,11 +121,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   InkWell(
                     onTap: () async {
-                                  Position position =
-                                      await _getGeoLocationPosition();
-                                  location =
-                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                  GetAddressFromLatLong(position);
+                                 getdata();
                                 },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,11 +147,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.only(left: 10),
                               child: InkWell(
                                 onTap: () async {
-                                  Position position =
-                                      await _getGeoLocationPosition();
-                                  location =
-                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                  GetAddressFromLatLong(position);
+                                 getdata();
                                 },
                                 child: Icon(
                                   Icons.location_on,
@@ -159,14 +157,24 @@ class _HomePageState extends State<HomePage> {
                             )
                           ],
                         ),
-                        Text(
-                          "${Address}",
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.roboto(
-                            fontSize: 12.sp,
-                            color: Colors.white,
+                        Container(
+                          height:18,
+                          width: 100,
+                          color: Colors.transparent,
+                          child:  FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                             "${Address}",
+                             textAlign: TextAlign.start,
+                             style: GoogleFonts.roboto(
+                               fontSize: 12.sp,
+                               color: Colors.white,
+                            ),
+                                                   ),
                           ),
                         ),
+                        
                       ],
                     ),
                   ),
@@ -177,7 +185,6 @@ class _HomePageState extends State<HomePage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              
               SizedBox(
                 height: 35.h,
                 width: 170.w,
@@ -191,7 +198,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                     hintText: "Search product",
                     contentPadding: EdgeInsets.only(top: 5),
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: InkWell(onTap: (){
+                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const SearchProduct()),
+                                        );
+                    },
+                      child: Icon(Icons.search)),
                     hintStyle: GoogleFonts.montserrat(
                       color: const Color(0xff517937),
                       fontSize: 14.sp,

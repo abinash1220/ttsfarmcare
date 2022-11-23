@@ -12,6 +12,7 @@ class AddAddressApiService extends BaseApiService {
     required String city,
     required String state,
     required String pincode,
+    required String location
   }) async {
     //api result will store in this variable
     dynamic responseJson;
@@ -41,7 +42,8 @@ class AddAddressApiService extends BaseApiService {
               "landmark":landmark,
               "city":city,
               "state":state,
-              "pincode":pincode
+              "pincode":pincode,
+              "location":location
 });
       print("::::::::::::::::status Addrss post code::::::::::::::");
       print(response.statusCode);
@@ -53,4 +55,6 @@ class AddAddressApiService extends BaseApiService {
 
     return responseJson;
   }
+
+  addQuantityApiService() {}
 }

@@ -3,10 +3,13 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/controllers/oreder_history_api_controllers/order_history_api_controllers.dart';
+import 'package:ttsfarmcare/view/order_history_page/order_history_gridview.dart';
 
 import '../../controllers/home_Controllers.dart';
 import '../home_Screen/home_navigationbar.dart';
 import '../home_Screen/home_page.dart';
+import '../home_Screen/product_gridView.dart';
 import '../profile_screen/profile_screen.dart';
 import '../view_cart_pages/view_cart_screen.dart';
 
@@ -19,6 +22,20 @@ class OrderHistoryScreen extends StatefulWidget {
 
 class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   final homeController = Get.find<HomeControllers>();
+
+  final orderHistoryControllers = Get.find<OrderHistoryControllers>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     WidgetsBinding.instance
+        .addPostFrameCallback((_) => getOrder());
+  }
+
+  getOrder(){
+    orderHistoryControllers.getOrderHistory();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,584 +101,593 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   child: Container(
                     height:constraints.maxHeight>570 ? size.height * 0.73 : size.height* 0.71,
                     child: ListView(
+                    
                       shrinkWrap: true,
                       children: [
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child:
-                                    Image(image: AssetImage("assets/image/aa.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.roboto(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 100),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Image(
-                                    image: AssetImage("assets/image/asset-1.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.roboto(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 100),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Image(
-                                    image: AssetImage("assets/image/asset-2.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 100),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child:
-                                    Image(image: AssetImage("assets/image/aa.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.roboto(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 100),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Image(
-                                    image: AssetImage("assets/image/asset-4.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.roboto(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xffE4A819),
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xffE4A819),
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xffE4A819),
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xff808080),
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xff808080),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 100,
-                          width: 350,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child:
-                                    Image(image: AssetImage("assets/image/aa.png")),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 1,
-                                color: Color(0xff686868),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Micro Nutrition Jeevan",
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "2 Items",
-                                          style: GoogleFonts.roboto(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 90,
-                                        ),
-                                        Text(
-                                          "Yesterday",
-                                          style: GoogleFonts.montserrat(
-                                            fontSize: 17,
-                                            //fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 100),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xff808080),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff686868)),
-                            color: Color.fromARGB(255, 247, 244, 244),
-                          ),
-                        ),
+                         GetBuilder<OrderHistoryControllers>(
+                      builder: (_) {
+                        return OrderHistoryGridview(orderdata:orderHistoryControllers.orderdata,);
+                      }
+                    ),
+
+
+
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child:
+                        //             Image(image: AssetImage("assets/image/aa.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.roboto(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Padding(
+                        //               padding: const EdgeInsets.only(right: 100),
+                        //               child: Row(
+                        //                 children: [
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child: Image(
+                        //             image: AssetImage("assets/image/asset-1.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.roboto(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Padding(
+                        //               padding: const EdgeInsets.only(right: 100),
+                        //               child: Row(
+                        //                 children: [
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child: Image(
+                        //             image: AssetImage("assets/image/asset-2.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Padding(
+                        //               padding: const EdgeInsets.only(right: 100),
+                        //               child: Row(
+                        //                 children: [
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child:
+                        //             Image(image: AssetImage("assets/image/aa.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.roboto(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Padding(
+                        //               padding: const EdgeInsets.only(right: 100),
+                        //               child: Row(
+                        //                 children: [
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child: Image(
+                        //             image: AssetImage("assets/image/asset-4.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.roboto(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.star,
+                        //                   color: Color(0xffE4A819),
+                        //                 ),
+                        //                 Icon(
+                        //                   Icons.star,
+                        //                   color: Color(0xffE4A819),
+                        //                 ),
+                        //                 Icon(
+                        //                   Icons.star,
+                        //                   color: Color(0xffE4A819),
+                        //                 ),
+                        //                 Icon(
+                        //                   Icons.star,
+                        //                   color: Color(0xff808080),
+                        //                 ),
+                        //                 Icon(
+                        //                   Icons.star,
+                        //                   color: Color(0xff808080),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // Container(
+                        //   height: 100,
+                        //   width: 350,
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(left: 10),
+                        //         child:
+                        //             Image(image: AssetImage("assets/image/aa.png")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 20,
+                        //       ),
+                        //       Container(
+                        //         height: 100,
+                        //         width: 1,
+                        //         color: Color(0xff686868),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(top: 5, left: 10),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Micro Nutrition Jeevan",
+                        //               style: GoogleFonts.montserrat(
+                        //                 fontSize: 22,
+                        //                 fontWeight: FontWeight.w600,
+                        //               ),
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Row(
+                        //               children: [
+                        //                 Text(
+                        //                   "2 Items",
+                        //                   style: GoogleFonts.roboto(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 90,
+                        //                 ),
+                        //                 Text(
+                        //                   "Yesterday",
+                        //                   style: GoogleFonts.montserrat(
+                        //                     fontSize: 17,
+                        //                     //fontWeight: FontWeight.w500,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //             SizedBox(
+                        //               height: 5,
+                        //             ),
+                        //             Padding(
+                        //               padding: const EdgeInsets.only(right: 100),
+                        //               child: Row(
+                        //                 children: [
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xffE4A819),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                   Icon(
+                        //                     Icons.star,
+                        //                     color: Color(0xff808080),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Color(0xff686868)),
+                        //     color: Color.fromARGB(255, 247, 244, 244),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

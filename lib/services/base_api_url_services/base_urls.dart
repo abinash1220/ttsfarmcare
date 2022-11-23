@@ -39,4 +39,31 @@ abstract class BaseApiService {
 
   //cusstomer support api url
   final String customerSptUrl = "https://batechnology.in/tts_farm/public/api/support";
+
+  //order history api url 
+  final String orderHistoryUrl = "https://batechnology.in/tts_farm/public/api/order";
+
+  //rating api Url
+  final String ratingUrl = "https://batechnology.in/tts_farm/public/api/rating";
+
+  //complete order api Url
+  final String completeOrderUrl = "https://batechnology.in/tts_farm/public/api/complete_order";
+
+  //create order api Url
+  final String createOrderUrl = "https://batechnology.in/tts_farm/public/api/create-order";
+
+  //notification api Url 
+  final String noficationUrl = "https://batechnology.in/tts_farm/public/api/notification";
+
+  //add to cart api Url
+  final String addtoCartUrl = "https://batechnology.in/tts_farm/public/api/add-cart";
+
+  //get cart api Url
+  final String getCartApiUrl = "https://batechnology.in/tts_farm/public/api/get_cart";
+
+  //search product Api
+  final String SearchApiUrl = "https://batechnology.in/tts_farm/public/api/search";
+
+  //add quantity api Url
+  final String addQuantityUrl = "https://batechnology.in/tts_farm/public/api/quantity_update";
 }

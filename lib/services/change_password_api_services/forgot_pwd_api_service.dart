@@ -5,6 +5,7 @@ import 'package:ttsfarmcare/services/base_api_url_services/base_urls.dart';
 
 class ForgotPwdChangeApiService extends BaseApiService {
   pwdChangeServices({
+    required String user_id,
     required String password,
     required String new_password,
   }) async {
@@ -29,10 +30,14 @@ class ForgotPwdChangeApiService extends BaseApiService {
               validateStatus: (status) {
                 return status! <= 500;
               }),
-          data: {
-              "password":"delta000",
-              "new_password":"delta000"          
-});
+          data: 
+            {
+              "user_id":user_id,
+              "password":password,
+              "new_password":new_password
+}
+                       
+);
       print("::::::::::::::::status Addrss post code::::::::::::::");
       print(response.statusCode);
 

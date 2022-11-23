@@ -42,7 +42,7 @@ class RegisterController extends GetxController {
         Get.find<SentOtpController>().sentOtpUser(mobile_number: mobile_number);
 
     }else if(response.statusCode ==400){
-      Get.back();
+      // Get.back();
       Get.snackbar(response.data["message"].first, "",
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,

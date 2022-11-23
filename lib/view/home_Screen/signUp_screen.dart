@@ -26,6 +26,8 @@ class ExamsView extends StatefulWidget {
 class _ExamsViewState extends State<ExamsView> {
   final signUpController = Get.find<SignUpControllers>();
 
+  final registerController = Get.find<RegisterController>();
+
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
@@ -33,12 +35,13 @@ class _ExamsViewState extends State<ExamsView> {
   TextEditingController districtcontroller = TextEditingController();
   TextEditingController companynamecontroller = TextEditingController();
   TextEditingController gstnumbercontroller = TextEditingController();
+  TextEditingController mobileNumbercontroller = TextEditingController();
+
+  final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}');
+
   bool isKeyBoardVisile = false;
   bool _isHidden = true;
-
-   RegisterController registerController =
-       Get.put(RegisterController());
-
+  
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
@@ -287,6 +290,10 @@ class _ExamsViewState extends State<ExamsView> {
                                   width: size.width,
                                   child: TextFormField(
                                     keyboardType: TextInputType.name,
+                                    inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[a-z A-Z]"))
+                              ],
                                     controller:companynamecontroller,
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
@@ -324,6 +331,11 @@ class _ExamsViewState extends State<ExamsView> {
                                   width: size.width,
                                   child: TextFormField(
                                     controller:gstnumbercontroller,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(15),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[A-Z 0-9]"))
+                              ],
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(
@@ -383,6 +395,46 @@ class _ExamsViewState extends State<ExamsView> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 20.h,),
+                        Padding(
+                      padding: const EdgeInsets.only(right: 20, left: 20),
+                      child: Container(
+                        height: 50,
+                        width: size.width,
+                        child: TextFormField(
+                          controller: mobileNumbercontroller,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10),
+                          ],
+                          cursorColor: darkGreenColor,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xffECF2F0),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                    color: darkGreenColor, width: 1.5)),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                  color: Color(0xff517937), width: 0.7),
+                            ),
+                            hintText: "Mobile Number",
+                            isDense: true,
+                            hintStyle: GoogleFonts.montserrat(
+                              color: const Color(0xff517937),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (!phoneRegex.hasMatch(value!)) {
+                              return 'Please enter valid phone number';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -393,6 +445,9 @@ class _ExamsViewState extends State<ExamsView> {
                             width: size.width,
                             child: TextFormField(
                               keyboardType: TextInputType.visiblePassword,
+                              inputFormatters: [
+                            LengthLimitingTextInputFormatter(8),
+                          ],
                               obscureText: _isHidden,
                               controller:passwordcontroller,
                               cursorColor: darkGreenColor,
@@ -425,6 +480,7 @@ class _ExamsViewState extends State<ExamsView> {
                             ),
                           ),
                         ),
+                        
                         SizedBox(
                           height: 20.h,
                         ),
@@ -599,19 +655,31 @@ class _ExamsViewState extends State<ExamsView> {
                            
                             if (usernamecontroller.text.isNotEmpty &&
                                emailcontroller.text.isNotEmpty &&
+                               mobileNumbercontroller.text.isNotEmpty &&
                                 passwordcontroller.text.isNotEmpty &&
                                addresscontroller.text.isNotEmpty) {
                               if (emailcontroller.text.isEmail) {
-                                Get.to(() => MobileNumber(
-                                      address:addresscontroller.text,
-                                      district:districtcontroller.text,
-                                      email:emailcontroller.text,
-                                      name:usernamecontroller.text,
-                                      password:passwordcontroller.text,
-                                          companyName:companynamecontroller.text,
-                                          gst_number:gstnumbercontroller.text,
-                                          role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
-                                    ));
+                                registerController.registerUser(
+                                name: usernamecontroller.text, 
+                                email: emailcontroller.text, 
+                                companyName:companynamecontroller.text,
+                                gst_number:gstnumbercontroller.text,
+                                mobile_number: mobileNumbercontroller.text, 
+                                password: passwordcontroller.text, 
+                                address: addresscontroller.text, 
+                                district: districtcontroller.text, 
+                                role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
+                                ) ;
+                                // Get.to(() => MobileNumber(
+                                //       address:addresscontroller.text,
+                                //       district:districtcontroller.text,
+                                //       email:emailcontroller.text,
+                                //       name:usernamecontroller.text,
+                                //       password:passwordcontroller.text,
+                                //       companyName:companynamecontroller.text,
+                                //       gst_number:gstnumbercontroller.text,
+                                //       role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
+                                //     ));
                               } else {
                                 Get.snackbar("Enter a  Valid Email ID", "",
                                     snackPosition: SnackPosition.BOTTOM,

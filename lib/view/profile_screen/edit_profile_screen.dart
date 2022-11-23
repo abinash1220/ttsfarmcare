@@ -347,6 +347,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: size.width.w,
                               child: TextField(
                                  controller: companynameController,
+                                  inputFormatters: [
+                                      
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[A-Z a-z]"))
+                              ],
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                    focusedBorder: OutlineInputBorder(
@@ -392,6 +397,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: size.width.w,
                               child: TextField(
                                 controller: gstController,
+                                 inputFormatters: [
+                                      LengthLimitingTextInputFormatter(15),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[A-Z 0-9]"))
+                              ],
                                 cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                    focusedBorder: OutlineInputBorder(

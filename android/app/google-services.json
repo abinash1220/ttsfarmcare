@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732446499184",
+    "project_id": "ttsformcare-17b22",
+    "storage_bucket": "ttsformcare-17b22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732446499184:android:6c0718ccf7a40432f66fb5",
+        "android_client_info": {
+          "package_name": "com.example.ttsfarmcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732446499184-os13ii2ih2miic54pdn85bp8glt07t50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzZevKyupxlE9eriD2W26S0x8X8RMfbwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732446499184-os13ii2ih2miic54pdn85bp8glt07t50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

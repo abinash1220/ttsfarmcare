@@ -451,7 +451,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Row(
                             children: [
-                              Image(image: AssetImage("assets/icons/support.png")),
+                              Image(image: AssetImage("assets/icons/misella.png")),
                               SizedBox(
                                 width: 15.w,
                               ),

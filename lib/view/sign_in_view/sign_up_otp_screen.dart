@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/sign_in_view/signUp_sucessfully.dart';
 
+import '../../controllers/sent_otp_api_controllers/sent_otp_api_controller.dart';
 import '../../controllers/verify_otp_api_controllers/verify_otp_api_controller.dart';
 
 class SignUpOtp extends StatefulWidget {
@@ -20,6 +21,9 @@ class SignUpOtp extends StatefulWidget {
 }
 
 class _SignUpOtpState extends State<SignUpOtp> {
+
+  final sendOtpController = Get.find<SentOtpController>();
+
 
  final verifyOtpController = Get.find<VerifyOtpController>();
 
@@ -139,7 +143,9 @@ class _SignUpOtpState extends State<SignUpOtp> {
                 height: 15,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                    sendOtpController.sentOtpUser(mobile_number: widget.mobile_number);
+                },
                 child: Text(
                   "Resend OTP?",
                   style: GoogleFonts.montserrat(

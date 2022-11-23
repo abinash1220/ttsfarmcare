@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/change_password_api_controllers/forgot_pwd_change_api_controller.dart';
@@ -10,7 +11,10 @@ import '../../constants/app_colors.dart';
 import 'new_password_successfully_screen.dart';
 
 class NewPasswordPage extends StatefulWidget {
-  const NewPasswordPage({super.key});
+
+  int id;
+
+  NewPasswordPage({super.key,required this.id});
 
   @override
   State<NewPasswordPage> createState() => _NewPasswordPageState();
@@ -22,6 +26,41 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
  
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  
+  bool isnewpassword = true;
+  bool isconpassword = true;
+
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    newPasswordController.addListener(validatenewPwd);
+    confirmPasswordController.addListener(validatCPwd);
+  }
+
+  validatenewPwd(){
+   if(newPasswordController.text.length > 7){
+         setState(() {
+           isnewpassword = true;
+         });
+   }else{
+     setState(() {
+       isnewpassword = false;
+     });
+   }
+  }
+
+   validatCPwd(){
+   if(confirmPasswordController.text.length > 7){
+         setState(() {
+           isconpassword = true;
+         });
+   }else{
+     setState(() {
+       isconpassword = false;
+     });
+   }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +126,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
-                    fontSize: 35),
+                    fontSize: 35.sp),
                 ),
                          ),
                 SizedBox(
@@ -99,7 +138,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     "A password reset is for when you forget your password.\n"
                     "A password change is for when you remember\n"
                     "the old password,but you want a new one.",
-                    style: GoogleFonts.montserrat(fontSize: 13),
+                    style: GoogleFonts.montserrat(fontSize: 13.sp),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -131,6 +170,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       ),
                     ),
                     ),
+                  ),
+                ),
+                 if (isnewpassword == false)Padding(
+                        padding: const EdgeInsets.only(left: 35),
+                        child: Text("password must be 8 characters",
+                        style: TextStyle(color: Colors.red),
                   ),
                 ),
                 SizedBox(
@@ -178,6 +223,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     ),
                   ),
                 ),
+                if (isconpassword == false)Padding(
+                        padding: const EdgeInsets.only(left: 35),
+                        child: Text("password must be 8 characters",
+                        style: TextStyle(color: Colors.red),
+                  ),
+                ),
                 SizedBox(
                   height: 100,
                 ),
@@ -185,9 +236,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   onTap: () {
                    if(newPasswordController.text.isNotEmpty &&
                       confirmPasswordController.text.isNotEmpty){
+                        if (isnewpassword && isconpassword) {
                         forgotPwdchangeApiController.forgotPwdApiUser(
-                          password: newPasswordController.text,
-                         new_password: confirmPasswordController.text);
+                        user_id: widget.id.toString(),
+                        password: newPasswordController.text,
+                        new_password: confirmPasswordController.text);
+}
                       } else {
                               Get.snackbar("Please fill all the fields", "",
                                   snackPosition: SnackPosition.BOTTOM,
@@ -206,7 +260,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     )),
                     decoration: BoxDecoration(

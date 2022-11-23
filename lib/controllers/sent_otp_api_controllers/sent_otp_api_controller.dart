@@ -33,7 +33,13 @@ class SentOtpController extends GetxController {
 
      // Get.to(() => SignUpSucessfully());
       Get.to(() => SignUpOtp(mobile_number: mobile_number,));
+       
 
+    }else if(response.statusCode==400){
+        Get.snackbar("Enter valid Otp number", "",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     } else {
       print(response.statusCode);
       print(response.data);

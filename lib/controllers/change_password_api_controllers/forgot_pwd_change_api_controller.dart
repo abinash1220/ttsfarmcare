@@ -5,7 +5,7 @@ import 'package:ttsfarmcare/services/register_api_services/register_api_service.
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:ttsfarmcare/view/view_cart_pages/payment_screen.dart';
+import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 
 import '../../services/add_address_api_services/add_address_api_service.dart';
 import '../../services/change_password_api_services/forgot_pwd_api_service.dart';
@@ -16,6 +16,7 @@ class ForgotPwdchangeApiController extends GetxController {
   ForgotPwdChangeApiService forgotPwdChangeApiService = ForgotPwdChangeApiService();
 
   forgotPwdApiUser({
+    required String user_id,
     required String password,
     required String new_password,
     
@@ -23,6 +24,7 @@ class ForgotPwdchangeApiController extends GetxController {
     final prefs = await SharedPreferences.getInstance();
     dio.Response<dynamic> response =
         await forgotPwdChangeApiService.pwdChangeServices(
+           user_id: user_id,
            password:password,
            new_password:new_password
             );

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/add_to_cart_api_controller.dart';
+import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/get_cart_api_controller.dart';
+import 'package:ttsfarmcare/controllers/oreder_history_api_controllers/product_rating_api_controller.dart';
 import 'package:ttsfarmcare/models/all_product_model.dart';
 
 import '../../constants/app_colors.dart';
@@ -14,9 +18,10 @@ import '../home_Screen/home_navigationbar.dart';
 import '../view_cart_pages/view_cart_screen.dart';
 
 class AboutProduct extends StatefulWidget {
+  int product_id;
   String image;
   ProductData productData;
-  AboutProduct({required this.image, required this.productData});
+  AboutProduct({required this.image, required this.productData,required this.product_id});
 
   @override
   State<AboutProduct> createState() => _AboutProductState();
@@ -27,6 +32,12 @@ class _AboutProductState extends State<AboutProduct> {
       PageController(viewportFraction: 0.8, keepPage: true);
 
       final homeController = Get.find<HomeControllers>();
+
+      final ratingController = Get.find<RatingController>();
+
+      final getCartController = Get.find<GetCartControllers>();
+
+      final addToCartController = Get.find<AddToCartController>();
 
   final AboutProductController c = Get.put(AboutProductController());
 
@@ -44,6 +55,7 @@ class _AboutProductState extends State<AboutProduct> {
 
     c.productcount(0);
     c.prices(00.00);
+    ratingController.productRating(product_id: "", rating:"");
     
   }
   @override
@@ -123,8 +135,8 @@ class _AboutProductState extends State<AboutProduct> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 200,
-                                    width: 200,
+                                    height: 200.h,
+                                    width: 200.w,
                                     child: PageView.builder(
                                       controller: _controller,
                                       itemCount: pages.length,
@@ -163,41 +175,31 @@ class _AboutProductState extends State<AboutProduct> {
                                       Text(
                                         widget.productData.name,
                                         style: GoogleFonts.montserrat(
-                                          fontSize: 17,
+                                          fontSize: 17.sp,
                                           color: Color(0xff000000),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      Row(
-                                        ///mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                            size: 15,
+                                     
+                                      RatingBar.builder(
+                                       initialRating: 0,
+                                       minRating: 0,
+                                       itemSize: 20,
+                                       glow: false,
+                                       direction: Axis.horizontal,
+                                       allowHalfRating: false,
+                                       itemCount: 5,
+                                       itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                                       itemBuilder: (context, _) => Icon(
+                                       Icons.star,
+                                       color: Colors.amber,
                                           ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                            size: 15,
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffE4A819),
-                                            size: 15,
-                                          ),
-                                          Icon(
-                                            Icons.star_border,
-                                            color: Color(0xffE4A819),
-                                            size: 15,
-                                          ),
-                                          Icon(
-                                            Icons.star_border,
-                                            color: Color(0xffE4A819),
-                                            size: 15,
-                                          ),
-                                        ],
-                                      ),
+                                          
+                                       onRatingUpdate: (rating) {
+                                        ratingController.productRating(product_id:widget.productData.id.toString(),rating:rating.toString());
+                                       print(rating);
+                                            },
+                                         ),
                                     ],
                                   ),
                                   Text(
@@ -205,7 +207,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.roboto(
                                       textStyle: TextStyle(
                                           color: Color(0xff289445),
-                                          fontSize: 17,
+                                          fontSize: 17.sp,
                                           fontWeight: FontWeight.w400),
                                     ),
                                   ),
@@ -214,13 +216,14 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.roboto(
                                       textStyle: TextStyle(
                                           color: Color(0xff000000),
-                                          fontSize: 17,
+                                          fontSize: 17.sp,
                                           fontWeight: FontWeight.w400,
                                           decoration: TextDecoration.lineThrough),
                                     ),
                                   ),
                                   Row(
                                   //  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                      
                                                     Text(
@@ -233,88 +236,34 @@ class _AboutProductState extends State<AboutProduct> {
                                                         fontWeight: FontWeight.bold,
                                                       ),
                                                     ),
-                                                  
-                                                
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Container(
-                                        width: size.width * 0.7,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "25 Points",
-                                              style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                                  color: Color(0xffF9A20D),
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 30,
-                                              width: 100,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  InkWell(
-                                                      onTap: () {
-                                                        c.decrement();
-                                                      },
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(5.0),
-                                                        child: Icon(
-                                                          Icons.remove,
-                                                          size: 17,
-                                                          color: Color(0xff016942),
-                                                        ),
-                                                      )),
-                                                  Container(
+                                                InkWell(
+                                                  onTap: (){
+                                                      addToCartController.addtocart(
+                                                      productId: "${widget.productData.id}",
+                                                      quantity: "1");
+                                                  },
+                                                  child: Container(
                                                     height: 30,
-                                                    width: 35,
-                                                    child: Center(
-                                                      child: Obx(() => Text(
-                                                            "0${c.productcount.toString()}",
-                                                            style: GoogleFonts.roboto(
-                                                              color: darkGreenColor,
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 15,
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    decoration: BoxDecoration(
-                                                      border: Border.symmetric(
-                                                          vertical: BorderSide(
-                                                              color: Color(0xff016942))),
+                                                    width: 110,
+                                                  child: Center(
+                                                  child: Text("ADD TO CART",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold
                                                     ),
                                                   ),
-                                                  InkWell(
-                                                      onTap: () {
-                                                        c.increment();
-                                                      },
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(5.0),
-                                                        child: Icon(
-                                                          Icons.add,
-                                                          size: 17,
-                                                          color: Color(0xff016942),
-                                                        ),
-                                                      )),
-                                                ],
-                                              ),
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Color(0xff016942)),
-                                                  borderRadius: BorderRadius.circular(10),
-                                                  color: Colors.white),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                                                                              ),
+                                                                                              decoration: BoxDecoration(
+                                                  
+                                                    border: Border.all(
+                                                        color: Color(0xff016942)),
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    color:darkGreenColor),
+                                                                                            ),
+                                                ),
+                                     
+                                     
                                     ],
                                   ),
                                   SizedBox(
@@ -325,7 +274,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.montserrat(
                                       textStyle: TextStyle(
                                         color: Color(0xff000000),
-                                        fontSize: 20,
+                                        fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -342,7 +291,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.montserrat(
                                       textStyle: TextStyle(
                                         color: Color(0xff000000),
-                                        fontSize: 12,
+                                        fontSize: 12.sp,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -355,7 +304,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.montserrat(
                                       textStyle: TextStyle(
                                         color: Color(0xff000000),
-                                        fontSize: 20,
+                                        fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -372,7 +321,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     style: GoogleFonts.montserrat(
                                       textStyle: TextStyle(
                                         color: Color(0xff000000),
-                                        fontSize: 12,
+                                        fontSize: 12.sp,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -413,11 +362,11 @@ class _AboutProductState extends State<AboutProduct> {
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              "${c.productcount.toString()} Iterms",
+                              "${getCartController.totalitem.value} Iterms",
                               style: GoogleFonts.roboto(
                                 textStyle: TextStyle(
                                   color: Color(0xffFFFFFF),
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -430,7 +379,7 @@ class _AboutProductState extends State<AboutProduct> {
                                         child: FittedBox(
                                           fit: BoxFit.scaleDown,
                                           child: Text(
-                                            "${c.prices.toStringAsFixed(2)}",
+                                            "${getCartController.totalPrice.value}",
                                             style: GoogleFonts.roboto(
                                               fontSize: 18.sp,
                                               color: Color(0xffFFFFFF),
@@ -439,26 +388,26 @@ class _AboutProductState extends State<AboutProduct> {
                                           ),
                                         ),
                                       ),),
-                      Container(
-                        height: 25,
-                        width: 110,
-                        child: Center(
-                          child: Text(
-                            "25 Points Saved",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                color: Color(0xff289445),
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
+                      // Container(
+                      //   height: 25,
+                      //   width: 110,
+                      //   child: Center(
+                      //     child: Text(
+                      //       "25 Points Saved",
+                      //       textAlign: TextAlign.center,
+                      //       style: GoogleFonts.roboto(
+                      //         textStyle: TextStyle(
+                      //           color: Color(0xff289445),
+                      //           fontSize: 13,
+                      //           fontWeight: FontWeight.bold,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      //   decoration: BoxDecoration(
+                      //       color: Colors.white,
+                      //       borderRadius: BorderRadius.circular(5)),
+                      // ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
