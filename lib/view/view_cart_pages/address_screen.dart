@@ -7,6 +7,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
+import 'package:ttsfarmcare/models/address_model.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 import 'package:ttsfarmcare/view/view_cart_pages/view_cart_screen.dart';
@@ -47,12 +48,13 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
     // TODO: implement initState
     super.initState();
     getAddressDetails();
+    
   }
   
- 
-
+  String locationhind = "Choose Location";
+  
   getAddressDetails()async{
-   Address address = await getAddressControllers.getAllAddress();
+   GetAddress address = await getAddressControllers.getAllAddress();
   // Address address = addressList.last;
    streetController.text = address.street;
    areaController.text = address.area;
@@ -60,7 +62,8 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
    cityController.text = address.city;
    stateController.text = address.state;
    pincodeController.text = address.pincode;
-   loctionController.text = address.state;
+   loctionController.text = address.location;
+   locationhind = address.location;
    print(address.city);
    if(address.type == "home" ){
     homeController.home.value=1;
@@ -152,26 +155,35 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   ),
                                 ),
                                
-                                Text(
-                                  "Cart",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
+                                InkWell(
+                                    onTap: (){
+                                     Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>HomeNavigationBar(index: 1,)),
+                            );
+                                  },
+                                  child: Text(
+                                    "Cart",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   width: 10,
                                 ),
                                 Container(
-                                  height: 23,
-                                  width: 23,
+                                  height: 25,
+                                  width: 25,
                                   child: Image(
                                       image: AssetImage(
                                           "assets/images/sucessfully.png")),
                                   decoration: BoxDecoration(
                                       // color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
+                                      border: Border.all(color: Colors.white),
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
                                
@@ -204,12 +216,21 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                   ),
                                 ),
                                
-                                Text(
-                                  "Order",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
+                                InkWell(
+                                  onTap: (){
+                                     Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const CartPaymentScreen()),
+                            );
+                                  },
+                                  child: Text(
+                                    "Order",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -309,7 +330,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                             borderSide: BorderSide(
                                               color: const Color(0xff517937),
                                             )),
-                                        hintText: "Choose Location",
+                                        hintText: locationhind,
                                         hintStyle: GoogleFonts.montserrat(),
                                         
                                       ),
@@ -688,7 +709,8 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                            landmarkController.text.isNotEmpty &&
                                            cityController.text.isNotEmpty &&
                                            stateController.text.isNotEmpty &&
-                                           pincodeController.text.isNotEmpty 
+                                           pincodeController.text.isNotEmpty &&
+                                           loctionController.text.isNotEmpty
                                              )
                                            {
                                             //homeController.home.value==1 ? "home" : homeController.home.value==2 ? "work" : homeController.home.value==3 ? "others" : "home",

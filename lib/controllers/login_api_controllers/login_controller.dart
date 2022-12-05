@@ -6,6 +6,7 @@ import 'package:ttsfarmcare/services/login_api_services/login_api_service.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_page.dart';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:ttsfarmcare/view/loading_screen/loader_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/loading_screen.dart';
 import 'package:ttsfarmcare/view/sign_in_view/verify_mobile_screen.dart';
 
@@ -29,7 +30,7 @@ class LoginController extends GetxController {
 
       await prefs.setString("auth_token", response.data["token"]);
 
-      Get.to(() => LoadingPage());
+      Get.to(() => LoaderScreen());
     }else if(response.statusCode ==400){
       Get.snackbar("Invalid Login", "",
           snackPosition: SnackPosition.BOTTOM,

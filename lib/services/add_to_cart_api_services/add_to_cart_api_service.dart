@@ -36,7 +36,6 @@ class AddToCartApiService extends BaseApiService {
           });
       print("::::::::::::::::addtocart status code::::::::::::::");
       print(response.statusCode);
-
       responseJson = response;
     } catch (e) {
       print(e);

@@ -43,7 +43,7 @@ class ForgotOtpVerifyController extends GetxController {
 
       Get.to(() => NewPasswordPage(id: verifyUser.id,));
     }else if(response.statusCode == 400){
-      Get.snackbar("Please enter valid otp","",
+      Get.snackbar("Please enter correct otp","",
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);

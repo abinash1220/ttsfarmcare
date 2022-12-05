@@ -26,14 +26,14 @@ class AllProductApiService extends BaseApiService {
               validateStatus: (status) {
                 return status! <= 500;
               }),
-          data: {
-          
-            "category_id":category_id,
-           
-          });
-      print("::::::::::::::::status code::::::::::::::");
+              data: {
+                  
+                   "category_id":"1"
+                  
+              }
+         );
+      print("::::::::::::::::all product status code::::::::::::::");
       print(response.statusCode);
-
       responseJson = response;
     } catch (e) {
       print(e);

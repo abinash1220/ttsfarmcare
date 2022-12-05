@@ -26,7 +26,7 @@ class CategoryApiServices extends BaseApiService {
               return status! <= 500;
             }),
       );
-      print("::::::::::::::::status code::::::::::::::");
+      print(":::::::::::::::: category status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

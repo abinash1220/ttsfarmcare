@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/view/loading_screen/loader_screen.dart';
 import 'package:ttsfarmcare/view/loading_screen/loading_screen.dart';
 
 import 'loading_screen.dart';
@@ -50,7 +51,7 @@ class _SignUpSucessfullyState extends State<SignUpSucessfully> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const LoadingPage()),
+                              MaterialPageRoute(builder: (context) => const LoaderScreen()),
                             );
                           },
                           child: Padding(

@@ -27,7 +27,7 @@ class GetProfileApiService extends BaseApiService {
               return status! <= 500;
             }),
       );
-      print("::::::::::::::::status code::::::::::::::");
+      print("::::::::::::::::profile user status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

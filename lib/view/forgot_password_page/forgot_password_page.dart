@@ -23,7 +23,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
    
    TextEditingController phoneNumberController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

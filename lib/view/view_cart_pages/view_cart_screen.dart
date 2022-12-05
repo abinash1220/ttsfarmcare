@@ -118,14 +118,14 @@ class _ViewCartPageState extends State<ViewCartPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Container(
-                                height: 23,
-                                width: 23,
+                                height: 25,
+                                width: 25,
                                 child: Image(
                                     image: AssetImage(
                                         "assets/images/sucessfully.png")),
                                 decoration: BoxDecoration(
                                     // color: darkGreenColor,
-                                    border: Border.all(color: Color(0xff707070)),
+                                    border: Border.all(color: Colors.white),
                                     borderRadius: BorderRadius.circular(15)),
                               ),
                               Text(
@@ -154,12 +154,22 @@ class _ViewCartPageState extends State<ViewCartPage> {
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
                               ),
-                              Text(
-                                "Address",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CartAddresScreen()),
+                                  );
+                                },
+                                child: Text(
+                                  "Address",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               InkWell(
@@ -180,12 +190,22 @@ class _ViewCartPageState extends State<ViewCartPage> {
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
                               ),
-                              Text(
-                                "Order",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CartPaymentScreen()),
+                                  );
+                                },
+                                child: Text(
+                                  "Order",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],

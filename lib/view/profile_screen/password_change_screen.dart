@@ -20,10 +20,24 @@ class PasswordChangeScreen extends StatefulWidget {
 class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
 
   bool _isHidden = true;
+  bool _isHidden1 = true;
+  bool _isHidden2 = true;
 
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
+    });
+  }
+
+  void _togglePasswordView1() {
+    setState(() {
+      _isHidden1 = !_isHidden1;
+    });
+  }
+
+  void _togglePasswordView2() {
+    setState(() {
+      _isHidden2 = !_isHidden2;
     });
   }
 
@@ -228,7 +242,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           height: 50.h,
                           width: size.width,
                           child: TextFormField(
-                            obscureText: _isHidden,
+                            obscureText: _isHidden1,
                             controller: newPasswordController,
                             cursorColor: darkGreenColor,
                             decoration: InputDecoration(
@@ -242,9 +256,9 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                         ), 
                         isDense: true,
                               suffixIcon: InkWell(
-                                onTap: _togglePasswordView,
+                                onTap: _togglePasswordView1,
                                 child: Icon(
-                                  _isHidden ? Icons.visibility_off : Icons.visibility,
+                                  _isHidden1 ? Icons.visibility_off : Icons.visibility,
                                  color: Color(0xff000000),
                                 ),
                               ),
@@ -281,7 +295,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                           height: 50.h,
                           width: size.width,
                           child: TextFormField(
-                            obscureText: _isHidden,
+                            obscureText: _isHidden2,
                             controller: confirmPasswordController,
                             validator: ((value) {
                               if(value!.length < 8){
@@ -301,9 +315,9 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                         ), 
                         isDense: true,
                               suffixIcon: InkWell(
-                                onTap: _togglePasswordView,
+                                onTap: _togglePasswordView2,
                                 child: Icon(
-                                  _isHidden ? Icons.visibility_off : Icons.visibility,
+                                  _isHidden2 ? Icons.visibility_off : Icons.visibility,
                                  color: Color(0xff000000),
                                 ),
                               ),
@@ -327,12 +341,19 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                                     newPasswordController.text.isNotEmpty &&
                                     confirmPasswordController.text.isNotEmpty
                                    ){
-                                    if (isconfirmPwd && iscurrentPwd && isnewPwd) {
+                                    if (iscurrentPwd && isconfirmPwd && isnewPwd) {
+                                      if(newPasswordController.text == confirmPasswordController.text){
                                      resetPasswordApiController.resetpassword(
                                      original_password: currentPasswordController.text, 
                                     new_password: newPasswordController.text, 
                                     confirm_password: confirmPasswordController.text);
-}
+                                   }else{
+                                    Get.snackbar("New password and confirm password does not match", "",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    colorText: Colors.white,
+                                    backgroundColor: Colors.red);
+                                   }
+                                   }
                                    }
                                   },
                                   child: Padding(
@@ -359,10 +380,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                                 SizedBox(height: 20,),
                             InkWell(
                                   onTap: (){
-                                    // Navigator.push(
-                                    //            context,
-                                    //            MaterialPageRoute(builder: (context) => const PaymentSucessfully()),
-                                    //          );
+                                    Get.back();
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 35,right: 35),
@@ -390,6 +408,7 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                             height: 200,)
                           ]
                           ),
+                          //
                       );
                     }
                   ),

@@ -31,7 +31,7 @@ class SentOtpApiService extends BaseApiService {
             "mobile_number": mobile_number,
            
           });
-      print("::::::::::::::::status code::::::::::::::");
+      print("::::::::::::::::send otp status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

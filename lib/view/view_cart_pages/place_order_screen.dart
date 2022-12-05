@@ -49,9 +49,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    
     return Scaffold(
-      
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -121,13 +119,21 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                               
-                                Text(
-                                  "Cart",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
+                                InkWell(
+                                  onTap: (){
+                                     Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeNavigationBar(index: 1,)),
+                            );
+                                  },
+                                  child: Text(
+                                    "Cart",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 20.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
@@ -151,27 +157,35 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                                         borderRadius: BorderRadius.circular(15)),
                                   ),
                                 ),
-                               
-                                Text(
-                                  "Address",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
+                                InkWell(
+                                   onTap: (){
+                                     Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const CartAddresScreen()),
+                            );
+                                  },
+                                  child: Text(
+                                    "Address",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 20.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   width: 10.w,
                                 ),
                                 Container(
-                                  height: 23.h,
-                                  width: 23.w,
+                                  height: 25.h,
+                                  width: 25.w,
                                   child: Image(
                                       image: AssetImage(
                                           "assets/images/sucessfully.png")),
                                   decoration: BoxDecoration(
                                       //color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
+                                      border: Border.all(color: Colors.white),
                                       borderRadius: BorderRadius.circular(15)),
                                 ),
                                
@@ -258,7 +272,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                             height: 10.h,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

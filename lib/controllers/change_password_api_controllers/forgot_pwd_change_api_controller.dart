@@ -7,6 +7,7 @@ import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 
+import '../../constants/app_colors.dart';
 import '../../services/add_address_api_services/add_address_api_service.dart';
 import '../../services/change_password_api_services/forgot_pwd_api_service.dart';
 import '../../view/new_password_page/new_password_successfully_screen.dart';
@@ -34,6 +35,11 @@ class ForgotPwdchangeApiController extends GetxController {
 
     if (response.statusCode == 200) {
            Get.to(()=> PasswordSuccessfullyScreen());
+          //    Get.snackbar("Password changed successfully", "",
+          //  snackPosition: SnackPosition.BOTTOM,
+          //  colorText: Colors.white,
+          //  backgroundColor: darkGreenColor);
+
        // Get.find<SentOtpController>().sentOtpUser(mobile_number: mobile_number);
 
     } else if(response.statusCode ==400){

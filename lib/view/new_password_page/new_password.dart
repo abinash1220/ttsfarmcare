@@ -30,6 +30,21 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   bool isnewpassword = true;
   bool isconpassword = true;
 
+  bool _isHidden = true;
+  bool _isHidden1 = true;
+
+   void _togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  } 
+
+  void _togglePasswordView1() {
+    setState(() {
+      _isHidden1 = !_isHidden1;
+    });
+  } 
+
    @override
   void initState() {
     // TODO: implement initState
@@ -151,6 +166,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     height: 50,
                     width: size.width,
                     child: TextFormField(
+                      obscureText: _isHidden,
                     keyboardType: TextInputType.visiblePassword,
                     cursorColor: darkGreenColor,
                     controller: newPasswordController,
@@ -165,6 +181,13 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         ), 
                       hintText: "Enter New Password",
                       isDense: true,
+                      suffixIcon: InkWell(
+                                onTap: _togglePasswordView,
+                                child: Icon(
+                                  _isHidden ? Icons.visibility_off : Icons.visibility,
+                                 color: Color(0xff000000),
+                                ),
+                              ),
                       hintStyle: GoogleFonts.poppins(
                         color: const Color(0xff292724),
                       ),
@@ -202,6 +225,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     height: 50,
                     width: size.width,
                     child: TextFormField(
+                      obscureText: _isHidden1,
                     keyboardType: TextInputType.visiblePassword,
                     cursorColor: darkGreenColor,
                     controller: confirmPasswordController,
@@ -216,6 +240,13 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         ), 
                       hintText: "Confirm Password",
                       isDense: true,
+                       suffixIcon: InkWell(
+                                onTap: _togglePasswordView1,
+                                child: Icon(
+                                  _isHidden1 ? Icons.visibility_off : Icons.visibility,
+                                 color: Color(0xff000000),
+                                ),
+                              ),
                       hintStyle: GoogleFonts.poppins(
                         color: const Color(0xff292724),
                       ),
@@ -237,11 +268,18 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                    if(newPasswordController.text.isNotEmpty &&
                       confirmPasswordController.text.isNotEmpty){
                         if (isnewpassword && isconpassword) {
+                          if(newPasswordController.text == confirmPasswordController.text){
                         forgotPwdchangeApiController.forgotPwdApiUser(
                         user_id: widget.id.toString(),
                         password: newPasswordController.text,
                         new_password: confirmPasswordController.text);
-}
+                        }else {
+                          Get.snackbar("Password and confirm password does not match", "",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.red);
+                        }
+                        }
                       } else {
                               Get.snackbar("Please fill all the fields", "",
                                   snackPosition: SnackPosition.BOTTOM,

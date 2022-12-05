@@ -298,10 +298,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               child: TextField(
                                  controller: phonenumberController,
                                  keyboardType: TextInputType.number,
-                                    // inputFormatters: [
-                                    //   FilteringTextInputFormatter.allow(
-                                    //       RegExp("[0-9]"))
-                                    // ],
+                                 readOnly: true,
+                                   inputFormatters: [
+                                      LengthLimitingTextInputFormatter(10),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[0-9]"))
+                              ],
                                     cursorColor: darkGreenColor,
                                 decoration: InputDecoration(
                                    focusedBorder: OutlineInputBorder(
@@ -347,6 +349,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: size.width.w,
                               child: TextField(
                                  controller: companynameController,
+                                 readOnly: true,
                                   inputFormatters: [
                                       
                                 FilteringTextInputFormatter.allow(
@@ -397,6 +400,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: size.width.w,
                               child: TextField(
                                 controller: gstController,
+                                readOnly: true,
                                  inputFormatters: [
                                       LengthLimitingTextInputFormatter(15),
                                 FilteringTextInputFormatter.allow(
@@ -574,10 +578,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                          // Navigator.push(
-                          //            context,
-                          //            MaterialPageRoute(builder: (context) =>  PaymentSucessfully()),
-                          //          );
+                          Get.back();
                     },
                     child: Padding(
                           padding: const EdgeInsets.only(left: 15, right: 15),

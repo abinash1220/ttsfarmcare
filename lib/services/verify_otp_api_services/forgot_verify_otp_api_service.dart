@@ -33,7 +33,7 @@ class ForgotOtpVerifyApiService extends BaseApiService {
             "otp": otp,
            
           });
-      print("::::::::::::::::status code::::::::::::::");
+      print("::::::::::::::::forgot verify otp status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

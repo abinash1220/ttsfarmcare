@@ -45,7 +45,7 @@ class RegisterApiService extends BaseApiService {
             "district": district,
             "role": role
           });
-      print("::::::::::::::::status code::::::::::::::");
+      print("::::::::::::::::register status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

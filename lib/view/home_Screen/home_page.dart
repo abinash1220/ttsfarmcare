@@ -8,6 +8,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/all_product_api_controllers/all_product_api_controller.dart';
+import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_one.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_three.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_two.dart';
@@ -41,6 +42,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = Get.find<HomeControllers>();
+
+  final getProfileController = Get.find<GetProfileControllers>();
 
   final allProductController = Get.find<AllProductController>();
 
@@ -91,6 +94,7 @@ class _HomePageState extends State<HomePage> {
     // homeController.home(0);
      WidgetsBinding.instance
         .addPostFrameCallback((_) => getdata());
+        getProfileController.getProfiledetails();
   }
 
   getdata() async{

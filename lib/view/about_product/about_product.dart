@@ -14,13 +14,15 @@ import 'package:ttsfarmcare/models/all_product_model.dart';
 import '../../constants/app_colors.dart';
 import '../../controllers/about_product_controller.dart';
 import '../../controllers/home_Controllers.dart';
+import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
+import '../../models/get_all_products_model.dart';
 import '../home_Screen/home_navigationbar.dart';
 import '../view_cart_pages/view_cart_screen.dart';
 
 class AboutProduct extends StatefulWidget {
   int product_id;
   String image;
-  ProductData productData;
+  Products productData;
   AboutProduct({required this.image, required this.productData,required this.product_id});
 
   @override
@@ -40,6 +42,8 @@ class _AboutProductState extends State<AboutProduct> {
       final addToCartController = Get.find<AddToCartController>();
 
   final AboutProductController c = Get.put(AboutProductController());
+
+  final  getProfileuser = Get.find<GetProfileControllers>();
 
   @override
   void initState() {
@@ -173,6 +177,7 @@ class _AboutProductState extends State<AboutProduct> {
                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
+                                       // getProfileuser.profileDetails.role == "Retail" ? widget.productData.price : "20" ,
                                         widget.productData.name,
                                         style: GoogleFonts.montserrat(
                                           fontSize: 17.sp,
@@ -225,10 +230,8 @@ class _AboutProductState extends State<AboutProduct> {
                                   //  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                     
                                                     Text(
-                                                      
-                                                      "₹ ${widget.productData.price}",
+                                                      "₹ ${getProfileuser.profileDetails.role == "Retail" ? widget.productData.priceRetailer : widget.productData.priceCustomer }",
                                                       textAlign: TextAlign.start,
                                                       style: GoogleFonts.roboto(
                                                         fontSize: 18.sp,

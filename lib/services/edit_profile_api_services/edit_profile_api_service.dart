@@ -43,7 +43,7 @@ class EditProfileApiService extends BaseApiService {
               "address":address,
               "district":district
 });
-      print("::::::::::::::::status Addrss post code::::::::::::::");
+      print("::::::::::::::::edit profile status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

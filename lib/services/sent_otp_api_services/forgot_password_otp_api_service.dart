@@ -31,7 +31,7 @@ class ForgotOtpApiService extends BaseApiService {
             "mobile_number": mobile_number,
            
           });
-      print("::::::::::::::::status code::::::::::::::");
+      print("::::::::::::::::forgot pwd otp status code::::::::::::::");
       print(response.statusCode);
 
       responseJson = response;

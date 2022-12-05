@@ -6,12 +6,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/add_to_cart_api_controller.dart';
 import '../../constants/app_colors.dart';
+import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import '../../models/all_product_model.dart';
+import '../../models/get_all_products_model.dart';
 import '../about_product/about_product.dart';
 
 class ProductGridView extends StatefulWidget {
 
-  List<ProductData> productList;
+  List<Products> productList;
 
   ProductGridView({super.key,required this.productList});
 
@@ -22,6 +24,8 @@ class ProductGridView extends StatefulWidget {
 class _ProductGridViewState extends State<ProductGridView> {
 
   final addToCartController = Get.find<AddToCartController>();
+
+  final  getProfileuser = Get.find<GetProfileControllers>();
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +132,7 @@ class _ProductGridViewState extends State<ProductGridView> {
                                   height: 17,
                                   width: 52,
                                   child: Text(
-                                    "Price:${widget.productList[index].price}",
+                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.productList[index].priceRetailer : widget.productList[index].priceCustomer}",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10.sp,
                                       color: darkGreenColor,

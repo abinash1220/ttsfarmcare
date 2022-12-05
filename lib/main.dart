@@ -54,6 +54,7 @@ Future main() async{
         channelDescription: 'Notification channel for basic tests',
         defaultColor: Color(0xFF9D50DD),
         importance:NotificationImportance.High,
+        playSound: true,
         ledColor: Colors.white)
   ],
   // Channel groups are only visual and are not required
