@@ -331,11 +331,12 @@ class _ExamsViewState extends State<ExamsView> {
                                   width: size.width,
                                   child: TextFormField(
                                     controller:gstnumbercontroller,
+                                    textCapitalization: TextCapitalization.characters,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(15),
-                                FilteringTextInputFormatter.allow(
-                                    RegExp("[A-Z 0-9]"))
-                              ],
+                                    FilteringTextInputFormatter.allow(
+                                          RegExp(r"[A-Z 0-9]"))
+                                     ],
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
                                       focusedBorder: OutlineInputBorder(

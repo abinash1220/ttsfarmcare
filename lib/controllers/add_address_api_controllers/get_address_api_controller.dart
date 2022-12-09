@@ -26,7 +26,7 @@ Future<GetAddress> getAllAddress() async {
 
       // addressList = address;
 
-      List<dynamic> addressl = response.data;
+      List<dynamic> addressl = response.data["data"];
 
     address = GetAddress.fromJson(addressl.last);
       

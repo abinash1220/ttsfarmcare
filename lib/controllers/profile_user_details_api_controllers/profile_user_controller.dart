@@ -13,27 +13,38 @@ import '../../services/profile_user_details_api_serives/profile_user_api_service
 import '../../view/landing_page/landing_screen.dart';
 
 class GetProfileControllers extends GetxController {
- 
   GetProfileApiService getProfileApiService = GetProfileApiService();
-   
 
-   User profileDetails = User(id: 1, name: "", email: "", mobileNumber: "", otpCode: "", userType: "", address: "", district: "", mobileVerification: "", status: "", role: "", accessToken: "", createdAt: DateTime.now(), updatedAt: DateTime.now());
+  User profileDetails = User(
+      id: 1,
+      name: "",
+      email: "",
+      mobileNumber: "",
+      otpCode: "",
+      userType: "",
+      address: "",
+      district: "",
+      mobileVerification: "",
+      status: "",
+      role: "",
+      accessToken: "",
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now());
 
-    getProfiledetails() async {
-    
+  getProfiledetails() async {
     dio.Response<dynamic> response = await getProfileApiService.getProfile();
     print(":::::::::::::::::::get profile response::::::::::::::::::");
     print(response.statusCode);
+    print(response.data);
 
-     if(response.statusCode == 500){
+    if (response.statusCode == 500) {
       logOutUser();
     }
-    
-    ProfileUserDetails profileUserDetails = ProfileUserDetails.fromJson(response.data);
+
+    ProfileUserDetails profileUserDetails =
+        ProfileUserDetails.fromJson(response.data);
 
     profileDetails = profileUserDetails.user;
-
-   
 
     update();
   }
@@ -45,5 +56,4 @@ class GetProfileControllers extends GetxController {
 
     Get.offAll(() => LandingScreen());
   }
-
 }

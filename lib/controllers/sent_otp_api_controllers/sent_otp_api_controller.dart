@@ -17,7 +17,7 @@ class SentOtpController extends GetxController {
     required String mobile_number,
     
   }) async {
-   // final prefs = await SharedPreferences.getInstance();
+ 
     dio.Response<dynamic> response =
         await sentOtpApiServices.sentOtpApiServices(
             mobile_number: mobile_number,
@@ -28,8 +28,7 @@ class SentOtpController extends GetxController {
       print(response.data);
     if (response.statusCode == 200) {
      // print(response.data["token"]);
-
-      //await prefs.setString("auth_token", response.data["token"]);
+     
 
      // Get.to(() => SignUpSucessfully());
       Get.to(() => SignUpOtp(mobile_number: mobile_number,));

@@ -174,7 +174,10 @@ class OrderData {
         updatedAt: DateTime.parse(json["updated_at"]),
         users: Users.fromJson(json["users"]),
         product: Product.fromJson(json["product"] ??Product(
-          categoryId: "",id: 1,image1: "",image2: "",createdAt: "",updatedAt: "",name: "",title: "",rating: "",price: "",shortDescription: "",quantity: "",detailDescription: "",disclaimer: "",
+          priceCustomer: ""
+          ,
+          priceRetailer: "",
+          categoryId: "",id: 1,image1: "",image2: "",createdAt: "",updatedAt: "",name: "",title: "",rating: "",shortDescription: "",quantity: "",detailDescription: "",disclaimer: "",
         ).toJson() ),
         rating: Rating.fromJson(json["rating"] ?? Rating(id: 1, rating: "", review: "", productId: "", userId: "", createdAt: DateTime.now(), updatedAt: DateTime.now()).toJson()),
     );
@@ -215,7 +218,8 @@ class Product {
         required this.id,
         required this.name,
         required this.title,
-        required this.price,
+        required this.priceCustomer,
+        required this.priceRetailer,
         required this.quantity,
         required this.image1,
         required this.image2,
@@ -231,7 +235,8 @@ class Product {
     int id;
     String name;
     String title;
-    String price;
+    String priceCustomer;
+  String priceRetailer;
     String quantity;
     String image1;
     String image2;
@@ -247,7 +252,8 @@ class Product {
         id: json["id"],
         name: json["name"],
         title: json["title"],
-        price: json["price"],
+        priceCustomer: json["price_customer"],
+        priceRetailer: json["price_retailer"],
         quantity: json["quantity"],
         image1: json["image1"],
         image2: json["image2"],
@@ -264,7 +270,8 @@ class Product {
         "id": id,
         "name": name,
         "title": title,
-        "price": price,
+        "price_customer": priceCustomer,
+        "price_retailer": priceRetailer,
         "quantity": quantity,
         "image1": image1,
         "image2": image2,

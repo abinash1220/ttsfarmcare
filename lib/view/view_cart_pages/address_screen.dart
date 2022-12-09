@@ -55,7 +55,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
   
   getAddressDetails()async{
    GetAddress address = await getAddressControllers.getAllAddress();
-  // Address address = addressList.last;
+   // Address address = addressList.last;
    streetController.text = address.street;
    areaController.text = address.area;
    landmarkController.text = address.landmark;

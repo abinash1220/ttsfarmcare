@@ -44,7 +44,7 @@ class GetAddress {
     factory GetAddress.fromJson(Map<String, dynamic> json) => GetAddress(
         id: json["id"],
         userId: json["user_id"],
-        location: json["location"] == null ? null : json["location"],
+        location: json["location"] ?? "",
         type: json["type"],
         street:json["street"],
         area: json["area"],
@@ -105,7 +105,7 @@ class Users {
 
     int id;
     String name;
-    String companyName;
+    dynamic companyName;
     dynamic dateOfBirth;
     String email;
     String mobileNumber;
@@ -116,7 +116,7 @@ class Users {
     dynamic emailVerifiedAt;
     String address;
     String district;
-    String gstNumber;
+    dynamic gstNumber;
     String mobileVerification;
     String status;
     String role;
@@ -128,7 +128,7 @@ class Users {
     factory Users.fromJson(Map<String, dynamic> json) => Users(
         id: json["id"],
         name: json["name"],
-        companyName:json["company_name"],
+        companyName: json["company_name"] ?? "",
         dateOfBirth: json["date_of_birth"],
         email: json["email"],
         mobileNumber: json["mobile_number"],
@@ -139,7 +139,7 @@ class Users {
         emailVerifiedAt: json["email_verified_at"],
         address:json["address"],
         district:json["district"],
-        gstNumber: json["gst_number"],
+        gstNumber: json["gst_number"] ?? "",
         mobileVerification: json["mobile_verification"],
         status:json["status"],
         role: json["role"],

@@ -10,20 +10,26 @@ import 'package:ttsfarmcare/services/notification_api_services/notification_api_
 import '../../models/notification_model.dart';
 
 class NotificationControllers extends GetxController {
-  
   NotificationApiService notificationApiService = NotificationApiService();
-   
-  List<Notify> notify = [];
- 
+
+  List<NotificationData> notify = [];
+
   getNotification() async {
-    dio.Response<dynamic> response = await notificationApiService.notification();
+    notify.clear();
+    dio.Response<dynamic> response =
+        await notificationApiService.notification();
     print(":::::::::::::::::::notification response::::::::::::::::::");
     print(response.statusCode);
     if (response.statusCode == 200) {
-     
-     Notification notificationt = Notification.fromJson(response.data);
+      NotificationModel notificationt =
+          NotificationModel.fromJson(response.data);
+      notificationt.notification.data.forEach((element) {
+        notify.add(element);
+      });
 
-     notify = notificationt.notification.data;
+      notificationt.adminNotification.data.forEach((element) {
+        notify.add(element);
+      });
 
       update();
     } else {

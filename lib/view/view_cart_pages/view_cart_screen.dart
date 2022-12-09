@@ -32,20 +32,20 @@ class _ViewCartPageState extends State<ViewCartPage> {
 
   final ViewCartController c = Get.find<ViewCartController>();
 
-  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-     WidgetsBinding.instance
-        .addPostFrameCallback((_) => getOrder());
+    getOrder();
   }
 
-  getOrder(){
-    getCartController.getCart();
-    c.product(1);
-    c.price(450.00);
-    getCartController.totalitem(1);
+  getOrder() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getCartController.getCart();
+      c.product(1);
+      c.price(450.00);
+      getCartController.totalitem(1);
+    });
   }
 
   @override
@@ -93,236 +93,240 @@ class _ViewCartPageState extends State<ViewCartPage> {
                       BorderRadius.only(bottomLeft: Radius.circular(40))),
             ),
           )),
-      body:LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return Container(
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Color(0xff289445),
+          ),
+          child: Container(
             decoration: BoxDecoration(
-              color: Color(0xff289445),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(25),
-                      bottomRight: Radius.circular(25))),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20, left: 10,),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10,),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                height: 25,
-                                width: 25,
-                                child: Image(
-                                    image: AssetImage(
-                                        "assets/images/sucessfully.png")),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(25),
+                    bottomRight: Radius.circular(25))),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+                left: 10,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 25,
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/images/sucessfully.png")),
+                              decoration: BoxDecoration(
+                                  // color: darkGreenColor,
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(15)),
+                            ),
+                            Text(
+                              "Cart",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CartAddresScreen()),
+                                );
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
                                 decoration: BoxDecoration(
                                     // color: darkGreenColor,
-                                    border: Border.all(color: Colors.white),
+                                    border:
+                                        Border.all(color: Color(0xff707070)),
                                     borderRadius: BorderRadius.circular(15)),
                               ),
-                              Text(
-                                "Cart",
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CartAddresScreen()),
+                                );
+                              },
+                              child: Text(
+                                "Address",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 20,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CartAddresScreen()),
-                                  );
-                                },
-                                child: Container(
-                                  height: 23,
-                                  width: 23,
-                                  decoration: BoxDecoration(
-                                      // color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
-                                      borderRadius: BorderRadius.circular(15)),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CartAddresScreen()),
-                                  );
-                                },
-                                child: Text(
-                                  "Address",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CartPaymentScreen()),
-                                  );
-                                },
-                                child: Container(
-                                  height: 23,
-                                  width: 23,
-                                  decoration: BoxDecoration(
-                                      //color: darkGreenColor,
-                                      border: Border.all(color: Color(0xff707070)),
-                                      borderRadius: BorderRadius.circular(15)),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CartPaymentScreen()),
-                                  );
-                                },
-                                child: Text(
-                                  "Order",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          height:size.height * 0.6,
-                          child: GetBuilder<GetCartControllers>(
-                      builder: (_) {
-                        return GetCartListView(getCartDetails:getCartController.getCartDetails);
-                      }
-                    ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(bottom: 10, right: 10, left: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Obx(
-                            () => Text(
-                              "${getCartController.totalitem.value} Iterms",
-                              style: GoogleFonts.roboto(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CartPaymentScreen()),
+                                );
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                decoration: BoxDecoration(
+                                    //color: darkGreenColor,
+                                    border:
+                                        Border.all(color: Color(0xff707070)),
+                                    borderRadius: BorderRadius.circular(15)),
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.currency_rupee,
-                                color: Color(0xff016942),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CartPaymentScreen()),
+                                );
+                              },
+                              child: Text(
+                                "Order",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                              Obx(
-                                () => Container(
-                                  width: 70,
-                                  child: FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text(
-                                      "${getCartController.totalPrice.value}",
-                                      style: GoogleFonts.roboto(
-                                        fontSize: 18.sp,
-                                        color: Color(0xff016942),
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: size.height * 0.6,
+                        child: GetBuilder<GetCartControllers>(builder: (_) {
+                          return GetCartListView(
+                              getCartDetails: getCartController.getCartDetails);
+                        }),
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(bottom: 10, right: 10, left: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Obx(
+                          () => Text(
+                            "${getCartController.totalitem.value} Items",
+                            style: GoogleFonts.roboto(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.currency_rupee,
+                              color: Color(0xff016942),
+                            ),
+                            Obx(
+                              () => Container(
+                                width: 70,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    "${getCartController.totalPrice.value}",
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 18.sp,
+                                      color: Color(0xff016942),
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 3.w,
-                          ),
-                          // Container(
-                          //   height: 30,
-                          //   width: 100.w,
-                          //   child: Center(
-                          //     child: Text(
-                          //       "25 Points Saved",
-                          //       style: GoogleFonts.roboto(
-                          //         fontSize: 12.sp,
-                          //         color: Color(0xff016942),
-                          //         fontWeight: FontWeight.bold,
-                          //       ),
-                          //     ),
-                          //   ),
-                          //   decoration: BoxDecoration(
-                          //       borderRadius: BorderRadius.circular(10),
-                          //       color: Color(0xffE4E4E4)),
-                          // ),
-                          
-                          InkWell(
-                            onTap: () {
-                            
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const CartAddresScreen()),
-                              );
-                            },
-                            child: Container(
-                              height: 35,
-                              width: 140,
-                              child: Center(
-                                child: Text(
-                                  "Delivery Address",
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 14.sp,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 3.w,
+                        ),
+                        // Container(
+                        //   height: 30,
+                        //   width: 100.w,
+                        //   child: Center(
+                        //     child: Text(
+                        //       "25 Points Saved",
+                        //       style: GoogleFonts.roboto(
+                        //         fontSize: 12.sp,
+                        //         color: Color(0xff016942),
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(10),
+                        //       color: Color(0xffE4E4E4)),
+                        // ),
+
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CartAddresScreen()),
+                            );
+                          },
+                          child: Container(
+                            height: 35,
+                            width: 140,
+                            child: Center(
+                              child: Text(
+                                "Delivery Address",
+                                style: GoogleFonts.roboto(
+                                  fontSize: 14.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Color(0xff016942)),
                             ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xff016942)),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          );
-        }
-      ),
-     
+          ),
+        );
+      }),
     );
   }
 }

@@ -35,6 +35,7 @@ class RegisterController extends GetxController {
             );
 
     if (response.statusCode == 200) {
+      print("Auth Token On Verify");
       print(response.data["token"]);
 
       await prefs.setString("auth_token", response.data["token"]);

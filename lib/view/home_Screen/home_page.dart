@@ -92,23 +92,19 @@ class _HomePageState extends State<HomePage> {
     // homeController.getAllCategorys();
     // allProductController.allProducts(1);
     // homeController.home(0);
-     WidgetsBinding.instance
-        .addPostFrameCallback((_) => getdata());
-        getProfileController.getProfiledetails();
+    WidgetsBinding.instance.addPostFrameCallback((_) => getdata());
   }
 
-  getdata() async{
-   homeController.getAllCategorys();
-   allProductController.allProducts(1);
-   homeController.home(0);
-    Position position =
-              await _getGeoLocationPosition();
-                location =
-                'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                  GetAddressFromLatLong(position);
+  getdata() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    getProfileController.getProfiledetails();
+    homeController.getAllCategorys();
+    allProductController.allProducts(1);
+    homeController.home(0);
+    Position position = await _getGeoLocationPosition();
+    location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+    GetAddressFromLatLong(position);
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +121,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   InkWell(
                     onTap: () async {
-                                 getdata();
-                                },
+                      getdata();
+                    },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -151,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.only(left: 10),
                               child: InkWell(
                                 onTap: () async {
-                                 getdata();
+                                  getdata();
                                 },
                                 child: Icon(
                                   Icons.location_on,
@@ -162,23 +158,22 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         Container(
-                          height:18,
+                          height: 18,
                           width: 100,
                           color: Colors.transparent,
-                          child:  FittedBox(
+                          child: FittedBox(
                             fit: BoxFit.scaleDown,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                             "${Address}",
-                             textAlign: TextAlign.start,
-                             style: GoogleFonts.roboto(
-                               fontSize: 12.sp,
-                               color: Colors.white,
+                              "${Address}",
+                              textAlign: TextAlign.start,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12.sp,
+                                color: Colors.white,
+                              ),
                             ),
-                                                   ),
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
@@ -202,13 +197,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                     hintText: "Search product",
                     contentPadding: EdgeInsets.only(top: 5),
-                    prefixIcon: InkWell(onTap: (){
-                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => const SearchProduct()),
-                                        );
-                    },
-                      child: Icon(Icons.search)),
+                    prefixIcon: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchProduct()),
+                          );
+                        },
+                        child: Icon(Icons.search)),
                     hintStyle: GoogleFonts.montserrat(
                       color: const Color(0xff517937),
                       fontSize: 14.sp,
@@ -286,9 +283,10 @@ class _HomePageState extends State<HomePage> {
                                       onTap: () {
                                         print(index);
                                         homeController.home(index);
-                                        allProductController.allProducts(homeController
+                                        allProductController.allProducts(
+                                            homeController
                                                 .categoryList[index].id);
-                                         homeController.update();
+                                        homeController.update();
 
                                         // Navigator.push(
                                         //   context,
@@ -297,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                                       },
                                       child: Container(
                                         height: 35,
-                                       // width: 100,
+                                        // width: 100,
                                         decoration: BoxDecoration(
                                           border:
                                               Border.all(color: darkGreenColor),
@@ -310,18 +308,19 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         child: Center(
                                             child: Padding(
-                                              padding: const EdgeInsets.only(left: 10,right: 10),
-                                              child: Text(
-                                          homeController
+                                          padding: const EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          child: Text(
+                                            homeController
                                                 .categoryList[index].name,
-                                          style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.montserrat(
                                                 color:
                                                     homeController.home.value ==
                                                             index
                                                         ? Colors.white
                                                         : darkGreenColor),
-                                        ),
-                                            )),
+                                          ),
+                                        )),
                                       ),
                                     ),
                                   );
@@ -387,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                     //six
                     if (homeController.home.value == 5) ListOfProductThree(),
                     //seven
-                    if (homeController.home.value == 6) ListOfProductOne(),  
+                    if (homeController.home.value == 6) ListOfProductOne(),
                     //next
                     SizedBox(
                       height: 13,
@@ -433,11 +432,11 @@ class _HomePageState extends State<HomePage> {
                       height: 10,
                     ),
                     //first
-                    GetBuilder<AllProductController>(
-                      builder: (_) {
-                        return ProductGridView(productList:allProductController.productList,);
-                      }
-                    ),
+                    GetBuilder<AllProductController>(builder: (_) {
+                      return ProductGridView(
+                        productList: allProductController.productList,
+                      );
+                    }),
                     //second
                     // if (homeController.home.value == 1) ProductTwo(),
                     // //third

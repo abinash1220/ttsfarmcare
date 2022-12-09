@@ -20,34 +20,43 @@ class LoginController extends GetxController {
     required String password,
   }) async {
     final prefs = await SharedPreferences.getInstance();
-    dio.Response<dynamic> response =
-        await loginApiServices.loginApiServices(
-            email: email,
-            password: password,
-           );
+    dio.Response<dynamic> response = await loginApiServices.loginApiServices(
+      email: email,
+      password: password,
+    );
+    print(":::::::::::::::::login Status ::::::::::::::::::");
+    print(response.statusCode);
+    print(response.data);
     if (response.statusCode == 200) {
       print(response.data["token"]);
 
       await prefs.setString("auth_token", response.data["token"]);
 
       Get.to(() => LoaderScreen());
-    }else if(response.statusCode ==400){
+    } else if (response.statusCode == 400) {
       Get.snackbar("Invalid Login", "",
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);
-    }else if (response.statusCode == 201){
-      if (email.isEmail) {
-      Get.to(() => VerifyMobileNumber());
-}else{
-  Get.find<SentOtpController>().sentOtpUser(mobile_number: email);
-}
-       Get.snackbar("Mobile number not verified", "",
-          snackPosition: SnackPosition.BOTTOM,
-          colorText: Colors.white,
-          backgroundColor: Colors.red);
-    }
-     else {
+    } else if (response.statusCode == 201) {
+      if (response.data["message"] !=
+          "Admin Does not Approve.Please wait some time") {
+        if (email.isEmail) {
+          Get.to(() => VerifyMobileNumber());
+        } else {
+          Get.find<SentOtpController>().sentOtpUser(mobile_number: email);
+        }
+        Get.snackbar("Mobile number not verified", "",
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+      } else {
+        Get.snackbar("Admin is not Approved", "Please wait some time",
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+      }
+    } else {
       print(response.statusCode);
       print(response.data);
       Get.snackbar("Something went worng", response.data,

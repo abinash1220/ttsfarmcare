@@ -86,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   image: AssetImage("assets/images/Group 3470.png")),
             ),
           ],
-          toolbarHeight: 92,
+          toolbarHeight: 94,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           flexibleSpace: Container(

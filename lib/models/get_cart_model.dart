@@ -9,49 +9,50 @@ ViewCart viewCartFromJson(String str) => ViewCart.fromJson(json.decode(str));
 String viewCartToJson(ViewCart data) => json.encode(data.toJson());
 
 class ViewCart {
-    ViewCart({
-        required this.message,
-        required this.cartdetails,
-    });
+  ViewCart({
+    required this.message,
+    required this.cartdetails,
+  });
 
-    String message;
-    List<Cartdetail> cartdetails;
+  String message;
+  List<Cartdetail> cartdetails;
 
-    factory ViewCart.fromJson(Map<String, dynamic> json) => ViewCart(
+  factory ViewCart.fromJson(Map<String, dynamic> json) => ViewCart(
         message: json["message"],
-        cartdetails: List<Cartdetail>.from(json["cartdetails"].map((x) => Cartdetail.fromJson(x))),
-    );
+        cartdetails: List<Cartdetail>.from(
+            json["cartdetails"].map((x) => Cartdetail.fromJson(x))),
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "message": message,
         "cartdetails": List<dynamic>.from(cartdetails.map((x) => x.toJson())),
-    };
+      };
 }
 
 class Cartdetail {
-    Cartdetail({
-        required this.id,
-        required this.userId,
-        required this.productId,
-        required this.quantity,
-        required this.activeFlag,
-        required this.createdAt,
-        required this.updatedAt,
-        required this.product,
-        required this.users,
-    });
+  Cartdetail({
+    required this.id,
+    required this.userId,
+    required this.productId,
+    required this.quantity,
+    required this.activeFlag,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.product,
+    required this.users,
+  });
 
-    int id;
-    String userId;
-    String productId;
-    String quantity;
-    String activeFlag;
-    DateTime createdAt;
-    DateTime updatedAt;
-    Product product;
-    Users users;
+  int id;
+  String userId;
+  String productId;
+  String quantity;
+  String activeFlag;
+  DateTime createdAt;
+  DateTime updatedAt;
+  Product product;
+  Users users;
 
-    factory Cartdetail.fromJson(Map<String, dynamic> json) => Cartdetail(
+  factory Cartdetail.fromJson(Map<String, dynamic> json) => Cartdetail(
         id: json["id"],
         userId: json["user_id"],
         productId: json["product_id"],
@@ -61,9 +62,9 @@ class Cartdetail {
         updatedAt: DateTime.parse(json["updated_at"]),
         product: Product.fromJson(json["product"]),
         users: Users.fromJson(json["users"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "user_id": userId,
         "product_id": productId,
@@ -73,47 +74,52 @@ class Cartdetail {
         "updated_at": updatedAt.toIso8601String(),
         "product": product.toJson(),
         "users": users.toJson(),
-    };
+      };
 }
 
 class Product {
-    Product({
-        required this.id,
-        required this.name,
-        required this.title,
-        required this.price,
-        required this.quantity,
-        required this.image1,
-        required this.image2,
-        required this.shortDescription,
-        required this.detailDescription,
-        required this.disclaimer,
-        required this.categoryId,
-        required this.createdAt,
-        required this.updatedAt,
-        this.rating,
-    });
+  Product({
+    required this.id,
+    required this.name,
+    required this.title,
+    required this.priceCustomer,
+    required this.priceRetailer,
+    required this.quantity,
+    required this.image1,
+    required this.image2,
+    required this.shortDescription,
+    required this.detailDescription,
+    required this.disclaimer,
+    required this.categoryId,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+    this.rating,
+  });
 
-    int id;
-    String name;
-    String title;
-    String price;
-    String quantity;
-    String image1;
-    String image2;
-    String shortDescription;
-    String detailDescription;
-    String disclaimer;
-    String categoryId;
-    String createdAt;
-    String updatedAt;
-    dynamic rating;
+  int id;
+  String name;
+  String title;
+  String priceCustomer;
+  String priceRetailer;
+  String quantity;
+  String image1;
+  String image2;
+  String shortDescription;
+  String detailDescription;
+  String disclaimer;
+  String categoryId;
+  String status;
+  String createdAt;
+  String updatedAt;
+  dynamic rating;
 
-    factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+       id: json["id"],
         name: json["name"],
         title: json["title"],
-        price: json["price"],
+        priceCustomer: json["price_customer"],
+        priceRetailer: json["price_retailer"],
         quantity: json["quantity"],
         image1: json["image1"],
         image2: json["image2"],
@@ -121,16 +127,18 @@ class Product {
         detailDescription: json["detail_description"],
         disclaimer: json["disclaimer"],
         categoryId: json["category_id"],
+        status: json["status"],
         createdAt: json["created_at"],
         updatedAt: json["updated_at"],
         rating: json["rating"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
+  Map<String, dynamic> toJson() => {
+         "id": id,
         "name": name,
         "title": title,
-        "price": price,
+        "price_customer": priceCustomer,
+        "price_retailer": priceRetailer,
         "quantity": quantity,
         "image1": image1,
         "image2": image2,
@@ -138,60 +146,62 @@ class Product {
         "detail_description": detailDescription,
         "disclaimer": disclaimer,
         "category_id": categoryId,
+        "status": status,
         "created_at": createdAt,
         "updated_at": updatedAt,
         "rating": rating,
-    };
+    
+      };
 }
 
 class Users {
-    Users({
-        required this.id,
-        required this.name,
-        this.companyName,
-        this.dateOfBirth,
-        required this.email,
-        required this.mobileNumber,
-        this.photo,
-        this.aadharNo,
-        required this.otpCode,
-        required this.userType,
-        required this.emailVerifiedAt,
-        required this.address,
-        required this.district,
-        this.gstNumber,
-        required this.mobileVerification,
-        required this.status,
-        required this.role,
-        required this.accessToken,
-        required this.createdAt,
-        required this.updatedAt,
-        this.deletedAt,
-    });
+  Users({
+    required this.id,
+    required this.name,
+    this.companyName,
+    this.dateOfBirth,
+    required this.email,
+    required this.mobileNumber,
+    this.photo,
+    this.aadharNo,
+    required this.otpCode,
+    required this.userType,
+    required this.emailVerifiedAt,
+    required this.address,
+    required this.district,
+    this.gstNumber,
+    required this.mobileVerification,
+    required this.status,
+    required this.role,
+    required this.accessToken,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+  });
 
-    int id;
-    String name;
-    dynamic companyName;
-    dynamic dateOfBirth;
-    String email;
-    String mobileNumber;
-    dynamic photo;
-    dynamic aadharNo;
-    String otpCode;
-    String userType;
-    dynamic emailVerifiedAt;
-    String address;
-    String district;
-    dynamic gstNumber;
-    String mobileVerification;
-    String status;
-    String role;
-    String accessToken;
-    DateTime createdAt;
-    DateTime updatedAt;
-    dynamic deletedAt;
+  int id;
+  String name;
+  dynamic companyName;
+  dynamic dateOfBirth;
+  String email;
+  String mobileNumber;
+  dynamic photo;
+  dynamic aadharNo;
+  String otpCode;
+  String userType;
+  dynamic emailVerifiedAt;
+  String address;
+  String district;
+  dynamic gstNumber;
+  String mobileVerification;
+  String status;
+  String role;
+  String accessToken;
+  DateTime createdAt;
+  DateTime updatedAt;
+  dynamic deletedAt;
 
-    factory Users.fromJson(Map<String, dynamic> json) => Users(
+  factory Users.fromJson(Map<String, dynamic> json) => Users(
         id: json["id"],
         name: json["name"],
         companyName: json["company_name"],
@@ -213,9 +223,9 @@ class Users {
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         deletedAt: json["deleted_at"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "company_name": companyName,
@@ -237,5 +247,5 @@ class Users {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "deleted_at": deletedAt,
-    };
+      };
 }

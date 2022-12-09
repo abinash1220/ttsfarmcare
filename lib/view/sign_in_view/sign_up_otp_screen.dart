@@ -53,8 +53,7 @@ class _SignUpOtpState extends State<SignUpOtp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Image(
-                                image: AssetImage("assets/images/Group 3473.png"),height: 100,),
+                 Image(image: AssetImage("assets/images/Group 3473.png"),height: 100,),
               SizedBox(height: 10,),
                 Text(
                         "OTP",

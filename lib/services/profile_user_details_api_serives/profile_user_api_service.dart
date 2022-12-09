@@ -10,10 +10,9 @@ class GetProfileApiService extends BaseApiService {
 
     try {
       //api calls here
-
       var dio = Dio();
-       final prefs = await SharedPreferences.getInstance();
-       String? authtoken = prefs.getString("auth_token");
+      final prefs = await SharedPreferences.getInstance();
+      String? authtoken = prefs.getString("auth_token");
 
       var response = await dio.get(
         profileUserUrl,
