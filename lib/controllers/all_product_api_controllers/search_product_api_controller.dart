@@ -14,6 +14,7 @@ import 'package:ttsfarmcare/view/view_cart_pages/payment_successfully_screen.dar
 import 'package:ttsfarmcare/view/view_cart_pages/place_order_screen.dart';
 
 import '../../constants/app_colors.dart';
+import '../../models/product_search_model.dart';
 import '../../models/search_product_model.dart';
 import '../../services/add_address_api_services/add_address_api_service.dart';
 import '../../view/home_Screen/home_navigationbar.dart';

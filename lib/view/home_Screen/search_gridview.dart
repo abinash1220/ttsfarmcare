@@ -6,9 +6,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/add_to_cart_api_controller.dart';
 import '../../constants/app_colors.dart';
+import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import '../../models/all_product_model.dart';
+import '../../models/product_search_model.dart';
 import '../../models/search_product_model.dart';
 import '../about_product/about_product.dart';
+final  getProfileuser = Get.find<GetProfileControllers>();
 
 class SearchGridview extends StatefulWidget {
 
@@ -134,7 +137,7 @@ class _SearchGridviewState extends State<SearchGridview> {
                                   height: 17,
                                   width: 52,
                                   child: Text(
-                                    "Price:${widget.ptSearch[index].price}",
+                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.ptSearch[index].priceRetailer : widget.ptSearch[index].priceCustomer}",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10.sp,
                                       color: darkGreenColor,

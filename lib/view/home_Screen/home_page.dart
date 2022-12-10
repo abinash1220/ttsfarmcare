@@ -287,7 +287,6 @@ class _HomePageState extends State<HomePage> {
                                             homeController
                                                 .categoryList[index].id);
                                         homeController.update();
-
                                         // Navigator.push(
                                         //   context,
                                         //   MaterialPageRoute(builder: (context) => const LoginPage()),

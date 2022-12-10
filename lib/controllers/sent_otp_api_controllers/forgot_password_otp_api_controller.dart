@@ -25,7 +25,7 @@ class ForgotOtpController extends GetxController {
             mobile_number: mobile_number,
         );
            
-           print(":::::::::forgot Otp send status code:::::::::::"); 
+      print(":::::::::forgot Otp send status code:::::::::::"); 
       print(response.statusCode);
       print(response.data);
     if (response.statusCode == 200) {

@@ -216,7 +216,6 @@ class _PasswordChangeScreenState extends State<PasswordChangeScreen> {
                  Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
-                        
                                         "New password",
                                         style: GoogleFonts.poppins(
                                           fontSize: 23,

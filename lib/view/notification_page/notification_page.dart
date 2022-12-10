@@ -88,7 +88,6 @@ class _NotificationPageState extends State<NotificationPage> {
                           child: Container(
                             height: 35,
                             child: TextFormField(
-                              
                               decoration: InputDecoration(
                                 isCollapsed: true,
                                 filled: true,
@@ -99,18 +98,18 @@ class _NotificationPageState extends State<NotificationPage> {
                                 prefixIcon: Icon(Icons.search,size: 20,),
                                 suffixIcon: Container(
                                   height: 50,
-                                  width: 100,
+                                  width: 0,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 10,right: 10),
+                                    padding: const EdgeInsets.only(left: 10,right: 0),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Today(2)",
-                                        style: GoogleFonts.montserrat(
-                                    fontSize: 12,
-                                    color: Color(0xffB3B3B3),
-                                ),
-                                        ),
+                                //         Text("Today(2)",
+                                //         style: GoogleFonts.montserrat(
+                                //     fontSize: 12,
+                                //     color: Color(0xffB3B3B3),
+                                // ),
+                                     //   ),
                                         Image(image: AssetImage("assets/icons/NAV.png"))
                                       ],
                                     ),

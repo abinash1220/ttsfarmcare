@@ -55,9 +55,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     districtController.text = getProfileuser.profileDetails.district;
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

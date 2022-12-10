@@ -39,11 +39,10 @@ class Notification {
   Notification({
     required this.currentPage,
     required this.data,
-    required this.firstPageUrl,
+    this.firstPageUrl,
     required this.from,
     required this.lastPage,
-    required this.lastPageUrl,
-    required this.links,
+    this.lastPageUrl,
     this.nextPageUrl,
     required this.path,
     required this.perPage,
@@ -54,11 +53,10 @@ class Notification {
 
   int currentPage;
   List<NotificationData> data;
-  String firstPageUrl;
+  dynamic firstPageUrl;
   int from;
   int lastPage;
-  String lastPageUrl;
-  List<Link> links;
+  dynamic lastPageUrl;
   dynamic nextPageUrl;
   String path;
   int perPage;
@@ -74,7 +72,6 @@ class Notification {
         from: json["from"] ?? 0,
         lastPage: json["last_page"],
         lastPageUrl: json["last_page_url"],
-        links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
         nextPageUrl: json["next_page_url"],
         path: json["path"],
         perPage: json["per_page"],
@@ -90,7 +87,6 @@ class Notification {
         "from": from == null ? null : from,
         "last_page": lastPage,
         "last_page_url": lastPageUrl,
-        "links": List<dynamic>.from(links.map((x) => x.toJson())),
         "next_page_url": nextPageUrl,
         "path": path,
         "per_page": perPage,
@@ -120,9 +116,9 @@ class NotificationData {
   factory NotificationData.fromJson(Map<String, dynamic> json) =>
       NotificationData(
         id: json["id"],
-        title: json["title"],
-        message: json["message"],
-        status: json["status"],
+        title: json["title"]?? "",
+        message: json["message"]?? "",
+        status: json["status"]?? "",
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -137,26 +133,4 @@ class NotificationData {
       };
 }
 
-class Link {
-  Link({
-     this.url,
-     this.label,
-    required this.active,
-  });
 
-  dynamic url;
-  dynamic label;
-  bool active;
-
-  factory Link.fromJson(Map<String, dynamic> json) => Link(
-        url: json["url"] ??"" ,
-        label: json["label"],
-        active: json["active"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "url": url == null ? null : url,
-        "label": label,
-        "active": active,
-      };
-}

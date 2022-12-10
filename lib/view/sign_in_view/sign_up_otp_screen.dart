@@ -11,9 +11,11 @@ import '../../controllers/verify_otp_api_controllers/verify_otp_api_controller.d
 
 class SignUpOtp extends StatefulWidget {
   String mobile_number;
+ 
 
   SignUpOtp({
     required this.mobile_number,
+    
   });
  
   @override
@@ -141,6 +143,7 @@ class _SignUpOtpState extends State<SignUpOtp> {
               SizedBox(
                 height: 15,
               ),
+              //Text(widget.auth_token),
               TextButton(
                 onPressed: () {
                     sendOtpController.sentOtpUser(mobile_number: widget.mobile_number);

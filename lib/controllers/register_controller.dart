@@ -29,16 +29,23 @@ class RegisterController extends GetxController {
             email: email,
             mobile_number: mobile_number,
             password: password,
+            companyName: companyName,
+            gst_number: gst_number,
             address: address,
             district: district,
             role: role,
             );
 
+    print(":::::::::register api status code:::::::::::"); 
+      print(response.statusCode);
+      print("");
+    
     if (response.statusCode == 200) {
-      print("Auth Token On Verify");
+      print(":::::::::::::::::::::::::Auth Token On Verify:::::::::::::::::::::::");
       print(response.data["token"]);
+     
 
-      await prefs.setString("auth_token", response.data["token"]);
+      await prefs.setString("auth_token",response.data["token"]);
 
         Get.find<SentOtpController>().sentOtpUser(mobile_number: mobile_number);
 

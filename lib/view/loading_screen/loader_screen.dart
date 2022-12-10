@@ -26,11 +26,14 @@ class _LoaderScreenState extends State<LoaderScreen> {
     await Future.delayed(Duration(seconds: 3));
     Get.offAll(HomeNavigationBar());
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
+    print("::::::::::::::::loader screen::::::::::::");
     return Scaffold(
       body: Center(child: Lottie.asset("assets/icons/loader.json")),
+      
     );
   }
 }

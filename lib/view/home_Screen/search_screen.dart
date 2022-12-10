@@ -35,7 +35,7 @@ class _SearchProductState extends State<SearchProduct> {
   }
 
   getdata(){
-  //  searchController.searchProduct(search:);
+    //searchController.searchProduct(search:);
   }
 
   @override

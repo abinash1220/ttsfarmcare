@@ -7,7 +7,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 import '../../models/order_history_model.dart';
 
 class OrderHistoryGridview extends StatefulWidget {
@@ -36,7 +36,10 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Image(image: AssetImage("assets/image/aa.png")),
+                    child: Image(
+                      height: 100,
+                      
+                      image: AssetImage("assets/image/aa.png")),
                   ),
                   SizedBox(
                     width: 20,
@@ -54,7 +57,7 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                         Text(
                           widget.orderdata[index].product.name,
                           style: GoogleFonts.montserrat(
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -63,27 +66,28 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                         ),
                         Row(
                           children: [
-                            Text(
-                              Get.find<GetProfileControllers>()
-                                          .profileDetails
-                                          .role ==
-                                      "Retail"
-                                  ? widget
-                                      .orderdata[index].product.priceRetailer
-                                  : widget
-                                      .orderdata[index].product.priceCustomer,
+                            Text("${widget.orderdata[index].quantity} iterms",
+                              // Get.find<GetProfileControllers>()
+                              //             .profileDetails
+                              //             .role ==
+                              //         "Retail"
+                              //     ? widget
+                              //         .orderdata[index].product.priceRetailer
+                              //     : widget
+                              //         .orderdata[index].product.priceCustomer,
                               style: GoogleFonts.roboto(
-                                fontSize: 17,
+                                fontSize: 15,
                                 //fontWeight: FontWeight.w500,
                               ),
                             ),
                             SizedBox(
-                              width: 90,
+                              width: 60,
                             ),
                             Text(
-                              widget.orderdata[index].product.shortDescription,
+                             timeago.format(widget.orderdata[index].createdAt),
+                              //widget.orderdata[index].product.shortDescription,
                               style: GoogleFonts.montserrat(
-                                fontSize: 17,
+                                fontSize: 15,
                                 //fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -94,9 +98,9 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                         ),
                         RatingBar.builder(
                           initialRating: double.parse(
-                              widget.orderdata[index].product.rating ?? "0"),
+                              widget.orderdata[index].product.rating ?? "3"),
                           minRating: 0,
-                          itemSize: 20,
+                          itemSize: 17,
                           glow: false,
                           direction: Axis.horizontal,
                           allowHalfRating: false,

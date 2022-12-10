@@ -31,7 +31,7 @@ class SentOtpController extends GetxController {
      
 
      // Get.to(() => SignUpSucessfully());
-      Get.to(() => SignUpOtp(mobile_number: mobile_number,));
+      Get.to(() => SignUpOtp(mobile_number: mobile_number));
        
 
     }else if(response.statusCode==400){

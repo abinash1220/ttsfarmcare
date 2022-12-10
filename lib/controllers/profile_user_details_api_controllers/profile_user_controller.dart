@@ -39,6 +39,7 @@ class GetProfileControllers extends GetxController {
 
     if (response.statusCode == 500) {
       logOutUser();
+      print("user:::::;;issue::::::::::;;");
     }
 
     ProfileUserDetails profileUserDetails =
@@ -53,6 +54,8 @@ class GetProfileControllers extends GetxController {
     final prefs = await SharedPreferences.getInstance();
 
     await prefs.setString("auth_token", "null");
+
+    print("::::::::::user issue");
 
     Get.offAll(() => LandingScreen());
   }
