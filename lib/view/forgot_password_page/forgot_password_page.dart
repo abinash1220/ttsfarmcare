@@ -107,6 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                        inputFormatters: <TextInputFormatter>[
+                        LengthLimitingTextInputFormatter(10),
                                 FilteringTextInputFormatter.allow(
                                   RegExp(r'[0-9]'),
                                 ),
@@ -133,6 +134,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 FilteringTextInputFormatter.deny(
                                   RegExp(
                                       r'^5+'), //users can't type 0 at 1st position
+                                      
                                 ),
                               ],
                       cursorColor: darkGreenColor,

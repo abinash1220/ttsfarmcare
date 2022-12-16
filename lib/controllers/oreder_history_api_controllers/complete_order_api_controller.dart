@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ttsfarmcare/models/category_model.dart';
+import 'package:ttsfarmcare/models/complete_model_screen.dart';
 import 'package:ttsfarmcare/models/order_history_model.dart';
 import 'package:ttsfarmcare/services/category_api_services/category_api_services.dart';
 
@@ -13,7 +15,7 @@ class CompleteOrderControllers extends GetxController {
   
   CompletOrderApiService completOrderApiService = CompletOrderApiService();
    
-  List<Datum> completeorder = [];
+  List<FinishOrderData> completeorder = [];
  
   getCompleteOrder() async {
     dio.Response<dynamic> response = await completOrderApiService.completeOrder();
@@ -24,6 +26,11 @@ class CompleteOrderControllers extends GetxController {
      CompleteOrder completeOrder = CompleteOrder.fromJson(response.data);
 
      completeorder = completeOrder.orders.data;
+
+    //  Get.snackbar("Products are available", "${response.data}",
+    //       snackPosition: SnackPosition.BOTTOM,
+    //       colorText: Colors.white,
+    //       backgroundColor: Colors.red);
 
       update();
     } else {

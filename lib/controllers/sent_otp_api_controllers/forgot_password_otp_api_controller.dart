@@ -38,6 +38,7 @@ class ForgotOtpController extends GetxController {
 
     }
     else {
+      print("::::::::::::::::::::::verify  testing:::::::::>>>>>>>>>>>>...........");
       print(response.statusCode);
       print(response.data);
       Get.snackbar("Something went worng", response.data,

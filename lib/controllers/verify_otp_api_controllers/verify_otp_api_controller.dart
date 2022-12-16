@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:ttsfarmcare/services/verify_otp_api_services/verify_otp_api_service.dart';
 
 import 'package:dio/dio.dart' as dio;
@@ -8,6 +9,8 @@ import '../../view/sign_in_view/signUp_sucessfully.dart';
 
 class VerifyOtpController extends GetxController {
  VerifyOtpApiService verifyOtpApiServices = VerifyOtpApiService();
+
+ RxString tempResponse = "".obs;
 
   verifyOtpUser({
    
@@ -29,10 +32,11 @@ class VerifyOtpController extends GetxController {
      // print(response.data["token"]);
 
       //await prefs.setString("auth_token", response.data["token"]);
-
+      Get.find<GetProfileControllers>().getProfiledetails();
       Get.to(() => SignUpSucessfully());
+      print(response.statusCode);
     }else if(response.statusCode == 400){
-      Get.snackbar("Please enter valid otp","",
+      Get.snackbar("Please enter correct otp","",
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);

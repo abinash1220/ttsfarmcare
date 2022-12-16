@@ -28,7 +28,7 @@ class AllProductApiService extends BaseApiService {
               }),
               data: {
                   
-                   "category_id":"1"
+                   "category_id":category_id
                   
               }
          );

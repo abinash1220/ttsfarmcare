@@ -43,11 +43,11 @@ class ResetPasswordApiController extends GetxController {
            colorText: Colors.white,
            backgroundColor: darkGreenColor);
 
-    // } else if(response.statusCode ==400){
-    //   Get.snackbar("incorrect", "",
-    //       snackPosition: SnackPosition.BOTTOM,
-    //       colorText: Colors.white,
-    //       backgroundColor: Colors.red);
+    } else if(response.statusCode ==400){
+      Get.snackbar("Your original password was wrong", "",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     } else {
       print(response.statusCode);
       print(response.data);

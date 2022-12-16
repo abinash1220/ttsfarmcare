@@ -128,7 +128,7 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(25))),
                       child: Column(
                         children: [
                           Padding(
@@ -260,84 +260,110 @@ class _CartAddresScreenState extends State<CartAddresScreen> {
                                 height: 10,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 0, right: 15),
+                                padding: const EdgeInsets.only(right: 15),
                                 child: Container(
-                                  height: 58,
+                                  height: 50,
                                   width: size.width,
-                                  child: DropdownSearch<String>(
-                                    popupProps: PopupProps.menu(
-                                      showSelectedItems: true,
-                                      showSearchBox: true,
-                                      searchFieldProps: TextFieldProps(
-                                          decoration: InputDecoration(
-                                              suffixIcon: Icon(
-                                        Icons.search,
-                                      ))),
-                                    ),
-                                    items: [
-                                    "Ariyalur",
-                                    "Chengalpattu", 
-                                    "Chennai",
-                                    "Coimbatore",
-                                    "Cuddalore",
-                                    "Dharmapuri",
-                                    "Dindigul",
-                                    "Erode",
-                                    "Kallakurichi",
-                                    "Kancheepuram",
-                                    "Karur",
-                                    "Krishnagiri",
-                                    "Madurai",
-                                    "Mayiladuthurai",
-                                    "Nagapattinam",
-                                    "Kanyakumari",
-                                    "Namakkal",
-                                    "Perambalur",
-                                    "Pudukottai",
-                                    "Ramanathapuram",
-                                    "Ranipet",
-                                    "Salem",
-                                    "Sivagangai",
-                                    "Tenkasi",
-                                    "Thanjavur",
-                                    "Theni",
-                                    "Thiruvallur",
-                                    "Thiruvarur",
-                                    "Tuticorin",
-                                    "Trichirappalli",
-                                    "Thirunelveli",
-                                    "Tirupathur",
-                                    "Tiruppur",
-                                    "Tiruvannamalai",
-                                    "Nilgiris",
-                                    "Vellore",
-                                    "Viluppuram",
-                                    "Virudhunagar",
-                                    ],
-                                    onChanged: ((value) {
-                                setState(() {
-                                  loctionController
-                                      .text = value.toString();
-                                });
-                              }),
-                                    dropdownDecoratorProps: DropDownDecoratorProps(
-                                      dropdownSearchDecoration: InputDecoration(
-                                        iconColor: Color(0xff517937),
-                                        isDense: true,
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.all(Radius.circular(5)),
-                                            borderSide: BorderSide(
-                                              color: const Color(0xff517937),
-                                            )),
-                                        hintText: locationhind,
-                                        hintStyle: GoogleFonts.montserrat(),
-                                        
-                                      ),
+                                  child: TextFormField(
+                                     controller: loctionController,
+                                    cursorColor: darkGreenColor,
+                                    decoration: InputDecoration(
+                                     focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: BorderSide(color: darkGreenColor,width: 1.5)
+                            ),
+                            enabledBorder:OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: BorderSide(color: Colors.grey)
+                            ), 
+                                      hintText: "Choose delivery area",
+                                      isDense: true,
+                                      hintStyle: GoogleFonts.montserrat(
+                                          //color: const Color(0xff517937),
+                                          ),
                                     ),
                                   ),
                                 ),
                               ),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(left: 0, right: 15),
+                              //   child: Container(
+                              //     height: 58,
+                              //     width: size.width,
+                              //     child: DropdownSearch<String>(
+                              //       popupProps: PopupProps.menu(
+                              //         showSelectedItems: true,
+                              //         showSearchBox: true,
+                              //         searchFieldProps: TextFieldProps(
+                              //             decoration: InputDecoration(
+                              //                 suffixIcon: Icon(
+                              //           Icons.search,
+                              //         ))),
+                              //       ),
+                              //       items: [
+                              //       "Ariyalur",
+                              //       "Chengalpattu", 
+                              //       "Chennai",
+                              //       "Coimbatore",
+                              //       "Cuddalore",
+                              //       "Dharmapuri",
+                              //       "Dindigul",
+                              //       "Erode",
+                              //       "Kallakurichi",
+                              //       "Kancheepuram",
+                              //       "Karur",
+                              //       "Krishnagiri",
+                              //       "Madurai",
+                              //       "Mayiladuthurai",
+                              //       "Nagapattinam",
+                              //       "Kanyakumari",
+                              //       "Namakkal",
+                              //       "Perambalur",
+                              //       "Pudukottai",
+                              //       "Ramanathapuram",
+                              //       "Ranipet",
+                              //       "Salem",
+                              //       "Sivagangai",
+                              //       "Tenkasi",
+                              //       "Thanjavur",
+                              //       "Theni",
+                              //       "Thiruvallur",
+                              //       "Thiruvarur",
+                              //       "Tuticorin",
+                              //       "Trichirappalli",
+                              //       "Thirunelveli",
+                              //       "Tirupathur",
+                              //       "Tiruppur",
+                              //       "Tiruvannamalai",
+                              //       "Nilgiris",
+                              //       "Vellore",
+                              //       "Viluppuram",
+                              //       "Virudhunagar",
+                              //       ],
+                              //       onChanged: ((value) {
+                              //   setState(() {
+                              //     loctionController
+                              //         .text = value.toString();
+                              //   });
+                              // }),
+                              //       dropdownDecoratorProps: DropDownDecoratorProps(
+                              //         dropdownSearchDecoration: InputDecoration(
+                              //           iconColor: Color(0xff517937),
+                              //           isDense: true,
+                              //           border: OutlineInputBorder(
+                              //               borderRadius:
+                              //                   BorderRadius.all(Radius.circular(5)),
+                              //               borderSide: BorderSide(
+                              //                 color: const Color(0xff517937),
+                              //               )),
+                              //           hintText: locationhind,
+                              //           hintStyle: GoogleFonts.montserrat(),
+                                        
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               SizedBox(
                                 height: 10,
                               ),

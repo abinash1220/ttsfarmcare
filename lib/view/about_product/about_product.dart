@@ -71,7 +71,7 @@ class _AboutProductState extends State<AboutProduct> {
       (index) => Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(widget.image),
+            image: NetworkImage(widget.image),
             fit: BoxFit.contain,
           ),
         ),
@@ -286,6 +286,7 @@ class _AboutProductState extends State<AboutProduct> {
                                     height: 10,
                                   ),
                                   Text(
+                                    //widget.productData.shortDescription,
                                     "Lorem Ipsum is simply dummy text of the printing and\n"
                                     "typesetting industry. Lorem Ipsum has been the industry's\n"
                                     "standard dummy text ever since the 1500s, when an\n"

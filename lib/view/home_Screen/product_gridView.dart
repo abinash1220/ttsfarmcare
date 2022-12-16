@@ -40,6 +40,9 @@ class _ProductGridViewState extends State<ProductGridView> {
         ),
         itemCount:widget.productList.length,
          itemBuilder: (context,index){
+          print(":::::::::::::::::::::::::::::::testing>>>>>>>>>>>>>>>>>>.");
+         print(widget.productList[index].image1);
+         print("............................image test.................>>////////////////");
        return Padding(
          padding: const EdgeInsets.only(left: 10,right: 10),
          child: InkWell(
@@ -74,13 +77,18 @@ class _ProductGridViewState extends State<ProductGridView> {
                                         context,
                                         MaterialPageRoute(
                                         builder: (context) => AboutProduct(
-                                        image: "assets/images/asset-3.png",
+                                        image: widget.productList[index].image1,
                                         productData:widget.productList[index], product_id: 1,
                                  // name: "Micro Nutrition Valorous",
                                 )),
                     );
                                 },
-                                child: Image(image: AssetImage("assets/images/asset-3.png"))),
+                                child: Container(
+                                  height: 80,
+                                 // width: 40,
+                                  //color: liteGreenColor,
+                                  child: Image(fit: BoxFit.cover,
+                                    image: NetworkImage(widget.productList[index].image1)))),
                             ),
                           ),
                           Center(
@@ -92,7 +100,7 @@ class _ProductGridViewState extends State<ProductGridView> {
                                         context,
                                         MaterialPageRoute(
                                         builder: (context) => AboutProduct(
-                                        image: "assets/images/asset-3.png",
+                                        image: widget.productList[index].image1,
                                         productData:widget.productList[index], product_id: 1,
                                  // name: "Micro Nutrition Valorous",
                                 )),
@@ -118,7 +126,6 @@ class _ProductGridViewState extends State<ProductGridView> {
                             textDirection: TextDirection.ltr,
                             style: GoogleFonts.montserrat(
                               fontSize: 10.sp,
-                              
                               color: Colors.black,
                             ),
                           ),

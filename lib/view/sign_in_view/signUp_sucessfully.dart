@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/loading_screen/loader_screen.dart';
 import 'package:ttsfarmcare/view/loading_screen/loading_screen.dart';
+import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 
+import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
+import '../landing_page/landing_screen.dart';
 import 'loading_screen.dart';
 
 class SignUpSucessfully extends StatefulWidget {
@@ -15,7 +19,11 @@ class SignUpSucessfully extends StatefulWidget {
   State<SignUpSucessfully> createState() => _SignUpSucessfullyState();
 }
 
+
 class _SignUpSucessfullyState extends State<SignUpSucessfully> {
+
+  final  getProfileuser = Get.find<GetProfileControllers>();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -45,14 +53,16 @@ class _SignUpSucessfullyState extends State<SignUpSucessfully> {
                 ],
               ),
             ),
-           
-            
                   InkWell(
                           onTap: () {
-                            Navigator.push(
+                            if(getProfileuser.profileDetails.role == "Retail"){
+                              Get.offAll(() => LoginScreen());
+                            }else{
+                              Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const LoaderScreen()),
                             );
+                            }
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(left: 30,right: 30),

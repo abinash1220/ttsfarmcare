@@ -11,6 +11,7 @@ import 'package:ttsfarmcare/services/history_api_services/complete_order_api_ser
 import 'package:ttsfarmcare/services/history_api_services/order_history_api_services.dart';
 
 import '../../models/complete_order_model.dart';
+import '../../models/get_cart_details_model.dart';
 import '../../models/get_cart_model.dart';
 
 class GetCartControllers extends GetxController {

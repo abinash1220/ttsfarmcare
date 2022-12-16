@@ -25,8 +25,6 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
     print(widget.orderdata.length);
     return Container(
       child: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, childAspectRatio: 2.76, mainAxisSpacing: 10),
           itemCount: widget.orderdata.length,
@@ -38,8 +36,8 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                     padding: const EdgeInsets.only(left: 10),
                     child: Image(
                       height: 100,
-                      
-                      image: AssetImage("assets/image/aa.png")),
+                      width: 50,
+                      image: NetworkImage(widget.orderdata[index].product.image1)),
                   ),
                   SizedBox(
                     width: 20,

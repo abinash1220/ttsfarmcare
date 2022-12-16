@@ -184,31 +184,44 @@ class _HomePageState extends State<HomePage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: 35.h,
-                width: 170.w,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    isDense: true,
-                    filled: true,
-                    fillColor: Color(0xffFFFFFF),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Search product",
-                    contentPadding: EdgeInsets.only(top: 5),
-                    prefixIcon: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SearchProduct()),
-                          );
-                        },
-                        child: Icon(Icons.search)),
-                    hintStyle: GoogleFonts.montserrat(
-                      color: const Color(0xff517937),
-                      fontSize: 14.sp,
+              Container(
+                child: SizedBox(
+                  height: 35.h,
+                  width: 170.w,
+                  child: Container(
+                    child: TextField(
+                       onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SearchProduct()),
+                            );
+                          },
+                          readOnly: true,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        filled: true,
+                    
+                        fillColor: Color(0xffFFFFFF),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Search product",
+                        contentPadding: EdgeInsets.only(top: 5),
+                        prefixIcon: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SearchProduct()),
+                              );
+                            },
+                            child: Icon(Icons.search)),
+                        hintStyle: GoogleFonts.montserrat(
+                          color: const Color(0xff517937),
+                          fontSize: 14.sp,
+                        ),
+                      ),
                     ),
                   ),
                 ),

@@ -86,6 +86,8 @@ final forgotOtpController = Get.find<ForgotOtpController>();
             padding: const EdgeInsets.only(left: 15),
             child: Column(
               children: [
+                //Obx (() =>( 
+                 // Text(forgotOtpVerifyController.tempResponse.value,style: TextStyle(color: Colors.black),))),
                 Text(
                       "Enter Verification code",
                       textAlign: TextAlign.center,
@@ -113,9 +115,11 @@ final forgotOtpController = Get.find<ForgotOtpController>();
                         fieldWidth: 50.w,
                         margin: EdgeInsets.only(left: 10,right: 20),
                         fillColor: darkGreenColor,
-                        textStyle: GoogleFonts.poppins(color: Colors.white,
-                        fontSize: 25.sp,
-                        fontWeight: FontWeight.w600),
+                        textStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.sp
+                  ),
                         borderWidth: 0,
                         showFieldAsBox: true, 
                         onCodeChanged: (String code) {
@@ -151,7 +155,6 @@ final forgotOtpController = Get.find<ForgotOtpController>();
                         fontSize: 15.sp,
                         decoration:TextDecoration.underline, 
                         ),
-                        
                       ),
                     ),
                   ],

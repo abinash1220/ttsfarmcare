@@ -405,9 +405,36 @@ class _ExamsViewState extends State<ExamsView> {
                         child: TextFormField(
                           controller: mobileNumbercontroller,
                           keyboardType: TextInputType.number,
-                          inputFormatters: [
+                          inputFormatters: <TextInputFormatter>[
                             LengthLimitingTextInputFormatter(10),
-                          ],
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]'),
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^0+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^1+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^2+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^3+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^4+'), //users can't type 0 at 1st position
+                                ),
+                                FilteringTextInputFormatter.deny(
+                                  RegExp(
+                                      r'^5+'), //users can't type 0 at 1st position
+                                ),
+                              ],
                           cursorColor: darkGreenColor,
                           decoration: InputDecoration(
                             filled: true,

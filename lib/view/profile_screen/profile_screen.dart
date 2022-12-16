@@ -198,13 +198,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                      padding: const EdgeInsets.only(top: 20, right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
                               Image(
+                                height: 18,
+                                width: 20,
                                   image: AssetImage(
                                 "assets/icons/all order.png",
                               )),
@@ -268,9 +270,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Row(
                             children: [
-                              Image(image: AssetImage("assets/icons/finished.png")),
+                              Image(height: 25,
+                              width: 20,
+                                image: AssetImage("assets/icons/finished.png")),
                               SizedBox(
-                                width: 15.w,
+                                width: 13.w,
                               ),
                               Text(
                                 "Finished Orders",
@@ -390,9 +394,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Row(
                             children: [
-                              Image(image: AssetImage("assets/icons/support.png")),
+                              Image(height: 20,width: 20,
+                                image: AssetImage("assets/icons/support.png")),
                               SizedBox(
-                                width: 15.w,
+                                width: 13.w,
                               ),
                               Text(
                                 "Customer Support",
@@ -451,9 +456,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Row(
                             children: [
-                              Image(image: AssetImage("assets/icons/misella.png")),
+                              Image(height: 20,width: 20,
+                                image: AssetImage("assets/icons/misella.png")),
                               SizedBox(
-                                width: 15.w,
+                                width: 13.w,
                               ),
                               Text(
                                 "Password Change",
@@ -579,11 +585,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Image(
+                                    height: 20,width: 20,
                                       image: AssetImage(
                                           "assets/icons/logout_black_24dp.png")),
                                 )),
                             SizedBox(
-                              width: 15.w,
+                              width: 13.w,
                             ),
                             Text(
                               "Log Out",

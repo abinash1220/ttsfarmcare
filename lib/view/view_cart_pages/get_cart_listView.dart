@@ -12,6 +12,7 @@ import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/pro
 import '../../constants/app_colors.dart';
 import '../../controllers/add_to_cart_api_controllers/get_cart_api_controller.dart';
 import '../../controllers/view_cart_controller.dart';
+import '../../models/get_cart_details_model.dart';
 import '../../models/get_cart_model.dart';
 
 class GetCartListView extends StatefulWidget {
@@ -37,24 +38,27 @@ class _GetCartListViewState extends State<GetCartListView> {
         child: ListView.builder(
             itemCount: widget.getCartDetails.length,
             itemBuilder: ((context, index) {
-              return Column(
+              return widget.getCartDetails[index].product.name == "null" ? Container() : Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 10, top: 10),
+                    padding: const EdgeInsets.only(right: 10, top: 10,),
                     child: Container(
                       height: 150,
                       width: 390,
                       child: Row(children: [
-                        Container(
-                          height: 130,
-                          width: 60,
-                          child: Image(
-                            image: AssetImage("assets/image/aa.png"),
-                            fit: BoxFit.fill,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: Container(
+                            height: 130,
+                            width: 60,
+                            child: Image(
+                              image: NetworkImage(widget.getCartDetails[index].product.image1),
+                             
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 20,left: 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

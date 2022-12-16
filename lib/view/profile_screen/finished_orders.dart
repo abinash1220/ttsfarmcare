@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/oreder_history_api_controllers/complete_order_api_controller.dart';
+import 'package:ttsfarmcare/view/profile_screen/finished-orders_gridview.dart';
 import 'package:ttsfarmcare/view/profile_screen/finished_order_gridview.dart';
 
 class FinishedOrders extends StatefulWidget {
@@ -16,14 +17,7 @@ class FinishedOrders extends StatefulWidget {
 class _FinishedOrdersState extends State<FinishedOrders> {
   bool isCheked = true;
 
-  List image = [
-    "assets/images/21.png",
-    "assets/images/21.png",
-    "assets/images/asset-3.png",
-    "assets/images/asset-3.png",
-    "assets/images/21.png",
-    "assets/images/21.png"
-  ];
+ 
 
   final completeOrderController = Get.find<CompleteOrderControllers>();
 
@@ -91,14 +85,14 @@ class _FinishedOrdersState extends State<FinishedOrders> {
                     )),
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-              child: Container(
-                child: GetBuilder<CompleteOrderControllers>(builder: (_) {
-                  return CompleOrderGritview(
-                      completeorder: completeOrderController.completeorder);
-                }),
-              ),
+              child: GetBuilder<CompleteOrderControllers>(
+                builder: (_) {
+                return FinishedOrdersGridview(
+                    completeorder: completeOrderController.completeorder);
+              }),
             ),
           ),
-        ));
+        ),
+        );
   }
 }

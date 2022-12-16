@@ -94,7 +94,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                borderRadius: BorderRadius.only(topRight: Radius.circular(25))),
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
