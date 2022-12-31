@@ -6,6 +6,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/controllers/login_api_controllers/login_controller.dart';
 import 'package:ttsfarmcare/view/home_Screen/signUp_screen.dart';
@@ -43,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // TODO: implement initState
     super.initState();
     passwordcontroller.addListener(validatePwd);
+    _loadUserEmailPassword();
   }
 
   validatePwd(){
@@ -216,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        if (isPwd == false)Padding(
+                        if (isPwd == false && passwordcontroller.text.isNotEmpty)Padding(
                         padding: const EdgeInsets.only(left: 30),
                         child: Text("password must be 8 characters",
                         style: TextStyle(color: Colors.red),
@@ -232,11 +234,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Checkbox(
                                       activeColor: Color(0xff517937),
                                       value: isCheked,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          isCheked = !isCheked;
-                                        });
-                                      }),
+                                      onChanged: _handleRemeberme,
+                                      // onChanged: (value) {
+                                      //   setState(() {
+                                      //     isCheked = !isCheked;
+                                      //   });
+                                      // }
+                                      ),
                             Text(
                               "Remeber Me",
                               style: GoogleFonts.montserrat(),
@@ -344,4 +348,43 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+   void _handleRemeberme(bool? value) {
+    print("Handle Rember Me");
+    isCheked = value!;
+    SharedPreferences.getInstance().then(
+      (prefs) {
+        prefs.setBool("remember_me", value);
+        prefs.setString('email', emailcontroller.text);
+        prefs.setString('password', passwordcontroller.text);
+      },
+    );
+    setState(() {
+      isCheked = value;
+    });
+  }
+
+  void _loadUserEmailPassword() async {
+    print("Load Email");
+    try {
+      SharedPreferences _prefs = await SharedPreferences.getInstance();
+      var _email = _prefs.getString("email") ?? "";
+      var _password = _prefs.getString("password") ?? "";
+      var _remeberMe = _prefs.getBool("remember_me") ?? false;
+
+      print(_remeberMe);
+      print(_email);
+      print(_password);
+      if (_remeberMe) {
+        setState(() {
+          isCheked = true;
+        });
+        emailcontroller.text = _email;
+        passwordcontroller.text = _password;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
 }

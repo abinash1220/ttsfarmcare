@@ -62,13 +62,13 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
           ),
           titleSpacing: -10,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Image(
-                  height: 45,
-                  width: 45,
-                  image: AssetImage("assets/images/Group 3470.png")),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 20),
+            //   child: Image(
+            //       height: 45,
+            //       width: 45,
+            //       image: AssetImage("assets/images/Group 3470.png")),
+            // ),
           ],
           toolbarHeight: 92,
           backgroundColor: Colors.transparent,

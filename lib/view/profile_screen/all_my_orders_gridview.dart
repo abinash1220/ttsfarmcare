@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../constants/app_colors.dart';
+import '../../models/order_history.dart';
 import '../../models/order_history_model.dart';
 
 class AllMyOrdersGridview extends StatefulWidget {
@@ -26,7 +27,7 @@ class _AllMyOrdersGridviewState extends State<AllMyOrdersGridview> {
   Widget build(BuildContext context) {
     print(widget.orderdata.length);
     return Container(
-      child: GridView.builder(
+      child:widget.orderdata.isEmpty? Center(child: Text("No data available")) : GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, childAspectRatio: 2.76, mainAxisSpacing: 10),
           itemCount: widget.orderdata.length,
@@ -53,9 +54,9 @@ class _AllMyOrdersGridviewState extends State<AllMyOrdersGridview> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                widget.orderdata[index].id.toString(),
+                                widget.orderdata[index].product.name,
                                 style: GoogleFonts.poppins(
-                                  fontSize: 16.sp,
+                                  fontSize: 15.sp,
                                   color: const Color(0xff515C6F),
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -64,7 +65,7 @@ class _AllMyOrdersGridviewState extends State<AllMyOrdersGridview> {
                                 height: 3,
                               ),
                               Text(
-                               timeago.format(DateTime.parse(widget.orderdata[index].product.createdAt)),
+                               timeago.format(DateTime.parse(widget.orderdata[index].product.createdAt.toString())),
                                 style: GoogleFonts.poppins(
                                   fontSize: 12.sp,
                                   color: const Color(0xff515C6F),
@@ -93,7 +94,7 @@ class _AllMyOrdersGridviewState extends State<AllMyOrdersGridview> {
                             Text(
                               "Rating",
                               style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
+                                fontSize: 12.sp,
                                 color: const Color(0xff7D7979),
                                 fontWeight: FontWeight.w400,
                               ),
@@ -101,27 +102,27 @@ class _AllMyOrdersGridviewState extends State<AllMyOrdersGridview> {
                             Icon(
                               Icons.star_border,
                               color: Color(0xffD7A221),
-                              size: 12,
+                              size: 11,
                             ),
                             Icon(
                               Icons.star_border,
                               color: Color(0xffD7A221),
-                              size: 12,
+                              size: 11,
                             ),
                             Icon(
                               Icons.star_border,
                               color: Color(0xffD7A221),
-                              size: 12,
+                              size: 11,
                             ),
                             Icon(
                               Icons.star_border,
                               color: Color(0xffD7A221),
-                              size: 12,
+                              size: 11,
                             ),
                             Icon(
                               Icons.star_border,
                               color: Color(0xffD7A221),
-                              size: 12,
+                              size: 11,
                             ),
                           ],
                         ),

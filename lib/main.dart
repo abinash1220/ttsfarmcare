@@ -9,8 +9,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ttsfarmcare/controllers/about_product_controller.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/add_address_api_controller.dart';
 import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_address_api_controller.dart';
+import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_district_list_api_controller.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/add_to_cart_api_controller.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/get_cart_api_controller.dart';
+import 'package:ttsfarmcare/controllers/all_product_api_controllers/new_product_api_controller.dart';
 import 'package:ttsfarmcare/controllers/all_product_api_controllers/search_product_api_controller.dart';
 import 'package:ttsfarmcare/controllers/change_password_api_controllers/forgot_pwd_change_api_controller.dart';
 import 'package:ttsfarmcare/controllers/change_password_api_controllers/reset_password_api_controller.dart';
@@ -124,6 +126,8 @@ AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
   Get.put(GetCartControllers());
   Get.put(SearchProductController());
   Get.put(AddQuantityController());
+  Get.put(GetDistrictController());
+  Get.put(NewProductController());
   runApp(MyApp());
 }
 

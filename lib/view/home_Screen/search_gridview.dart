@@ -82,7 +82,9 @@ class _SearchGridviewState extends State<SearchGridview> {
                     //           )),
                     // );
                                 },
-                                child: Image(image: AssetImage("assets/images/asset-3.png"))),
+                                child: Image(
+                                  height: 70,
+                                  image: NetworkImage(widget.ptSearch[index].image1))),
                             ),
                           ),
                           Center(
@@ -120,7 +122,7 @@ class _SearchGridviewState extends State<SearchGridview> {
                               right: 60,
                             ),
                             child: Text(
-                              widget.ptSearch[index].quantity,
+                              widget.ptSearch[index].customerPriceAttributes.first.quantity,
                               style: GoogleFonts.montserrat(
                                 fontSize: 10.sp,
                                 color: Colors.black,
@@ -137,7 +139,7 @@ class _SearchGridviewState extends State<SearchGridview> {
                                   height: 17,
                                   width: 52,
                                   child: Text(
-                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.ptSearch[index].priceRetailer : widget.ptSearch[index].priceCustomer}",
+                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.ptSearch[index].retailerPriceAttributes.first.price : widget.ptSearch[index].customerPriceAttributes.first.price}",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10.sp,
                                       color: darkGreenColor,
@@ -153,7 +155,10 @@ class _SearchGridviewState extends State<SearchGridview> {
                                     print("product id is ${widget.ptSearch[index].id}");
                                     addToCartController.addtocart(
                                       productId: "${widget.ptSearch[index].id}",
-                                      quantity: "1");
+                                      quantity: "1",
+                                      price: "",
+                                      no_of_item: ""
+                                      );
                                   },
                                   child: Container(
                                     height: 25,

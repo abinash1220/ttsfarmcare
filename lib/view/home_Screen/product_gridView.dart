@@ -35,7 +35,7 @@ class _ProductGridViewState extends State<ProductGridView> {
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: 0.70,
+          childAspectRatio: 0.70, 
           mainAxisSpacing: 10
         ),
         itemCount:widget.productList.length,
@@ -63,7 +63,7 @@ class _ProductGridViewState extends State<ProductGridView> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 5,bottom: 5,left: 5),
+                      padding: const EdgeInsets.only(top: 5,bottom: 5,left: 5,),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,12 +83,15 @@ class _ProductGridViewState extends State<ProductGridView> {
                                 )),
                     );
                                 },
-                                child: Container(
-                                  height: 80,
-                                 // width: 40,
-                                  //color: liteGreenColor,
-                                  child: Image(fit: BoxFit.cover,
-                                    image: NetworkImage(widget.productList[index].image1)))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Container(
+                                    height: 70,
+                                   // width: 40,
+                                    //color: liteGreenColor,
+                                    child: Image(fit: BoxFit.cover,
+                                      image: NetworkImage(widget.productList[index].image1))),
+                                )),
                             ),
                           ),
                           Center(
@@ -122,7 +125,7 @@ class _ProductGridViewState extends State<ProductGridView> {
                             height: 5,
                           ),
                           Text(
-                            widget.productList[index].quantity,
+                            widget.productList[index].customerPriceAttributes.first.quantity,
                             textDirection: TextDirection.ltr,
                             style: GoogleFonts.montserrat(
                               fontSize: 10.sp,
@@ -139,7 +142,7 @@ class _ProductGridViewState extends State<ProductGridView> {
                                   height: 17,
                                   width: 52,
                                   child: Text(
-                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.productList[index].priceRetailer : widget.productList[index].priceCustomer}",
+                                    "Price:${getProfileuser.profileDetails.role == "Retail" ? widget.productList[index].retailerPriceAttributes.first.price : widget.productList[index].customerPriceAttributes.first.price}",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 10.sp,
                                       color: darkGreenColor,
@@ -155,7 +158,10 @@ class _ProductGridViewState extends State<ProductGridView> {
                                     print("product id is ${widget.productList[index].id}");
                                     addToCartController.addtocart(
                                       productId: "${widget.productList[index].id}",
-                                      quantity: "1");
+                                      quantity:getProfileuser.profileDetails.role == "Retail" ? widget.productList[index].retailerPriceAttributes.first.quantity : widget.productList[index].customerPriceAttributes.first.quantity,
+                                      price:getProfileuser.profileDetails.role == "Retail" ? widget.productList[index].retailerPriceAttributes.first.price : widget.productList[index].customerPriceAttributes.first.price,
+                                      no_of_item: "1"
+                                      );
                                   },
                                   child: Container(
                                     height: 25,

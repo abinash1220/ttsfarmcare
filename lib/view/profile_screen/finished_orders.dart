@@ -52,13 +52,13 @@ class _FinishedOrdersState extends State<FinishedOrders> {
             ),
             titleSpacing: -10,
             actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Image(
-                    height: 45,
-                    width: 45,
-                    image: AssetImage("assets/images/Group 3470.png")),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 20),
+              //   child: Image(
+              //       height: 45,
+              //       width: 45,
+              //       image: AssetImage("assets/images/Group 3470.png")),
+              // ),
             ],
             toolbarHeight: 94,
             backgroundColor: Colors.transparent,
@@ -88,7 +88,7 @@ class _FinishedOrdersState extends State<FinishedOrders> {
               child: GetBuilder<CompleteOrderControllers>(
                 builder: (_) {
                 return FinishedOrdersGridview(
-                    completeorder: completeOrderController.completeorder);
+                    completeorder:completeOrderController.completeorder);
               }),
             ),
           ),

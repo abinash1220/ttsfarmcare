@@ -8,10 +8,13 @@ import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/all_product_api_controllers/all_product_api_controller.dart';
+import 'package:ttsfarmcare/controllers/all_product_api_controllers/new_product_api_controller.dart';
 import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
+import 'package:ttsfarmcare/view/home_Screen/home_navigationbar.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_one.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_three.dart';
 import 'package:ttsfarmcare/view/home_Screen/list_of_product_two.dart';
+import 'package:ttsfarmcare/view/home_Screen/new_product_listView.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_gridView.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_one.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_three.dart';
@@ -46,6 +49,8 @@ class _HomePageState extends State<HomePage> {
   final getProfileController = Get.find<GetProfileControllers>();
 
   final allProductController = Get.find<AllProductController>();
+
+  final newProductListController = Get.find<NewProductController>();
 
   String location = 'Null, Press Button';
   String Address = 'search';
@@ -82,8 +87,9 @@ class _HomePageState extends State<HomePage> {
         await placemarkFromCoordinates(position.latitude, position.longitude);
     print(placemarks);
     Placemark place = placemarks[0];
-    Address = '${place.subLocality}';
-    setState(() {});
+    setState(() {
+      Address = '${place.subLocality}';
+    });
   }
 
   @override
@@ -92,6 +98,7 @@ class _HomePageState extends State<HomePage> {
     // homeController.getAllCategorys();
     // allProductController.allProducts(1);
     // homeController.home(0);
+    getlocation();
     WidgetsBinding.instance.addPostFrameCallback((_) => getdata());
   }
 
@@ -100,15 +107,32 @@ class _HomePageState extends State<HomePage> {
     getProfileController.getProfiledetails();
     homeController.getAllCategorys();
     allProductController.allProducts(1);
+    newProductListController.newProductList(1);
     homeController.home(0);
+    //checkloction();
+  }
+
+  getlocation() async {
     Position position = await _getGeoLocationPosition();
     location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
     GetAddressFromLatLong(position);
+
   }
+
+   Stream<int> stream = Stream.periodic(Duration(seconds: 1), (int count) => count);
+  // checkloction() async {
+     
+  //   while(true){
+  //      if(Address == 'search'){
+  //     getlocation();
+  //   }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+   
     return Scaffold(
       appBar: AppBar(
           leadingWidth: 110,
@@ -119,63 +143,61 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () async {
-                      getdata();
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Location",
-                              style: GoogleFonts.roboto(
-                                fontSize: 16.sp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            // Image(
-                            //   image: AssetImage("assets/images/down-arrow.png"),
-                            //   color: Colors.white,
-                            // )
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: InkWell(
-                                onTap: () async {
-                                  getdata();
-                                },
-                                child: Icon(
-                                  Icons.location_on,
-                                  size: 20,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Container(
-                          height: 18,
-                          width: 100,
-                          color: Colors.transparent,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "${Address}",
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.roboto(
-                                fontSize: 12.sp,
-                                color: Colors.white,
-                              ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Location",
+                            style: GoogleFonts.roboto(
+                              fontSize: 16.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          // Image(
+                          //   image: AssetImage("assets/images/down-arrow.png"),
+                          //   color: Colors.white,
+                          // )
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Icon(
+                              Icons.location_on,
+                              size: 20,
+                            ),
+                          )
+                        ],
+                      ),
+                      StreamBuilder<int>(
+                        stream: stream,
+                        builder: (context, snapshot) {
+                          if(Address == 'search'){
+                           getlocation();
+                        }
+                          return Container(
+                            height: 18,
+                            width: 100,
+                            color: Colors.transparent,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "${Address}",
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.roboto(
+                                  fontSize: 12.sp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -218,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Icon(Icons.search)),
                         hintStyle: GoogleFonts.montserrat(
-                          color: const Color(0xff517937),
+                          color: Color.fromARGB(255, 167, 185, 156),
                           fontSize: 14.sp,
                         ),
                       ),
@@ -238,12 +260,17 @@ class _HomePageState extends State<HomePage> {
                     Icons.notifications,
                     size: 30,
                   )),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image(
-                    height: 45,
-                    width: 45,
-                    image: AssetImage("assets/images/Group 3470.png")),
+              InkWell(
+                onTap: (){
+                  Get.offAll(HomeNavigationBar(index: 3,));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image(
+                      height: 45,
+                      width: 45,
+                      image: AssetImage("assets/images/Group 3470.png")),
+                ),
               )
             ],
           ),
@@ -271,201 +298,209 @@ class _HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
                   bottomRight: Radius.circular(25))),
-          child: ListView(children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: GetBuilder<HomeControllers>(
-                builder: (_) => (Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 40,
-                        child: homeController.categoryList.isEmpty
-                            ? Container(
-                                height: 5,
-                              )
-                            : ListView.builder(
-                                itemCount: homeController.categoryList.length,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(right: 15),
-                                    child: InkWell(
-                                      onTap: () {
-                                        print(index);
-                                        homeController.home(index);
-                                        allProductController.allProducts(
-                                            homeController
-                                                .categoryList[index].id);
-                                        homeController.update();
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                                        // );
-                                      },
-                                      child: Container(
-                                        height: 35,
-                                        // width: 100,
-                                        decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: darkGreenColor),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color:
-                                              homeController.home.value == index
-                                                  ? darkGreenColor
-                                                  : Colors.white,
-                                        ),
-                                        child: Center(
-                                            child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, right: 10),
-                                          child: Text(
-                                            homeController
-                                                .categoryList[index].name,
-                                            style: GoogleFonts.montserrat(
-                                                color:
-                                                    homeController.home.value ==
-                                                            index
-                                                        ? Colors.white
-                                                        : darkGreenColor),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10,bottom: 10),
+            child: ListView(
+              children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: GetBuilder<HomeControllers>(
+                  builder: (_) => (Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Container(
+                          height: 40,
+                          child: homeController.categoryList.isEmpty
+                              ? Container(
+                                  height: 5,
+                                )
+                              : ListView.builder(
+                                  itemCount: homeController.categoryList.length,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(right: 15),
+                                      child: InkWell(
+                                        onTap: () {
+                                          print(index);
+                                          homeController.home(index);
+                                          allProductController.allProducts(homeController.categoryList[index].id);
+                                          newProductListController.newProductList(homeController.categoryList[index].id);
+                                          homeController.update();
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                                          // );
+                                        },
+                                        child: Container(
+                                          height: 35,
+                                          // width: 100,
+                                          decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: darkGreenColor),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color:
+                                                homeController.home.value == index
+                                                    ? darkGreenColor
+                                                    : Colors.white,
                                           ),
-                                        )),
+                                          child: Center(
+                                              child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Text(
+                                              homeController
+                                                  .categoryList[index].name,
+                                              style: GoogleFonts.montserrat(
+                                                  color:
+                                                      homeController.home.value ==
+                                                              index
+                                                          ? Colors.white
+                                                          : darkGreenColor),
+                                            ),
+                                          )),
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "What are you looking?",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
-                      ),
-                    ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "What are you looking?",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
                             ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ListBottomBar()),
-                              );
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  "View All",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ListBottomBar()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "View All",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                                Icon(Icons.navigate_next)
-                              ],
+                                  Icon(Icons.navigate_next)
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    //first
-                    if (homeController.home.value == 0) ListOfProductOne(),
-                    //second
-                    if (homeController.home.value == 1) ListOfProductTwo(),
-                    //third
-                    if (homeController.home.value == 2) ListOfProductThree(),
-                    //fourth
-                    if (homeController.home.value == 3) ListOfProductOne(),
-                    //five
-                    if (homeController.home.value == 4) ListOfProductTwo(),
-                    //six
-                    if (homeController.home.value == 5) ListOfProductThree(),
-                    //seven
-                    if (homeController.home.value == 6) ListOfProductOne(),
-                    //next
-                    SizedBox(
-                      height: 13,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Product Deals",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ProductViewBottomBar()),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      //first
+                      GetBuilder<NewProductController>(builder: (_) {
+                          return NewProductListview(
+                            productData: newProductListController.productData,
                               );
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  "View All",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Icon(Icons.navigate_next)
-                              ],
-                            ),
-                          ),
-                        ],
+                        }),
+                     // if (homeController.home.value == 0) ListOfProductOne(),
+                      // //second
+                      // if (homeController.home.value == 1) ListOfProductTwo(),
+                      // //third
+                      // if (homeController.home.value == 2) ListOfProductThree(),
+                      // //fourth
+                      // if (homeController.home.value == 3) ListOfProductOne(),
+                      // //five
+                      // if (homeController.home.value == 4) ListOfProductTwo(),
+                      // //six
+                      // if (homeController.home.value == 5) ListOfProductThree(),
+                      // //seven
+                      // if (homeController.home.value == 6) ListOfProductOne(),
+                      //next
+                      SizedBox(
+                        height: 13,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    //first
-                    GetBuilder<AllProductController>(builder: (_) {
-                      return ProductGridView(
-                        productList: allProductController.productList,
-                      );
-                    }),
-                    //second
-                    // if (homeController.home.value == 1) ProductTwo(),
-                    // //third
-                    // if (homeController.home.value == 2) ProductThree(),
-                    // //fourth
-                    // if (homeController.home.value == 3) ProductOne(),
-                    // //five
-                    // if (homeController.home.value == 4) ProductTwo(),
-                    // //six
-                    // if (homeController.home.value == 5) ProductThree(),
-                    // //seven
-                    // if (homeController.home.value == 6) ProductOne(),
-                  ],
-                )),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Product Deals",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ProductViewBottomBar()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "View All",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  Icon(Icons.navigate_next)
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      //first
+                      GetBuilder<AllProductController>(builder: (_) {
+                        return ProductGridView(
+                          productList: allProductController.productList,
+                        );
+                      }),
+                      //second
+                      // if (homeController.home.value == 1) ProductTwo(),
+                      // //third
+                      // if (homeController.home.value == 2) ProductThree(),
+                      // //fourth
+                      // if (homeController.home.value == 3) ProductOne(),
+                      // //five
+                      // if (homeController.home.value == 4) ProductTwo(),
+                      // //six
+                      // if (homeController.home.value == 5) ProductThree(),
+                      // //seven
+                      // if (homeController.home.value == 6) ProductOne(),
+                    ],
+                  )),
+                ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );

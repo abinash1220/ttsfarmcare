@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/home_Screen/home_page.dart';
 import 'package:ttsfarmcare/view/order_history_page/order_history.dart';
@@ -38,17 +40,67 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
 
   int _bottomNavIndex = 0;
 
+  String location = 'Null, Press Button';
+  String Address = 'search';
+
+  Future<Position> _getGeoLocationPosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      await Geolocator.openLocationSettings();
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+  }
+
+  Future<void> GetAddressFromLatLong(Position position) async {
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+    print(placemarks);
+    Placemark place = placemarks[0];
+    setState(() {
+      Address = '${place.subLocality}';
+    });
+  }
+   
+    getlocation() async {
+    Position position = await _getGeoLocationPosition();
+    location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+    GetAddressFromLatLong(position);
+
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _bottomNavIndex = widget.index;
+    // getlocation();
   }
 
   
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: _bottomNavIndex == 1
           ? const ViewCartPage()

@@ -9,15 +9,15 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../../controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import '../../models/notification_model.dart';
 
-class NotificationListView extends StatefulWidget {
-  List<NotificationData> notify;
-  NotificationListView({super.key, required this.notify});
+class AdminNotificationListView extends StatefulWidget {
+  List<NotificationData> adminNotify;
+  AdminNotificationListView({super.key, required this.adminNotify});
 
   @override
-  State<NotificationListView> createState() => _NotificationListViewState();
+  State<AdminNotificationListView> createState() => _AdminNotificationListViewState();
 }
 
-class _NotificationListViewState extends State<NotificationListView> {
+class _AdminNotificationListViewState extends State<AdminNotificationListView> {
   final getProfileuser = Get.find<GetProfileControllers>();
 
   @override
@@ -25,7 +25,7 @@ class _NotificationListViewState extends State<NotificationListView> {
     var size = MediaQuery.of(context).size;
     return Container(
       child: ListView.builder(
-        itemCount: widget.notify.length >=5 ? 5 : widget.notify.length,
+        itemCount: widget.adminNotify.length >=2 ? 2 : widget.adminNotify.length,
         itemBuilder: ((context, index) {
           return Column(
             children: [
@@ -63,7 +63,7 @@ class _NotificationListViewState extends State<NotificationListView> {
                                   ),
                                   Text(
                                     timeago
-                                        .format(widget.notify[index].createdAt),
+                                        .format(widget.adminNotify[index].createdAt),
                                     style: GoogleFonts.montserrat(
                                         fontSize: 10,
                                         //fontWeight: FontWeight.normal,
@@ -73,7 +73,7 @@ class _NotificationListViewState extends State<NotificationListView> {
                               ),
                             ),
                             Text(
-                              widget.notify[index].message,
+                              widget.adminNotify[index].message,
                               //  "New Products Purchase Complete\nThankyou For Orders....",
                               style: GoogleFonts.montserrat(
                                   fontSize: 11,
@@ -81,7 +81,7 @@ class _NotificationListViewState extends State<NotificationListView> {
                                   color: Color(0xff000000)),
                             ),
                             Text(
-                              widget.notify[index].updatedAt.toString(),
+                              widget.adminNotify[index].updatedAt.toString(),
                               style: GoogleFonts.montserrat(
                                   fontSize: 11,
                                   //fontWeight: FontWeight.normal,

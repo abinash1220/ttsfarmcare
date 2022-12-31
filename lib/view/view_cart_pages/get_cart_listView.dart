@@ -35,7 +35,7 @@ class _GetCartListViewState extends State<GetCartListView> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-        child: ListView.builder(
+        child:widget.getCartDetails.isEmpty? Center(child: Text("Your cart is empty")) : ListView.builder(
             itemCount: widget.getCartDetails.length,
             itemBuilder: ((context, index) {
               return widget.getCartDetails[index].product.name == "null" ? Container() : Column(
@@ -75,7 +75,7 @@ class _GetCartListViewState extends State<GetCartListView> {
                                 height: 5.h,
                               ),
                               Text(
-                                widget.getCartDetails[index].product.quantity,
+                                widget.getCartDetails[index].quantity,
                                 style: GoogleFonts.roboto(
                                   fontSize: 19.sp,
                                   color: Colors.black,
@@ -104,18 +104,12 @@ class _GetCartListViewState extends State<GetCartListView> {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.currency_rupee),
                                   Container(
                                     width: 70,
+                                    alignment: Alignment.centerLeft,
                                     child: FittedBox(
                                       fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        Get.find<GetProfileControllers>()
-                                                    .profileDetails
-                                                    .role ==
-                                                "Retail"
-                                            ? "${widget.getCartDetails[index].product.priceRetailer}"
-                                            : "${widget.getCartDetails[index].product.priceCustomer}",
+                                      child: Text("₹ ${getCartController.getPrice(widget.getCartDetails[index].price, widget.getCartDetails[index].no_of_item)}",
                                         style: GoogleFonts.roboto(
                                           fontSize: 18.sp,
                                           color: Colors.black,
@@ -131,7 +125,7 @@ class _GetCartListViewState extends State<GetCartListView> {
                                     width: size.width * 0.51,
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.end,
                                       children: [
                                         // Text(
                                         //   "25 Points",
@@ -150,41 +144,28 @@ class _GetCartListViewState extends State<GetCartListView> {
                                             children: [
                                               InkWell(
                                                   onTap: () {
-                                                    int q = int.parse(widget
-                                                        .getCartDetails[index]
-                                                        .quantity);
+                                                    int q = int.parse(widget.getCartDetails[index].no_of_item);
                                                     if (q == 1) {
                                                       getCartController
-                                                          .removeFromCart(widget
-                                                              .getCartDetails[
-                                                                  index]
-                                                              .id
-                                                              .toString());
-                                                      getCartController
-                                                          .getCart();
-
-                                                      getCartController
-                                                          .update();
+                                                          .removeFromCart(widget.getCartDetails[index].id.toString());
+                                                      getCartController.getCart();
+                                                      getCartController.update();
                                                     } else {
                                                       int totalquantity = q - 1;
                                                       setState(() {
                                                         widget
                                                                 .getCartDetails[
                                                                     index]
-                                                                .quantity =
+                                                                .no_of_item =
                                                             totalquantity
                                                                 .toString();
                                                       });
                                                       addQuantityController
                                                           .addQuantyval(
-                                                              cart_id: widget
-                                                                  .getCartDetails[
-                                                                      index]
-                                                                  .id
-                                                                  .toString(),
-                                                              quantity:
-                                                                  totalquantity
-                                                                      .toString());
+                                                              cart_id: widget.getCartDetails[index].id.toString(),
+                                                              no_of_item:totalquantity.toString(),
+                                                              price: widget.getCartDetails[index].price.toString(), 
+                                                              );
                                                       getCartController
                                                           .calculate(widget
                                                               .getCartDetails);
@@ -205,7 +186,7 @@ class _GetCartListViewState extends State<GetCartListView> {
                                                 width: 35,
                                                 child: Center(
                                                   child: Text(
-                                                    "${widget.getCartDetails[index].quantity}",
+                                                    "${widget.getCartDetails[index].no_of_item}",
                                                     style: GoogleFonts.roboto(
                                                       color: darkGreenColor,
                                                       fontWeight:
@@ -225,25 +206,21 @@ class _GetCartListViewState extends State<GetCartListView> {
                                                   onTap: () {
                                                     int q = int.parse(widget
                                                         .getCartDetails[index]
-                                                        .quantity);
+                                                        .no_of_item);
                                                     int totalquantity = q + 1;
                                                     setState(() {
                                                       widget
                                                               .getCartDetails[index]
-                                                              .quantity =
+                                                              .no_of_item =
                                                           totalquantity
                                                               .toString();
                                                     });
                                                     addQuantityController
                                                         .addQuantyval(
-                                                            cart_id: widget
-                                                                .getCartDetails[
-                                                                    index]
-                                                                .id
-                                                                .toString(),
-                                                            quantity:
-                                                                totalquantity
-                                                                    .toString());
+                                                            cart_id: widget.getCartDetails[index].id.toString(),
+                                                            no_of_item:totalquantity.toString(),
+                                                            price: widget.getCartDetails[index].price.toString(),
+                                                                    );
                                                     getCartController.calculate(
                                                         widget.getCartDetails);
                                                   },

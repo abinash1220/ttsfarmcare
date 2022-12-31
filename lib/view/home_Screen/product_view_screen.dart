@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/view/home_Screen/product_gridView.dart';
+import 'package:ttsfarmcare/view/home_Screen/search_screen.dart';
 
 import '../../controllers/all_product_api_controllers/all_product_api_controller.dart';
 import '../../controllers/home_Controllers.dart';
@@ -72,7 +73,15 @@ class _ProductListViewState extends State<ProductListView> {
                         Padding(
                     padding:
                         const EdgeInsets.only(top:20,left: 15, right: 15),
-                    child: TextFormField(
+                    child: TextField(
+                       onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SearchProduct()),
+                            );
+                          },
+                          readOnly: true,
                       decoration: InputDecoration(
                         isDense: true,
                         // filled: true,

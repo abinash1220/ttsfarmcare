@@ -7,6 +7,8 @@ class AddToCartApiService extends BaseApiService {
   addToCartApiService({
     required String productId,
     required String quantity,
+    required String price,
+    required String no_of_item,
     
   }) async {
     //api result will store in this variable
@@ -33,6 +35,8 @@ class AddToCartApiService extends BaseApiService {
           data:{
              "product_id":productId,
              "quantity":quantity,
+             "price":price,
+             "no_of_item":no_of_item
           });
       print("::::::::::::::::addtocart status code::::::::::::::");
       print(response.statusCode);

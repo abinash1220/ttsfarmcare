@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final completeOrder = completeOrderFromJson(jsonString);
+//     final orderHistory = orderHistoryFromJson(jsonString);
 
 import 'dart:convert';
 
-CompleteOrder completeOrderFromJson(String str) => CompleteOrder.fromJson(json.decode(str));
+OrderHistory orderHistoryFromJson(String str) => OrderHistory.fromJson(json.decode(str));
 
-String completeOrderToJson(CompleteOrder data) => json.encode(data.toJson());
+String orderHistoryToJson(OrderHistory data) => json.encode(data.toJson());
 
-class CompleteOrder {
-    CompleteOrder({
+class OrderHistory {
+    OrderHistory({
         required this.message,
         required this.orders,
     });
@@ -17,7 +17,7 @@ class CompleteOrder {
     String message;
     Orders orders;
 
-    factory CompleteOrder.fromJson(Map<String, dynamic> json) => CompleteOrder(
+    factory OrderHistory.fromJson(Map<String, dynamic> json) => OrderHistory(
         message: json["message"],
         orders: Orders.fromJson(json["orders"]),
     );
@@ -45,7 +45,7 @@ class Orders {
     });
 
     int currentPage;
-    List<FinishOrderData> data;
+    List<OrderData> data;
     String firstPageUrl;
     int from;
     int lastPage;
@@ -59,7 +59,7 @@ class Orders {
 
     factory Orders.fromJson(Map<String, dynamic> json) => Orders(
         currentPage: json["current_page"],
-        data: List<FinishOrderData>.from(json["data"].map((x) => FinishOrderData.fromJson(x))),
+        data: List<OrderData>.from(json["data"].map((x) => OrderData.fromJson(x))),
         firstPageUrl: json["first_page_url"],
         from: json["from"],
         lastPage: json["last_page"],
@@ -88,8 +88,8 @@ class Orders {
     };
 }
 
-class FinishOrderData {
-    FinishOrderData({
+class OrderData {
+    OrderData({
         required this.id,
         required this.userId,
         required this.productId,
@@ -118,7 +118,7 @@ class FinishOrderData {
         required this.updatedAt,
         required this.users,
         required this.product,
-        this.rating,
+        required this.rating,
     });
 
     int id;
@@ -151,7 +151,7 @@ class FinishOrderData {
     Product product;
     dynamic rating;
 
-    factory FinishOrderData.fromJson(Map<String, dynamic> json) => FinishOrderData(
+    factory OrderData.fromJson(Map<String, dynamic> json) => OrderData(
         id: json["id"],
         userId: json["user_id"],
         productId: json["product_id"],
@@ -180,7 +180,7 @@ class FinishOrderData {
         updatedAt: DateTime.parse(json["updated_at"]),
         users: Users.fromJson(json["users"]),
         product: Product.fromJson(json["product"]),
-        rating: json["rating"],
+        rating:json["rating"] ==null ? null : Rating.fromJson(json["rating"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -212,7 +212,7 @@ class FinishOrderData {
         "updated_at": updatedAt.toIso8601String(),
         "users": users.toJson(),
         "product": product.toJson(),
-        "rating": rating,
+        "rating": rating == null ? null : rating.toJson(),
     };
 }
 
@@ -222,7 +222,7 @@ class Product {
         required this.name,
         required this.title,
         required this.priceCustomer,
-        this.priceRetailer,
+        required this.priceRetailer,
         required this.quantity,
         required this.image1,
         required this.image2,
@@ -231,8 +231,7 @@ class Product {
         required this.disclaimer,
         required this.categoryId,
         required this.status,
-        required this.customerPriceAttributes,
-        required this.retailerPriceAttributes,
+        
         required this.district,
         required this.productNew,
         required this.createdAt,
@@ -244,7 +243,7 @@ class Product {
     String name;
     String title;
     String priceCustomer;
-    dynamic priceRetailer;
+    String priceRetailer;
     String quantity;
     String image1;
     String image2;
@@ -253,8 +252,7 @@ class Product {
     String disclaimer;
     String categoryId;
     String status;
-    ErPriceAttributes customerPriceAttributes;
-    ErPriceAttributes retailerPriceAttributes;
+ 
     String district;
     String productNew;
     DateTime createdAt;
@@ -265,8 +263,8 @@ class Product {
         id: json["id"],
         name: json["name"],
         title: json["title"],
-        priceCustomer: json["price_customer"],
-        priceRetailer: json["price_retailer"],
+        priceCustomer: json["price_customer"]??"0",
+        priceRetailer: json["price_retailer"]??"0",
         quantity: json["quantity"],
         image1: json["image1"],
         image2: json["image2"],
@@ -275,13 +273,11 @@ class Product {
         disclaimer: json["disclaimer"],
         categoryId: json["category_id"],
         status: json["status"],
-        customerPriceAttributes: ErPriceAttributes.fromJson(json["customer_price_attributes"]),
-        retailerPriceAttributes: ErPriceAttributes.fromJson(json["retailer_price_attributes"]),
         district: json["district"],
         productNew: json["new"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        rating: json["rating"],
+        rating: json["rating"]?? "",
     );
 
     Map<String, dynamic> toJson() => {
@@ -289,7 +285,7 @@ class Product {
         "name": name,
         "title": title,
         "price_customer": priceCustomer,
-        "price_retailer": priceRetailer,
+        "price_retailer": priceRetailer == null ? null : priceRetailer,
         "quantity": quantity,
         "image1": image1,
         "image2": image2,
@@ -298,8 +294,6 @@ class Product {
         "disclaimer": disclaimer,
         "category_id": categoryId,
         "status": status,
-        "customer_price_attributes": customerPriceAttributes.toJson(),
-        "retailer_price_attributes": retailerPriceAttributes.toJson(),
         "district": district,
         "new": productNew,
         "created_at": createdAt.toIso8601String(),
@@ -308,67 +302,43 @@ class Product {
     };
 }
 
-class ErPriceAttributes {
-    ErPriceAttributes({
-        required this.the50Ml,
-        this.the100Ml,
-        this.the250Ml,
-        this.the500Ml,
-        required this.the1Ltr,
-        this.the5Ltr,
-        required this.the1Kg,
-        this.the2Kg,
-        this.the4Kg,
-        this.the12Gms,
-        this.the40Gms,
-        this.the100Gms,
-        this.the500Gms,
+class Rating {
+    Rating({
+        required this.id,
+        this.rating,
+        this.review,
+        required this.productId,
+        required this.userId,
+        required this.createdAt,
+        required this.updatedAt,
     });
 
-    String the50Ml;
-    dynamic the100Ml;
-    dynamic the250Ml;
-    dynamic the500Ml;
-    String the1Ltr;
-    dynamic the5Ltr;
-    String the1Kg;
-    dynamic the2Kg;
-    dynamic the4Kg;
-    dynamic the12Gms;
-    dynamic the40Gms;
-    dynamic the100Gms;
-    dynamic the500Gms;
+    int id;
+    dynamic rating;
+    dynamic review;
+    String productId;
+    String userId;
+    DateTime createdAt;
+    DateTime updatedAt;
 
-    factory ErPriceAttributes.fromJson(Map<String, dynamic> json) => ErPriceAttributes(
-        the50Ml: json["50ml"],
-        the100Ml: json["100ml"],
-        the250Ml: json["250ml"],
-        the500Ml: json["500ml"],
-        the1Ltr: json["1LTR"],
-        the5Ltr: json["5LTR"],
-        the1Kg: json["1kg"],
-        the2Kg: json["2kg"],
-        the4Kg: json["4kg"],
-        the12Gms: json["12gms"],
-        the40Gms: json["40gms"],
-        the100Gms: json["100gms"],
-        the500Gms: json["500gms"],
+    factory Rating.fromJson(Map<String, dynamic> json) => Rating(
+        id: json["id"],
+        rating: json["rating"],
+        review: json["review"],
+        productId: json["product_id"],
+        userId: json["user_id"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "50ml": the50Ml,
-        "100ml": the100Ml,
-        "250ml": the250Ml,
-        "500ml": the500Ml,
-        "1LTR": the1Ltr,
-        "5LTR": the5Ltr,
-        "1kg": the1Kg,
-        "2kg": the2Kg,
-        "4kg": the4Kg,
-        "12gms": the12Gms,
-        "40gms": the40Gms,
-        "100gms": the100Gms,
-        "500gms": the500Gms,
+        "id": id,
+        "rating": rating,
+        "review": review,
+        "product_id": productId,
+        "user_id": userId,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
     };
 }
 
@@ -391,7 +361,7 @@ class Users {
         required this.address,
         required this.district,
         this.gstNumber,
-        required this.mobileVerification,
+        this.mobileVerification,
         required this.status,
         required this.role,
         required this.approved,
@@ -418,7 +388,7 @@ class Users {
     String address;
     String district;
     dynamic gstNumber;
-    String mobileVerification;
+    dynamic mobileVerification;
     String status;
     String role;
     String approved;
@@ -429,18 +399,18 @@ class Users {
 
     factory Users.fromJson(Map<String, dynamic> json) => Users(
         id: json["id"],
-        roleId: json["role_id"],
+        roleId: json["role_id"]?? "",
         name: json["name"],
-        companyName: json["company_name"],
-        dateOfBirth: json["date_of_birth"],
+        companyName: json["company_name"]?? "",
+        dateOfBirth: json["date_of_birth"]?? "",
         email: json["email"],
-        avatar: json["avatar"],
+        avatar: json["avatar"]?? "",
         mobileNumber: json["mobile_number"],
-        photo: json["photo"],
-        aadharNo: json["aadhar_no"],
-        otpCode: json["otp_code"],
+        photo: json["photo"]?? "",
+        aadharNo: json["aadhar_no"]?? "",
+        otpCode: json["otp_code"]?? "" ,
         userType: json["user_type"],
-        emailVerified: json["email_verified"],
+        emailVerified: json["email_verified"]?? "",
         password: json["password"],
         address: json["address"],
         district: json["district"],
@@ -452,7 +422,7 @@ class Users {
         accessToken: json["access_token"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        deletedAt: json["deleted_at"],
+        deletedAt: json["deleted_at"]?? "",
     );
 
     Map<String, dynamic> toJson() => {
@@ -484,3 +454,26 @@ class Users {
     };
 }
 
+class Link {
+    Link({
+        required this.url,
+        required this.label,
+        required this.active,
+    });
+
+    String url;
+    String label;
+    bool active;
+
+    factory Link.fromJson(Map<String, dynamic> json) => Link(
+        url: json["url"] == null ? null : json["url"],
+        label: json["label"],
+        active: json["active"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "url": url == null ? null : url,
+        "label": label,
+        "active": active,
+    };
+}

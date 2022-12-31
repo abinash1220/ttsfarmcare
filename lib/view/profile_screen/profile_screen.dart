@@ -78,15 +78,15 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           titleSpacing: -10,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Image(
-                  height: 45,
-                  width: 45,
-                  image: AssetImage("assets/images/Group 3470.png")),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 20),
+            //   child: Image(
+            //       height: 45,
+            //       width: 45,
+            //       image: AssetImage("assets/images/Group 3470.png")),
+            // ),
           ],
-          toolbarHeight: 94,
+          toolbarHeight: 92,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           flexibleSpace: Container(
@@ -123,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 110.w,
                                 child: Image(
                                   image: AssetImage("assets/image/NoPath.png"),
-                                  fit: BoxFit.fill,
+                                  //fit: BoxFit.contain,
                                 ))
                             : Container(
                                 height: 110.h,
@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Image(
                                   image: FileImage(
                                       fl.File(profile.profileImage.value)),
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 )),
                       ),
                       SizedBox(
@@ -316,67 +316,68 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(
                   height: 10.h,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 10),
-                //   child: InkWell(
-                //     onTap: () {
-                //       Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => const InviteFriendsScreen()),
-                //       );
-                //     },
-                //     child: Padding(
-                //       padding: const EdgeInsets.only(left: 5, right: 5),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //         children: [
-                //           Row(
-                //             children: [
-                //               Image(image: AssetImage("assets/icons/invite.png")),
-                //               SizedBox(
-                //                 width: 15.w,
-                //               ),
-                //               Text(
-                //                 "Invite Friends",
-                //                 style: GoogleFonts.montserrat(
-                //                   fontSize: 14.sp,
-                //                   color: Color(0xff515C6F),
-                //                   fontWeight: FontWeight.bold,
-                //                 ),
-                //               ),
-                //             ],
-                //           ),
-                //           Padding(
-                //             padding: const EdgeInsets.only(right: 10),
-                //             child: InkWell(
-                //                 onTap: () {
-                //                   Navigator.push(
-                //                     context,
-                //                     MaterialPageRoute(
-                //                         builder: (context) =>
-                //                             const InviteFriendsScreen()),
-                //                   );
-                //                 },
-                //                 child: Icon(
-                //                   Icons.navigate_next,
-                //                   color: Color(0xff515C6F),
-                //                 )),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 15, right: 15),
-                //   child: Divider(
-                //       //color: Color(0xff515C6F),
-                //       ),
-                // ),
-                // SizedBox(
-                //   height: 10.h,
-                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InviteFriendsScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image(height: 25,width: 20,
+                                image: AssetImage("assets/icons/invite.png")),
+                              SizedBox(
+                                width: 13.w,
+                              ),
+                              Text(
+                                "Invite Friends",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
+                                  color: Color(0xff515C6F),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const InviteFriendsScreen()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: Color(0xff515C6F),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Divider(
+                      //color: Color(0xff515C6F),
+                      ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: InkWell(

@@ -6,6 +6,8 @@ import 'package:ttsfarmcare/services/category_api_services/category_api_services
 import "package:dio/dio.dart" as dio;
 import 'package:ttsfarmcare/services/history_api_services/order_history_api_services.dart';
 
+import '../../models/order_history.dart';
+
 class OrderHistoryControllers extends GetxController {
   
   OrderHistoryApiService orderHistoryApiService = OrderHistoryApiService();

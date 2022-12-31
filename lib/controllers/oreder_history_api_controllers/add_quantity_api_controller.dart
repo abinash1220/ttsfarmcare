@@ -22,13 +22,15 @@ class AddQuantityController extends GetxController {
 
   addQuantyval({
     required String cart_id,
-    required String quantity,
+    required String no_of_item,
+    required String price,
    
   }) async {
     dio.Response<dynamic> response =
         await addQuantityApiService.addQuantity(
           cart_id : cart_id,
-          quantity: quantity,
+          no_of_item: no_of_item,
+          price: price
         );
     
    print("::::::::::::::::addtocart statuscode:::::::::::::::::::::");
@@ -43,7 +45,7 @@ class AddQuantityController extends GetxController {
           // backgroundColor: darkGreenColor);
 
     } else if(response.statusCode ==500){
-      Get.snackbar("incorrect", "",
+      Get.snackbar("incorrect", response.data,
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);

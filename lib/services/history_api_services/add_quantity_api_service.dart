@@ -6,7 +6,8 @@ import 'package:ttsfarmcare/services/base_api_url_services/base_urls.dart';
 class AddQuantityApiService extends BaseApiService {
   addQuantity({
     required String cart_id,
-    required String quantity,
+    required String no_of_item,
+    required String price,
    
   }) async {
     //api result will store in this variable
@@ -32,7 +33,8 @@ class AddQuantityApiService extends BaseApiService {
               }),
           data:{
               "cart_id":cart_id,
-              "quantity":quantity
+              "no_of_item":no_of_item,
+              "price":price
           });
       print("::::::::::::::::add quantity status code::::::::::::::");
       print(response.statusCode);

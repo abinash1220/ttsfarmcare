@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -5,12 +6,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/add_to_cart_api_controller.dart';
 import 'package:ttsfarmcare/controllers/add_to_cart_api_controllers/get_cart_api_controller.dart';
 import 'package:ttsfarmcare/controllers/oreder_history_api_controllers/product_rating_api_controller.dart';
 import 'package:ttsfarmcare/models/all_product_model.dart';
-
 import '../../constants/app_colors.dart';
 import '../../controllers/about_product_controller.dart';
 import '../../controllers/home_Controllers.dart';
@@ -18,6 +19,7 @@ import '../../controllers/profile_user_details_api_controllers/profile_user_cont
 import '../../models/get_all_products_model.dart';
 import '../home_Screen/home_navigationbar.dart';
 import '../view_cart_pages/view_cart_screen.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class AboutProduct extends StatefulWidget {
   int product_id;
@@ -45,6 +47,26 @@ class _AboutProductState extends State<AboutProduct> {
 
   final  getProfileuser = Get.find<GetProfileControllers>();
 
+  final List<String> items = [
+  'Item1',
+  'Item2',
+  'Item3',
+  'Item4',
+];
+String? selectedValue;
+
+
+  // Initial Selected Value
+  QuantityModel dropdownvalue = QuantityModel(price: "0",quantity: "0");
+
+
+  String price = "0";
+
+  List<QuantityModel> quantityList = []; 
+
+// List of items in our dropdown menu
+  
+
   @override
   void initState() {
     // TODO: implement initState
@@ -56,7 +78,19 @@ class _AboutProductState extends State<AboutProduct> {
   }
 
   setDefault() {
-
+    if (getProfileuser.profileDetails.role == "Customer") {
+  setState(() {
+    quantityList = widget.productData.customerPriceAttributes;
+    dropdownvalue=widget.productData.customerPriceAttributes.first;
+    price=widget.productData.customerPriceAttributes.first.price ;
+  });
+}else{
+  setState(() {
+    quantityList = widget.productData.retailerPriceAttributes;
+    dropdownvalue=widget.productData.retailerPriceAttributes.first;
+    price=widget.productData.retailerPriceAttributes.first.price ;
+  });
+}
     c.productcount(0);
     c.prices(00.00);
     ratingController.productRating(product_id: "", rating:"");
@@ -168,7 +202,7 @@ class _AboutProductState extends State<AboutProduct> {
                               height: 10,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 15, right: 10),
+                              padding: const EdgeInsets.only(left: 20, right: 20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,7 +219,6 @@ class _AboutProductState extends State<AboutProduct> {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                     
                                       RatingBar.builder(
                                        initialRating: 0,
                                        minRating: 0,
@@ -207,15 +240,84 @@ class _AboutProductState extends State<AboutProduct> {
                                          ),
                                     ],
                                   ),
-                                  Text(
-                                    widget.productData.quantity,
-                                    style: GoogleFonts.roboto(
-                                      textStyle: TextStyle(
-                                          color: Color(0xff289445),
-                                          fontSize: 17.sp,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   widget.productData.quantity,
+                                  //   style: GoogleFonts.roboto(
+                                  //     textStyle: TextStyle(
+                                  //         color: Color(0xff289445),
+                                  //         fontSize: 17.sp,
+                                  //         fontWeight: FontWeight.w400),
+                                  //   ),
+                                  // ),
+                            Row(
+                              children: [
+                                DropdownButtonHideUnderline(
+        child: DropdownButton2(
+          // hint: Text(
+          //   'Select Item',
+          //   style: TextStyle(
+          //     fontSize: 14,
+          //     color: Theme
+          //             .of(context)
+          //             .hintColor,
+          //   ),
+          // ),
+          items:quantityList.map((QuantityModel items) =>
+                  DropdownMenuItem<QuantityModel>(
+                    value: items,
+                    child: Text(
+                      items.quantity,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: darkGreenColor,
+                      ),
+                    ),
+                  ))
+                  .toList(),
+          value: dropdownvalue,
+          onChanged: (QuantityModel? newValue) {
+            setState(() {
+              dropdownvalue= newValue!;
+                                       price=newValue.price;
+            });
+          },
+          buttonHeight: 40,
+          buttonWidth: 80,
+          itemHeight: 40,
+        ),
+      ),
+                                // Container(
+                                //   height: 30,
+                                //   child: Padding(
+                                //     padding: const EdgeInsets.only(left: 5,right: 5),
+                                //     child: DropdownButton<QuantityModel>(
+                                //       style: TextStyle(color: darkGreenColor),
+                                //       borderRadius: BorderRadius.circular(5),
+                                //       value: dropdownvalue,
+                                //       underline: Container(),
+                                //       icon: const Icon(Icons.keyboard_arrow_down),
+                                //       items:quantityList.map((QuantityModel items) {
+                                //       return DropdownMenuItem(
+                                //         value: items,
+                                //          child: Text(items.quantity),
+                                //         );
+                                //         }).toList(),
+                                //        onChanged: (QuantityModel? newValue) {
+                                //        setState(() {
+                                //         dropdownvalue= newValue!;
+                                //        price=newValue.price;
+                                //       });
+                                //      },
+                                     
+                                //     ),
+                                //   ),
+                                //   decoration: BoxDecoration(
+                                //     border: Border.all(color: Colors.grey)
+                                //   ),
+                                // ),
+                              ],
+                            ),
+
                                   Text(
                                     "₹569.00",
                                     style: GoogleFonts.roboto(
@@ -231,7 +333,7 @@ class _AboutProductState extends State<AboutProduct> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                                     Text(
-                                                      "₹ ${getProfileuser.profileDetails.role == "Retail" ? widget.productData.priceRetailer : widget.productData.priceCustomer }",
+                                                      "₹ ${getProfileuser.profileDetails.role == "Retail" ? price : price }",
                                                       textAlign: TextAlign.start,
                                                       style: GoogleFonts.roboto(
                                                         fontSize: 18.sp,
@@ -243,7 +345,10 @@ class _AboutProductState extends State<AboutProduct> {
                                                   onTap: (){
                                                       addToCartController.addtocart(
                                                       productId: "${widget.productData.id}",
-                                                      quantity: "1");
+                                                      quantity: dropdownvalue.quantity,
+                                                      price: dropdownvalue.price,
+                                                      no_of_item: "1"
+                                                      );
                                                   },
                                                   child: Container(
                                                     height: 30,
@@ -330,6 +435,7 @@ class _AboutProductState extends State<AboutProduct> {
                                       ),
                                     ),
                                   ),
+                                 
                                 ],
                               ),
                             ),

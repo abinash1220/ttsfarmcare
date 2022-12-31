@@ -6,7 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ttsfarmcare/constants/app_colors.dart';
 import 'package:ttsfarmcare/controllers/notification_api_controllers/notification_api_controller.dart';
+import 'package:ttsfarmcare/view/notification_page/admin_notification_listview.dart';
 import 'package:ttsfarmcare/view/notification_page/notification_listview.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -84,51 +86,63 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Column(
                         children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 20,left: 15,right: 15),
+                          padding: const EdgeInsets.only(top: 10,left: 15,right: 15),
                           child: Container(
                             height: 35,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                filled: true,
-                                isDense: true,
-                               fillColor: const Color(0xffF2F2F2),
-                                hintText: "SEARCH",
-                                contentPadding: EdgeInsets.only(top: 7),
-                                prefixIcon: Icon(Icons.search,size: 20,),
-                                suffixIcon: Container(
-                                  height: 50,
-                                  width: 0,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10,right: 0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                //         Text("Today(2)",
-                                //         style: GoogleFonts.montserrat(
-                                //     fontSize: 12,
-                                //     color: Color(0xffB3B3B3),
-                                // ),
-                                     //   ),
-                                        Image(image: AssetImage("assets/icons/NAV.png"))
-                                      ],
-                                    ),
-                                  ),
+                            color: Color(0xffF2F2F2),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10,right: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Notifications",
+                                   style: GoogleFonts.montserrat(
+                                   fontWeight: FontWeight.bold,
+                                   color: Color(0xffB3B3B3)
+                                   ),
                                 ),
-                                hintStyle: TextStyle(
-                                  color: Color(0xffB3B3B3),
-                                  fontSize: 12.sp,
-                                ),
+            Image(image: AssetImage("assets/icons/NAV.png"))
+                                ],
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(height: 10,),
                         Container(
-                        height:constraints.maxHeight>570 ? size.height*0.74 : size.height*0.71,
+                        height:constraints.maxHeight>570 ? size.height*0.44 : size.height*0.40,
                   child: GetBuilder<NotificationControllers>(
                       builder: (_) {
                         return NotificationListView(notify:notifycation.notify,);
+                      }
+                    ),
+                ),
+                 Padding(
+                          padding: const EdgeInsets.only(top: 10,left: 15,right: 15,bottom: 10),
+                          child: Container(
+                            height: 35,
+                            color: Color(0xffF2F2F2),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10,right: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Admin Notifications",
+                                   style: GoogleFonts.montserrat(
+                                   fontWeight: FontWeight.bold,
+                                   color: Color(0xffB3B3B3)
+                                   ),
+                                ),
+            Image(image: AssetImage("assets/icons/Group 3500.png"))
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                 Container(
+                        height:constraints.maxHeight>570 ? size.height*0.24 : size.height*0.21,
+                  child: GetBuilder<NotificationControllers>(
+                      builder: (_) {
+                        return AdminNotificationListView(adminNotify:notifycation.adminNotify,);
                       }
                     ),
                 ),

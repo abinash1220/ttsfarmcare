@@ -34,6 +34,8 @@ class Cartdetail {
         required this.userId,
         required this.productId,
         required this.quantity,
+        required this.price,
+        required this.no_of_item,
         required this.activeFlag,
         required this.createdAt,
         required this.updatedAt,
@@ -45,6 +47,8 @@ class Cartdetail {
     String userId;
     String productId;
     String quantity;
+    String price;
+    String no_of_item;
     String activeFlag;
     DateTime createdAt;
     DateTime updatedAt;
@@ -56,6 +60,8 @@ class Cartdetail {
         userId: json["user_id"],
         productId: json["product_id"],
         quantity: json["quantity"],
+        price: json["price"]??"0",
+        no_of_item: json["no_of_item"],
         activeFlag: json["active_flag"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -68,6 +74,8 @@ class Cartdetail {
         "user_id": userId,
         "product_id": productId,
         "quantity": quantity,
+        "price": price,
+        "no_of_item": no_of_item,
         "active_flag": activeFlag,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
@@ -81,9 +89,9 @@ class Product {
         required this.id,
         required this.name,
         required this.title,
-        required this.priceCustomer,
-        required this.priceRetailer,
-        required this.quantity,
+         this.priceCustomer,
+         this.priceRetailer,
+         this.quantity,
         required this.image1,
         required this.image2,
         required this.shortDescription,
@@ -99,9 +107,9 @@ class Product {
     int id;
     String name;
     String title;
-    String priceCustomer;
-    String priceRetailer;
-    String quantity;
+    dynamic priceCustomer;
+    dynamic priceRetailer;
+    dynamic quantity;
     String image1;
     String image2;
     String shortDescription;
@@ -117,9 +125,9 @@ class Product {
         id: json["id"],
         name: json["name"],
         title: json["title"],
-        priceCustomer: json["price_customer"],
-        priceRetailer: json["price_retailer"],
-        quantity: json["quantity"],
+        priceCustomer: json["price_customer"]??"0",
+        priceRetailer: json["price_retailer"]??"0",
+        quantity: json["quantity"]??"0",
         image1: json["image1"],
         image2: json["image2"],
         shortDescription: json["short_description"],

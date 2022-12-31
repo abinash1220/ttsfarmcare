@@ -1,21 +1,22 @@
 // // To parse this JSON data, do
 // //
-// //     final allProducts = allProductsFromJson(jsonString);
+// //     final listProductModel = listProductModelFromJson(jsonString);
 
 // import 'dart:convert';
 
-// AllProducts allProductsFromJson(String str) => AllProducts.fromJson(json.decode(str));
+// ListProductModel listProductModelFromJson(String str) => ListProductModel.fromJson(json.decode(str));
 
-// String allProductsToJson(AllProducts data) => json.encode(data.toJson());
+// String listProductModelToJson(ListProductModel data) => json.encode(data.toJson());
 
-// class AllProducts {
-//     AllProducts({
+// class ListProductModel {
+//     ListProductModel({
 //         required this.currentPage,
 //         required this.data,
 //         required this.firstPageUrl,
 //         required this.from,
 //         required this.lastPage,
 //         required this.lastPageUrl,
+      
 //         this.nextPageUrl,
 //         required this.path,
 //         required this.perPage,
@@ -25,11 +26,12 @@
 //     });
 
 //     int currentPage;
-//     List<Products> data;
+//     List<Datum> data;
 //     String firstPageUrl;
 //     int from;
 //     int lastPage;
 //     String lastPageUrl;
+   
 //     dynamic nextPageUrl;
 //     String path;
 //     int perPage;
@@ -37,13 +39,14 @@
 //     int to;
 //     int total;
 
-//     factory AllProducts.fromJson(Map<String, dynamic> json) => AllProducts(
+//     factory ListProductModel.fromJson(Map<String, dynamic> json) => ListProductModel(
 //         currentPage: json["current_page"],
-//         data: List<Products>.from(json["data"].map((x) => Products.fromJson(x))),
+//         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
 //         firstPageUrl: json["first_page_url"],
 //         from: json["from"],
 //         lastPage: json["last_page"],
 //         lastPageUrl: json["last_page_url"],
+       
 //         nextPageUrl: json["next_page_url"],
 //         path: json["path"],
 //         perPage: json["per_page"],
@@ -59,6 +62,7 @@
 //         "from": from,
 //         "last_page": lastPage,
 //         "last_page_url": lastPageUrl,
+      
 //         "next_page_url": nextPageUrl,
 //         "path": path,
 //         "per_page": perPage,
@@ -68,8 +72,8 @@
 //     };
 // }
 
-// class Products {
-//     Products({
+// class Datum {
+//     Datum({
 //         required this.id,
 //         required this.name,
 //         required this.title,
@@ -83,6 +87,10 @@
 //         required this.disclaimer,
 //         required this.categoryId,
 //         required this.status,
+//         // required this.customerPriceAttributes,
+//         // required this.retailerPriceAttributes,
+//         required this.district,
+//         required this.datumNew,
 //         required this.createdAt,
 //         required this.updatedAt,
 //         this.rating,
@@ -101,11 +109,15 @@
 //     String disclaimer;
 //     String categoryId;
 //     String status;
-//     String createdAt;
-//     String updatedAt;
+//     // ErPriceAttributes customerPriceAttributes;
+//     // ErPriceAttributes retailerPriceAttributes;
+//     String district;
+//     String datumNew;
+//     DateTime createdAt;
+//     DateTime updatedAt;
 //     dynamic rating;
 
-//     factory Products.fromJson(Map<String, dynamic> json) => Products(
+//     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
 //         id: json["id"],
 //         name: json["name"],
 //         title: json["title"],
@@ -119,8 +131,12 @@
 //         disclaimer: json["disclaimer"],
 //         categoryId: json["category_id"],
 //         status: json["status"],
-//         createdAt: json["created_at"],
-//         updatedAt: json["updated_at"],
+//         // customerPriceAttributes: ErPriceAttributes.fromJson(json["customer_price_attributes"]),
+//         // retailerPriceAttributes: ErPriceAttributes.fromJson(json["retailer_price_attributes"]),
+//         district: json["district"],
+//         datumNew: json["new"],
+//         createdAt: DateTime.parse(json["created_at"]),
+//         updatedAt: DateTime.parse(json["updated_at"]),
 //         rating: json["rating"],
 //     );
 
@@ -138,32 +154,14 @@
 //         "disclaimer": disclaimer,
 //         "category_id": categoryId,
 //         "status": status,
-//         "created_at": createdAt,
-//         "updated_at": updatedAt,
+//         // "customer_price_attributes": customerPriceAttributes.toJson(),
+//         // "retailer_price_attributes": retailerPriceAttributes.toJson(),
+//         "district": district,
+//         "new": datumNew,
+//         "created_at": createdAt.toIso8601String(),
+//         "updated_at": updatedAt.toIso8601String(),
 //         "rating": rating,
 //     };
 // }
 
-// class Link {
-//     Link({
-//         required this.url,
-//         required this.label,
-//         required this.active,
-//     });
 
-//     String url;
-//     String label;
-//     bool active;
-
-//     factory Link.fromJson(Map<String, dynamic> json) => Link(
-//         url: json["url"] == null ? null : json["url"],
-//         label: json["label"],
-//         active: json["active"],
-//     );
-
-//     Map<String, dynamic> toJson() => {
-//         "url": url == null ? null : url,
-//         "label": label,
-//         "active": active,
-//     };
-// }

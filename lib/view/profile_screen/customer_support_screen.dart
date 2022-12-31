@@ -46,12 +46,12 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
             ),
             titleSpacing: -10,
             actions: [
-               Padding(
-                 padding: const EdgeInsets.only(right: 20),
-                 child: Image(
-                  height: 45,width: 45,
-                  image: AssetImage("assets/images/Group 3470.png")),
-               ),
+              //  Padding(
+              //    padding: const EdgeInsets.only(right: 20),
+              //    child: Image(
+              //     height: 45,width: 45,
+              //     image: AssetImage("assets/images/Group 3470.png")),
+              //  ),
             ],
           toolbarHeight: 92,
           backgroundColor: Colors.transparent,
@@ -73,7 +73,7 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(25))),
                   child:  KeyboardVisibilityBuilder(
       builder: (context, isKeyboardVisible) {
                       return Container(
@@ -196,6 +196,11 @@ class _CustomerSupportScreenState extends State<CustomerSupportScreen> {
                                         email: emailController.text, 
                                         message: messageController.text
                                         );
+                                     }else{
+                                       Get.snackbar("Please fill all the fields", "",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    colorText: Colors.white,
+                                    backgroundColor: Colors.red);
                                      }
                                     },
                                     child: Padding(

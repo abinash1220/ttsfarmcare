@@ -36,10 +36,17 @@ class GetProfileControllers extends GetxController {
     print(":::::::::::::::::::get profile response::::::::::::::::::");
     print(response.statusCode);
     print(response.data);
-
+     
+     print("<<<<<:::::::::::::::::::user logout checking:::::issue::::::::::>>>>>>"); 
     if (response.statusCode == 500) {
       logOutUser();
-      print("user:::::;;issue::::::::::;;");
+
+      print("............>>>>>>><<<<<<<<<user:::::;;issue::::::::::;;");
+    }
+    if (response.data["User"] == null) {
+      logOutUser();
+
+      print("............>>>>>>><<<<<<<<<user:::::;;issue::::::::::;;");
     }
 
     ProfileUserDetails profileUserDetails =

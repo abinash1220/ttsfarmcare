@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ttsfarmcare/models/test_product_model.dart';
 import 'package:ttsfarmcare/services/register_api_services/register_api_service.dart';
 import 'package:ttsfarmcare/view/sign_in_view/sign_up_otp_screen.dart';
 
@@ -13,7 +14,7 @@ import '../../services/sent_otp_api_services/sent_otp_api_service.dart';
 import '../../view/sign_in_view/signUp_sucessfully.dart';
 
 class AllProductController extends GetxController {
- AllProductApiService allProductApiServices = AllProductApiService();
+ NewProductApiServices allProductApiServices = NewProductApiServices();
 
  List<Products> productList = [];
 
@@ -25,9 +26,14 @@ class AllProductController extends GetxController {
     print(":::::::::::::::::::all Products response::::::::::::::::::");
     print(response.statusCode);
     if (response.statusCode == 200) {
-      AllProducts products = AllProducts.fromJson(response.data);
+      // Get.snackbar("its working", "${response.data}",colorText: Colors.white,backgroundColor: Colors.green);
+      AllProducts products = AllProducts.fromJson(response.data); 
+      // ListProductModel  productsModel = ListProductModel.fromJson(response.data);
 
-      productList = products.data;
+
+    // Get.snackbar("its working", "",colorText: Colors.white,backgroundColor: Colors.green);
+
+       productList = products.data;
       print("product length;;;;;;;;;;;;;;;;;;;;;");
       print(productList.length);
       update();

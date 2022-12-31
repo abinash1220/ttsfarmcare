@@ -6,7 +6,7 @@ import 'package:ttsfarmcare/services/base_api_url_services/base_urls.dart';
 class CreateOrderApiService extends BaseApiService {
   createOrderServices({
     required String product_id,
-    required String quantity,
+    required String no_of_item,
     required String amount,
     required String payment_method_id,
     required String address_id,
@@ -37,7 +37,7 @@ class CreateOrderApiService extends BaseApiService {
           data: {
               
                 "product_id":product_id,
-                "quantity":quantity,
+                "no_of_item":no_of_item,
                 "amount":amount,
                 "payment_method_id":payment_method_id,
                 "address_id":address_id,

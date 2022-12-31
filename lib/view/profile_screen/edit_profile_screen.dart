@@ -73,12 +73,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
             titleSpacing: -10,
             actions: [
-               Padding(
-                 padding: const EdgeInsets.only(right: 20),
-                 child: Image(
-                  height: 45,width: 45,
-                  image: AssetImage("assets/images/Group 3470.png")),
-               ),
+              //  Padding(
+              //    padding: const EdgeInsets.only(right: 20),
+              //    child: Image(
+              //     height: 45,width: 45,
+              //     image: AssetImage("assets/images/Group 3470.png")),
+              //  ),
             ],
           toolbarHeight: 92,
           backgroundColor: Colors.transparent,
@@ -100,7 +100,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(25))),
                   child: Column(
                     children: [
                       KeyboardVisibilityBuilder(

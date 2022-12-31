@@ -42,9 +42,9 @@ class _ViewCartPageState extends State<ViewCartPage> {
   getOrder() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getCartController.getCart();
-      c.product(1);
-      c.price(450.00);
-      getCartController.totalitem(1);
+      // c.product(1);
+      // c.price(450.00);
+      // getCartController.totalitem(1);
     });
   }
 
@@ -72,13 +72,13 @@ class _ViewCartPageState extends State<ViewCartPage> {
           ),
           titleSpacing: -10,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Image(
-                  height: 45,
-                  width: 45,
-                  image: AssetImage("assets/images/Group 3470.png")),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 20),
+            //   child: Image(
+            //       height: 45,
+            //       width: 45,
+            //       image: AssetImage("assets/images/Group 3470.png")),
+            // ),
           ],
           toolbarHeight: 92,
           backgroundColor: Colors.transparent,
@@ -222,7 +222,7 @@ class _ViewCartPageState extends State<ViewCartPage> {
                         height: 10,
                       ),
                       Container(
-                        height: size.height * 0.6,
+                        height: size.height * 0.63,
                         child: GetBuilder<GetCartControllers>(builder: (_) {
                           return GetCartListView(
                               getCartDetails: getCartController.getCartDetails);
@@ -248,17 +248,14 @@ class _ViewCartPageState extends State<ViewCartPage> {
                         ),
                         Row(
                           children: [
-                            Icon(
-                              Icons.currency_rupee,
-                              color: Color(0xff016942),
-                            ),
+                           
                             Obx(
                               () => Container(
-                                width: 70,
+                                width: 80,
                                 child: FittedBox(
                                   fit: BoxFit.scaleDown,
                                   child: Text(
-                                    "${getCartController.totalPrice.value}",
+                                    "₹ ${getCartController.totalPrice.value}",
                                     style: GoogleFonts.roboto(
                                       fontSize: 18.sp,
                                       color: Color(0xff016942),

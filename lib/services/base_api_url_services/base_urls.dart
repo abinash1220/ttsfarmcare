@@ -89,4 +89,11 @@ abstract class BaseApiService {
 
   final String removeFromCartURL =
       "https://ttsfarmcare.com/admintts/public/api/delete_cart";
+
+  //get district list api Url
+  final String getDistictUrl = "https://ttsfarmcare.com/admintts/public/api/district" ;   
+
+  //add new product list api url
+  final String newProductUrl = "https://ttsfarmcare.com/admintts/public/api/new_product";
+    
 }

@@ -64,13 +64,13 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
           ),
           titleSpacing: -10,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Image(
-                  height: 45.h,
-                  width: 45.w,
-                  image: AssetImage("assets/images/Group 3470.png")),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 20),
+            //   child: Image(
+            //       height: 45.h,
+            //       width: 45.w,
+            //       image: AssetImage("assets/images/Group 3470.png")),
+            // ),
           ],
           toolbarHeight: 92,
           backgroundColor: Colors.transparent,
@@ -399,21 +399,20 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
               ),
               InkWell(
                 onTap: () {
-                  for (int b = 0;
+                 if(getCartController.getCartDetails.length == 0){
+                     Get.snackbar("Please select any one product", "",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    colorText: Colors.white,
+                                    backgroundColor: Colors.red);
+                 }else{
+                   for (int b = 0;
                       b < getCartController.getCartDetails.length;
                       b++) {
                     createOrderController.addCreateOrder(
                         product_id:
                             getCartController.getCartDetails[b].productId,
-                        quantity: getCartController.getCartDetails[b].quantity,
-                        amount: Get.find<GetProfileControllers>()
-                                    .profileDetails
-                                    .role ==
-                                "Retail"
-                            ? getCartController
-                                .getCartDetails[b].product.priceRetailer
-                            : getCartController
-                                .getCartDetails[b].product.priceCustomer,
+                        no_of_item: getCartController.getCartDetails[b].no_of_item,
+                        amount: getCartController.getCartDetails[b].price,
                         payment_method_id: "1",
                         address_id: "1",
                         payment_status: "",
@@ -421,6 +420,7 @@ class _CartPaymentScreenState extends State<CartPaymentScreen> {
                             getCartController.getCartDetails[b].id.toString());
                   }
                   setDefault();
+                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),

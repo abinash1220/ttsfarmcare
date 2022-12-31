@@ -13,9 +13,11 @@ class NotificationControllers extends GetxController {
   NotificationApiService notificationApiService = NotificationApiService();
 
   List<NotificationData> notify = [];
+  List<NotificationData> adminNotify = [];
 
   getNotification() async {
     notify.clear();
+    adminNotify.clear();
     dio.Response<dynamic> response =
         await notificationApiService.notification();
     print(":::::::::::::::::::notification response::::::::::::::::::");
@@ -26,9 +28,8 @@ class NotificationControllers extends GetxController {
       notificationt.notification.data.forEach((element) {
         notify.add(element);
       });
-
       notificationt.adminNotification.data.forEach((element) {
-        notify.add(element);
+        adminNotify.add(element);
       });
 
       update();

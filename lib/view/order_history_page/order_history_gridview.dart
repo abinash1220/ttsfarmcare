@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ttsfarmcare/controllers/profile_user_details_api_controllers/profile_user_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../../models/order_history.dart';
 import '../../models/order_history_model.dart';
 
 class OrderHistoryGridview extends StatefulWidget {
@@ -24,7 +25,7 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
   Widget build(BuildContext context) {
     print(widget.orderdata.length);
     return Container(
-      child: GridView.builder(
+      child:widget.orderdata.isEmpty? Center(child: Text("No data available")) : GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, childAspectRatio: 2.76, mainAxisSpacing: 10),
           itemCount: widget.orderdata.length,
@@ -64,7 +65,7 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                         ),
                         Row(
                           children: [
-                            Text("${widget.orderdata[index].quantity} iterms",
+                            Text("${widget.orderdata[index].noOfItem} iterms",
                               // Get.find<GetProfileControllers>()
                               //             .profileDetails
                               //             .role ==
@@ -94,9 +95,10 @@ class _OrderHistoryGridviewState extends State<OrderHistoryGridview> {
                         SizedBox(
                           height: 5,
                         ),
-                        RatingBar.builder(
-                          initialRating: double.parse(
-                              widget.orderdata[index].product.rating ?? "3"),
+                     RatingBar.builder(
+                          initialRating:  widget.orderdata[index].rating == null ?  double.parse(
+                              "1"): double.parse(
+                              widget.orderdata[index].rating.rating) ,
                           minRating: 0,
                           itemSize: 17,
                           glow: false,

@@ -9,11 +9,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
+import 'package:ttsfarmcare/controllers/add_address_api_controllers/get_district_list_api_controller.dart';
 import 'package:ttsfarmcare/controllers/registration_api_controller.dart';
 import 'package:ttsfarmcare/view/login_in_page/login_screen.dart';
 import '../../constants/app_colors.dart';
 import '../../controllers/register_controller.dart';
 import '../../controllers/sign_up_controllers.dart';
+import '../../models/district_list_model.dart';
 import '../sign_in_view/mobile_number.dart';
 
 class ExamsView extends StatefulWidget {
@@ -28,6 +30,8 @@ class _ExamsViewState extends State<ExamsView> {
 
   final registerController = Get.find<RegisterController>();
 
+  final getDistrictController = Get.find<GetDistrictController>();
+
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
@@ -41,6 +45,29 @@ class _ExamsViewState extends State<ExamsView> {
 
   bool isKeyBoardVisile = false;
   bool _isHidden = true;
+  bool isPwd = true;
+
+  bool isGSTNum = true;
+
+  validatePwd(){
+   if (passwordcontroller.text.length > 1) {
+  if(passwordcontroller.text.length > 7){
+        setState(() {
+          isPwd = true;
+        });
+  }else{
+    setState(() {
+      isPwd = false;
+    });
+  }
+}else{
+  setState(() {
+    isPwd = true;
+  });
+}
+
+  }
+
   
   void _togglePasswordView() {
     setState(() {
@@ -53,13 +80,13 @@ class _ExamsViewState extends State<ExamsView> {
   void initState() {
     super.initState();
     signUpController.isCustomer(true);
+    passwordcontroller.addListener(validatePwd);
+    getDistrictController.getDistrictList();
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-   
-
     return Scaffold(
       appBar: AppBar(
           leading: Padding(
@@ -154,6 +181,7 @@ class _ExamsViewState extends State<ExamsView> {
                       children: [
                         InkWell(
                           onTap: () {
+                            
                             signUpController.isCustomer(true);
                             usernamecontroller.clear();
                             emailcontroller.clear();
@@ -162,10 +190,15 @@ class _ExamsViewState extends State<ExamsView> {
                             companynamecontroller.clear();
                             districtcontroller.clear();
                             gstnumbercontroller.clear();
+                            mobileNumbercontroller.clear();
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) => const LoginPage()),
                             // );
+                            setState(() {
+                              isPwd = true;
+                              isGSTNum = true;
+                            });
                           },
                           child: Container(
                             height: 40,
@@ -192,6 +225,7 @@ class _ExamsViewState extends State<ExamsView> {
                         ),
                         InkWell(
                           onTap: () {
+                            
                             signUpController.isCustomer(false);
                             usernamecontroller.clear();
                             emailcontroller.clear();
@@ -200,10 +234,16 @@ class _ExamsViewState extends State<ExamsView> {
                             companynamecontroller.clear();
                             districtcontroller.clear();
                             gstnumbercontroller.clear();
+                            mobileNumbercontroller.clear();
+                            
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) => const LoginPage()),
                             // );
+                            setState(() {
+                              isPwd = true;
+                              isGSTNum =true;
+                            });
                           },
                           child: Container(
                             height: 40,
@@ -230,10 +270,11 @@ class _ExamsViewState extends State<ExamsView> {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 KeyboardVisibilityBuilder(
                     builder: (context, isKeyboardVisible) {
+                  String regex;
                   return Container(
                     height: size.height * 0.7,
                     width: size.width,
@@ -330,12 +371,15 @@ class _ExamsViewState extends State<ExamsView> {
                                   height: 50.h,
                                   width: size.width,
                                   child: TextFormField(
+                                    onChanged: (value) {
+                                      setState(() {
+                                         isGSTNum = gstvalidate(value);
+                                      });
+                                    },
                                     controller:gstnumbercontroller,
                                     textCapitalization: TextCapitalization.characters,
                                     inputFormatters: [
                                       LengthLimitingTextInputFormatter(15),
-                                    FilteringTextInputFormatter.allow(
-                                          RegExp(r"[A-Z 0-9]"))
                                      ],
                                     cursorColor: darkGreenColor,
                                     decoration: InputDecoration(
@@ -363,6 +407,10 @@ class _ExamsViewState extends State<ExamsView> {
                                 ),
                               ),
                             ],
+                          ),
+                          if(isGSTNum == false && gstnumbercontroller.text.isNotEmpty) Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Text("GST number is not valid",style: TextStyle(color: Colors.red),),
                           ),
                         SizedBox(
                           height: 20.h,
@@ -398,7 +446,7 @@ class _ExamsViewState extends State<ExamsView> {
                         ),
                         SizedBox(height: 20.h,),
                         Padding(
-                      padding: const EdgeInsets.only(right: 20, left: 20),
+                      padding: const EdgeInsets.only(right: 25, left: 25),
                       child: Container(
                         height: 50,
                         width: size.width,
@@ -508,7 +556,12 @@ class _ExamsViewState extends State<ExamsView> {
                             ),
                           ),
                         ),
-                        
+                        if (isPwd == false && passwordcontroller.text.isNotEmpty)Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Text("password must be 8 characters",
+                        style: TextStyle(color: Colors.red),
+                  ),
+                ),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -544,97 +597,50 @@ class _ExamsViewState extends State<ExamsView> {
                         SizedBox(
                           height: 20.h,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25, right: 25),
-                          child: Container(
-                            height: 58.h,
-                            width: size.width,
-                            child: DropdownSearch<String>(
-                              popupProps: PopupProps.menu(
-                                showSelectedItems: true,
-                                showSearchBox: true,
-                                searchFieldProps: TextFieldProps(
-                                    decoration: InputDecoration(
-                                        suffixIcon: Icon(
-                                  Icons.search,
-                                ))),
-                              ),
-
-                              items: [
-                                "Ariyalur",
-                                "Chengalpattu", 
-                                "Chennai",
-                                "Coimbatore",
-                                "Cuddalore",
-                                "Dharmapuri",
-                                "Dindigul",
-                                "Erode",
-                                "Kallakurichi",
-                                "Kancheepuram",
-                                "Karur",
-                                "Krishnagiri",
-                                "Madurai",
-                                "Mayiladuthurai",
-                                "Nagapattinam",
-                                "Kanyakumari",
-                                "Namakkal",
-                                "Perambalur",
-                                "Pudukottai",
-                                "Ramanathapuram",
-                                "Ranipet",
-                                "Salem",
-                                "Sivagangai",
-                                "Tenkasi",
-                                "Thanjavur",
-                                "Theni",
-                                "Thiruvallur",
-                                "Thiruvarur",
-                                "Tuticorin",
-                                "Trichirappalli",
-                                "Thirunelveli",
-                                "Tirupathur",
-                                "Tiruppur",
-                                "Tiruvannamalai",
-                                "Nilgiris",
-                                "Vellore",
-                                "Viluppuram",
-                                "Virudhunagar",
-                                ],
-                              onChanged: ((value) {
-                                setState(() {
-                                  districtcontroller
-                                      .text = value.toString();
-                                });
-                              }),
-                              dropdownDecoratorProps: DropDownDecoratorProps(
-                                textAlign: TextAlign.start,
-                                dropdownSearchDecoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide(
-                                          color: darkGreenColor, width: 1.5)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide(
-                                          color: Color(0xff517937),
-                                          width: 0.7)),
-                                  filled: true,
-                                  fillColor: const Color(0xffECF2F0),
-                                  iconColor: Color(0xff517937),
-                                  isDense: true,
-
-                                  //labelText: "district",
-
-                                  hintText: "District",
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: const Color(0xff517937),
+                        GetBuilder<GetDistrictController>(builder: (_) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 25, right: 25),
+                              child: Container(
+                                height: 58.h,
+                                width: size.width,
+                                child: DropdownSearch<DistrictList>(
+                                  itemAsString: (DistrictList u) => u.name,
+                                  items:getDistrictController.districtlist,
+                                  onChanged: ((DistrictList? value) {
+                                    setState(() {
+                                      districtcontroller
+                                          .text = value!.name;
+                                    });
+                                  }),
+                                  dropdownDecoratorProps: DropDownDecoratorProps(
+                                    textAlign: TextAlign.start,
+                                    dropdownSearchDecoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: darkGreenColor, width: 1.5)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                              color: Color(0xff517937),
+                                              width: 0.7)),
+                                      filled: true,
+                                      fillColor: const Color(0xffECF2F0),
+                                      iconColor: Color(0xff517937),
+                                      isDense: true,
+                                      //labelText: "district",
+                                      hintText: "District",
+                                      hintStyle: GoogleFonts.montserrat(
+                                        color: const Color(0xff517937),
+                                      ),
+                                    ),
                                   ),
+                                  // onChanged: print,
+                                  //selectedItem: "chennai",
                                 ),
                               ),
-                              // onChanged: print,
-                              //selectedItem: "chennai",
-                            ),
-                          ),
+                            );
+                          }
                         ),
                         SizedBox(
                           height: 30,
@@ -687,7 +693,7 @@ class _ExamsViewState extends State<ExamsView> {
                                 passwordcontroller.text.isNotEmpty &&
                                addresscontroller.text.isNotEmpty) {
                               if (emailcontroller.text.isEmail) {
-                                registerController.registerUser(
+                                if(isPwd && isGSTNum){registerController.registerUser(
                                 name: usernamecontroller.text, 
                                 email: emailcontroller.text, 
                                 companyName:companynamecontroller.text,
@@ -697,17 +703,8 @@ class _ExamsViewState extends State<ExamsView> {
                                 address: addresscontroller.text, 
                                 district: districtcontroller.text, 
                                 role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
-                                ) ;
-                                // Get.to(() => MobileNumber(
-                                //       address:addresscontroller.text,
-                                //       district:districtcontroller.text,
-                                //       email:emailcontroller.text,
-                                //       name:usernamecontroller.text,
-                                //       password:passwordcontroller.text,
-                                //       companyName:companynamecontroller.text,
-                                //       gst_number:gstnumbercontroller.text,
-                                //       role: signUpController.isCustomer.isTrue ? "Customer" : signUpController.isCustomer.isFalse ? "Retail" : "Customer",
-                                //     ));
+                                ) ;}
+                                
                               } else {
                                 Get.snackbar("Enter a  Valid Email ID", "",
                                     snackPosition: SnackPosition.BOTTOM,
@@ -787,5 +784,75 @@ class _ExamsViewState extends State<ExamsView> {
         ),
       ),
     );
+  }
+
+  var mult = [
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+  [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+  [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+  [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+  [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+  [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+  [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+  [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+  [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+];
+var perm = [
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+  [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+  [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+  [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+  [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+  [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+  [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
+];
+var i, j, x;
+
+String reverseString(String gstNum) {
+  var chars = gstNum.split('');
+  return chars.reversed.join();
+}
+
+int listElementsSum(List a) {
+  int sum = 0;
+  if (a.length <= 1) {
+    return a[0];
+  } else {
+    for (int e in a) {
+      sum += e;
+    }
+  }
+  return sum;
+}
+
+
+
+   bool gstvalidate(String gstNum) {
+    var check, lmo, gst, csum;
+    check = reverseString(gstNum)[0];
+    lmo = gstNum.substring(0, 14);
+    List l = [], m = [], n = [];
+    gst = lmo.split('');
+    for (var i = 0; i < gst.length; ++i) {
+      if (RegExp(r'^[0-9]+$').hasMatch(gst[i])) {
+        l.add(int.parse(gst[i]));
+      } else {
+        l.add(lmo.codeUnitAt(i) - 55);
+      }
+    }
+    for (var i = 0; i < l.length; ++i) {
+      m.add(l[i] * (i % 2 + 1));
+    }
+    for (var i = 0; i < m.length; ++i) {
+      n.add(((m[i] / 36) + (m[i] % 36)).truncate());
+    }
+    var sum = listElementsSum(n);
+
+    csum = 36 - sum % 36;
+    csum = csum < 10 ? csum.toString() : String.fromCharCode(csum + 55);
+    bool val = csum == check ? true : false;
+    return val;
   }
 }

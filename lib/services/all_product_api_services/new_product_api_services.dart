@@ -3,10 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ttsfarmcare/constants/user_role.dart';
 import 'package:ttsfarmcare/services/base_api_url_services/base_urls.dart';
 
-class NewProductApiServices extends BaseApiService {
-  allProductApiServices({
+class NewProductListServices extends BaseApiService {
+  newProduct({
     required String category_id,
-  }) async {
+    }) async {
+    
     //api result will store in this variable
     dynamic responseJson;
 
@@ -17,24 +18,26 @@ class NewProductApiServices extends BaseApiService {
        final prefs = await SharedPreferences.getInstance();
        String? authtoken = prefs.getString("auth_token");
 
-      var response = await dio.post(AllProductUrl,
-          options: Options(
-              headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer $authtoken'
-              },
-              followRedirects: false,
-              validateStatus: (status) {
-                return status! <= 500;
-              }),
-              data: {
+      var response = await dio.post(
+        newProductUrl,
+        options: Options(
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': 'Bearer $authtoken'
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! <= 500;
+            }),
+            data: {
                   
                    "category_id":category_id
                   
               }
-         );
-      print("::::::::::::::::all product status code::::::::::::::");
+      );
+      print("::::::::::::::::new_product api status code::::::::::::::");
       print(response.statusCode);
+
       responseJson = response;
     } catch (e) {
       print(e);

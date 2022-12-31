@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/complete_model_screen.dart';
+import '../../models/complete_order_model.dart';
 
 class FinishedOrdersGridview extends StatefulWidget {
   List<FinishOrderData> completeorder;
@@ -22,11 +23,12 @@ class _FinishedOrdersGridviewState extends State<FinishedOrdersGridview> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      child: GridView.builder(
+      child: widget.completeorder.isEmpty? Center(child: Text("No data available")) : GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, childAspectRatio: 2.76, mainAxisSpacing: 10),
           itemCount: widget.completeorder.length,
           itemBuilder: (context, index) {
+            print(widget.completeorder.length);
             return Container(
               child: Row(
               children: [
@@ -107,7 +109,7 @@ class _FinishedOrdersGridviewState extends State<FinishedOrdersGridview> {
                                   MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                 "Qty:  ${widget.completeorder[index].quantity}",
+                                 "Qty:  ${widget.completeorder[index].noOfItem}",
                                   style: GoogleFonts.poppins(
                                       fontSize: 13,
                                       color: Color(0xff1C1C1E)),

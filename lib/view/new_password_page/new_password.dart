@@ -195,7 +195,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     ),
                   ),
                 ),
-                 if (isnewpassword == false)Padding(
+                 if (isnewpassword == false && newPasswordController.text.isNotEmpty)Padding(
                         padding: const EdgeInsets.only(left: 35),
                         child: Text("password must be 8 characters",
                         style: TextStyle(color: Colors.red),
@@ -254,7 +254,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     ),
                   ),
                 ),
-                if (isconpassword == false)Padding(
+                if (isconpassword == false && confirmPasswordController.text.isNotEmpty)Padding(
                         padding: const EdgeInsets.only(left: 35),
                         child: Text("password must be 8 characters",
                         style: TextStyle(color: Colors.red),

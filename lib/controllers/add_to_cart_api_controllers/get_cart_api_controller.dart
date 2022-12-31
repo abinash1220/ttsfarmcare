@@ -43,6 +43,17 @@ class GetCartControllers extends GetxController {
 
     update();
   }
+  
+  String getPrice(String price,String quantity){
+   double tprice = double.parse(price);
+   int qty = int.parse(quantity);
+   double totalPrice = tprice * qty;
+  
+  return totalPrice.toString();
+}
+  
+  
+
 
   calculate(List<Cartdetail> getCartDetails) {
     double temp = 0.0;
@@ -53,16 +64,16 @@ class GetCartControllers extends GetxController {
       print("vvvvvvvvvvvvvvvvvvvvvvvvvvvv");
       if (Get.find<GetProfileControllers>().profileDetails.role == "Retail") {
         print("ggggggggggggggg");
-        double price = double.parse(getCartDetails[a].product.priceRetailer);
-        double quantity = double.parse(getCartDetails[a].quantity);
-        print("price = $price * $quantity  = ${price * quantity} ");
-        double ptemp = price * quantity;
+        double amount = double.parse(getCartDetails[a].price);
+        double quantity = double.parse(getCartDetails[a].no_of_item);
+        print("price = $amount * $quantity  = ${amount * quantity} ");
+        double ptemp = amount * quantity;
         print(ptemp);
         temp += ptemp;
       } else {
-        double price = double.parse(getCartDetails[a].product.priceCustomer);
+        double price = double.parse(getCartDetails[a].price);
         print("ptriceeeeee$price");
-        double quantity = double.parse(getCartDetails[a].quantity);
+        double quantity = double.parse(getCartDetails[a].no_of_item);
         print("price = $price * $quantity  = ${price * quantity} ");
         double ptemp = price * quantity;
         print(ptemp);

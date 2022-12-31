@@ -22,12 +22,16 @@ class AddToCartController extends GetxController {
   addtocart({
     required String productId,
     required String quantity,
+    required String price,
+    required String no_of_item,
    
   }) async {
     dio.Response<dynamic> response =
         await addToCartApiService.addToCartApiService(
           productId: productId,
           quantity: quantity,
+          price: price,
+          no_of_item: no_of_item,
         );
     
    print("::::::::::::::::addtocart statuscode:::::::::::::::::::::");
